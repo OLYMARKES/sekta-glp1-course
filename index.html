@@ -3,40 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Актуальная карта курса GLP‑1 — курс на устойчивость: шесть недель, семь дней, тренировки, материалы, питание и сопровождение.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23345fc9'/%3E%3Cpath d='M18 20h28M18 32h28M18 44h18' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
-  <title>GLP‑1 — курс на устойчивость · карта курса</title>
+  <meta name="description" content="Каноническая карта полного содержания курса Sekta для людей на GLP-1-терапии: основание, концепция, питание, тренировки, сопровождение и шесть недель. Актуальная версия на 11 августа 2026 года.">
+  <title>GLP‑1 — курс на устойчивость · Source of truth · 11 августа 2026</title>
   <style>
     :root {
-      --page: #f6f7f9;
+      --page: #f3f4f3;
       --surface: #ffffff;
-      --surface-soft: #f9fafb;
+      --surface-subtle: #f7f8fa;
       --ink: #172033;
-      --ink-soft: #4f5b70;
-      --muted: #758096;
-      --line: #e2e6ed;
-      --line-strong: #cfd6e1;
-      --accent: #345fc9;
-      --accent-soft: #eef3ff;
-      --accent-line: #d5e0fa;
-      --movement: #2d6b59;
-      --movement-soft: #edf7f2;
-      --content: #5a55a4;
-      --content-soft: #f2f1fb;
-      --food: #97611f;
-      --food-soft: #fff7e9;
-      --support: #8a4e63;
-      --support-soft: #fff1f5;
-      --success: #247552;
-      --success-soft: #edf7f1;
-      --warning: #97611f;
-      --warning-soft: #fff6e6;
-      --danger: #a24850;
-      --danger-soft: #fff0f1;
-      --day-width: 118px;
-      --topbar-height: 58px;
-      --weekbar-height: 76px;
-      --radius: 10px;
+      --ink-soft: #4d576b;
+      --muted: #70798b;
+      --line: #e2e6ec;
+      --line-strong: #cfd6df;
+      --accent: #315fcb;
+      --accent-deep: #244b9a;
+      --accent-soft: #f0f4fd;
+      --accent-line: #d6e1f6;
+      --success: #287a55;
+      --success-soft: #edf8f2;
+      --success-line: #cee7da;
+      --warning: #8a5a18;
+      --warning-soft: #fff8ec;
+      --warning-line: #ead5ae;
+      --neutral-soft: #f3f5f7;
+      --danger: #8b3f46;
+      --danger-soft: #fff3f3;
+      --danger-line: #efd5d8;
+      --topbar: 58px;
+      --tabsbar: 68px;
+      --sidebar: 260px;
+      --measure: 820px;
+      --radius: 12px;
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -44,518 +41,1101 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--page);
+      background: var(--surface);
       color: var(--ink);
-      font: 14px/1.5 var(--font);
+      font: 16px/1.66 var(--font);
       -webkit-font-smoothing: antialiased;
     }
-    button, input, select, textarea { font: inherit; }
-    button { -webkit-tap-highlight-color: transparent; }
-    :focus-visible { outline: 3px solid rgba(52, 95, 201, .25); outline-offset: 2px; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent-deep); }
+    :focus-visible { outline: 3px solid rgba(49, 95, 203, .24); outline-offset: 3px; }
+    [hidden] { display: none !important; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 60;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+    }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 40;
       display: grid;
-      grid-template-columns: minmax(230px, 1fr) auto minmax(230px, 1fr);
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
       align-items: center;
-      min-height: var(--topbar-height);
-      padding: 0 20px;
-      background: rgba(255,255,255,.97);
+      height: var(--topbar);
+      background: rgba(255, 255, 255, .96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
-    .brand { font-size: 13px; font-weight: 750; white-space: nowrap; }
-    .brand span { color: var(--muted); font-weight: 450; }
-    .mode-nav { display: flex; align-items: center; gap: 4px; }
-    .mode-nav button, .ghost-button, .view-switch button, .week-tab {
-      min-height: 36px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--ink-soft);
-      cursor: pointer;
-    }
-    .mode-nav button { padding: 7px 12px; font-weight: 700; }
-    .mode-nav button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-line); }
-    .mode-nav button[disabled] { color: #a5adba; cursor: not-allowed; }
-    .site-switch { display: flex; align-items: center; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-soft); }
-    .site-switch a { padding: 7px 11px; border-radius: 7px; color: var(--ink-soft); font-size: 12px; font-weight: 700; line-height: 1; text-decoration: none; white-space: nowrap; }
-    .site-switch a:hover { color: var(--ink); background: var(--surface); }
-    .site-switch a.active { color: var(--accent); background: var(--surface); box-shadow: 0 1px 3px rgba(23,32,51,.1); }
-    .sync { display: flex; justify-content: flex-end; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
-    .sync::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--success); }
 
-    .weekbar {
+    .brand {
+      padding: 0 24px;
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--muted); font-weight: 450; }
+
+    .top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: min(calc(100% - 32px), var(--measure));
+      margin-left: clamp(16px, calc((100vw - var(--sidebar) - var(--measure)) / 2), 160px);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .top-meta strong { color: var(--ink-soft); font-weight: 650; }
+    .site-switch {
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-subtle);
+    }
+    .site-switch a {
+      padding: 6px 10px;
+      border-radius: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 680;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .site-switch a:hover { color: var(--ink); background: #fff; }
+    .site-switch a.active { color: var(--accent-deep); background: #fff; box-shadow: 0 1px 3px rgba(23, 32, 51, .1); }
+    .source-meta { margin-left: auto; white-space: nowrap; }
+
+    .tabs-shell {
       position: sticky;
-      top: var(--topbar-height);
+      top: var(--topbar);
       z-index: 35;
       display: grid;
-      grid-template-columns: var(--day-width) minmax(0, 1fr) auto;
-      align-items: stretch;
-      min-height: var(--weekbar-height);
-      background: rgba(255,255,255,.98);
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      height: var(--tabsbar);
+      background: rgba(255, 255, 255, .96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
-    .weekbar-label { display: grid; place-items: center; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; border-right: 1px solid var(--line); }
-    .week-tabs { display: grid; grid-template-columns: repeat(6, minmax(106px, 1fr)); gap: 4px; padding: 8px; overflow-x: auto; scrollbar-width: none; }
-    .week-tabs::-webkit-scrollbar { display: none; }
-    .week-tab { display: grid; grid-template-columns: 22px 1fr; gap: 7px; align-items: center; min-width: 106px; padding: 7px 9px; text-align: left; }
-    .week-tab span:first-child { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
-    .week-tab span:last-child { overflow: hidden; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
-    .week-tab:hover { background: var(--surface-soft); border-color: var(--line); }
-    .week-tab[aria-selected="true"] { color: var(--ink); background: var(--accent-soft); border-color: var(--accent-line); }
-    .week-actions { display: flex; align-items: center; gap: 8px; padding: 0 14px; border-left: 1px solid var(--line); }
-    .ghost-button { padding: 7px 11px; border-color: var(--line); background: var(--surface); font-weight: 700; }
-    .ghost-button:hover { border-color: var(--line-strong); background: var(--surface-soft); }
 
-    .workspace { min-width: 980px; background: var(--surface); }
-    .summary {
-      display: grid;
-      grid-template-columns: var(--day-width) minmax(260px, 1.4fr) repeat(4, minmax(120px, .65fr));
-      border-bottom: 1px solid var(--line);
-      background: var(--surface);
-    }
-    .summary-spacer { border-right: 1px solid var(--line); }
-    .week-intent { padding: 22px 20px; border-right: 1px solid var(--line); }
-    .week-intent small { display: block; margin-bottom: 5px; color: var(--accent); font-size: 11px; font-weight: 800; text-transform: uppercase; }
-    .week-intent h1 { margin: 0 0 6px; font-size: 21px; line-height: 1.25; letter-spacing: -.02em; }
-    .week-intent p { margin: 0; color: var(--ink-soft); }
-    .summary-item { display: flex; flex-direction: column; justify-content: center; padding: 17px 15px; border-right: 1px solid var(--line); }
-    .summary-item:last-child { border-right: 0; }
-    .summary-item span { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
-    .summary-item strong { margin-top: 5px; font-size: 18px; font-variant-numeric: tabular-nums; }
-    .summary-item em { margin-top: 3px; color: var(--muted); font-size: 11px; font-style: normal; }
-    .summary-item.density strong { color: var(--warning); }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: var(--day-width) minmax(0, 1fr) auto;
-      min-height: 55px;
-      border-bottom: 1px solid var(--line);
-      background: var(--surface-soft);
-    }
-    .toolbar-spacer { border-right: 1px solid var(--line); }
-    .legend { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 10px 18px; color: var(--muted); font-size: 12px; }
-    .legend span { display: inline-flex; align-items: center; gap: 6px; }
-    .legend i { width: 8px; height: 8px; border-radius: 2px; }
-    .legend .l-movement { background: var(--movement); }
-    .legend .l-content { background: var(--content); }
-    .legend .l-food { background: var(--food); }
-    .legend .l-support { background: var(--support); }
-    .view-switch { display: flex; align-items: center; gap: 4px; padding: 8px 14px; border-left: 1px solid var(--line); }
-    .view-switch button { padding: 6px 10px; border-color: var(--line); background: var(--surface); font-size: 12px; font-weight: 700; }
-    .view-switch button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
-
-    .canvas { width: 100%; }
-    .canvas-head, .day-row {
-      display: grid;
-      grid-template-columns: var(--day-width) minmax(240px, 1.2fr) minmax(230px, 1fr) minmax(220px, .9fr) minmax(210px, .85fr);
-    }
-    .canvas-head { position: sticky; top: calc(var(--topbar-height) + var(--weekbar-height)); z-index: 25; background: #fbfcfd; border-bottom: 1px solid var(--line); }
-    .canvas-head div { padding: 11px 14px; border-right: 1px solid var(--line); color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-    .canvas-head div:last-child { border-right: 0; }
-    .day-row { min-height: 150px; border-bottom: 1px solid var(--line); background: var(--surface); }
-    .day-label {
-      position: sticky;
-      left: 0;
-      z-index: 12;
+    .tabs-label {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px 14px;
-      background: #fbfcfd;
+      align-items: center;
+      padding: 0 24px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
       border-right: 1px solid var(--line);
     }
-    .day-label small { color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
-    .day-label strong { display: block; margin-top: 3px; font-size: 16px; }
-    .day-label span { color: var(--muted); font-size: 11px; }
-    .cell { min-width: 0; padding: 10px; border-right: 1px solid var(--line); }
-    .cell:last-child { border-right: 0; }
-    .block {
-      position: relative;
-      display: block;
-      width: 100%;
-      margin: 0 0 7px;
-      padding: 12px 12px 11px 15px;
-      overflow: hidden;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      color: var(--ink);
+
+    .global-tabs {
+      display: flex;
+      align-items: stretch;
+      gap: 4px;
+      padding: 6px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .global-tabs::-webkit-scrollbar { display: none; }
+    .global-tabs button {
+      flex: 1 0 150px;
+      min-width: 0;
+      padding: 0 13px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 680;
       text-align: left;
-      cursor: default;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .block:last-child { margin-bottom: 0; }
-    .block::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: currentColor; opacity: .85; }
-    .block:hover { border-color: currentColor; }
-    .block.movement { color: var(--movement); background: var(--movement-soft); }
-    .block.content { color: var(--content); background: var(--content-soft); }
-    .block.food { color: var(--food); background: var(--food-soft); }
-    .block.support { color: var(--support); background: var(--support-soft); }
-    .block .block-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
-    .block .format { font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-    .block .minutes { color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .block .title { display: block; color: var(--ink); font-size: 13px; line-height: 1.35; font-weight: 750; }
-    .block .detail { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 11px; line-height: 1.38; }
-    .block .block-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 9px; }
-    .owner { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-size: 10px; }
-    .owner::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--owner-color, #98a2b3); }
-    .status { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--ink-soft); font-size: 9px; font-weight: 750; white-space: nowrap; }
-    .status.approved { color: var(--success); border-color: #cbe3d5; background: var(--success-soft); }
-    .status.decision { color: var(--warning); border-color: #ead5aa; background: var(--warning-soft); }
-    .status.review { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
-    .required-mark { margin-left: 4px; color: var(--danger); }
-    .empty-cell { display: grid; min-height: 100%; place-items: center; color: #a0a8b5; font-size: 11px; }
-    .optional-hidden .block[data-required="false"] { display: none; }
+    .global-tabs button::before {
+      display: inline-block;
+      width: 27px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 450;
+      font-variant-numeric: tabular-nums;
+    }
+    .global-tabs button:nth-child(1)::before { content: "01"; }
+    .global-tabs button:nth-child(2)::before { content: "02"; }
+    .global-tabs button:nth-child(3)::before { content: "03"; }
+    .global-tabs button:nth-child(4)::before { content: "04"; }
+    .global-tabs button:nth-child(5)::before { content: "05"; }
+    .global-tabs button:nth-child(6)::before { content: "06"; }
+    .global-tabs button:hover { color: var(--ink); background: var(--surface-subtle); }
+    .global-tabs button[aria-selected="true"] { color: var(--ink); background: var(--accent-soft); }
 
-    .course-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
-    .course-option { padding: 7px 8px; border: 1px solid rgba(45,107,89,.18); border-radius: 7px; background: rgba(255,255,255,.58); }
-    .course-option small { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; }
-    .course-option b { display: block; margin-top: 2px; color: var(--ink); font-size: 11px; line-height: 1.3; }
-    .base-view .course-option.strength-option, .strength-view .course-option.base-option { display: none; }
-    .base-view .course-compare, .strength-view .course-compare { grid-template-columns: 1fr; }
+    .workspace {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: calc(100vh - var(--topbar) - var(--tabsbar));
+    }
 
-    .drawer-backdrop { position: fixed; inset: 0; z-index: 60; background: rgba(16,24,40,.22); opacity: 0; pointer-events: none; transition: opacity .18s ease; }
-    .drawer {
-      position: fixed;
-      inset: 0 0 0 auto;
-      z-index: 70;
-      width: min(430px, 100%);
-      transform: translateX(100%);
+    .local-nav {
+      position: sticky;
+      top: calc(var(--topbar) + var(--tabsbar));
+      align-self: start;
+      height: calc(100vh - var(--topbar) - var(--tabsbar));
+      padding: 24px 16px 100px;
       overflow-y: auto;
+      background: #f8f9fb;
+      border-right: 1px solid var(--line);
+      counter-reset: local;
+    }
+    .local-nav h2 {
+      margin: 4px 12px 4px;
+      font-size: 16px;
+      line-height: 1.35;
+      letter-spacing: -.01em;
+    }
+    .local-nav .nav-note {
+      margin: 0 12px 17px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .local-nav a {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 2px 0;
+      padding: 10px 12px;
+      border-radius: 9px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      text-decoration: none;
+      counter-increment: local;
+    }
+    .local-nav a::before {
+      content: counter(local, decimal-leading-zero);
+      color: var(--muted);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .local-nav a:hover { color: var(--ink); background: #eef1f5; }
+    .local-nav a.active { color: var(--ink); background: var(--surface); box-shadow: 0 0 0 1px var(--line); }
+
+    main { min-width: 0; background: var(--surface); }
+    .chapter {
+      width: min(calc(100% - 32px), var(--measure));
+      margin-left: clamp(16px, calc((100vw - var(--sidebar) - var(--measure)) / 2), 160px);
+      padding: 62px 0 112px;
+    }
+
+    .chapter-head { margin-bottom: 42px; }
+    .kicker {
+      margin: 0 0 13px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    h1, h2, h3 { letter-spacing: -.025em; }
+    h1 { max-width: 23ch; margin: 0; font-size: clamp(31px, 3.2vw, 42px); line-height: 1.1; }
+    h2 { max-width: 32ch; margin: 0 0 16px; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.25; }
+    h3 { margin: 28px 0 9px; font-size: 17px; line-height: 1.35; }
+    p { margin: 0 0 17px; }
+    .lede { max-width: 66ch; margin: 17px 0 0; color: var(--ink-soft); font-size: 17px; line-height: 1.62; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; color: var(--muted); font-size: 13px; }
+    .meta-row span + span::before { content: "·"; margin-right: 20px; color: var(--line-strong); }
+
+    .chapter section {
+      scroll-margin-top: calc(var(--topbar) + var(--tabsbar) + 22px);
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+    }
+    .chapter section > p { max-width: 70ch; color: var(--ink-soft); }
+
+    .callout {
+      margin: 25px 0 4px;
+      padding: 21px 23px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+    .callout strong { display: block; margin-bottom: 7px; color: var(--accent-deep); font-size: 14px; }
+    .callout p { margin: 0; color: var(--ink-soft); }
+    .callout.warm { border-color: var(--warning-line); background: var(--warning-soft); }
+    .callout.warm strong { color: var(--warning); }
+    .callout.safe { border-color: var(--success-line); background: var(--success-soft); }
+    .callout.safe strong { color: var(--success); }
+    .callout.danger { border-color: var(--danger-line); background: var(--danger-soft); }
+    .callout.danger strong { color: var(--danger); }
+
+    .three-layer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .layer {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       background: var(--surface);
-      border-left: 1px solid var(--line);
-      box-shadow: -18px 0 50px rgba(20,31,52,.12);
-      transition: transform .22s ease;
     }
-    body.drawer-open .drawer { transform: translateX(0); }
-    body.drawer-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
-    .drawer-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--line); }
-    .drawer-head strong { font-size: 16px; }
-    .icon-button { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink-soft); cursor: pointer; }
-    .drawer-body { padding: 20px; }
-    .field { margin-bottom: 17px; }
-    .field label { display: block; margin-bottom: 6px; color: var(--ink-soft); font-size: 12px; font-weight: 700; }
-    .field input, .field select, .field textarea { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--ink); }
-    .field textarea { min-height: 92px; resize: vertical; }
-    .drawer-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .drawer-actions { position: sticky; bottom: 0; display: flex; justify-content: flex-end; gap: 8px; padding: 14px 20px; background: rgba(255,255,255,.97); border-top: 1px solid var(--line); }
-    .primary-button { min-height: 40px; padding: 8px 14px; border: 1px solid var(--accent); border-radius: 8px; background: var(--accent); color: #fff; font-weight: 750; cursor: pointer; }
-    .toast { position: fixed; right: 20px; bottom: 20px; z-index: 90; transform: translateY(16px); padding: 11px 14px; border-radius: 8px; background: var(--ink); color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
-    .toast.show { transform: translateY(0); opacity: 1; }
+    .layer strong { display: block; margin-bottom: 6px; font-size: 14px; }
+    .layer p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .layer.decided { border-color: var(--accent-line); background: var(--accent-soft); }
+    .layer.ready { border-color: var(--success-line); background: var(--success-soft); }
+    .layer.missing { border-color: var(--warning-line); background: var(--warning-soft); }
 
-    .mode-panel { display: none; min-height: calc(100vh - var(--topbar-height)); padding: 34px max(22px, calc((100vw - 1120px) / 2)); background: var(--page); }
-    .mode-panel.active { display: block; }
-    .panel-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
-    .panel-head small { display: block; margin-bottom: 5px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .panel-head h1 { margin: 0; font-size: 26px; letter-spacing: -.025em; }
-    .panel-head p { max-width: 620px; margin: 7px 0 0; color: var(--ink-soft); }
-    .panel-count { flex: 0 0 auto; padding: 8px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink-soft); font-size: 12px; font-weight: 750; }
-    .decision-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-    .decision-card { display: flex; min-height: 190px; flex-direction: column; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
-    .decision-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; font-weight: 750; text-transform: uppercase; }
-    .decision-card h2 { margin: 14px 0 7px; font-size: 15px; line-height: 1.35; }
-    .decision-card p { margin: 0; color: var(--ink-soft); font-size: 12px; }
-    .decision-card button { width: fit-content; margin-top: auto; padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface-soft); color: var(--accent); font-size: 11px; font-weight: 750; cursor: pointer; }
-    .history-list { max-width: 850px; border-top: 1px solid var(--line); }
-    .history-item { display: grid; grid-template-columns: 120px 150px 1fr; gap: 18px; padding: 17px 0; border-bottom: 1px solid var(--line); }
-    .history-item time, .history-item strong { font-size: 11px; }
-    .history-item time { color: var(--muted); }
-    .history-item p { margin: 0; color: var(--ink-soft); font-size: 12px; }
-    .source-note { margin-top: 22px; padding: 14px 16px; border: 1px solid var(--accent-line); border-radius: 10px; background: var(--accent-soft); color: var(--ink-soft); font-size: 12px; }
-    body[data-mode="decisions"] .weekbar, body[data-mode="history"] .weekbar, body[data-mode="decisions"] .workspace, body[data-mode="history"] .workspace { display: none; }
+    .plain-list, .number-list { margin: 23px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .plain-list li, .number-list li {
+      position: relative;
+      padding: 15px 0 15px 32px;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--line);
+    }
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 25px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .number-list { counter-reset: numbered; }
+    .number-list li { counter-increment: numbered; }
+    .number-list li::before {
+      content: counter(numbered, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .number-list strong, .plain-list strong { color: var(--ink); }
 
-    @media (max-width: 1100px) {
-      .topbar { grid-template-columns: 1fr auto; }
-      .sync { display: none; }
-      .site-switch { justify-self: end; }
-      .weekbar { grid-template-columns: 96px minmax(0, 1fr); }
-      .weekbar-label { font-size: 10px; }
-      .week-actions { display: none; }
-      .workspace { min-width: 900px; }
-      .summary { grid-template-columns: 96px minmax(260px, 1.4fr) repeat(4, minmax(110px, .65fr)); }
-      .toolbar { grid-template-columns: 96px minmax(0, 1fr) auto; }
-      .canvas-head, .day-row { grid-template-columns: 96px minmax(230px, 1.2fr) minmax(220px, 1fr) minmax(210px, .9fr) minmax(200px, .85fr); }
+    .material-list { margin-top: 25px; border-top: 1px solid var(--line); }
+    .material-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: start;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .material-row .type { color: var(--muted); font-size: 13px; font-weight: 650; }
+    .material-row h3 { margin: 0 0 4px; font-size: 16px; }
+    .material-row p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--neutral-soft);
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .badge.ready { color: var(--success); border-color: var(--success-line); background: var(--success-soft); }
+    .badge.decided { color: var(--accent-deep); border-color: var(--accent-line); background: var(--accent-soft); }
+    .badge.missing { color: var(--warning); border-color: var(--warning-line); background: var(--warning-soft); }
+    .badge.risk { color: var(--danger); border-color: var(--danger-line); background: var(--danger-soft); }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 25px;
+    }
+    .mode {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .mode h3 { margin: 0 0 7px; }
+    .mode p { color: var(--muted); }
+    .mode ul { margin: 14px 0 0; padding-left: 19px; color: var(--ink-soft); }
+    .mode li + li { margin-top: 6px; }
+    .mode.care { border-color: var(--success-line); background: var(--success-soft); }
+    .mode.strength { border-color: var(--accent-line); background: var(--accent-soft); }
+
+    .day-modes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+    .day-mode { padding: 17px; background: var(--surface); }
+    .day-mode strong { display: block; margin-bottom: 5px; font-size: 14px; }
+    .day-mode p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.52; }
+    .day-mode.green strong { color: var(--success); }
+    .day-mode.yellow strong { color: var(--warning); }
+    .day-mode.red strong { color: var(--danger); }
+
+    .week-list { margin-top: 27px; border-top: 1px solid var(--line); }
+    .week-card {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 26px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .week-index { color: var(--accent); font-size: 13px; font-weight: 700; }
+    .week-card h2 { margin: -5px 0 12px; font-size: 23px; }
+    .week-card .need { color: var(--ink); font-weight: 650; }
+    .week-details { margin-top: 18px; }
+    .week-detail {
+      display: grid;
+      grid-template-columns: 115px minmax(0, 1fr);
+      gap: 18px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+    .week-detail strong { font-size: 13px; }
+    .week-detail span { color: var(--ink-soft); font-size: 14px; }
+
+    .source-box {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .source-box a { font-weight: 650; }
+
+    .empty-note {
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    @media (max-width: 900px) {
-      :root { --topbar-height: 92px; --weekbar-height: 68px; }
-      body { background: var(--surface); }
-      .topbar { grid-template-columns: 1fr; align-content: center; gap: 5px; padding: 8px 14px; }
-      .brand { font-size: 12px; }
-      .site-switch { justify-self: start; }
-      .site-switch a { padding: 6px 9px; font-size: 11px; }
-      .weekbar { grid-template-columns: 1fr; }
-      .weekbar-label { display: none; }
-      .week-tabs { padding: 7px 10px; }
-      .week-tab { min-width: 118px; }
-      .workspace { min-width: 0; }
-      .summary { display: block; }
-      .summary-spacer { display: none; }
-      .week-intent { padding: 22px 16px; border-right: 0; }
-      .week-intent h1 { font-size: 20px; }
-      .summary-item { display: inline-flex; width: 50%; min-height: 78px; vertical-align: top; border-top: 1px solid var(--line); }
-      .summary-item:nth-of-type(even) { border-right: 0; }
-      .toolbar { display: block; }
-      .toolbar-spacer { display: none; }
-      .legend { padding: 12px 16px; }
-      .view-switch { padding: 10px 16px; overflow-x: auto; border-top: 1px solid var(--line); border-left: 0; }
-      .view-switch button { min-width: max-content; }
-      .canvas-head { display: none; }
-      .day-row { display: block; min-height: 0; padding: 0 16px 22px; border-bottom: 8px solid var(--page); }
-      .day-label { position: static; display: flex; flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 8px; margin: 0 -16px 10px; padding: 13px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
-      .day-label span { margin-left: auto; }
-      .cell { padding: 8px 0 0; border-right: 0; }
-      .cell::before { display: block; margin-bottom: 6px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-      .cell.movement-cell::before { content: "Движение"; }
-      .cell.content-cell::before { content: "Материалы"; }
-      .cell.food-cell::before { content: "Питание / практика"; }
-      .cell.support-cell::before { content: "Поддержка"; }
-      .empty-cell { min-height: 34px; place-items: start; padding-top: 5px; }
-      .course-compare { grid-template-columns: 1fr; }
-      .drawer { width: 100%; top: 8%; border-radius: 18px 18px 0 0; }
-      .mode-panel { padding: 24px 16px; }
-      .panel-head { display: block; }
-      .panel-count { width: fit-content; margin-top: 14px; }
-      .decision-grid { grid-template-columns: 1fr; }
-      .history-item { grid-template-columns: 1fr; gap: 4px; }
+    @media (max-width: 980px) {
+      .global-tabs button { flex-basis: 138px; }
+      .three-layer { grid-template-columns: 1fr; }
+      .chapter { padding-top: 52px; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .drawer, .drawer-backdrop, .toast { transition: none; }
+    @media (max-width: 820px) {
+      .topbar { display: flex; justify-content: space-between; padding: 0 16px; }
+      .brand { padding: 0; }
+      .top-meta { width: auto; margin: 0; }
+      .source-meta { display: none; }
+      .site-switch a { padding: 6px 8px; font-size: 11px; }
+      .tabs-shell { display: block; }
+      .tabs-label { display: none; }
+      .global-tabs { height: 100%; padding-inline: 9px; }
+      .workspace { display: block; }
+      .local-nav {
+        top: calc(var(--topbar) + var(--tabsbar));
+        z-index: 25;
+        display: flex;
+        gap: 6px;
+        height: auto;
+        padding: 10px 12px;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        scrollbar-width: none;
+      }
+      .local-nav h2, .local-nav .nav-note { display: none; }
+      .local-nav a { flex: 0 0 auto; min-height: 46px; align-items: center; white-space: nowrap; }
+      .chapter { width: min(calc(100% - 32px), var(--measure)); margin: 0 auto; }
+    }
+
+    @media (max-width: 620px) {
+      html, body { overflow-x: hidden; }
+      body { font-size: 15.5px; }
+      .brand span { display: inline; font-size: 11px; }
+      .global-tabs button { flex: 0 0 142px; padding-inline: 10px; font-size: 12px; }
+      .global-tabs button::before { width: 23px; }
+      .chapter { padding: 40px 0 88px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 22px; }
+      .lede { font-size: 16px; }
+      .meta-row { display: block; }
+      .meta-row span { display: block; margin-top: 4px; }
+      .meta-row span + span::before { display: none; }
+      .chapter section { padding: 38px 0; }
+      .material-row { grid-template-columns: 1fr auto; gap: 7px 12px; }
+      .material-row .type { grid-column: 1 / -1; }
+      .split, .day-modes { grid-template-columns: 1fr; }
+      .week-card { grid-template-columns: 1fr; gap: 7px; }
+      .week-detail { grid-template-columns: 1fr; gap: 2px; }
+      .callout, .mode { padding: 18px; }
+    }
+
+    @media print {
+      .topbar, .tabs-shell, .local-nav, .progress { display: none; }
+      .workspace { display: block; }
+      .chapter { display: block !important; width: auto; margin: 0; padding: 32px 0; }
+      .chapter[hidden] { display: block !important; }
+      .chapter section { break-inside: avoid; }
     }
   </style>
 </head>
 <body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
   <header class="topbar">
     <div class="brand">GLP‑1 <span>— курс на устойчивость</span></div>
-    <nav class="site-switch" aria-label="Рабочие представления курса">
-      <a class="active" href="./" aria-current="page">Карта курса</a>
-      <a href="constructor.html">Конструктор</a>
-    </nav>
-    <div class="sync">Актуальная недельная сборка</div>
+    <div class="top-meta">
+      <nav class="site-switch" aria-label="Рабочие представления курса">
+        <a class="active" href="./" aria-current="page">Карта курса</a>
+        <a href="constructor.html">Конструктор</a>
+      </nav>
+      <span class="source-meta">Source of truth: 11 августа 2026 · не медицинская рекомендация</span>
+    </div>
   </header>
 
-  <nav class="weekbar" aria-label="Недели курса">
-    <div class="weekbar-label">Недели</div>
-    <div class="week-tabs" id="weekTabs" role="tablist" aria-label="Выбрать неделю"></div>
-    <div class="week-actions"><button class="ghost-button" id="copyWeek" type="button">Скопировать неделю</button></div>
-  </nav>
+  <div class="tabs-shell">
+    <div class="tabs-label">Разделы разработки</div>
+    <nav class="global-tabs" role="tablist" aria-label="Разделы курса">
+      <button id="tab-foundation" type="button" role="tab" aria-selected="true" aria-controls="panel-foundation" data-panel="foundation">Основание</button>
+      <button id="tab-concept" type="button" role="tab" aria-selected="false" aria-controls="panel-concept" data-panel="concept">Концепция</button>
+      <button id="tab-nutrition" type="button" role="tab" aria-selected="false" aria-controls="panel-nutrition" data-panel="nutrition">Питание</button>
+      <button id="tab-training" type="button" role="tab" aria-selected="false" aria-controls="panel-training" data-panel="training">Тренировки</button>
+      <button id="tab-support" type="button" role="tab" aria-selected="false" aria-controls="panel-support" data-panel="support">Сопровождение</button>
+      <button id="tab-weeks" type="button" role="tab" aria-selected="false" aria-controls="panel-weeks" data-panel="weeks">Шесть недель</button>
+    </nav>
+  </div>
 
-  <main class="workspace compare-view" id="workspace">
-    <section class="summary" aria-labelledby="weekTitle">
-      <div class="summary-spacer"></div>
-      <div class="week-intent">
-        <small id="weekKicker">Неделя 01</small>
-        <h1 id="weekTitle">Питание при сниженном аппетите</h1>
-        <p id="weekIntent"></p>
-      </div>
-      <div class="summary-item"><span>Силовые</span><strong>4 × 20</strong><em>контакта</em></div>
-      <div class="summary-item"><span>Движение</span><strong>2 × 8</strong><em>база, можно повторить</em></div>
-      <div class="summary-item"><span>Обязательно</span><strong id="requiredCount">—</strong><em>действий</em></div>
-      <div class="summary-item density"><span>Плотность</span><strong id="densityLabel">—</strong><em id="densityReason">—</em></div>
-    </section>
+  <div class="workspace">
+    <aside class="local-nav" aria-label="Оглавление выбранного раздела">
+      <h2 id="localTitle">Исследовательская основа</h2>
+      <p class="nav-note">Оглавление раздела</p>
+      <div id="localLinks"></div>
+    </aside>
 
-    <section class="toolbar" aria-label="Настройки canvas">
-      <div class="toolbar-spacer"></div>
-      <div class="legend" aria-label="Типы блоков">
-        <span><i class="l-movement"></i> движение</span>
-        <span><i class="l-content"></i> материал</span>
-        <span><i class="l-food"></i> питание / практика</span>
-        <span><i class="l-support"></i> сопровождение</span>
-        <span><b class="required-mark">●</b> обязательно</span>
-      </div>
-      <div class="view-switch" aria-label="Вид программы">
-        <button type="button" data-view="compare" aria-pressed="true">Сравнить тренировки</button>
-        <button type="button" data-view="base" aria-pressed="false">Свой вес</button>
-        <button type="button" data-view="strength" aria-pressed="false">Гантели</button>
-        <button type="button" id="optionalToggle" aria-pressed="false">Только обязательное</button>
-      </div>
-    </section>
+    <main>
+      <article class="chapter" id="panel-foundation" role="tabpanel" aria-labelledby="tab-foundation" data-title="Исследовательская основа">
+        <header class="chapter-head">
+          <p class="kicker">Раздел 1 из 6 · почему этот курс нужен</p>
+          <h1>Курс дополняет назначенную терапию поддержкой питания, физической активности и поведения.</h1>
+          <p class="lede">Научная часть отвечает не только на вопрос «работает ли терапия», но и на вопрос «что человеку нужно сохранить, понять и научиться делать, пока тело быстро меняется».</p>
+          <div class="meta-row"><span>Статус: рамка собрана</span><span>Следующий шаг: медицинская редакция</span><span>Полная записка сохранена отдельно</span></div>
+        </header>
 
-    <section class="canvas" aria-label="Календарь содержания недели">
-      <div class="canvas-head" aria-hidden="true">
-        <div>День</div><div>Движение</div><div>Материал</div><div>Питание / практика</div><div>Поддержка</div>
-      </div>
-      <div id="dayRows"></div>
-    </section>
-  </main>
+        <section id="foundation-problem" data-nav="Проблематика">
+          <h2>Проблема, которую решает курс</h2>
+          <p>GLP-1-терапия может снижать вес и уменьшать пищевой шум, но сама по себе не формирует режим питания, регулярную физическую активность, навыки адаптации нагрузки и план действий на случай изменения терапии.</p>
+          <div class="callout">
+            <strong>Главный тезис</strong>
+            <p>Курс не должен конкурировать с препаратом и не должен сопровождать назначение. Его зона — качество питания, функция, поведение, понимание происходящего и человеческая поддержка.</p>
+          </div>
+        </section>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <section id="foundation-gaps" data-nav="Шесть разрывов">
+          <h2>Шесть разрывов, которые остаются после назначения</h2>
+          <ol class="number-list">
+            <li><strong>Сниженный аппетит не гарантирует достаточность питания.</strong> Маленький объём должен всё равно давать белок, энергию и микронутриенты.</li>
+            <li><strong>Снижение веса не гарантирует сохранение силы.</strong> Уменьшается и безжировая масса; качество результата нельзя оценивать только весами.</li>
+            <li><strong>Готовность к нагрузке меняется.</strong> Тошнота, слабость, головокружение и обезвоживание требуют авторегуляции и медицинской границы.</li>
+            <li><strong>Тело меняется быстрее, чем идентичность.</strong> Остаются стыд, сравнение, страх возврата веса и непривычность нового тела.</li>
+            <li><strong>Ответ на препарат не равен навыкам.</strong> Тишина вместо пищевого шума создаёт окно возможностей, но не формирует структуру автоматически.</li>
+            <li><strong>Шесть недель не равны долгосрочному решению.</strong> Навыки должны оставаться полезными при плато, изменении дозы или отмене.</li>
+          </ol>
+        </section>
+
+        <section id="foundation-objective" data-nav="Цель курса">
+          <h2>Цель курса</h2>
+          <div class="callout safe">
+            <strong>Рабочая формулировка</strong>
+            <p>Помочь человеку во время назначенной врачом GLP-1-терапии сохранить полноценность питания, мышечную массу, силу и повседневную физическую функцию; научиться выбирать нагрузку по самочувствию и сформировать устойчивые навыки без подмены врача.</p>
+          </div>
+        </section>
+
+        <section id="foundation-evidence" data-nav="Границы знания">
+          <h2>Что известно, что рекомендуем и чего не обещаем</h2>
+          <div class="three-layer">
+            <article class="layer ready"><strong>Знаем достаточно уверенно</strong><p>GLP-1 меняют аппетит и насыщение; вес у многих снижается; ЖКТ-симптомы распространены; при большой потере веса уменьшается и безжировая масса; после отмены вес часто частично возвращается.</p></article>
+            <article class="layer decided"><strong>Обоснованно рекомендуем</strong><p>Питательно плотную еду, источник белка в основных приёмах пищи, силовые тренировки, ходьбу и аэробную активность, оценку физической функции, психологическую и поведенческую поддержку.</p></article>
+            <article class="layer missing"><strong>Не можем обещать</strong><p>Полностью предотвратить потерю мышц, дать одну норму всем или гарантировать отсутствие возврата веса после изменения терапии.</p></article>
+          </div>
+        </section>
+
+        <section id="foundation-sources" data-nav="Основные источники">
+          <h2>Основные научные источники</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Консенсус</div><div><h3>EASO · EFAD · ECPO, 2026</h3><p>Питание, функция, психология и lived experience при медикаментозном лечении ожирения.</p></div><span class="badge ready">главный обзор</span></div>
+            <div class="material-row"><div class="type">Руководство</div><div><h3>ACLM · ASN · OMA · TOS, 2025</h3><p>Питание и образ жизни во время GLP-1-терапии; связывает белок и сопротивление.</p></div><span class="badge ready">open access</span></div>
+            <div class="material-row"><div class="type">Исследования</div><div><h3>STEP 1 и SURMOUNT-1 DXA</h3><p>Данные по изменению жировой и безжировой массы на семаглутиде и тирзепатиде.</p></div><span class="badge ready">первичные данные</span></div>
+            <div class="material-row"><div class="type">Опыт людей</div><div><h3>Patient Experiences With GLP-1 RAs, 2026</h3><p>Пищевой шум, побочные эффекты, стигма, доступ и ценность поддержки.</p></div><span class="badge ready">human touch</span></div>
+          </div>
+          <p class="source-box"><a href="glp1_course_research_foundation_v1.html">Открыть полную научную записку с десятью источниками →</a></p>
+        </section>
+      </article>
+
+      <article class="chapter" id="panel-concept" role="tabpanel" aria-labelledby="tab-concept" data-title="Концепция программы" hidden>
+        <header class="chapter-head">
+          <p class="kicker">Раздел 2 из 6 · что именно мы хотим передать</p>
+          <h1>Программа поддерживает питание, физическую активность и поведенческие изменения во время GLP-1-терапии.</h1>
+          <p class="lede">В этом разделе зафиксировано, что именно делает программа, зачем включён каждый компонент и какие знания и навыки должен получить участник за шесть недель.</p>
+          <div class="meta-row"><span>Статус: рабочая концепция</span><span>Основа: питание + движение + поведение + поддержка</span></div>
+        </header>
+
+        <section id="concept-promise" data-nav="Задача программы">
+          <h2>Какие состояния и запросы учитывает программа</h2>
+          <p>Программа учитывает снижение аппетита, уменьшение пищевого шума, тошноту, слабость, страх потери мышечной массы, изменение образа тела, стыд из-за медикаментозного лечения и тревогу о возврате веса.</p>
+          <div class="callout">
+            <strong>Задача курса</strong>
+            <p>Объяснить происходящие изменения, дать конкретные рекомендации по питанию и физической активности и поддержать формирование устойчивых привычек. Медицинские решения остаются у врача.</p>
+          </div>
+        </section>
+
+        <section id="concept-principles" data-nav="Принципы Sekta">
+          <h2>Как принципы Sekta работают здесь</h2>
+          <ol class="number-list">
+            <li><strong>Сохраняем регулярное питание при снижении аппетита.</strong> Потребности в энергии, белке и микронутриентах остаются.</li>
+            <li><strong>Добавляем силовые тренировки для сохранения мышечной массы.</strong> Также оцениваем силу и повседневную физическую функцию.</li>
+            <li><strong>Предлагаем два варианта нагрузки.</strong> CARE предназначен для начинающих и дней с низким ресурсом; Strength — для уже тренирующихся и дней с хорошим самочувствием.</li>
+            <li><strong>Даем более короткий и менее интенсивный вариант ключевых тренировок.</strong> Его можно выбрать при сниженной энергии или лёгких симптомах, если тренировка не противопоказана.</li>
+            <li><strong>Оцениваем прогресс по нескольким показателям.</strong> Кроме веса учитываем силу, энергию, переносимость нагрузки, сон и бытовую активность.</li>
+            <li><strong>Формируем навыки для долгосрочного использования.</strong> Режим питания, силовые тренировки, ходьба и поведенческие стратегии должны быть применимы после курса и при изменении терапии.</li>
+            <li><strong>Сохраняем медицинскую границу.</strong> Назначение, доза, титрация, отмена и лечение побочных эффектов остаются у врача.</li>
+          </ol>
+        </section>
+
+        <section id="concept-outcomes" data-nav="Результаты обучения">
+          <h2>Что человек должен унести</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Знания</div><div><h3>Понимать изменения</h3><p>Как препарат влияет на аппетит и пищеварение, почему питание и движение всё равно нужны, где медицинский сигнал.</p></div><span class="badge decided">передаём</span></div>
+            <div class="material-row"><div class="type">Питание</div><div><h3>Поддерживать регулярный и полноценный рацион</h3><p>Источник белка в основных приёмах пищи, питательная ценность небольших порций, варианты питания при симптомах и практическая организация еды.</p></div><span class="badge decided">передаём</span></div>
+            <div class="material-row"><div class="type">Движение</div><div><h3>Выполнять силовые тренировки 2–3 раза в неделю</h3><p>Силовые тренировки, ходьба, мобильность, постепенное увеличение нагрузки и выбор интенсивности по самочувствию.</p></div><span class="badge decided">передаём</span></div>
+            <div class="material-row"><div class="type">Поведение</div><div><h3>Иметь план действий на разные состояния</h3><p>Конкретные действия при сниженной энергии, плато, возвращении аппетита и мышлении «всё или ничего».</p></div><span class="badge decided">передаём</span></div>
+            <div class="material-row"><div class="type">Отношение</div><div><h3>Снизить стыд из-за медикаментозного лечения</h3><p>Адаптация к изменениям тела, отказ от сравнения скорости похудения и своевременное обращение за медицинской помощью.</p></div><span class="badge decided">передаём</span></div>
+          </div>
+        </section>
+
+        <section id="concept-format" data-nav="Формат программы">
+          <h2>Из чего складывается опыт</h2>
+          <ul class="plain-list">
+            <li><strong>Короткие вводные видео от Оли</strong> о типичных состояниях, питании при сниженном аппетите, выборе нагрузки, образе тела и навыках после курса.</li>
+            <li><strong>Один основной экспертный материал в неделю</strong> и дополнительные короткие пояснения по безопасности.</li>
+            <li><strong>Разные форматы ежедневных заданий:</strong> силовая тренировка, ходьба, питание, поведенческая практика или отдых.</li>
+            <li><strong>Два варианта тренировочной нагрузки</strong> с выбором по текущему уровню подготовки и самочувствию.</li>
+            <li><strong>Одно конкретное поведенческое действие на неделю</strong> и несколько показателей прогресса кроме веса.</li>
+            <li><strong>Сообщество и медицинская маршрутизация:</strong> куратор поддерживает выполнение программы, но не заменяет врача.</li>
+          </ul>
+        </section>
+      </article>
+
+      <article class="chapter" id="panel-nutrition" role="tabpanel" aria-labelledby="tab-nutrition" data-title="Питание" hidden>
+        <header class="chapter-head">
+          <p class="kicker">Раздел 3 из 6 · две версии продукта</p>
+          <h1>3.1 — привычная система Sekta. 3.2 — адаптивное питание по текущему состоянию.</h1>
+          <p class="lede">Базовая версия даёт недельные меню, рецепты, закупки и заготовки. Экспериментальная версия каждый день выбирает подходящий сценарий по аппетиту, симптомам, возможности пить, энергии, тренировке и реальным условиям.</p>
+          <div class="meta-row"><span>3.1 · готовая продуктовая рамка</span><span>3.2 · экспериментальная концепция</span><span>Обе версии требуют медицинской редакции</span></div>
+        </header>
+
+        <section id="nutrition-versions" data-nav="3.1 и 3.2">
+          <h2>Два способа собрать питание</h2>
+          <div class="three-layer">
+            <article class="layer ready"><strong>3.1 · Базовая система</strong><p>Один проверенный недельный комплект: теория, действие, меню, четыре рецепта, закупка, заготовка и карточка симптомов.</p></article>
+            <article class="layer decided"><strong>3.2 · Адаптивная система</strong><p>Короткая проверка состояния, один подходящий сценарий и варианты только из размеченной базы продуктов и рецептов.</p></article>
+            <article class="layer missing"><strong>Решение после прототипа</strong><p>3.2 может стать механикой прохождения, а 3.1 — её содержательной базой. Это не обязательно два разных курса.</p></article>
+          </div>
+        </section>
+
+        <section id="nutrition-outcome" data-nav="3.1 · Результат">
+          <h2>3.1. Что участник сможет делать к концу курса</h2>
+          <ol class="number-list">
+            <li><strong>Организовать питание без опоры только на голод.</strong> Не ждать выраженного аппетита, если из-за терапии он появляется редко.</li>
+            <li><strong>Собрать небольшую полноценную порцию.</strong> Выбрать переносимый источник белка, энергию и растительный компонент без требования сделать каждый приём пищи идеальным.</li>
+            <li><strong>Адаптировать еду при симптомах.</strong> Уменьшить объём, изменить текстуру, температуру или жирность и понимать, когда нужен врач.</li>
+            <li><strong>Сократить количество решений.</strong> Пользоваться базовым списком продуктов, недельной закупкой, заменами и двумя сценариями заготовки.</li>
+            <li><strong>Сохранить гибкость.</strong> Применять систему дома, на работе, в ресторане и поездке без оценки дня как «правильного» или «сорванного».</li>
+            <li><strong>Собрать личное меню.</strong> Выбрать повторяемые блюда и план действий на случай изменения аппетита, дозы или терапии.</li>
+          </ol>
+        </section>
+
+        <section id="nutrition-weekly-package" data-nav="3.1 · Комплект недели">
+          <h2>3.1. Что получает участник каждую неделю</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Теория</div><div><h3>Один основной материал и короткая памятка</h3><p>Аудио или видео на 10–20 минут, основные выводы, действие недели и правила безопасности.</p></div><span class="badge decided">каждую неделю</span></div>
+            <div class="material-row"><div class="type">Меню</div><div><h3>Пример на семь дней</h3><p>Базовый вариант, уменьшение объёма и допустимые замены. Это не единый калораж и не обязательная граммовка.</p></div><span class="badge decided">6 примеров</span></div>
+            <div class="material-row"><div class="type">Рецепты</div><div><h3>Четыре новых рецепта</h3><p>К концу курса участник получает 24 проверенных рецепта с тегами времени, текстуры, заморозки, источника белка и замен.</p></div><span class="badge decided">24 рецепта</span></div>
+            <div class="material-row"><div class="type">Закупка</div><div><h3>Список по отделам магазина</h3><p>Количество зависит от выбранных блюд и семьи; рядом указаны допустимые замены.</p></div><span class="badge decided">6 списков</span></div>
+            <div class="material-row"><div class="type">Заготовки</div><div><h3>Два маршрута подготовки</h3><p>Один блок примерно на 45 минут или короткие действия примерно по 10 минут в день.</p></div><span class="badge decided">2 варианта</span></div>
+            <div class="material-row"><div class="type">Симптомы</div><div><h3>Что можно изменить и когда нужен врач</h3><p>Краткие адаптации еды и явная граница самостоятельных действий.</p></div><span class="badge risk">медред</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-weeks" data-nav="3.1 · Недели">
+          <h2>3.1. Как развивается питание за шесть недель</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Неделя 1</div><div><h3>Питание при сниженном аппетите</h3><p>Нутритивная плотность, небольшая полноценная порция, переносимые источники белка и стартовый набор продуктов.</p></div><span class="badge ready">подкаст готов</span></div>
+            <div class="material-row"><div class="type">Неделя 2</div><div><h3>Регулярность, эмоциональный голод и работа кишечника</h3><p>Причины приёма пищи, вода, постепенное включение клетчатки, запор и повторяемое меню рабочей недели.</p></div><span class="badge ready">материалы есть</span></div>
+            <div class="material-row"><div class="type">Неделя 3</div><div><h3>Тошнота, раннее насыщение и дни симптомов</h3><p>Личный план A / B / C, трёхдневный резерв, «полка на трудный день» и медицинские красные флаги.</p></div><span class="badge decided">сценарий есть</span></div>
+            <div class="material-row"><div class="type">Неделя 4</div><div><h3>Полноценность рациона, жиры, перекусы и разнообразие</h3><p>Карта замен, ротация групп продуктов, роль перекусов и границы самостоятельного приёма добавок.</p></div><span class="badge ready">материалы есть</span></div>
+            <div class="material-row"><div class="type">Неделя 5</div><div><h3>Питание вне дома и гибкость</h3><p>Работа, доставка, ресторан, поездка, семейная еда и готовые решения без чувства вины.</p></div><span class="badge missing">создать практику</span></div>
+            <div class="material-row"><div class="type">Неделя 6</div><div><h3>Личная система и изменение аппетита</h3><p>Двенадцать личных блюд, два сценария закупки, два сценария заготовки и план с врачом при изменении терапии.</p></div><span class="badge risk">проверить эндокринолога</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-menu-system" data-nav="3.1 · Меню">
+          <h2>3.1. Одно меню с адаптациями, а не несколько отдельных диет</h2>
+          <p>У каждого дня есть базовый вариант. При низком аппетите участник уменьшает объём, разделяет порцию или выбирает более переносимую текстуру. При выраженных симптомах включается короткий резервный план и медицинская маршрутизация.</p>
+          <div class="three-layer">
+            <article class="layer ready"><strong>Базовый вариант</strong><p>Обычный пример блюда с заменами внутри групп продуктов.</p></article>
+            <article class="layer decided"><strong>Низкий аппетит</strong><p>Меньший объём, разделение приёма пищи или более питательно плотная версия.</p></article>
+            <article class="layer missing"><strong>Выраженные симптомы</strong><p>Резервный вариант на короткий период и явный критерий обращения к врачу.</p></article>
+          </div>
+          <div class="callout">
+            <strong>Белок без универсальной цифры</strong>
+            <p>В курсе показываются источники белка, распределение по дню и способы добавить его в маленькую порцию. Индивидуальная норма зависит от возраста, массы и состава тела, заболеваний, функции почек, активности и назначений врача.</p>
+          </div>
+        </section>
+
+        <section id="nutrition-practical-assets" data-nav="3.1 · Практика">
+          <h2>3.1. Минимальный практический пакет для MVP</h2>
+          <ul class="plain-list">
+            <li><strong>6 примеров меню на семь дней</strong> с заменами и адаптациями объёма.</li>
+            <li><strong>24 рецепта</strong> с тегами приёма пищи, источника белка, времени, текстуры, заморозки, вегетарианской замены и уменьшенного объёма.</li>
+            <li><strong>1 базовый список продуктов</strong> и 6 недельных списков покупок.</li>
+            <li><strong>12 сценариев заготовки:</strong> 6 блоков примерно на 45 минут и 6 ежедневных маршрутов примерно по 10 минут.</li>
+            <li><strong>Таблица замен, карточка низкого аппетита, карточка симптомов</strong> и пустой конструктор личного меню.</li>
+          </ul>
+          <p>Автоматическая корзина Яндекс Лавки не входит в MVP. Скриншоты сервиса «Лёгкость» — внешний продуктовый референс, а не готовый актив курса. Сначала утверждаются рецепты и нутрициологические правила замен.</p>
+        </section>
+
+        <section id="nutrition-ready" data-nav="3.1 · Что есть">
+          <h2>3.1. Материалы, которые уже можно использовать</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Новая запись</div><div><h3>«Нет голода — не значит, что телу ничего не нужно»</h3><p>Полная отредактированная версия, 12:29. Содержательно закрывает нутритивную плотность, группы продуктов, простую конструкцию еды, запас дома и критерии обращения к специалисту.</p></div><span class="badge ready">файл разобран</span></div>
+            <div class="material-row"><div class="type">Новая запись</div><div><h3>Питание при тошноте и раннем насыщении</h3><p>Полный сценарий найден в Google Doc. Отправленный локальный медиафайл неполный и не воспроизводится.</p></div><span class="badge risk">сценарий есть · медиа нет</span></div>
+            <div class="material-row"><div class="type">Библиотека</div><div><h3>Эмоциональный голод, пищеварение, жиры и перекусы</h3><p>Назначены материалы Кати Стеняевой, Ани Нестеровой, Романа Соркина и другие записи Sekta.</p></div><span class="badge ready">найдено</span></div>
+            <div class="material-row"><div class="type">Неделя 6</div><div><h3>Изменения веса и эффект йо-йо</h3><p>Подкаст Ани Нестеровой и Ксении Соловьёвой входит в карту Ксении Молчановой.</p></div><span class="badge ready">найдено</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-production" data-nav="3.1 · Производство">
+          <h2>3.1. Производственный список</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Контент</div><div><h3>Найти медиафайл или записать второй подкаст заново</h3><p>Полный сценарий найден в Google Doc. Если исходная запись не восстановится, по сценарию можно сделать аудио или видео после медицинской редакции.</p></div><span class="badge risk">медиа не найдено</span></div>
+            <div class="material-row"><div class="type">Нутрициолог</div><div><h3>Собрать меню, рецепты, замены и закупки</h3><p>Сначала сделать неделю 1 как эталон и после проверки масштабировать формат на остальные недели.</p></div><span class="badge missing">назначить владельца</span></div>
+            <div class="material-row"><div class="type">Медред</div><div><h3>Проверить симптомы и специальные состояния</h3><p>Белок, жидкость, клетчатка, микронутриенты, заболевания почек, диабет, беременность и расстройства пищевого поведения.</p></div><span class="badge missing">назначить врача</span></div>
+            <div class="material-row"><div class="type">Библиотека</div><div><h3>Отобрать первые 24 рецепта Sekta</h3><p>Проверить объём, питательную плотность, доступность продуктов, заменяемость и возможность заморозки.</p></div><span class="badge missing">аудит</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-safety" data-nav="3.1 · Безопасность">
+          <h2>3.1. Что курс не решает меню и рецептами</h2>
+          <p>Курс не меняет дозу препарата, не назначает анализы или добавки и не заменяет индивидуальную медицинскую нутрициологию. Отдельная индивидуализация нужна при заболеваниях почек, инсулинотерапии или препаратах с риском гипогликемии, беременности, активном расстройстве пищевого поведения и выраженном ограничении рациона.</p>
+          <div class="callout">
+            <strong>Обратиться за медицинской помощью</strong>
+            <p>Многократная рвота, невозможность пить, признаки обезвоживания, сильная или нарастающая боль в животе, предобморок, возможная гипогликемия и другие острые симптомы не решаются материалами курса.</p>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-premise" data-nav="3.2 · Концепция">
+          <p class="kicker">Экспериментальная версия · продуктовая гипотеза</p>
+          <h2>3.2. Не одинаковое меню для всех, а подходящее решение для текущего состояния</h2>
+          <p>У одного человека аппетит и переносимость еды могут заметно меняться по дням. Поэтому система сначала получает короткий сигнал о состоянии, затем выбирает один проверенный протокол и предлагает 1–3 выполнимых варианта. По повторяющимся ответам она собирает личный набор решений.</p>
+          <ol class="number-list">
+            <li><strong>Наблюдать.</strong> Аппетит, симптомы, возможность пить, энергия, тренировка, место и доступное время.</li>
+            <li><strong>Выбрать сценарий.</strong> Стабильный день, низкий аппетит, желудочно-кишечный дискомфорт или медицинская эскалация.</li>
+            <li><strong>Дать одно действие.</strong> Не длинный список рекомендаций, а конкретная еда, заготовка или обращение к врачу.</li>
+            <li><strong>Проверить ответ.</strong> Что удалось съесть, как перенеслась еда и нужно ли сохранить, изменить или прекратить сценарий.</li>
+            <li><strong>Собрать личный протокол.</strong> К концу курса человек знает свои блюда, замены, резервы и границы самостоятельных действий.</li>
+          </ol>
+        </section>
+
+        <section id="nutrition-adaptive-checkin" data-nav="3.2 · Check-in">
+          <h2>3.2. Проверка состояния за 30–60 секунд</h2>
+          <p>Ежедневный вход состоит из пяти вопросов. Вес и калории не используются для выбора сценария.</p>
+          <div class="material-list">
+            <div class="material-row"><div class="type">01</div><div><h3>Аппетит</h3><p>Выраженный, слабый или почти отсутствует.</p></div><span class="badge decided">сигнал</span></div>
+            <div class="material-row"><div class="type">02</div><div><h3>Симптомы</h3><p>Тошнота, раннее насыщение, тяжесть, рефлюкс, рвота или диарея.</p></div><span class="badge decided">сигнал</span></div>
+            <div class="material-row"><div class="type">03</div><div><h3>Возможность пить</h3><p>Получается ли поддерживать питьё небольшими порциями.</p></div><span class="badge risk">безопасность</span></div>
+            <div class="material-row"><div class="type">04</div><div><h3>Энергия и слабость</h3><p>Можно ли выполнять обычные дела и запланированную тренировку.</p></div><span class="badge decided">сигнал</span></div>
+            <div class="material-row"><div class="type">05</div><div><h3>Контекст</h3><p>Дом, работа, дорога или ресторан; без готовки, 5, 15 или 30 минут.</p></div><span class="badge decided">условия</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-states" data-nav="3.2 · 4 состояния">
+          <h2>3.2. Четыре состояния и четыре разных ответа</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Стабильно</div><div><h3>Полноценность, разнообразие и восстановление</h3><p>Базовые приёмы пищи, источники белка в течение дня, новая замена или рецепт и варианты вокруг силовой тренировки.</p></div><span class="badge ready">обычный сценарий</span></div>
+            <div class="material-row"><div class="type">Нет аппетита</div><div><h3>Компактная еда без большого количества решений</h3><p>Уменьшить объём, разделить порцию, выбрать переносимый белок и энергию, использовать еду без готовки или заготовку.</p></div><span class="badge decided">может есть и пить</span></div>
+            <div class="material-row"><div class="type">Дискомфорт</div><div><h3>Адаптация объёма и характеристик еды</h3><p>После медицинской редакции: объём, жирность, текстура, температура, запах, другой источник белка, небольшие порции жидкости и дневник реакции.</p></div><span class="badge risk">медред</span></div>
+            <div class="material-row"><div class="type">Красная зона</div><div><h3>Меню не предлагается</h3><p>При невозможности есть или пить, многократной рвоте, обезвоживании, сильной боли, предобмороке или возможной гипогликемии система показывает медицинское действие.</p></div><span class="badge risk">врач</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-menu" data-nav="3.2 · Меню 2.0">
+          <h2>3.2. Рецепт становится набором параметров</h2>
+          <p>Система выбирает не по названию блюда и не по «полезности». Каждый рецепт размечается по тому, в каких условиях он может быть использован.</p>
+          <ul class="plain-list">
+            <li><strong>Питание:</strong> источник и диапазон белка, энергетическая плотность, жирность, тип и уровень клетчатки.</li>
+            <li><strong>Переносимость:</strong> объём, жидкая / мягкая / плотная текстура, температура и выраженность запаха.</li>
+            <li><strong>Реальная жизнь:</strong> без готовки, 5 / 15 / 30 минут, морозилка, стоимость, работа, дорога или семья.</li>
+            <li><strong>Замены:</strong> вегетарианская, безлактозная, другой источник белка и версия из готовых продуктов.</li>
+            <li><strong>Безопасность:</strong> медицинские ограничения и состояния, при которых рецепт не предлагается.</li>
+          </ul>
+          <div class="callout">
+            <strong>Меню остаётся, но становится результатом работы системы</strong>
+            <p>Участник получает базовую неделю, пять личных блюд по умолчанию, резерв при низком аппетите, резерв при лёгких симптомах, варианты вокруг тренировки, ресторанный режим и динамический список покупок.</p>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-products" data-nav="3.2 · Новые материалы">
+          <h2>3.2. Материалы, которых раньше не было в курсах</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Профиль</div><div><h3>Личный профиль питания</h3><p>Ограничения, привычный рацион, переносимые белковые продукты, текстуры, запахи, готовка, бюджет, семья и магазины.</p></div><span class="badge decided">старт</span></div>
+            <div class="material-row"><div class="type">Сейчас</div><div><h3>Кнопка «Мне нужно поесть сейчас»</h3><p>Три варианта из утверждённой базы: без готовки, за 5 минут и из морозилки.</p></div><span class="badge missing">прототип</span></div>
+            <div class="material-row"><div class="type">Кухня</div><div><h3>Аудит доступности еды</h3><p>Что можно съесть сразу, собрать за 5 минут и разогреть из морозилки.</p></div><span class="badge decided">практика</span></div>
+            <div class="material-row"><div class="type">Магазин</div><div><h3>Динамическая закупка</h3><p>Выбранные блюда, размер семьи, уже имеющиеся продукты и замены без привязки к одному магазину.</p></div><span class="badge missing">прототип</span></div>
+            <div class="material-row"><div class="type">Ресторан</div><div><h3>Режим заказа вне дома</h3><p>Текущий аппетит и симптомы, объём, компоненты, замены и решение для остатков вместо списка запретов.</p></div><span class="badge missing">создать</span></div>
+            <div class="material-row"><div class="type">Тренировка</div><div><h3>Варианты до и после силовой нагрузки</h3><p>Переносимая еда для энергии и восстановления без идеи «отработать калории».</p></div><span class="badge risk">медред</span></div>
+            <div class="material-row"><div class="type">Финал</div><div><h3>Личный протокол на одной странице</h3><p>Блюда, белковые продукты, резервы, закупка, ресторан, дорога, красные флаги и план при возвращении аппетита.</p></div><span class="badge missing">создать</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-weeks" data-nav="3.2 · 6 недель">
+          <h2>3.2. Что строит участник каждую неделю</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Неделя 1</div><div><h3>Личный профиль и пять блюд по умолчанию</h3><p>Карта аппетита, аудит скудного рациона и первая персональная закупка. Основной материал — первый подкаст Сони.</p></div><span class="badge decided">калибровка</span></div>
+            <div class="material-row"><div class="type">Неделя 2</div><div><h3>Среда и регулярность</h3><p>COM-B-диагностика, аудит кухни, еда сразу / за 5 минут / из морозилки и планы «если — то».</p></div><span class="badge decided">среда</span></div>
+            <div class="material-row"><div class="type">Неделя 3</div><div><h3>Личный протокол симптомов</h3><p>Полный второй подкаст Сони, фильтры по объёму и текстуре, дневник переносимости и медицинская эскалация.</p></div><span class="badge risk">медред</span></div>
+            <div class="material-row"><div class="type">Неделя 4</div><div><h3>Белок, сила и возвращение разнообразия</h3><p>Карта источников белка, еда вокруг тренировки и постепенное возвращение временно исключённых продуктов.</p></div><span class="badge decided">связь с силой</span></div>
+            <div class="material-row"><div class="type">Неделя 5</div><div><h3>Работа, ресторан, доставка, поездка и семья</h3><p>Система используется вне учебного контекста и дополняется поведенческими планами для сложных ситуаций.</p></div><span class="badge missing">симуляции</span></div>
+            <div class="material-row"><div class="type">Неделя 6</div><div><h3>Возвращение аппетита и экспорт личного протокола</h3><p>Двенадцать реальных блюд, постоянная базовая закупка и план медицинского и поведенческого продолжения.</p></div><span class="badge decided">результат</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-science" data-nav="3.2 · Научная база">
+          <h2>3.2. Какие мировые рамки используются</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">NIH</div><div><h3>Precision nutrition</h3><p>Персонализация по наблюдаемому индивидуальному ответу, медицинскому контексту, предпочтениям и реальной среде — без обещания «идеальной диеты» по ДНК.</p></div><span class="badge ready">рамка</span></div>
+            <div class="material-row"><div class="type">N-of-1</div><div><h3>Повторные индивидуальные наблюдения</h3><p>Менять только один безопасный параметр в стабильном состоянии и фиксировать переносимость. Доказательная база в nutrition пока небольшая.</p></div><span class="badge risk">ограниченные данные</span></div>
+            <div class="material-row"><div class="type">JITAI</div><div><h3>Поддержка в момент потребности</h3><p>Короткое персонализированное действие вместо одинакового контента для всех. Ближайшие поведенческие эффекты перспективны; долгосрочные клинические эффекты неоднородны.</p></div><span class="badge risk">продуктовая гипотеза</span></div>
+            <div class="material-row"><div class="type">COM-B</div><div><h3>Знание, среда или мотивация</h3><p>Система определяет, почему действие не произошло, и даёт навык, меняет доступность еды или создаёт конкретный поведенческий план.</p></div><span class="badge ready">поведенческая рамка</span></div>
+            <div class="material-row"><div class="type">GLP-1</div><div><h3>EASO / EFAD / ECPO и совместный advisory</h3><p>Питательная плотность, симптомы, белок, жидкость, клетчатка, силовые тренировки, мониторинг и медицинская маршрутизация.</p></div><span class="badge ready">клиническая основа</span></div>
+          </div>
+        </section>
+
+        <section id="nutrition-adaptive-mvp" data-nav="3.2 · MVP и границы">
+          <h2>3.2. Что можно проверить без сложной разработки</h2>
+          <div class="three-layer">
+            <article class="layer ready"><strong>Пилот</strong><p>Пять вопросов, четыре сценария, 36 размеченных пищевых модулей, аудит кухни, дневник переносимости и личный протокол.</p></article>
+            <article class="layer decided"><strong>Следующий уровень</strong><p>Адаптивная выдача, фото продуктов дома, динамическая закупка и ресторанный режим только на утверждённой базе.</p></article>
+            <article class="layer missing"><strong>Не включать</strong><p>Обязательный CGM, ДНК- и микробиомные диеты, «метаболические типы», наборы добавок и эксперименты во время острых симптомов.</p></article>
+          </div>
+          <div class="callout">
+            <strong>Что должен решить прототип</strong>
+            <p>Снижает ли система количество ежедневных решений, помогает ли поддерживать питание и питьё, уменьшает ли сужение рациона и формирует ли у участника рабочий личный протокол. Она не считается клинически эффективной, пока это отдельно не исследовано.</p>
+          </div>
+        </section>
+      </article>
+
+      <article class="chapter" id="panel-training" role="tabpanel" aria-labelledby="tab-training" data-title="Тренировки" hidden>
+        <header class="chapter-head">
+          <p class="kicker">Раздел 4 из 6 · какие тренировки и почему</p>
+          <h1>Добавляем силовые тренировки для сохранения мышечной массы, силы и физической функции.</h1>
+          <p class="lede">Мы не снимаем новые тренировки. Задача — найти в библиотеке Sekta полноценные силовые тренировки с гантелями или другим прогрессируемым сопротивлением и отдельно подобрать короткие ежедневные зарядки.</p>
+          <div class="meta-row"><span>Google Sheet Даши Князевой</span><span>72 позиции · 71 уникальное видео</span><span>Нужен просмотр сопротивления и прогрессии</span></div>
+        </header>
+
+        <section id="training-why" data-nav="Почему силовые">
+          <h2>Почему в программу входят силовые тренировки</h2>
+          <p>При заметном снижении веса уменьшается и безжировая масса. Достаточное потребление белка важно, но не заменяет тренировку с сопротивлением. Поэтому программа включает силовые тренировки и отслеживает силу и физическую функцию.</p>
+          <div class="callout">
+            <strong>Состав тренировочной программы</strong>
+            <p>Четыре коротких силовых контакта в неделю, выбор домашнего кардио-блока или прогулки в остальные дни, встроенная и дополнительная мобильность. Объём и версия занятия зависят от самочувствия.</p>
+          </div>
+        </section>
+
+        <section id="training-modes" data-nav="Структура недели">
+          <h2>Рабочая гипотеза недельной нагрузки</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">4 раза в неделю</div><div><h3>Короткие силовые тренировки около 20 минут</h3><p>Четыре контакта не означают четыре одинаково тяжёлые full-body-сессии. Четвёртое видео получает другой двигательный акцент, меньшую плотность или больше техники.</p></div><span class="badge decided">решение</span></div>
+            <div class="material-row"><div class="type">ВТ · ЧТ</div><div><h3>Один кардио-блок с выбором объёма</h3><p>База — 1×8 минут. Расширение — повторить то же видео позже и получить 2×8 минут. Альтернатива — прогулка или мобильность.</p></div><span class="badge decided">одно видео</span></div>
+            <div class="material-row"><div class="type">ВС</div><div><h3>Движение или полный отдых</h3><p>Прогулка, домашний кардио-блок, мобильность либо отдых без обязательного видео.</p></div><span class="badge decided">по состоянию</span></div>
+            <div class="material-row"><div class="type">При симптомах</div><div><h3>Отдых и обращение за медицинской помощью</h3><p>При многократной рвоте, признаках обезвоживания, сильной боли, предобмороке или возможной гипогликемии не выполняются ни силовая тренировка, ни зарядка.</p></div><span class="badge risk">правило безопасности</span></div>
+          </div>
+        </section>
+
+        <section id="training-ready" data-nav="Что уже есть">
+          <h2>Предварительный отбор Даши Князевой</h2>
+          <p>Даша отправила таблицу в продуктовом GLP-1-подчате 6 августа. Она объяснила, что оба уровня строятся от простого к сложному, а силовая работа и системность являются основой. Таблица используется как банк кандидатов, а не как готовый календарь.</p>
+          <div class="material-list">
+            <div class="material-row"><div class="type">CARE</div><div><h3>36 позиций · средняя длительность 18,9 минуты</h3><p>25 видео Care, 5 Basics и 6 Soft Power / Stretch / Saturday. Эти видео нельзя считать решением задачи сохранения мышечной массы, пока не проверены сопротивление, крупные мышечные группы и возможность прогрессии.</p></div><span class="badge missing">нужен просмотр</span></div>
+            <div class="material-row"><div class="type">Optimal</div><div><h3>36 позиций · средняя длительность 20,8 минуты</h3><p>18 видео Basics, 12 SuperHuman и 6 Soft Power. По понедельникам, средам и пятницам во всех шести неделях уже стоят Basics.</p></div><span class="badge missing">кандидаты для силовых</span></div>
+            <div class="material-row"><div class="type">Проблема</div><div><h3>Пять силовых дней подряд</h3><p>Текущая таблица содержит шесть видео в неделю; как обязательный объём это не принимается.</p></div><span class="badge risk">пересобрать</span></div>
+          </div>
+        </section>
+
+        <section id="training-integration" data-nav="Как встраиваем файл">
+          <h2>Как встраиваем таблицу Даши</h2>
+          <p>Сохраняем предварительный отбор тренера и шестинедельную прогрессию, но собираем четыре силовых контакта с разными акцентами. В остальные дни участнику показывается выбор движения, а не вторая обязательная тренировка.</p>
+          <div class="material-list">
+            <div class="material-row"><div class="type">ПН · СР · ПТ · СБ</div><div><h3>Четыре силовых контакта</h3><p>Первые три видео задают основную прогрессию. Субботнее выбирается с другим акцентом или меньшей нагрузкой, особенно после пятничной тренировки.</p></div><span class="badge decided">силовое ядро</span></div>
+            <div class="material-row"><div class="type">ВТ · ЧТ</div><div><h3>Кардио-блок, прогулка или мобильность</h3><p>В интерфейсе один восьмиминутный блок и действие «повторить позже». Второго отдельного обязательного ролика нет.</p></div><span class="badge missing">подобрать блок</span></div>
+            <div class="material-row"><div class="type">ВС</div><div><h3>Свободный восстановительный выбор</h3><p>Прогулка, кардио-блок, мобильность или полный отдых без долга перед программой.</p></div><span class="badge decided">без обязательного видео</span></div>
+          </div>
+          <div class="callout warm">
+            <strong>Не переносим автоматически</strong>
+            <p>Большинство видео длится 15–26 минут. Они не становятся короткими зарядками только из-за принадлежности к Care. Суббота Care недели 6 и субботы optimal недель 5–6 требуют отдельной проверки или замены.</p>
+          </div>
+        </section>
+
+        <section id="training-audit" data-nav="Как отбираем">
+          <h2>Рубрика аудита каждого видео</h2>
+          <ol class="number-list">
+            <li>Основная задача: сила, аэробная работа, мобильность или восстановление.</li>
+            <li>Двигательные паттерны и крупные группы мышц.</li>
+            <li>Реальная длительность основной нагрузки.</li>
+            <li>Есть ли гантели, резинки или другое сопротивление, нагрузку которого можно постепенно увеличивать.</li>
+            <li>Ударность и частота переходов пол–стоя.</li>
+            <li>Регрессии по опоре, амплитуде, темпу и весу.</li>
+            <li>Интенсивность и возможность закончить с несколькими повторами в запасе.</li>
+            <li>К какой категории относится видео: полноценная силовая тренировка, ежедневная зарядка, мобильность или восстановление.</li>
+            <li>Есть ли язык про калории, наказание, работу до отказа или стыд тела.</li>
+            <li>Есть ли медицинские обещания, которые нужно вырезать или переозвучить.</li>
+          </ol>
+        </section>
+
+        <section id="training-next" data-nav="Следующее решение">
+          <h2>Что нужно сделать до раскладки по неделям</h2>
+          <ul class="plain-list">
+            <li>Посмотреть и разметить все 72 видео, а не судить только по названиям и принадлежности к курсу.</li>
+            <li>Для понедельника, среды, пятницы и субботы выбрать четыре силовых видео и развести их по двигательным акцентам и нагрузке.</li>
+            <li>Проверить, какие видео используют гантели или другое прогрессируемое сопротивление и закрывают основные двигательные паттерны.</li>
+            <li>Отдельно подобрать один повторяемый восьмиминутный кардио-блок и мобильность; текущие 15–26-минутные тренировки не считать короткими блоками без просмотра и решения о сокращении.</li>
+            <li>Проверить адаптацию силовых тренировок по весу гантелей, количеству подходов, амплитуде и длительности.</li>
+            <li>Проверить четыре силовых контакта отдельно для каждого выбранного уровня нагрузки и не переносить позиционирование KER в продукт GLP‑1 автоматически.</li>
+          </ul>
+        </section>
+      </article>
+
+      <article class="chapter" id="panel-support" role="tabpanel" aria-labelledby="tab-support" data-title="Сопровождение" hidden>
+        <header class="chapter-head">
+          <p class="kicker">Раздел 5 из 6 · вводные видео и поведенческие изменения</p>
+          <h1>Сопровождение объясняет типичные состояния, помогает выполнять программу и направляет медицинские вопросы врачу.</h1>
+          <p class="lede">В сопровождение входят вводные видео Оли, экспертные материалы, поведенческие задания, поддержка сообщества и правила передачи медицинских вопросов специалисту.</p>
+          <div class="meta-row"><span>5 вводных видео Оли</span><span>6 экспертных тем</span><span>Психологические записи не подтверждены</span></div>
+        </header>
+
+        <section id="support-oly" data-nav="Интро от Оли">
+          <h2>Пять вводных видео от Оли</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Видео 1</div><div><h3>Какие состояния учитывает программа</h3><p>Снижение аппетита, слабость, симптомы, страх потери мышечной массы и стыд из-за медикаментозного лечения.</p></div><span class="badge decided">нужно записать</span></div>
+            <div class="material-row"><div class="type">Видео 2</div><div><h3>Как поддерживать питание при сниженном аппетите</h3><p>Планировать небольшие приёмы пищи, начинать с источника белка и обращаться к врачу при стойких симптомах.</p></div><span class="badge decided">нужно записать</span></div>
+            <div class="material-row"><div class="type">Видео 3</div><div><h3>Как выбирать вариант тренировки по самочувствию</h3><p>Использовать CARE или Strength и снижать длительность и интенсивность при низкой энергии.</p></div><span class="badge decided">нужно записать</span></div>
+            <div class="material-row"><div class="type">Видео 4</div><div><h3>Изменение веса и образ тела</h3><p>Оценивать не только вес, но и силу, энергию, питание и отношение к телу.</p></div><span class="badge decided">частично есть</span></div>
+            <div class="material-row"><div class="type">Видео 5</div><div><h3>Какие навыки останутся после курса</h3><p>Продолжать использовать структуру питания, силовые тренировки, ходьбу и поведенческие стратегии при изменении терапии.</p></div><span class="badge decided">нужно записать</span></div>
+          </div>
+        </section>
+
+        <section id="support-experts" data-nav="Экспертный слой">
+          <h2>Кто закрывает сложные темы</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Нутрициолог</div><div><h3>Питание без голода · питание при симптомах</h3><p>Сценарии обоих выпусков есть. Первый аудиофайл готов; второй медиафайл нужно найти или записать заново.</p></div><span class="badge missing">2 сценария · 1 медиа</span></div>
+            <div class="material-row"><div class="type">Эндокринолог</div><div><h3>Мышцы и разная скорость · возврат веса после отмены</h3><p>Две записи состоялись; готовность файлов и монтажа нужно подтвердить.</p></div><span class="badge missing">проверить</span></div>
+            <div class="material-row"><div class="type">Психолог</div><div><h3>Тяга и стыд · страх возврата веса</h3><p>Темы определены, но подтверждения готовых записей в архиве нет.</p></div><span class="badge risk">не записано</span></div>
+            <div class="material-row"><div class="type">Библиотека</div><div><h3>Существующие эксперты Sekta</h3><p>Эмоциональный голод, пищеварение, ожидания, образ тела, жиры и перекусы, эффект йо-йо.</p></div><span class="badge ready">найдено</span></div>
+          </div>
+        </section>
+
+        <section id="support-behavior" data-nav="Поведенческая поддержка">
+          <h2>Как знания превращаются в действие</h2>
+          <ul class="plain-list">
+            <li><strong>Один выполнимый фокус недели</strong> вместо длинного списка правил.</li>
+            <li><strong>Три варианта действий по состоянию:</strong> обычная тренировка, менее интенсивная тренировка или отдых с обращением к врачу при выраженных симптомах.</li>
+            <li><strong>Прогресс шире веса:</strong> сила, энергия, сон, регулярность, переносимость и бытовые действия.</li>
+            <li><strong>Сценарии трудных дней:</strong> тошнота, низкая энергия, плато и возврат аппетита.</li>
+            <li><strong>Сообщество без сравнения скорости похудения</strong> и без необходимости оправдывать лечение.</li>
+            <li><strong>Возможный помощник по рациону</strong> только после медицинской и нутрициологической настройки.</li>
+          </ul>
+        </section>
+
+        <section id="support-safety" data-nav="Медицинская граница">
+          <h2>Что курс не берёт на себя</h2>
+          <div class="callout danger">
+            <strong>Граница продукта</strong>
+            <p>Курс не назначает и не отменяет препарат, не меняет дозу или день инъекции, не трактует анализы и не лечит побочные эффекты. Нужны стартовый скрининг, ясные красные флаги и передача случая врачу.</p>
+          </div>
+          <p class="empty-note">До запуска нужно утвердить: форму скрининга, список красных флагов, маршрут эскалации и язык кураторов в ситуациях, когда участник спрашивает про дозу или симптомы.</p>
+        </section>
+      </article>
+
+      <article class="chapter" id="panel-weeks" role="tabpanel" aria-labelledby="tab-weeks" data-title="Шесть недель" hidden>
+        <header class="chapter-head">
+          <p class="kicker">Раздел 6 из 6 · предварительная раскладка</p>
+          <h1>Предварительная последовательность тем, материалов и тренировок на шесть недель.</h1>
+          <p class="lede">Это не финальный календарь уроков. Здесь темы питания, движения, экспертные материалы и вводные видео Оли распределены по неделям, чтобы проверить полноту содержания курса.</p>
+          <div class="meta-row"><span>6-недельный MVP</span><span>Файл Даши встроен как банк кандидатов</span><span>Конкретные видео требуют просмотра</span></div>
+          <div class="callout warm"><strong>Что ещё не решено</strong><p>Финальная длительность материалов, точный день выхода, обязательность отдельных практик и состав меню/рецептов пока не утверждены.</p></div>
+        </header>
+
+        <section id="weeks-training-rhythm" data-nav="Тренировочный ритм">
+          <h2>Один ритм на все шесть недель</h2>
+          <p>Таблица Даши задаёт исходную последовательность, но пять силовых дней подряд не переносятся. Текущая модель — четыре коротких силовых контакта и выбор движения в остальные дни.</p>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Понедельник</div><div><h3>Силовая A</h3><p>Основное двадцатиминутное видео; нагрузка адаптируется по варианту, амплитуде, темпу и самочувствию.</p></div><span class="badge decided">силовая 1</span></div>
+            <div class="material-row"><div class="type">Вторник</div><div><h3>Выбор движения</h3><p>Кардио-блок 1×8 минут, повтор того же блока позже, прогулка или мобильность.</p></div><span class="badge missing">подобрать блок</span></div>
+            <div class="material-row"><div class="type">Среда</div><div><h3>Силовая B</h3><p>Второй силовой контакт с учётом восстановления после понедельника.</p></div><span class="badge decided">силовая 2</span></div>
+            <div class="material-row"><div class="type">Четверг</div><div><h3>Выбор движения</h3><p>Тот же формат: 1×8 или 2×8 минут, прогулка либо мобильность. Не более одного видео.</p></div><span class="badge missing">подобрать блок</span></div>
+            <div class="material-row"><div class="type">Пятница</div><div><h3>Силовая C</h3><p>Третий основной силовой контакт недели.</p></div><span class="badge decided">силовая 3</span></div>
+            <div class="material-row"><div class="type">Суббота</div><div><h3>Силовая D</h3><p>Четвёртая тренировка с другим акцентом, меньшей плотностью или большим объёмом техники — не повтор пятничной нагрузки.</p></div><span class="badge missing">проверить видео</span></div>
+            <div class="material-row"><div class="type">Воскресенье</div><div><h3>Прогулка, мобильность или отдых</h3><p>Нет обязательного видео и нет необходимости «закрывать» пропущенный объём.</p></div><span class="badge ready">по состоянию</span></div>
+          </div>
+        </section>
+
+        <section id="weeks-map" data-nav="Карта шести недель">
+          <h2>Полное содержание по неделям</h2>
+          <div class="week-list">
+            <article class="week-card">
+              <div class="week-index">Неделя 01</div>
+              <div><h2>Питание при сниженном аппетите</h2><p class="need">Научиться собирать небольшой полноценный приём пищи, даже если выраженного голода нет.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Аппетит, нутритивная плотность, белки, жиры, углеводы, клетчатка и роль удобных белковых продуктов.</span></div><div class="week-detail"><strong>Материалы</strong><span>Соня Малеева «Нет голода — не значит, что телу ничего не нужно»; Аня Нестерова о мифах в питании.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Выбрать 3–5 переносимых источников белка и три простые конструкции еды.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Меню с уменьшением объёма, 4 рецепта, стартовый список продуктов и первая заготовка.</span></div><div class="week-detail"><strong>Видео Оли</strong><span>Какие состояния учитывает программа и почему питание нельзя откладывать до появления сильного голода.</span></div><div class="week-detail"><strong>Движение</strong><span>Знакомство с четырьмя силовыми контактами и выбором нагрузки по самочувствию.</span></div></div></div>
+            </article>
+
+            <article class="week-card">
+              <div class="week-index">Неделя 02</div>
+              <div><h2>Регулярность, эмоциональный голод и работа кишечника</h2><p class="need">Различать причины приёма пищи и поддерживать переносимый ритм питания.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Эмоциональная тяга, запланированное питание без голода, вода, постепенное включение клетчатки и запор.</span></div><div class="week-detail"><strong>Материалы</strong><span>Катя Стеняева; Аня Нестерова и Роман Соркин; короткий фрагмент Сони о постепенном добавлении клетчатки и жидкости.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Отмечать причину приёма пищи и самочувствие без подсчёта калорий и оценки дня.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Повторяемое меню рабочей недели, 4 рецепта, закупка и подготовка базы на 2–3 дня.</span></div><div class="week-detail"><strong>Поведение</strong><span>Наблюдать физический голод, эмоциональную тягу и внешние триггеры без чувства вины.</span></div><div class="week-detail"><strong>Движение</strong><span>Регулярное выполнение тренировок, техника и ходьба.</span></div></div></div>
+            </article>
+
+            <article class="week-card">
+              <div class="week-index">Неделя 03</div>
+              <div><h2>Симптомы, мышечная масса и адаптация нагрузки</h2><p class="need">Поддерживать питание и выбирать нагрузку при тошноте, раннем насыщении и сниженной энергии.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Объём и скорость еды, жирность, текстура, температура, питьё, рефлюкс, рвота, диарея и обезвоживание.</span></div><div class="week-detail"><strong>Материалы</strong><span>Полный сценарий Сони о тошноте и раннем насыщении; эндокринолог W Clinic о мышцах и скорости снижения веса.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Составить личный план A / B / C для обычного дня, низкого аппетита и выраженного дискомфорта.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Базовое меню плюс трёхдневный резерв, 4 рецепта, «полка на трудный день» и небольшие заготовки.</span></div><div class="week-detail"><strong>Видео Оли</strong><span>Как выбирать вариант тренировки по самочувствию.</span></div><div class="week-detail"><strong>Движение</strong><span>Постепенное увеличение сопротивления, менее интенсивный вариант и критерии остановки.</span></div></div></div>
+            </article>
+
+            <article class="week-card">
+              <div class="week-index">Неделя 04</div>
+              <div><h2>Полноценность рациона, ожидания и оценка прогресса</h2><p class="need">Проверять рацион по разнообразию и переносимости, а прогресс — не только по цифре на весах.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Жиры, углеводы, перекусы, микронутриенты, разные ответы на терапию и показатели кроме веса.</span></div><div class="week-detail"><strong>Материалы</strong><span>Аня Нестерова; Лена Шаметова; короткий фрагмент Сони о постепенном возвращении временно исключённых продуктов.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Сделать карту замен внутри групп продуктов и выбрать перекусы для разных ситуаций.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Меню с ротацией групп продуктов, 4 рецепта, список сезонных замен и модульная заготовка.</span></div><div class="week-detail"><strong>Поведение</strong><span>Отказ от сравнения скорости снижения веса и регулярная оценка нескольких показателей.</span></div><div class="week-detail"><strong>Движение</strong><span>Оценка силы, энергии и бытовой функции.</span></div></div></div>
+            </article>
+
+            <article class="week-card">
+              <div class="week-index">Неделя 05</div>
+              <div><h2>Питание вне дома, образ тела и гибкость</h2><p class="need">Перенести систему питания в работу, ресторан, поездку и семейную жизнь без чувства вины.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Гибкость, чёрно-белое мышление, образ тела, стигма, личные границы и комментарии окружающих.</span></div><div class="week-detail"><strong>Материалы</strong><span>Оля Маркес «О переосмыслении формы» и материалы Care.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Заранее выбрать решения для работы, доставки, ресторана и дороги.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Гибридное меню, 4 рецепта, список готовых продуктов и варианты сборки без готовки.</span></div><div class="week-detail"><strong>Видео Оли</strong><span>Изменение веса, образ тела и право есть обычную еду в социальной жизни.</span></div><div class="week-detail"><strong>Движение</strong><span>Выбор режима по самочувствию и оценка качества движения.</span></div></div></div>
+            </article>
+
+            <article class="week-card">
+              <div class="week-index">Неделя 06</div>
+              <div><h2>Личная система и поддержание навыков</h2><p class="need">Иметь повторяемое меню и план действий на случай изменения аппетита, дозы или терапии.</p><div class="week-details"><div class="week-detail"><strong>Теория</strong><span>Возвращение аппетита, хронический характер заболевания, эффект йо-йо и совместный план с врачом.</span></div><div class="week-detail"><strong>Материалы</strong><span>Аня Нестерова и Ксения Соловьёва об изменениях веса; эндокринолог W Clinic о периоде после отмены.</span></div><div class="week-detail"><strong>Питание · практика</strong><span>Выбрать 12 личных блюд, два сценария закупки и два сценария заготовки.</span></div><div class="week-detail"><strong>Питание · комплект</strong><span>Пустой шаблон меню плюс пример, 4 рецепта для ротации и постоянный базовый список продуктов.</span></div><div class="week-detail"><strong>Видео Оли</strong><span>Какие навыки останутся после курса и как не считать возврат аппетита личной неудачей.</span></div><div class="week-detail"><strong>Движение</strong><span>Индивидуальный план физической активности после окончания программы.</span></div></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="weeks-production" data-nav="Готовность производства">
+          <h2>Что есть на дату среза</h2>
+          <div class="material-list">
+            <div class="material-row"><div class="type">Наука</div><div><h3>Рамка собрана</h3><p>Проблематика, тренировочная аргументация, библиотека чтения и границы знания.</p></div><span class="badge missing">нужен медред</span></div>
+            <div class="material-row"><div class="type">Структура</div><div><h3>Шестинедельная гипотеза собрана</h3><p>Темы, экспертные материалы, вводные видео и физическая активность распределены по шести неделям.</p></div><span class="badge missing">утвердить</span></div>
+            <div class="material-row"><div class="type">Тренировки</div><div><h3>Файл Даши встроен как банк кандидатов</h3><p>72 позиции и 71 уникальное видео. Ритм понедельник / среда / пятница определён; конкретные видео, зарядки и субботние восстановления требуют просмотра.</p></div><span class="badge risk">аудит</span></div>
+            <div class="material-row"><div class="type">Нутрициология</div><div><h3>Два полных сценария и один готовый аудиофайл</h3><p>Первый подкаст закрывает основу недели 1. Второй сценарий закрывает неделю 3; его медиафайл нужно найти или записать заново.</p></div><span class="badge missing">2 сценария · 1 медиа</span></div>
+            <div class="material-row"><div class="type">Эндокринология</div><div><h3>Две записи состоялись</h3><p>Нужно подтвердить готовность файлов и монтажа.</p></div><span class="badge missing">проверить</span></div>
+            <div class="material-row"><div class="type">Психология</div><div><h3>Две темы определены</h3><p>Подтверждения готовых записей нет.</p></div><span class="badge risk">нужно записать</span></div>
+            <div class="material-row"><div class="type">Питание</div><div><h3>Архитектура MVP определена</h3><p>6 меню, 24 рецепта, недельные покупки, два маршрута заготовки, замены и карточки симптомов. Нужно назначить нутрициолога и медицинского редактора.</p></div><span class="badge missing">собрать</span></div>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
 
   <script>
-    const ownerColors = { 'Даша':'#16836d', 'Соня':'#7455c7', 'Оля':'#315fcb', 'Ксения':'#b2691a', 'Владлена':'#9b4f79', 'Визуал':'#28799b', 'Медредактор':'#c24a68', 'Course Agent':'#167887' };
-    const statusLabels = { draft:'черновик', work:'в работе', decision:'нужно решение', review:'на проверке', approved:'утверждено', blocked:'заблокировано' };
-    const statusClasses = { decision:'decision', review:'review', approved:'approved', blocked:'decision' };
-    const days = [
-      ['День 1','Понедельник'],['День 2','Вторник'],['День 3','Среда'],['День 4','Четверг'],['День 5','Пятница'],['День 6','Суббота'],['День 7','Воскресенье']
-    ];
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+    const localTitle = document.getElementById('localTitle');
+    const localLinks = document.getElementById('localLinks');
+    const progress = document.getElementById('progress');
+    let sectionObserver;
 
-    const movementPlan = (week) => [
-      { id:`w${week}-d1-m`, type:'movement', format:'силовая A', minutes:20, required:true, owner:'Даша', status:'review', title:'Силовая A', job:'Начать неделю с управляемой силовой работы.', base:'CARE · ноги и корпус', strength:'Strength · full body' },
-      { id:`w${week}-d2-m`, type:'movement', format:'выбор движения', minutes:8, required:false, owner:'Даша', status:'decision', title:'Кардио‑снек 1×8 / 2×8, прогулка или мобильность', job:'Добавить движение без обязательной двадцатиминутной аэробики.', base:'Ходьба дома без прыжков', strength:'Тот же блок, прогулка или мобильность' },
-      { id:`w${week}-d3-m`, type:'movement', format:'силовая B', minutes:20, required:true, owner:'Даша', status:'review', title:'Силовая B', job:'Продолжить силовой ритм с другим двигательным акцентом.', base:'CARE · опоры и верх тела', strength:'Strength · верх тела и тяги' },
-      { id:`w${week}-d4-m`, type:'movement', format:'выбор движения', minutes:8, required:false, owner:'Даша', status:'decision', title:'Кардио‑снек 1×8 / 2×8, прогулка или мобильность', job:'Прервать сидение и выбрать посильный формат движения.', base:'Ходьба дома или мобильность', strength:'Тот же блок, прогулка или мобильность' },
-      { id:`w${week}-d5-m`, type:'movement', format:'силовая C', minutes:20, required:true, owner:'Даша', status:'review', title:'Силовая C', job:'Укреплять крупные мышечные группы без работы до отказа.', base:'CARE · таз и ягодичные', strength:'Strength · наклон и тяга' },
-      { id:`w${week}-d6-m`, type:'movement', format:'силовая D', minutes:20, required:true, owner:'Даша', status:'decision', title:'Силовая D · другой акцент', job:'Получить четвёртый силовой контакт без повтора пятничной нагрузки.', base:'CARE · ниже плотность, больше техники', strength:'Strength · умеренный вес, другой акцент' },
-      { id:`w${week}-d7-m`, type:'movement', format:'восстановление', minutes:0, required:false, owner:'Оля', status:'approved', title:'Прогулка, мобильность или полный отдых', job:'Выбрать восстановление без долга перед программой.', base:'По самочувствию', strength:'По самочувствию' }
-    ];
+    function panelSections(panel) {
+      return [...panel.querySelectorAll('section[data-nav]')];
+    }
 
-    const weeks = [
-      { short:'Аппетит', title:'Питание при отсутствии голода', intent:'Организовать небольшие полноценные приёмы пищи, когда выраженного голода почти нет.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:5,required:true,owner:'Оля',status:'decision',title:'Какие состояния учитывает программа',job:'Понять рамку курса, три режима по самочувствию и границу медицинской остановки.'},
-        {d:1,type:'content',format:'подкаст · аудио готово 12:29',minutes:13,required:true,owner:'Соня',status:'review',title:'Нет голода — не значит, что телу ничего не нужно',job:'Понять, почему питание приходится организовывать сознательно.'},
-        {d:2,type:'food',format:'практика недели',minutes:7,required:true,owner:'Соня',status:'work',title:'Маленькая полноценная порция',job:'Собрать небольшой приём пищи: белок, основа и переносимый объём.'},
-        {d:3,type:'content',format:'памятка',minutes:6,required:false,owner:'Соня',status:'draft',title:'Нутритивная плотность без универсальных цифр',job:'Выбирать более питательные продукты без единого калоража и обязательной граммовки.'},
-        {d:4,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Меню недели + 4 рецепта',job:'Выбрать переносимые завтраки, обеды и ужины с заменами по объёму.'},
-        {d:5,type:'food',format:'список + маршрут',minutes:8,required:false,owner:'Ксения',status:'decision',title:'Покупки и две подготовки',job:'Выбрать сценарий: около 45 минут один раз или около 10 минут в день.'},
-        {d:6,type:'support',format:'карточка симптомов',minutes:5,required:true,owner:'Медредактор',status:'draft',title:'Низкий аппетит: адаптация и обращение за помощью',job:'Отличать бытовую адаптацию от состояния, которое требует врача.'}
-      ]},
-      { short:'Регулярность', title:'Регулярность, голод и пищеварение', intent:'Различать голод и эмоциональный импульс, поддержать воду, клетчатку и работу кишечника.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:5,required:true,owner:'Оля',status:'decision',title:'Что меняется в отношениях с едой',job:'Наблюдать новый опыт без оценки и морализации.'},
-        {d:1,type:'content',format:'урок',minutes:12,required:true,owner:'Соня',status:'work',title:'Физиологический голод, эмоциональный импульс и дискомфорт',job:'Различать телесный сигнал, эмоцию и привычный сценарий.'},
-        {d:2,type:'food',format:'практика недели',minutes:6,required:true,owner:'Соня',status:'draft',title:'Пауза перед едой',job:'Замечать причину приёма пищи без запрета и самокритики.'},
-        {d:3,type:'content',format:'фрагмент сценария подкаста 2',minutes:8,required:false,owner:'Соня',status:'review',title:'Жидкость, клетчатка и регулярность',job:'Выбрать один реалистичный шаг для поддержки пищеварения.'},
-        {d:4,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Меню недели + 4 рецепта',job:'Собрать мягкий и предсказуемый рацион с заменами.'},
-        {d:5,type:'food',format:'список + маршрут',minutes:8,required:false,owner:'Ксения',status:'decision',title:'Покупки и две подготовки',job:'Подготовить воду, клетчатку и переносимые блюда без перегрузки.'},
-        {d:6,type:'support',format:'карточка симптомов',minutes:5,required:true,owner:'Медредактор',status:'draft',title:'Запор, обезвоживание и граница курса',job:'Знать, когда самостоятельной адаптации недостаточно.'}
-      ]},
-      { short:'Симптомы', title:'Симптомы и мышечная функция', intent:'Собрать питание на дни симптомов, сохранить движение и знать границу медицинской помощи.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:6,required:true,owner:'Оля',status:'decision',title:'Как выбирать нагрузку сегодня',job:'Выбрать полную, сокращённую версию, восстановление или остановку.'},
-        {d:1,type:'content',format:'подкаст 2 · сценарий готов, медиа нет',minutes:18,required:true,owner:'Соня',status:'blocked',title:'Тошнота, раннее насыщение и возвращение еды',job:'Собрать переносимое питание и понимать границу медицинской помощи.'},
-        {d:2,type:'food',format:'практика недели',minutes:7,required:true,owner:'Соня',status:'work',title:'Личный план питания на день симптомов',job:'Составить короткий список еды и питья, которые обычно доступны и переносятся.'},
-        {d:3,type:'content',format:'материал эксперта',minutes:15,required:true,owner:'Медредактор',status:'review',title:'Снижение веса, мышцы и повседневная функция',job:'Понять роль питания, сопротивления и восстановления без обещания полностью сохранить мышцы.'},
-        {d:4,type:'support',format:'чек‑лист',minutes:5,required:true,owner:'Медредактор',status:'decision',title:'Красные флаги и остановка тренировки',job:'Знать, когда прекратить нагрузку и обратиться за медицинской помощью.'},
-        {d:5,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Меню недели + 4 рецепта',job:'Выбрать блюда маленького объёма и более нейтральной переносимости.'},
-        {d:6,type:'food',format:'список + маршрут',minutes:8,required:false,owner:'Ксения',status:'decision',title:'Покупки и две подготовки',job:'Снизить число решений на дни после инъекции или усиления симптомов.'}
-      ]},
-      { short:'Прогресс', title:'Ожидания, полноценность и прогресс', intent:'Оценивать рацион и прогресс шире веса, вернуть разнообразие и безопасные замены.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:5,required:true,owner:'Оля',status:'decision',title:'Прогресс — не только число на весах',job:'Замечать силу, энергию, переносимость и бытовую активность.'},
-        {d:1,type:'content',format:'урок',minutes:12,required:true,owner:'Медредактор',status:'work',title:'Плато и разная скорость ответа',job:'Понимать вариативность ответа без сравнения себя с другими.'},
-        {d:2,type:'food',format:'практика недели',minutes:6,required:true,owner:'Соня',status:'draft',title:'Мои показатели кроме веса',job:'Выбрать два-три наблюдаемых признака функционального прогресса.'},
-        {d:3,type:'content',format:'памятка',minutes:10,required:false,owner:'Соня',status:'work',title:'Жиры, перекусы, разнообразие и замены',job:'Вернуть полноценность рациона без резкого увеличения объёма.'},
-        {d:4,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Меню недели + 4 рецепта',job:'Добавить разнообразие и варианты постепенного возвращения продуктов.'},
-        {d:5,type:'food',format:'список + маршрут',minutes:8,required:false,owner:'Ксения',status:'decision',title:'Покупки и две подготовки',job:'Собрать основу недели и небольшой запас перекусов.'},
-        {d:6,type:'support',format:'чек‑ин',minutes:5,required:true,owner:'Даша',status:'draft',title:'Проверка силы и функции',job:'Сравнить качество движений и переносимость, а не только объём работы.'}
-      ]},
-      { short:'Тело', title:'Реальная жизнь, тело и стигма', intent:'Перенести навыки в работу, рестораны и поездки; выстроить границы вокруг тела и лечения.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:7,required:true,owner:'Оля',status:'decision',title:'Тело, лечение и чужие комментарии',job:'Вернуть себе право на приватность и личные границы.'},
-        {d:1,type:'content',format:'материал психолога',minutes:12,required:true,owner:'Ксения',status:'decision',title:'Образ тела во время быстрых изменений',job:'Назвать сложные чувства без требования немедленно их исправить.'},
-        {d:2,type:'support',format:'практика недели',minutes:7,required:true,owner:'Оля',status:'draft',title:'Граница для комментариев окружающих',job:'Подготовить короткий ответ на нежелательные вопросы.'},
-        {d:3,type:'content',format:'памятка',minutes:10,required:false,owner:'Соня',status:'work',title:'Питание в работе, доставке, ресторане и поездке',job:'Сохранить структуру питания в реальной жизни без идеального плана.'},
-        {d:4,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Меню недели + 4 рецепта',job:'Выбрать гибкие домашние и внешние сценарии питания.'},
-        {d:5,type:'food',format:'список + маршрут',minutes:8,required:false,owner:'Ксения',status:'decision',title:'Покупки и две подготовки',job:'Собрать набор для дома, офиса и дороги.'},
-        {d:6,type:'support',format:'рефлексия',minutes:5,required:false,owner:'Оля',status:'draft',title:'Гибкость без компенсации и вины',job:'Не наказывать себя едой или нагрузкой за отклонение от плана.'}
-      ]},
-      { short:'Дальше', title:'Личная система после курса', intent:'Собрать повторяемую систему питания, движения и поддержки после окончания программы.', content:[
-        {d:0,type:'support',format:'видео Оли',minutes:6,required:true,owner:'Оля',status:'decision',title:'Какие навыки остаются после курса',job:'Увидеть результат шире шести недель и цифры на весах.'},
-        {d:1,type:'content',format:'материал эндокринолога',minutes:15,required:true,owner:'Медредактор',status:'decision',title:'Возврат аппетита и изменение терапии',job:'Отделять медицинские решения от навыков образа жизни.'},
-        {d:2,type:'food',format:'итоговая практика 3.1',minutes:10,required:true,owner:'Соня',status:'draft',title:'Личный протокол питания на одной странице',job:'Собрать базовую структуру, переносимые блюда, замены и действия при изменении аппетита.'},
-        {d:3,type:'content',format:'продуктовая развилка',minutes:0,required:false,owner:'Оля',status:'decision',title:'Нужно ли пилотировать адаптивное питание 3.2',job:'Решить, тестируем ли ежедневный check‑in и 36 пищевых модулей отдельно от базового курса.'},
-        {d:4,type:'food',format:'7 дней · пакет 3.1',minutes:8,required:false,owner:'Соня',status:'decision',title:'Повторяемое меню + последние 4 рецепта',job:'Собрать основу недели, которую можно повторять без курса.'},
-        {d:5,type:'support',format:'план',minutes:8,required:true,owner:'Даша',status:'draft',title:'Мой силовой ритм после курса',job:'Выбрать реалистичную частоту тренировок и варианты движения дальше.'},
-        {d:6,type:'support',format:'завершение',minutes:10,required:true,owner:'Оля',status:'draft',title:'План устойчивости на следующие 30 дней',job:'Зафиксировать питание, движение, поддержку и вопросы врачу.'}
-      ]}
-    ];
-
-    let activeWeek = 0;
-    let toastTimer;
-    const workspace = document.getElementById('workspace');
-    const dayRows = document.getElementById('dayRows');
-    const weekTabs = document.getElementById('weekTabs');
-
-    const allBlocksForWeek = (index) => {
-      const movement = movementPlan(index + 1).map((block, d) => ({ ...block, d }));
-      const editorial = weeks[index].content.map((block, i) => ({ id:`w${index + 1}-c${i + 1}`, ...block }));
-      return [...movement, ...editorial];
-    };
-
-    function renderTabs() {
-      weekTabs.innerHTML = weeks.map((week, index) => `
-        <button class="week-tab" id="week-tab-${index + 1}" type="button" role="tab" aria-selected="${index === activeWeek}" aria-controls="dayRows" data-week="${index}">
-          <span>${String(index + 1).padStart(2,'0')}</span><span>${week.short}</span>
-        </button>`).join('');
-      weekTabs.querySelectorAll('[data-week]').forEach(button => button.addEventListener('click', () => {
-        activeWeek = Number(button.dataset.week);
-        render();
+    function renderLocalNavigation(panel) {
+      localTitle.textContent = panel.dataset.title;
+      localLinks.replaceChildren(...panelSections(panel).map((section, index) => {
+        const link = document.createElement('a');
+        link.href = '#' + section.id;
+        link.textContent = section.dataset.nav;
+        if (index === 0) link.classList.add('active');
+        link.addEventListener('click', () => {
+          [...localLinks.querySelectorAll('a')].forEach(item => item.classList.toggle('active', item === link));
+        });
+        return link;
       }));
+
+      if (sectionObserver) sectionObserver.disconnect();
+      sectionObserver = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        [...localLinks.querySelectorAll('a')].forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id);
+        });
+      }, { rootMargin: '-22% 0px -66% 0px', threshold: [0, .2, .5] });
+      panelSections(panel).forEach(section => sectionObserver.observe(section));
     }
 
-    function blockTemplate(block) {
-      const statusClass = statusClasses[block.status] || '';
-      const compare = block.type === 'movement' ? `<span class="course-compare"><span class="course-option base-option"><small>Свой вес</small><b>${block.base}</b></span><span class="course-option strength-option"><small>Гантели</small><b>${block.strength}</b></span></span>` : '';
-      return `<article class="block ${block.type}" data-required="${block.required}">
-        <span class="block-top"><span class="format">${block.format}${block.required ? '<b class="required-mark"> ●</b>' : ''}</span><span class="minutes">${block.minutes ? `${block.minutes} мин` : 'по состоянию'}</span></span>
-        <span class="title">${block.title}</span>
-        ${compare || `<span class="detail">${block.job}</span>`}
-        <span class="block-bottom"><span class="owner" style="--owner-color:${ownerColors[block.owner] || '#98a2b3'}">${block.owner}</span><span class="status ${statusClass}">${statusLabels[block.status] || block.status}</span></span>
-      </article>`;
+    function activatePanel(name, focusTab = false) {
+      const tab = tabs.find(item => item.dataset.panel === name) || tabs[0];
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      tabs.forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+      panels.forEach(item => { item.hidden = item !== panel; });
+      renderLocalNavigation(panel);
+      if (focusTab) tab.focus();
+      history.replaceState(null, '', '#' + tab.dataset.panel);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      updateProgress();
     }
 
-    function renderRows(blocks) {
-      dayRows.innerHTML = days.map((day, d) => {
-        const dayBlocks = blocks.filter(block => block.d === d);
-        const byType = type => dayBlocks.filter(block => block.type === type);
-        const cell = (type, className) => `<div class="cell ${className}">${byType(type).length ? byType(type).map(blockTemplate).join('') : '<div class="empty-cell">Нет блока</div>'}</div>`;
-        return `<article class="day-row">
-          <header class="day-label"><div><small>${day[0]}</small><strong>${day[1]}</strong></div><span>${dayBlocks.filter(b => b.required).length} обяз.</span></header>
-          ${cell('movement','movement-cell')}${cell('content','content-cell')}${cell('food','food-cell')}${cell('support','support-cell')}
-        </article>`;
-      }).join('');
-    }
-
-    function renderSummary(blocks) {
-      const week = weeks[activeWeek];
-      const required = blocks.filter(block => block.required);
-      const requiredMinutes = required.reduce((sum, block) => sum + Number(block.minutes || 0), 0);
-      const decisions = blocks.filter(block => block.status === 'decision').length;
-      const density = requiredMinutes > 135 || required.length > 10 ? 'Плотно' : requiredMinutes > 105 ? 'Умеренно' : 'Спокойно';
-      document.getElementById('weekKicker').textContent = `Неделя ${String(activeWeek + 1).padStart(2,'0')}`;
-      document.getElementById('weekTitle').textContent = week.title;
-      document.getElementById('weekIntent').textContent = week.intent;
-      document.getElementById('requiredCount').textContent = required.length;
-      document.getElementById('densityLabel').textContent = density;
-      document.getElementById('densityReason').textContent = `${requiredMinutes} мин · ${decisions} блоков ждут решения`;
-    }
-
-    function render() {
-      renderTabs();
-      const blocks = allBlocksForWeek(activeWeek);
-      renderSummary(blocks);
-      renderRows(blocks);
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
-    }
-
-    document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => {
-      const view = button.dataset.view;
-      workspace.classList.remove('compare-view','base-view','strength-view');
-      workspace.classList.add(`${view}-view`);
-      document.querySelectorAll('[data-view]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    }));
-
-    document.getElementById('optionalToggle').addEventListener('click', (event) => {
-      const active = !workspace.classList.contains('optional-hidden');
-      workspace.classList.toggle('optional-hidden', active);
-      event.currentTarget.setAttribute('aria-pressed', String(active));
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activatePanel(tab.dataset.panel));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        activatePanel(tabs[next].dataset.panel, true);
+      });
     });
 
-    document.getElementById('copyWeek').addEventListener('click', async () => {
-      const blocks = allBlocksForWeek(activeWeek);
-      const text = [`Неделя ${activeWeek + 1}: ${weeks[activeWeek].title}`, ...days.map((day,d) => `${day[0]} · ${day[1]}\n${blocks.filter(b=>b.d===d).map(b=>`— ${b.title}${b.required?' · обязательно':''}`).join('\n')}`)].join('\n\n');
-      try { await navigator.clipboard.writeText(text); showToast('Неделя скопирована'); } catch { showToast('Не удалось скопировать'); }
-    });
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    }
 
-    render();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    const initialHash = location.hash.slice(1);
+    const initialSection = document.getElementById(initialHash);
+    const initialOwner = initialSection?.closest('[role="tabpanel"]');
+    const initialPanel = tabs.some(tab => tab.dataset.panel === initialHash)
+      ? initialHash
+      : initialOwner?.id.replace('panel-', '') || 'foundation';
+    activatePanel(initialPanel);
+    if (initialSection) {
+      requestAnimationFrame(() => {
+        initialSection.scrollIntoView();
+        history.replaceState(null, '', '#' + initialSection.id);
+      });
+    }
   </script>
 </body>
 </html>
