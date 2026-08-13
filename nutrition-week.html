@@ -42,9 +42,10 @@
     .brand { display: flex; align-items: baseline; gap: 10px; font-weight: 800; }
     .brand small { color: var(--muted); font-size: 13px; font-weight: 500; }
     .page-actions { display: flex; align-items: center; gap: 18px; }
-    .topnav { display: flex; gap: 22px; }
-    .topnav a { color: var(--ink); font-size: 14px; text-decoration: none; text-underline-offset: 5px; }
-    .topnav a:hover { text-decoration: underline; }
+    .topnav { display: inline-flex; gap: 3px; min-width: 0; padding: 3px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.58); scrollbar-width: thin; }
+    .topnav a { flex: 0 0 auto; padding: 6px 9px; border-radius: 7px; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.15; text-decoration: none; white-space: nowrap; }
+    .topnav a:hover { background: var(--surface); color: var(--ink); }
+    .topnav a.active { background: var(--surface); color: var(--green-dark); box-shadow: 0 1px 3px rgba(23,34,30,.12); }
     .review-trigger { display: inline-flex; min-height: 38px; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--green); border-radius: 10px; background: var(--surface); color: var(--green-dark); font-size: 13px; font-weight: 750; cursor: pointer; white-space: nowrap; }
     .review-trigger:hover { background: var(--green-soft); }
     .review-count { display: grid; min-width: 20px; height: 20px; place-items: center; padding: 0 5px; border-radius: 999px; background: var(--green); color: #fff; font-size: 11px; }
@@ -237,8 +238,11 @@
     @media (max-width: 720px) {
       .shell { width: min(100% - 28px, 1240px); }
       .topbar-inner { min-height: 56px; }
-      .brand small, .topnav { display: none; }
-      .page-actions { gap: 8px; }
+      .topbar-inner { display: grid; grid-template-columns:minmax(0,1fr) auto; gap:7px; padding-block:7px; }
+      .brand small { display: none; }
+      .page-actions { grid-column:1/-1; min-width:0; gap:8px; }
+      .topnav { flex:1 1 auto; }
+      .topnav a { display:flex; min-height:44px; align-items:center; }
       .review-trigger { min-height: 44px; padding-inline: 10px; }
       .intro { gap: 18px; padding: 32px 0 24px; }
       h1 { font-size: 36px; line-height: 1; }
@@ -305,8 +309,8 @@
     <div class="shell topbar-inner">
       <div class="brand">Sekta · питание <small>GLP‑1 — курс на устойчивость</small></div>
       <div class="page-actions">
-        <nav class="topnav" aria-label="Разделы страницы">
-          <a href="./">Карта курса</a><a href="constructor.html">Конструктор</a><a href="#week">Неделя</a><a href="#recipes">Рецепты</a><a href="#shopping">Покупки</a>
+        <nav class="topnav" aria-label="Рабочие представления курса">
+          <a href="./">Карта курса</a><a href="constructor.html">Конструктор</a><a class="active" href="nutrition-week.html" aria-current="page">Питание · черновик</a><a href="course-entry-preview.html">Продуктовая логика</a>
         </nav>
         <button class="review-trigger" id="reviewTrigger" type="button">Ревью страницы <span class="review-count" id="reviewCount" aria-label="Открытые комментарии">—</span></button>
       </div>
