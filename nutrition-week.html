@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GLP‑1 · Неделя питания на трёх уровнях энергии</title>
+  <title>GLP‑1 · Неделя питания, рецепты и закупка на семью</title>
   <style>
     @font-face { font-family: "PT Serif Local"; src: url("assets/nutrition/pt_serif_regular_cyrillic_v19.ttf") format("truetype"); font-weight: 400; font-display: swap; }
     @font-face { font-family: "PT Serif Local"; src: url("assets/nutrition/pt_serif_bold_cyrillic_v19.ttf") format("truetype"); font-weight: 700; font-display: swap; }
@@ -170,6 +170,15 @@
     .shop-group li span { display: grid; }
     .shop-group li small { margin-top: 2px; color: #7a8781; font-size: 11px; line-height: 1.35; }
     .shop-level-note { margin-top: 22px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--green-soft); color: var(--green-dark); font-size: 13px; }
+    .people-panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 22px; padding: 17px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .people-copy { min-width: 0; }
+    .people-copy strong { display: block; margin-bottom: 3px; font-size: 14px; }
+    .people-copy small { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .people-stepper { flex: 0 0 auto; display: grid; grid-template-columns: 44px minmax(96px, auto) 44px; align-items: center; min-height: 44px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+    .people-stepper button { width: 44px; height: 44px; border: 0; background: transparent; color: var(--green-dark); font-size: 22px; cursor: pointer; }
+    .people-stepper button:hover:not(:disabled) { background: var(--green-soft); }
+    .people-stepper button:disabled { color: #aeb7b2; cursor: not-allowed; }
+    .people-stepper output { display: grid; min-height: 44px; place-items: center; padding: 0 10px; border-right: 1px solid var(--line); border-left: 1px solid var(--line); color: var(--green-dark); font-size: 13px; font-weight: 800; white-space: nowrap; }
     .prep-box { align-self: start; padding: 26px; border-radius: var(--radius); background: var(--peach); }
     .prep-box h2 { font-family: var(--serif); }
     .prep-box ol { margin: 20px 0 0; padding-left: 22px; }
@@ -186,6 +195,11 @@
     .dialog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; margin-top: 24px; }
     .dialog-block { padding-top: 14px; border-top: 1px solid var(--line); }
     .dialog-block strong { display: block; margin-bottom: 5px; }
+    .dialog-block-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 8px; }
+    .dialog-block-head > strong { margin: 0; }
+    .dialog-block-head .people-stepper { grid-template-columns: 40px minmax(90px, auto) 40px; min-height: 40px; }
+    .dialog-block-head .people-stepper button { width: 40px; height: 40px; }
+    .dialog-block-head .people-stepper output { min-height: 40px; }
     .dialog-block p { margin: 0; color: var(--muted); font-size: 14px; }
     .dialog-block.wide { grid-column: 1 / -1; }
     .dialog-block ul, .dialog-block ol { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
@@ -263,6 +277,9 @@
       .recipe-card button.image-button { height: 100%; min-height: 140px; }
       .recipe-body h3 { min-height: 0; }
       .shop-groups { grid-template-columns: 1fr; gap: 20px; }
+      .people-panel, .dialog-block-head { align-items: stretch; flex-direction: column; }
+      .people-stepper { width: 100%; grid-template-columns: 44px minmax(0, 1fr) 44px; }
+      .dialog-block-head .people-stepper { grid-template-columns: 44px minmax(0, 1fr) 44px; }
       .dialog-image { height: 220px; }
       .dialog-body { padding: 20px; }
       .dialog-head h2 { font-size: 28px; }
@@ -299,15 +316,15 @@
   <main>
     <section class="shell intro">
       <div>
-        <h1>Одна неделя питания — три понятных уровня энергии</h1>
-        <p>Блюда и ритм готовки остаются одинаковыми. Выберите демонстрационный уровень и сразу увидите, что именно добавляется к каждому приёму пищи, как меняется день и что потребуется купить.</p>
+        <h1>Одна неделя питания — с закупкой на себя и семью</h1>
+        <p>Блюда и ритм готовки остаются одинаковыми. Выберите демонстрационный уровень и количество порций: ингредиенты в рецептах и вся недельная закупка пересчитаются вместе.</p>
       </div>
       <aside class="intro-note">
         <strong>Это не калькулятор личной нормы</strong>
         <p>Уровень выбирают после индивидуальной оценки. Здесь мы проверяем интерфейс, рецепты и логику порций; цифры требуют проверки специалистом.</p>
       </aside>
     </section>
-    <div class="shell system-line" aria-label="Что находится на странице"><span>уровень энергии</span><span>готовая неделя</span><span>день целиком</span><span>рецепты</span><span>замены</span><span>покупки</span></div>
+    <div class="shell system-line" aria-label="Что находится на странице"><span>уровень энергии</span><span>готовая неделя</span><span>день целиком</span><span>рецепты</span><span>количество порций</span><span>динамическая закупка</span></div>
 
     <section class="shell level-section" aria-labelledby="levelTitle">
       <div class="level-panel">
@@ -366,7 +383,8 @@
       <div class="shell shop-layout">
         <div>
           <div class="section-head"><h2 class="section-title">Покупки для выбранной недели</h2></div>
-          <p>Список меняется при замене блюда и при выборе уровня. Рядом с продуктом видно, для каких рецептов или добавок он нужен.</p>
+          <p>Список меняется при замене блюда, выборе уровня и количестве порций. Рядом с продуктом видно итоговое количество и для каких рецептов или добавок он нужен.</p>
+          <div class="people-panel"><div class="people-copy"><strong>На сколько порций готовим?</strong><small>Выберите количество людей, которые едят блюда этой недели. Все рецепты и покупки умножаются одинаково.</small></div><div id="shoppingPeopleControl"></div></div>
           <div class="shop-level-note" id="shoppingLevelNote"></div>
           <div class="shop-groups" id="shoppingGroups"></div>
         </div>
@@ -383,7 +401,7 @@
     <img class="dialog-image" id="dialogImage" src="assets/nutrition/2026-08-13_glp1_dish_omelet_v1.png" alt="">
     <div class="dialog-body">
       <div class="dialog-head"><div><h2 id="dialogTitle"></h2><p class="dialog-intro" id="dialogIntro"></p></div><button class="icon-close" type="button" data-close-dialog aria-label="Закрыть рецепт">×</button></div>
-      <div class="dialog-grid"><div class="dialog-block"><strong>Белковая основа</strong><p id="dialogProtein"></p></div><div class="dialog-block"><strong>Время и КБЖУ</strong><p id="dialogTime"></p></div><div class="dialog-block wide"><strong>Ингредиенты на одну демонстрационную порцию</strong><ul id="dialogIngredients"></ul></div><div class="dialog-block wide"><strong>Добавка для выбранного уровня</strong><p id="dialogLevel"></p></div><div class="dialog-block wide"><strong>Как приготовить</strong><ol id="dialogMethod"></ol></div><div class="dialog-block"><strong>Если аппетит снижен</strong><p id="dialogLow"></p></div><div class="dialog-block"><strong>Хранение</strong><p id="dialogStore"></p></div></div>
+      <div class="dialog-grid"><div class="dialog-block"><strong>Белковая основа</strong><p id="dialogProtein"></p></div><div class="dialog-block"><strong>Время и КБЖУ</strong><p id="dialogTime"></p></div><div class="dialog-block wide"><div class="dialog-block-head"><strong id="dialogIngredientsLabel">Ингредиенты</strong><div id="dialogPeopleControl"></div></div><ul id="dialogIngredients"></ul></div><div class="dialog-block wide"><strong>Добавка для выбранного уровня</strong><p id="dialogLevel"></p></div><div class="dialog-block wide"><strong>Как приготовить</strong><ol id="dialogMethod"></ol></div><div class="dialog-block"><strong>Если аппетит снижен</strong><p id="dialogLow"></p></div><div class="dialog-block"><strong>Хранение</strong><p id="dialogStore"></p></div></div>
     </div>
   </dialog>
   <dialog class="review-dialog" id="reviewDialog" aria-labelledby="reviewTitle">
@@ -400,7 +418,7 @@
   <script>
     const A='assets/nutrition/';
     const recipes={
-      omelet:{id:'omelet',type:'breakfast',title:'Мягкий омлет с творогом и томатами',image:A+'2026-08-13_glp1_dish_omelet_v1.png',protein:'яйца и творог',time:'12 минут',nutrition:{kcal:313,p:25,f:14,c:24},intro:'Тёплый мягкий завтрак с привычным вкусом.',note:'Творог делает омлет мягче и добавляет белок без большой порции.',low:'Начните с половины омлета; хлеб и томаты можно перенести на следующий небольшой приём.',store:'Лучше готовить перед едой; готовый омлет хранить не более 24 часов.',portion:['2 яйца (100 г без скорлупы)','50 г творога 2%','100 г томатов черри','35 г цельнозернового хлеба','2 г оливкового масла','щепотка соли'],method:['Разомните творог вилкой, яйца взбейте с солью.','Смажьте сковороду маслом, влейте яйца и готовьте на слабом огне.','Добавьте творог, сложите омлет и доведите под крышкой.','Подайте с томатами и подсушенным хлебом.'],ingredients:{protein:['яйца','творог 2%'],produce:['томаты черри'],pantry:['цельнозерновой хлеб','оливковое масло']}},
+      omelet:{id:'omelet',type:'breakfast',title:'Мягкий омлет с творогом и томатами',image:A+'2026-08-13_glp1_dish_omelet_v1.png',protein:'яйца и творог',time:'12 минут',nutrition:{kcal:313,p:25,f:14,c:24},intro:'Тёплый мягкий завтрак с привычным вкусом.',note:'Творог делает омлет мягче и добавляет белок без большой порции.',low:'Начните с половины омлета; хлеб и томаты можно перенести на следующий небольшой приём.',store:'Лучше готовить перед едой; готовый омлет хранить не более 24 часов.',portion:['2 шт. яиц (100 г без скорлупы)','50 г творога 2%','100 г томатов черри','35 г цельнозернового хлеба','2 г оливкового масла','щепотка соли'],method:['Разомните творог вилкой, яйца взбейте с солью.','Смажьте сковороду маслом, влейте яйца и готовьте на слабом огне.','Добавьте творог, сложите омлет и доведите под крышкой.','Подайте с томатами и подсушенным хлебом.'],ingredients:{protein:['яйца','творог 2%'],produce:['томаты черри'],pantry:['цельнозерновой хлеб','оливковое масло']}},
       yogurt:{id:'yogurt',type:'breakfast snack',title:'Греческий йогурт с овсянкой и ягодами',image:A+'2026-08-13_glp1_dish_yogurt_oats_v1.png',protein:'греческий йогурт',time:'5 минут + 10 минут',nutrition:{kcal:259,p:20,f:7,c:32},intro:'Быстрый приём пищи с мягкими заранее размоченными хлопьями.',note:'Удобно собрать вечером и взять с собой утром.',low:'Уменьшите хлопья до 15 г и начните с йогурта; ягоды можно заменить пюре.',store:'Собранную порцию хранить до 24 часов в холодильнике.',portion:['170 г греческого йогурта 2%','25 г овсяных хлопьев','50 г ягод','3 г семян чиа'],method:['Смешайте йогурт, хлопья и чиа.','Оставьте минимум на 10 минут или на ночь в холодильнике.','Добавьте ягоды перед подачей.'],ingredients:{protein:['греческий йогурт 2%'],produce:['ягоды'],pantry:['овсяные хлопья','семена чиа']}},
       cottage:{id:'cottage',type:'breakfast snack',title:'Творог с запечённой грушей и орехами',image:A+'2026-08-13_glp1_dish_cottage_pear_v1.png',protein:'творог',time:'20 минут',nutrition:{kcal:264,p:29,f:8,c:24},intro:'Мягкий творог, тёплая груша и небольшое количество орехов.',note:'Грушу можно запечь сразу на два приёма пищи.',low:'Начните с творога и нескольких ломтиков мягкой груши; орехи можно убрать.',store:'Грушу хранить до 2 дней, творог добавлять перед едой.',portion:['150 г творога 2%','100 г груши','8 г грецких орехов','корица по желанию'],method:['Разрежьте грушу и запекайте 15 минут при 190 °C до мягкости.','Выложите творог в миску.','Добавьте тёплую грушу и мелко нарубленные орехи.'],ingredients:{protein:['творог 2%'],produce:['груши'],pantry:['грецкие орехи']}},
       turkey:{id:'turkey',type:'main',title:'Фрикадельки из индейки с гречкой и морковью',image:A+'2026-08-13_glp1_dish_turkey_buckwheat_v1.png',protein:'индейка',time:'30 минут',nutrition:{kcal:440,p:37,f:13,c:43},intro:'Базовое блюдо, которое удобно готовить сразу на несколько порций.',note:'Фрикадельки остаются основой, а количество гарнира видно отдельно.',low:'Начните с 2–3 фрикаделек и мягкой моркови; гречку оставьте на потом.',store:'До 2 дней в холодильнике; фрикадельки можно заморозить до месяца.',portion:['130 г фарша индейки (сырой вес)','130 г готовой гречки','100 г моркови','30 г натурального йогурта 2%','5 г оливкового масла','соль и укроп'],method:['Сформируйте небольшие фрикадельки и запекайте 18–20 минут при 190 °C.','Потушите морковь с половиной масла до мягкости.','Смешайте йогурт с укропом.','Подайте фрикадельки с гречкой, морковью и соусом.'],ingredients:{protein:['фарш индейки','натуральный йогурт 2%'],produce:['морковь','укроп'],pantry:['гречка','оливковое масло']}},
@@ -408,6 +426,22 @@
       chickenSoup:{id:'chickenSoup',type:'main',title:'Куриный суп с мягкой лапшой',image:A+'2026-08-13_glp1_dish_chicken_noodle_soup_v1.png',protein:'куриное филе',time:'35 минут',nutrition:{kcal:370,p:31,f:9,c:38},intro:'Тёплый суп с привычным вкусом и мягкой текстурой.',note:'Одна порция — около 450 мл; хлеб уже включён в расчёт.',low:'Начните с небольшого объёма бульона, курицы и мягкой лапши.',store:'До 2 дней в холодильнике; повторно разогревать только одну порцию.',portion:['120 г куриного филе (сырой вес)','35 г мелкой лапши (сухой вес)','70 г моркови','30 г цельнозернового хлеба','4 г оливкового масла','500 мл воды, укроп и соль'],method:['Отварите курицу до готовности и разберите на небольшие волокна.','Добавьте мелко нарезанную морковь и варите до мягкости.','Добавьте лапшу, затем верните курицу.','Снимите с огня, добавьте масло и подайте с хлебом.'],ingredients:{protein:['куриное филе'],produce:['морковь','укроп'],pantry:['мелкая лапша','цельнозерновой хлеб','оливковое масло']}},
       salmon:{id:'salmon',type:'main',title:'Лосось с картофелем и кабачком',image:A+'2026-08-13_glp1_dish_salmon_potato_v1.png',protein:'лосось',time:'25 минут',nutrition:{kcal:452,p:30,f:22,c:34},intro:'Основное блюдо из трёх знакомых компонентов.',note:'Порцию можно разделить на два небольших приёма.',low:'Начните с половины рыбы; картофель и кабачок оставьте на второй приём.',store:'До 24 часов в холодильнике; лучше не разогревать повторно.',portion:['120 г филе лосося (сырой вес)','170 г картофеля','150 г кабачка','5 г оливкового масла','соль и укроп'],method:['Запекайте лосось 12–15 минут при 190 °C.','Отварите картофель до мягкости.','Потушите кабачок на масле, не подрумянивая.','Подайте компоненты отдельно или разомните гарнир вилкой.'],ingredients:{protein:['филе лосося'],produce:['кабачок','укроп'],pantry:['картофель','оливковое масло']}},
       lentil:{id:'lentil',type:'main',title:'Крем-суп из красной чечевицы с йогуртом',image:A+'2026-08-13_glp1_dish_lentil_soup_v1.png',protein:'чечевица и йогурт',time:'30 минут',nutrition:{kcal:357,p:20,f:8,c:50},intro:'Однородный суп, который удобно готовить заранее.',note:'Хлеб и йогурт включены в расчёт одной порции.',low:'Подавайте небольшую порцию комфортной температуры; хлеб можно перенести.',store:'До 3 дней в холодильнике или до месяца в морозилке без йогурта.',portion:['60 г красной чечевицы (сухой вес)','70 г моркови','50 г натурального йогурта 2%','20 г цельнозернового хлеба','4 г оливкового масла','400 мл воды и соль'],method:['Промойте чечевицу, добавьте морковь и воду.','Варите 20 минут до полной мягкости.','Пробейте блендером и добавьте масло.','Подавайте с йогуртом и хлебом.'],ingredients:{protein:['красная чечевица','натуральный йогурт 2%'],produce:['морковь'],pantry:['цельнозерновой хлеб','оливковое масло']}}
+    };
+    const recipeShopping={
+      omelet:{protein:[['яйца',2,'шт'],['творог 2%',50,'г']],produce:[['томаты черри',100,'г']],pantry:[['цельнозерновой хлеб',35,'г'],['оливковое масло',2,'г']]},
+      yogurt:{protein:[['греческий йогурт 2%',170,'г']],produce:[['ягоды',50,'г']],pantry:[['овсяные хлопья',25,'г'],['семена чиа',3,'г']]},
+      cottage:{protein:[['творог 2%',150,'г']],produce:[['груши',100,'г']],pantry:[['грецкие орехи',8,'г']]},
+      turkey:{protein:[['фарш индейки',130,'г'],['натуральный йогурт 2%',30,'г']],produce:[['морковь',100,'г']],pantry:[['гречка, готовый вес',130,'г'],['оливковое масло',5,'г']]},
+      whiteFish:{protein:[['филе белой рыбы',150,'г']],produce:[['стручковая фасоль',100,'г']],pantry:[['белый рис, готовый вес',140,'г'],['оливковое масло',6,'г']]},
+      chickenSoup:{protein:[['куриное филе',120,'г']],produce:[['морковь',70,'г']],pantry:[['мелкая лапша, сухой вес',35,'г'],['цельнозерновой хлеб',30,'г'],['оливковое масло',4,'г']]},
+      salmon:{protein:[['филе лосося',120,'г']],produce:[['кабачок',150,'г']],pantry:[['картофель',170,'г'],['оливковое масло',5,'г']]},
+      lentil:{protein:[['красная чечевица, сухой вес',60,'г'],['натуральный йогурт 2%',50,'г']],produce:[['морковь',70,'г']],pantry:[['цельнозерновой хлеб',20,'г'],['оливковое масло',4,'г']]}
+    };
+    const energyShopping={
+      level1500:[{produce:[['бананы',60,'г']]},{pantry:[['крупа для гарнира, готовый вес',40,'г']]},{produce:[['ягоды',50,'г']]},{pantry:[['оливковое масло',2,'г']]}],
+      level1800:[{produce:[['бананы',120,'г']],pantry:[['ореховая паста',10,'г']]},{pantry:[['крупа для гарнира, готовый вес',80,'г'],['оливковое масло',5,'г']]},{produce:[['фрукты для перекуса',150,'г']]},{pantry:[['оливковое масло',6,'г']]}],
+      level2100:[{pantry:[['цельнозерновой хлеб',35,'г'],['ореховая паста',15,'г']]},{pantry:[['крупа для гарнира, готовый вес',100,'г'],['оливковое масло',8,'г']]},{protein:[['греческий йогурт 2%',150,'г']],produce:[['фрукты для перекуса',100,'г']],pantry:[['грецкие орехи',8,'г']]},{pantry:[['картофель',150,'г'],['оливковое масло',6,'г']]}
+      ]
     };
     const energyProfiles={
       level1500:{id:'level1500',label:'≈1500',name:'Базовый пример',module:{kcal:144,p:2,f:3,c:27},adds:[
@@ -440,7 +474,7 @@
       {name:'Воскресенье',short:'Вс',tag:'спокойный день',logic:'Выбираем знакомые блюда и готовим одну основу для начала новой недели.',prep:['омлет — перед едой','рыба — 25 минут','индейка — на завтра'],meals:['omelet','whiteFish','yogurt','turkey']}
     ];
     const week=structuredClone(baseWeek);
-    const state={day:0,swap:null,filter:'all',showMacros:false,level:'level1500'};
+    const state={day:0,swap:null,filter:'all',showMacros:false,level:'level1500',people:1,dialogRecipe:null,dialogSlot:null};
     const weekRail=document.getElementById('weekRail');
     const dayView=document.getElementById('dayView');
     const dialog=document.getElementById('recipeDialog');
@@ -498,11 +532,19 @@
       const list=Object.values(recipes).filter(r=>state.filter==='all'||r.type.includes(state.filter));
       document.getElementById('libraryGrid').innerHTML=list.map(r=>`<article class="recipe-card"><button class="image-button" data-recipe="${r.id}" aria-label="Открыть рецепт: ${r.title}"><img src="${r.image}" alt="${r.title}"></button><div class="recipe-body"><h3>${r.title}</h3><div class="recipe-meta"><span>${r.time}</span><span>${r.nutrition.kcal} ккал · Б ${r.nutrition.p} г</span></div></div></article>`).join('');
     }
-    function shopping(){const groups={protein:new Map(),produce:new Map(),pantry:new Map()};const add=(group,item,use,count=1)=>{const entry=groups[group].get(item)||{count:0,uses:new Set()};entry.count+=count;entry.uses.add(use);groups[group].set(item,entry);};week.flatMap(d=>d.meals).forEach(id=>Object.entries(recipes[id].ingredients).forEach(([group,items])=>items.forEach(x=>add(group,x,recipes[id].title))));energyProfiles[state.level].adds.forEach(x=>Object.entries(x.shopping).forEach(([group,items])=>items.forEach(item=>add(group,item,`ежедневная добавка: ${x.title}`,week.length))));return groups;}
-    function renderShopping(){const names={protein:'Белковые продукты',produce:'Овощи и фрукты',pantry:'Крупы и запас'};const groups=shopping();document.getElementById('shoppingLevelNote').innerHTML=`Выбран уровень <strong>${energyProfiles[state.level].label} ккал</strong>. Добавки этого уровня уже включены в список.`;document.getElementById('shoppingGroups').innerHTML=Object.entries(groups).map(([key,map])=>`<section class="shop-group"><h3>${names[key]}</h3><ul>${[...map.entries()].sort(([a],[b])=>a.localeCompare(b,'ru')).map(([x,entry])=>`<li><span><b>${x} · × ${entry.count}</b><small>${[...entry.uses].slice(0,3).join(' · ')}${entry.uses.size>3?' · ещё':''}</small></span></li>`).join('')}</ul></section>`).join('');}
-    function openRecipe(id,opener,slot=null){const r=recipes[id];const hasMealContext=slot!==null&&slot!==undefined&&slot!=='';const add=hasMealContext?energyProfiles[state.level].adds[Number(slot)]:null;document.getElementById('dialogImage').src=r.image;document.getElementById('dialogImage').alt=r.title;document.getElementById('dialogTitle').textContent=r.title;document.getElementById('dialogIntro').textContent=r.intro;document.getElementById('dialogProtein').textContent=r.protein;document.getElementById('dialogTime').textContent=`${r.time} · ${r.nutrition.kcal} ккал · Б ${r.nutrition.p} г · Ж ${r.nutrition.f} г · У ${r.nutrition.c} г`;document.getElementById('dialogIngredients').innerHTML=r.portion.map(x=>`<li>${x}</li>`).join('');document.getElementById('dialogLevel').textContent=add?`${energyProfiles[state.level].label} ккал: ${add.title}, ${add.detail} (+${add.kcal} ккал). Это отдельная видимая добавка, базовый рецепт не меняется.`:`Это базовый рецепт. Конкретная добавка уровня ${energyProfiles[state.level].label} ккал зависит от места блюда в дне и показывается в карточке завтрака, обеда, перекуса или ужина.`;document.getElementById('dialogMethod').innerHTML=r.method.map(x=>`<li>${x}</li>`).join('');document.getElementById('dialogLow').textContent=r.low;document.getElementById('dialogStore').textContent=r.store;dialog._opener=opener;dialog.showModal();}
-    function updateAll(){renderLevel();renderWeek();renderDay();renderLibrary();renderShopping();}
+    function portionLabel(count){return count===1?'1 порция':count<5?`${count} порции`:`${count} порций`;}
+    function peopleControl(){return `<div class="people-stepper" role="group" aria-label="Количество порций"><button type="button" data-people-change="-1" aria-label="Уменьшить количество порций" ${state.people===1?'disabled':''}>−</button><output aria-live="polite">${portionLabel(state.people)}</output><button type="button" data-people-change="1" aria-label="Увеличить количество порций" ${state.people===8?'disabled':''}>+</button></div>`;}
+    function renderPeopleControls(){document.getElementById('shoppingPeopleControl').innerHTML=peopleControl();document.getElementById('dialogPeopleControl').innerHTML=peopleControl();}
+    function scaledNumber(value){const n=Math.round(value*100)/100;return Number.isInteger(n)?String(n):String(n).replace('.',',');}
+    function scalePortionText(text){return text.replace(/\d+(?:[.,]\d+)?(?=\s*(?:г|мл|шт\.?|яйц))/gi,raw=>scaledNumber(Number(raw.replace(',','.'))*state.people));}
+    function formatAmount(amount,unit){if(unit==='г'&&amount>=1000)return `${scaledNumber(amount/1000)} кг`;if(unit==='мл'&&amount>=1000)return `${scaledNumber(amount/1000)} л`;return `${scaledNumber(amount)} ${unit}`;}
+    function shopping(){const groups={protein:new Map(),produce:new Map(),pantry:new Map()};const add=(group,item,amount,unit,use)=>{const key=`${item}|${unit}`;const entry=groups[group].get(key)||{item,unit,amount:0,uses:new Set()};entry.amount+=amount;entry.uses.add(use);groups[group].set(key,entry);};week.flatMap(d=>d.meals).forEach(id=>Object.entries(recipeShopping[id]).forEach(([group,items])=>items.forEach(([item,amount,unit])=>add(group,item,amount*state.people,unit,recipes[id].title))));energyShopping[state.level].forEach((addition,slot)=>Object.entries(addition).forEach(([group,items])=>items.forEach(([item,amount,unit])=>add(group,item,amount*state.people*week.length,unit,`ежедневная добавка: ${energyProfiles[state.level].adds[slot].title}`))));return groups;}
+    function renderShopping(){const names={protein:'Белковые продукты',produce:'Овощи и фрукты',pantry:'Крупы и запас'};const groups=shopping();document.getElementById('shoppingLevelNote').innerHTML=`Расчёт на <strong>${portionLabel(state.people)}</strong> для уровня <strong>${energyProfiles[state.level].label} ккал</strong>. Базовые блюда и ежедневные добавки уже включены.`;document.getElementById('shoppingGroups').innerHTML=Object.entries(groups).map(([key,map])=>`<section class="shop-group"><h3>${names[key]}</h3><ul>${[...map.values()].sort((a,b)=>a.item.localeCompare(b.item,'ru')).map(entry=>`<li><span><b>${entry.item} · ${formatAmount(entry.amount,entry.unit)}</b><small>${[...entry.uses].slice(0,3).join(' · ')}${entry.uses.size>3?' · ещё':''}</small></span></li>`).join('')}</ul></section>`).join('');}
+    function renderRecipeDialog(){const r=recipes[state.dialogRecipe];if(!r)return;const hasMealContext=state.dialogSlot!==null&&state.dialogSlot!==undefined&&state.dialogSlot!=='';const add=hasMealContext?energyProfiles[state.level].adds[Number(state.dialogSlot)]:null;document.getElementById('dialogImage').src=r.image;document.getElementById('dialogImage').alt=r.title;document.getElementById('dialogTitle').textContent=r.title;document.getElementById('dialogIntro').textContent=r.intro;document.getElementById('dialogProtein').textContent=r.protein;document.getElementById('dialogTime').textContent=`${r.time} · на одну порцию: ${r.nutrition.kcal} ккал · Б ${r.nutrition.p} г · Ж ${r.nutrition.f} г · У ${r.nutrition.c} г`;document.getElementById('dialogIngredientsLabel').textContent=`Ингредиенты: ${portionLabel(state.people)}`;document.getElementById('dialogIngredients').innerHTML=r.portion.map(x=>`<li>${scalePortionText(x)}</li>`).join('');document.getElementById('dialogLevel').textContent=add?`${energyProfiles[state.level].label} ккал на одного: ${add.title}, ${add.detail} (+${add.kcal} ккал). Закупка умножает эту добавку на выбранное количество порций.`:`Это базовый рецепт. Конкретная добавка уровня ${energyProfiles[state.level].label} ккал зависит от места блюда в дне и показывается в карточке завтрака, обеда, перекуса или ужина.`;document.getElementById('dialogMethod').innerHTML=r.method.map(x=>`<li>${x}</li>`).join('');document.getElementById('dialogLow').textContent=r.low;document.getElementById('dialogStore').textContent=r.store;renderPeopleControls();}
+    function openRecipe(id,opener,slot=null){state.dialogRecipe=id;state.dialogSlot=slot;dialog._opener=opener;renderRecipeDialog();dialog.showModal();}
+    function updateAll(){renderLevel();renderWeek();renderDay();renderLibrary();renderPeopleControls();renderShopping();}
     document.addEventListener('click',e=>{
+      const peopleChange=e.target.closest('[data-people-change]');if(peopleChange){state.people=Math.max(1,Math.min(8,state.people+Number(peopleChange.dataset.peopleChange)));renderPeopleControls();renderShopping();if(dialog.open)renderRecipeDialog();notify(`Рецепты и покупки: ${portionLabel(state.people)}`);return;}
       const level=e.target.closest('[data-level]');if(level){state.level=level.dataset.level;updateAll();document.querySelector(`[data-level="${state.level}"]`)?.focus();notify(`Показан уровень ${energyProfiles[state.level].label} ккал`);return;}
       const day=e.target.closest('[data-day]');if(day){const index=Number(day.dataset.day);selectDay(index,true);return;}
       const openSwap=e.target.closest('[data-open-swap]');if(openSwap){const slot=Number(openSwap.dataset.openSwap);state.swap=state.swap===slot?null:slot;renderDay();document.querySelector(`[data-open-swap="${slot}"]`)?.focus();return;}
