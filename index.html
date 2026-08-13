@@ -378,6 +378,43 @@
     }
     .number-list strong, .plain-list strong { color: var(--ink); }
 
+    .outcome-detail { margin-top: 8px; }
+    .outcome-detail summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 720;
+      list-style: none;
+      cursor: pointer;
+    }
+    .outcome-detail summary::-webkit-details-marker { display: none; }
+    .outcome-detail summary::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .16s ease;
+    }
+    .outcome-detail[open] summary::after { transform: translateY(2px) rotate(225deg); }
+    .outcome-tools {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+      margin: 2px 0 5px;
+      padding: 14px 16px;
+      border-left: 2px solid var(--accent-line);
+      border-radius: 0 8px 8px 0;
+      background: var(--surface-subtle);
+    }
+    .outcome-tools div { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 10px; align-items: start; }
+    .outcome-tools strong { color: var(--accent-deep); font-size: 12px; line-height: 1.45; }
+    .outcome-tools span { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+
     .material-list { margin-top: 25px; border-top: 1px solid var(--line); }
     .material-row {
       display: grid;
@@ -541,6 +578,8 @@
       .meal-slot + .meal-slot { border-left: 0; border-top: 1px solid var(--line); }
       .protein-priority { padding: 22px 18px; }
       .protein-builder-head { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .outcome-tools { grid-template-columns: 1fr; }
+      .outcome-tools div { grid-template-columns: 78px minmax(0, 1fr); }
       .week-card { grid-template-columns: 1fr; gap: 7px; }
       .week-detail { grid-template-columns: 1fr; gap: 2px; }
       .callout, .mode { padding: 18px; }
@@ -552,6 +591,8 @@
       .chapter { display: block !important; width: auto; margin: 0; padding: 32px 0; }
       .chapter[hidden] { display: block !important; }
       .chapter section { break-inside: avoid; }
+      .outcome-detail summary { display: none; }
+      .outcome-detail:not([open]) > .outcome-tools { display: grid; }
     }
   </style>
 </head>
@@ -774,12 +815,12 @@
         <section id="nutrition-outcome" data-nav="3.1 · Результат">
           <h2>3.1. Что участник сможет делать к концу курса</h2>
           <ol class="number-list">
-            <li><strong>Организовать питание без опоры только на голод.</strong> Не ждать выраженного аппетита, если из-за терапии он появляется редко.</li>
-            <li><strong>Собрать небольшую полноценную порцию.</strong> Выбрать переносимый источник белка, энергию и растительный компонент без требования сделать каждый приём пищи идеальным.</li>
-            <li><strong>Адаптировать еду при симптомах.</strong> Уменьшить объём, изменить текстуру, температуру или жирность и понимать, когда нужен врач.</li>
-            <li><strong>Сократить количество решений.</strong> Пользоваться базовым списком продуктов, недельной закупкой, заменами и двумя сценариями заготовки.</li>
-            <li><strong>Сохранить гибкость.</strong> Применять систему дома, на работе, в ресторане и поездке без оценки дня как «правильного» или «сорванного».</li>
-            <li><strong>Собрать личное меню.</strong> Выбрать повторяемые блюда и план действий на случай изменения аппетита, дозы или терапии.</li>
+            <li><strong>Организовать питание без опоры только на голод.</strong> Не ждать выраженного аппетита, если из-за терапии он появляется редко.<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>Материал</strong><span>Неделя 1: «Нет голода — не значит, что телу ничего не нужно».</span></div><div><strong>Меню</strong><span>Готовый план на семь дней, доступный до начала недели.</span></div><div><strong>Практика</strong><span>Три простые конструкции еды и 3–5 переносимых источников белка.</span></div></div></details></li>
+            <li><strong>Собрать небольшую полноценную порцию.</strong> Выбрать переносимый источник белка, энергию и растительный компонент без требования сделать каждый приём пищи идеальным.<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>Схема</strong><span>«Белок первым»: сначала белковая основа, затем остальные компоненты.</span></div><div><strong>Интерактив</strong><span>«Собери белок на день» с личной целью после утверждения алгоритма.</span></div><div><strong>Замены</strong><span>Матрица продуктов внутри одной функции блюда.</span></div><div><strong>Рецепты</strong><span>Теги объёма, текстуры и источника белка.</span></div></div></details></li>
+            <li><strong>Адаптировать еду при симптомах.</strong> Уменьшить объём, изменить текстуру, температуру или жирность и понимать, когда нужен врач.<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>Материал</strong><span>Подкаст о тошноте и раннем насыщении.</span></div><div><strong>Личный план</strong><span>Сценарии A / B / C для обычного дня, низкого аппетита и дискомфорта.</span></div><div><strong>Подсказки</strong><span>Изменение объёма, текстуры, температуры и жирности блюда.</span></div><div><strong>Безопасность</strong><span>Карточка симптомов и явная граница обращения к врачу.</span></div></div></details></li>
+            <li><strong>Сократить количество решений.</strong> Пользоваться базовым списком продуктов, недельной закупкой, заменами и двумя сценариями заготовки.<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>План</strong><span>Шесть готовых недельных меню.</span></div><div><strong>Закупка</strong><span>Базовый список продуктов и отдельный список на каждую неделю.</span></div><div><strong>Замены</strong><span>Смена одного блюда без пересборки всего рациона.</span></div><div><strong>Заготовка</strong><span>Около 45 минут один раз или около 10 минут в день.</span></div></div></details></li>
+            <li><strong>Сохранить гибкость.</strong> Применять систему дома, на работе, в ресторане и поездке без оценки дня как «правильного» или «сорванного».<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>Практика</strong><span>Неделя 5: заранее выбрать решения для работы, доставки, ресторана и дороги.</span></div><div><strong>Меню</strong><span>Гибрид домашней еды и готовых решений.</span></div><div><strong>Шпаргалка</strong><span>Список готовых продуктов и варианты сборки без готовки.</span></div></div></details></li>
+            <li><strong>Собрать личное меню.</strong> Выбрать повторяемые блюда и план действий на случай изменения аппетита, дозы или терапии.<details class="outcome-detail"><summary>За счёт каких инструментов курса</summary><div class="outcome-tools"><div><strong>Библиотека</strong><span>24 проверенных рецепта, накопленных за шесть недель.</span></div><div><strong>Практика</strong><span>Выбор 12 повторяемых личных блюд.</span></div><div><strong>Конструктор</strong><span>Пустой шаблон личного меню, два сценария закупки и подготовки.</span></div><div><strong>План</strong><span>Действия при изменении аппетита или терапии с медицинской границей.</span></div></div></details></li>
           </ol>
         </section>
 
