@@ -481,6 +481,7 @@
     function tabMacros(day){const n=dayNutrition(day);return `<div class="day-macros"><b>${n.kcal} ккал</b><em><i>Б ${n.p} г</i><i>Ж ${n.f} г</i><i>У ${n.c} г</i></em></div>`;}
     function totalMacros(day){const n=dayNutrition(day);return `<div class="day-total-macros"><span><b>${n.kcal}</b><small>ккал</small></span><span><b>${n.p}</b><small>белки, г</small></span><span><b>${n.f}</b><small>жиры, г</small></span><span><b>${n.c}</b><small>углеводы, г</small></span></div>`;}
     function renderWeek(){weekRail.innerHTML=week.map((day,i)=>`<button class="day-tab" id="dayTab${i}" role="tab" tabindex="${state.day===i?'0':'-1'}" aria-selected="${state.day===i}" aria-controls="dayView" data-day="${i}"><strong>${day.short}</strong><small>${daySummary(day)}</small><span>${day.tag}</span>${state.showMacros?tabMacros(day):''}</button>`).join('');dayView.setAttribute('role','tabpanel');dayView.setAttribute('tabindex','0');dayView.setAttribute('aria-labelledby',`dayTab${state.day}`);}
+    function updateWeekSelection(){weekRail.querySelectorAll('[data-day]').forEach((button,index)=>{const selected=index===state.day;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;});dayView.setAttribute('aria-labelledby',`dayTab${state.day}`);}
     function alternatives(slot,currentId){const type=slot===0?'breakfast':slot===2?'snack':'main';return Object.values(recipes).filter(r=>r.type.includes(type)&&r.id!==currentId).slice(0,3);}
     function renderDay(){
       const day=week[state.day];
@@ -488,7 +489,7 @@
       document.getElementById('dayLogic').textContent=day.logic;
       document.getElementById('prepList').innerHTML=day.prep.map((x,i)=>`<li><strong>${i+1}</strong><span>${x}</span></li>`).join('');
     }
-    function selectDay(index,restoreFocus=false){state.day=index;state.swap=null;renderWeek();renderDay();if(restoreFocus)document.querySelector(`[data-day="${index}"]`)?.focus();}
+    function selectDay(index,restoreFocus=false){state.day=index;state.swap=null;updateWeekSelection();renderDay();if(restoreFocus)document.querySelector(`[data-day="${index}"]`)?.focus({preventScroll:true});}
     function mealCard(id,slot){const r=recipes[id],add=energyProfiles[state.level].adds[slot];const open=state.swap===slot;return `<article class="meal-card"><button class="meal-image" data-recipe="${id}" data-slot="${slot}" aria-label="Открыть рецепт: ${r.title}"><img src="${r.image}" alt="${r.title}"></button><div class="meal-copy"><div><div class="meal-type">${mealLabels[slot]} · ${r.time}</div><h3>${r.title}</h3><p>${r.note}</p><div class="protein">Белковая основа: ${r.protein}</div><div class="meal-level"><strong>На уровне ${energyProfiles[state.level].label}:</strong> ${add.title} · ${add.detail} · +${add.kcal} ккал</div></div><div class="meal-actions"><button class="button secondary small" data-recipe="${id}" data-slot="${slot}">Рецепт</button><button class="button small" data-open-swap="${slot}" aria-expanded="${open}">Заменить</button></div></div>${open?swapPanel(slot,id):''}</article>`;}
     function swapPanel(slot,id){return `<div class="swap-panel"><div class="swap-head"><strong>Другие варианты для «${mealLabels[slot].toLowerCase()}»</strong><button class="close-inline" data-close-swap>Закрыть</button></div><div class="swap-options">${alternatives(slot,id).map(r=>`<button class="swap-option" data-choose-swap="${r.id}" data-slot="${slot}"><img src="${r.image}" alt=""><span><strong>${r.title}</strong><small>${r.time} · ${r.protein}</small></span></button>`).join('')}</div></div>`;}
     function renderLibrary(){
@@ -503,7 +504,7 @@
     function updateAll(){renderLevel();renderWeek();renderDay();renderLibrary();renderShopping();}
     document.addEventListener('click',e=>{
       const level=e.target.closest('[data-level]');if(level){state.level=level.dataset.level;updateAll();document.querySelector(`[data-level="${state.level}"]`)?.focus();notify(`Показан уровень ${energyProfiles[state.level].label} ккал`);return;}
-      const day=e.target.closest('[data-day]');if(day){const index=Number(day.dataset.day);selectDay(index,true);document.querySelector('.day-heading').scrollIntoView({behavior:'smooth',block:'start'});return;}
+      const day=e.target.closest('[data-day]');if(day){const index=Number(day.dataset.day);selectDay(index,true);return;}
       const openSwap=e.target.closest('[data-open-swap]');if(openSwap){const slot=Number(openSwap.dataset.openSwap);state.swap=state.swap===slot?null:slot;renderDay();document.querySelector(`[data-open-swap="${slot}"]`)?.focus();return;}
       if(e.target.closest('[data-close-swap]')){const slot=state.swap;state.swap=null;renderDay();document.querySelector(`[data-open-swap="${slot}"]`)?.focus();return;}
       const choose=e.target.closest('[data-choose-swap]');if(choose){const slot=Number(choose.dataset.slot);week[state.day].meals[slot]=choose.dataset.chooseSwap;state.swap=null;updateAll();document.querySelector(`[data-open-swap="${slot}"]`)?.focus();notify('Блюдо заменено, покупки обновлены');return;}
