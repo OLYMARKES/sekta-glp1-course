@@ -1344,5 +1344,19 @@
       });
     }
   </script>
+<script>
+    (()=>{
+      const alignActiveWorkspaceLink=()=>{
+        const nav=document.querySelector('.workspace-links');
+        const active=nav?.querySelector('[aria-current="page"]');
+        if(!nav||!active||nav.scrollWidth<=nav.clientWidth)return;
+        const target=active.offsetLeft-(nav.clientWidth-active.offsetWidth)/2;
+        nav.scrollLeft=Math.max(0,Math.min(target,nav.scrollWidth-nav.clientWidth));
+      };
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',alignActiveWorkspaceLink,{once:true});
+      else alignActiveWorkspaceLink();
+      window.addEventListener('resize',alignActiveWorkspaceLink,{passive:true});
+    })();
+  </script>
 </body>
 </html>

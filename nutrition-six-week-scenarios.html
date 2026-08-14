@@ -113,5 +113,19 @@
     function render(key){const item=options[key];tabs.forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.option===key)));panel.setAttribute('aria-labelledby','tab-'+key);panel.innerHTML=`<header class="scenario-head"><div><p class="eyebrow">Сценарий ${key.toUpperCase()}</p><h2>${item.title}</h2><p>${item.intro}</p></div><div class="choice${item.recommended?'':' alt'}">${item.recommended?'Рекомендуемый каркас':'Альтернативная логика'}</div></header><div class="weeks">${item.weeks.map(week=>`<section class="week"><div class="week-index">НЕДЕЛЯ</div><div><h3>${week[0]}</h3><p>${week[1]}</p><div class="assets">${week[2]}</div></div></section>`).join('')}</div><footer class="tradeoff"><div><strong>Что выигрываем</strong><p>${item.plus}</p></div><div><strong>Что проверить</strong><p>${item.risk}</p></div></footer>`}
     tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>render(tab.dataset.option));tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();let next=index;if(event.key==='ArrowLeft')next=(index-1+tabs.length)%tabs.length;if(event.key==='ArrowRight')next=(index+1)%tabs.length;if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;tabs[next].focus();render(tabs[next].dataset.option)})});render('a');
   </script>
+<script>
+    (()=>{
+      const alignActiveWorkspaceLink=()=>{
+        const nav=document.querySelector('.workspace-links');
+        const active=nav?.querySelector('[aria-current="page"]');
+        if(!nav||!active||nav.scrollWidth<=nav.clientWidth)return;
+        const target=active.offsetLeft-(nav.clientWidth-active.offsetWidth)/2;
+        nav.scrollLeft=Math.max(0,Math.min(target,nav.scrollWidth-nav.clientWidth));
+      };
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',alignActiveWorkspaceLink,{once:true});
+      else alignActiveWorkspaceLink();
+      window.addEventListener('resize',alignActiveWorkspaceLink,{passive:true});
+    })();
+  </script>
 </body>
 </html>
