@@ -184,6 +184,21 @@
     .prep-box h2 { font-family: var(--serif); }
     .prep-box ol { margin: 20px 0 0; padding-left: 22px; }
     .prep-box li { margin-bottom: 13px; padding-left: 6px; }
+    .revision-section { padding: 70px 0; border-top: 1px solid var(--line); background: var(--surface); }
+    .revision-intro { max-width: 72ch; margin: 12px 0 0; color: var(--muted); }
+    .revision-summary { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .revision-summary span { padding: 7px 10px; border-radius: 8px; background: var(--green-soft); color: var(--green-dark); font-size: 12px; font-weight: 800; }
+    .revision-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 38px; }
+    .revision-group + .revision-group { padding-left: 32px; border-left: 1px solid var(--line); }
+    .revision-group h3 { margin-bottom: 16px; font-family: var(--serif); font-size: 24px; line-height: 1.15; }
+    .revision-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .revision-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 13px 0; border-top: 1px solid var(--line); }
+    .revision-item:last-child { border-bottom: 1px solid var(--line); }
+    .revision-status { align-self: start; min-width: 62px; padding: 4px 7px; border-radius: 6px; background: var(--green-soft); color: var(--green-dark); font-size: 10px; font-weight: 850; line-height: 1.2; text-align: center; text-transform: uppercase; letter-spacing: .03em; }
+    .revision-status.decision { background: var(--peach); color: #704127; }
+    .revision-status.expert { background: #edf0ee; color: #46534d; }
+    .revision-item p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .revision-item strong { color: var(--ink); }
     .page-note { padding: 28px 0 86px; color: var(--muted); font-size: 13px; }
     dialog { width: min(720px, calc(100% - 32px)); max-height: min(840px, calc(100vh - 32px)); padding: 0; border: 0; border-radius: 16px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 70px rgba(18, 34, 28, .24); }
     dialog::backdrop { background: rgba(14, 29, 24, .62); backdrop-filter: blur(3px); }
@@ -252,6 +267,8 @@
       .aside-block + .aside-block { margin: 0; }
       .library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .shop-layout { grid-template-columns: 1fr; }
+      .revision-groups { grid-template-columns: 1fr; gap: 28px; }
+      .revision-group + .revision-group { padding: 28px 0 0; border-top: 1px solid var(--line); border-left: 0; }
     }
     @media (max-width: 720px) {
       .shell { width: min(100% - 28px, 1240px); }
@@ -341,7 +358,7 @@
       <div class="brand">Sekta · питание <small>GLP‑1 — курс на устойчивость · v4 preview</small></div>
       <div class="page-actions">
         <nav class="topnav" aria-label="Разделы питания">
-          <a href="#week" class="active">Неделя</a><a href="#recipes">15 рецептов</a><a href="#shopping">Покупки</a>
+          <a href="#week" class="active">Неделя</a><a href="#recipes">15 рецептов</a><a href="#shopping">Покупки</a><a href="#revisionPlan">Правки</a>
         </nav>
         <button class="review-trigger" id="reviewTrigger" type="button">Ревью страницы <span class="review-count" id="reviewCount" aria-label="Открытые комментарии">—</span></button>
       </div>
@@ -417,7 +434,50 @@
         </aside>
       </div>
     </section>
-    <div class="shell page-note">Preview для review. Калории не являются личной нормой. Ингредиенты, веса, КБЖУ, хранение и медицинские формулировки должны быть проверены врачом и нутрициологом до публикации для участников.</div>
+    <section class="revision-section" id="revisionPlan" aria-labelledby="revisionTitle">
+      <div class="shell">
+        <div class="section-head">
+          <div><h2 class="section-title" id="revisionTitle">Что ещё нужно сделать перед публикацией</h2><p class="revision-intro">Рабочий реестр комментариев Ксении прямо в интерфейсе. Выполненное уже отражено в меню; пункты со статусами «Решение» и «Эксперт» остаются открытыми.</p></div>
+        </div>
+        <div class="revision-summary" aria-label="Сводка статусов"><span>7 сделано</span><span>6 продуктовых решений</span><span>5 экспертных проверок</span></div>
+        <div class="revision-groups">
+          <section class="revision-group" aria-labelledby="doneTitle">
+            <h3 id="doneTitle">Исправлено в этой версии</h3>
+            <ul class="revision-list">
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>Убрана отдельная добавка 40 г крупы</strong> из варианта ≈1500 ккал; гарнир уже входит в основное блюдо.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>«Куриный суп с лапшой»</strong> переименован без медицинализирующего слова «мягкий»; шаг с морковью получил точное время.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>Фрикадельки синхронизированы с фотографией:</strong> в рецепте теперь четыре штуки, как на изображении.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>15 уникальных рецептов и 15 разных фотографий:</strong> пять завтраков, пять основных блюд и пять перекусов.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>Замена блюда объяснена и работает</strong> для каждого приёма пищи; покупки пересчитываются после замены.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>Пищевая ценность раскрывается у блюда,</strong> а не занимает шапку страницы в основном варианте.</p></li>
+              <li class="revision-item"><span class="revision-status">Сделано</span><p><strong>Повторы объяснены через экономию времени:</strong> ужин готовится на две порции, вторая становится обедом.</p></li>
+            </ul>
+          </section>
+          <section class="revision-group" aria-labelledby="decisionTitle">
+            <h3 id="decisionTitle">Нужно продуктово решить</h3>
+            <ul class="revision-list">
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Архитектура:</strong> оставить неделю, рецепты и покупки одной страницей или разнести по трём экранам.</p></li>
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Калории:</strong> выбрать вариант A «В рецепте» или B «Ориентир дня» и удалить review-переключатель из версии для участников.</p></li>
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Персонализация:</strong> определить поля анкеты — рост, вес, возраст, активность и цель.</p></li>
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Белок и порции:</strong> утвердить формулу по весу и правила пересчёта всего меню.</p></li>
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Точечная замена:</strong> добавить отдельное действие «оставить белковую основу, заменить гарнир или овощи».</p></li>
+              <li class="revision-item"><span class="revision-status decision">Решение</span><p><strong>Иерархия действий:</strong> решить, должна ли «Пищевая ценность» стоять выше «Заменить блюдо».</p></li>
+            </ul>
+          </section>
+          <section class="revision-group" aria-labelledby="expertTitle">
+            <h3 id="expertTitle">Нужна проверка специалиста</h3>
+            <ul class="revision-list">
+              <li class="revision-item"><span class="revision-status expert">Эксперт</span><p><strong>Калории, КБЖУ и белковые ориентиры</strong> во всех рецептах и дневных примерах.</p></li>
+              <li class="revision-item"><span class="revision-status expert">Эксперт</span><p><strong>Сухой и готовый вес продуктов</strong> во всех 15 рецептах; сейчас единый стандарт ещё не проведён везде.</p></li>
+              <li class="revision-item"><span class="revision-status expert">Эксперт</span><p><strong>Технологические процессы:</strong> вода, температура, время и признаки готовности каждого блюда.</p></li>
+              <li class="revision-item"><span class="revision-status expert">Эксперт</span><p><strong>Хранение и безопасность:</strong> сроки охлаждения, холодильника, заморозки и повторного разогрева.</p></li>
+              <li class="revision-item"><span class="revision-status expert">Эксперт</span><p><strong>Формулировки для симптомов и переносимости</strong> — без медицинализации и непроверенных обещаний.</p></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+    <div class="shell page-note">Preview для review. Открытые продуктовые и экспертные задачи перечислены в разделе «Правки». До их закрытия эта версия не предназначена для публикации участникам.</div>
   </main>
 
   <dialog id="recipeDialog" aria-labelledby="dialogTitle">
@@ -444,9 +504,9 @@
       omelet:{id:'omelet',type:'breakfast',title:'Омлет с творогом и томатами',image:A+'2026-08-13_glp1_dish_omelet_v1.png',protein:'яйца и творог',time:'12 минут',nutrition:{kcal:313,p:25,f:14,c:24},intro:'Омлет с творогом, свежими томатами и хлебом.',note:'Творог добавляется внутрь омлета, томаты подаются рядом.',low:'Начните с половины омлета; хлеб и томаты можно перенести на следующий небольшой приём.',store:'Лучше готовить перед едой; готовый омлет хранить не более 24 часов.',portion:['2 шт. яиц (100 г без скорлупы)','50 г творога 2%','100 г томатов черри','35 г цельнозернового хлеба','2 г оливкового масла','щепотка соли'],method:['Разомните творог вилкой, яйца взбейте с солью.','Смажьте сковороду маслом, влейте яйца и готовьте 3–4 минуты на слабом огне.','Добавьте творог, сложите омлет и готовьте под крышкой ещё 2 минуты.','Подайте с томатами и подсушенным хлебом.'],ingredients:{protein:['яйца','творог 2%'],produce:['томаты черри'],pantry:['цельнозерновой хлеб','оливковое масло']}},
       yogurt:{id:'yogurt',type:'breakfast',title:'Греческий йогурт с овсянкой и ягодами',image:A+'2026-08-13_glp1_dish_yogurt_oats_v1.png',protein:'греческий йогурт',time:'5 минут + 10 минут',nutrition:{kcal:259,p:20,f:7,c:32},intro:'Йогурт с заранее размоченными хлопьями и ягодами.',note:'Можно собрать вечером и взять с собой утром.',low:'Уменьшите хлопья до 15 г и начните с йогурта; ягоды можно заменить пюре.',store:'Собранную порцию хранить до 24 часов в холодильнике.',portion:['170 г греческого йогурта 2%','25 г овсяных хлопьев','50 г ягод','3 г семян чиа'],method:['Смешайте йогурт, хлопья и чиа.','Оставьте минимум на 10 минут или на ночь в холодильнике.','Добавьте ягоды перед подачей.'],ingredients:{protein:['греческий йогурт 2%'],produce:['ягоды'],pantry:['овсяные хлопья','семена чиа']}},
       cottage:{id:'cottage',type:'breakfast',title:'Творог с запечённой грушей и орехами',image:A+'2026-08-13_glp1_dish_cottage_pear_v1.png',protein:'творог',time:'20 минут',nutrition:{kcal:264,p:29,f:8,c:24},intro:'Творог, тёплая запечённая груша и немного орехов.',note:'Грушу можно запечь сразу на два завтрака.',low:'Начните с творога и нескольких ломтиков груши; орехи можно убрать.',store:'Грушу хранить до 2 дней, творог добавлять перед едой.',portion:['150 г творога 2%','100 г груши','8 г грецких орехов','корица по желанию'],method:['Разрежьте грушу и запекайте 15 минут при 190 °C.','Выложите творог в миску.','Добавьте тёплую грушу и мелко нарубленные орехи.'],ingredients:{protein:['творог 2%'],produce:['груши'],pantry:['грецкие орехи']}},
-      turkey:{id:'turkey',type:'main',title:'Фрикадельки из индейки с гречкой и овощами',image:A+'2026-08-14_glp1_dish_turkey_buckwheat_vegetables_v2.png',protein:'индейка, яйцо и йогуртовый соус',time:'35 минут',nutrition:{kcal:465,p:39,f:14,c:47},intro:'Фрикадельки с морковью внутри, гречкой, сочными овощами и йогуртовым соусом.',note:'Морковь входит в фарш; рядом — кабачок и томаты, чтобы блюдо не было сухим.',low:'Начните с 2 фрикаделек и овощей; гречку можно перенести на следующий приём.',store:'Фрикадельки и гречку хранить до 2 дней в холодильнике; овощи и соус — отдельно.',portion:['130 г фарша индейки (сырой вес)','50 г мелко натёртой моркови','20 г яйца','45 г гречки (сухой вес; выход около 130 г)','100 г кабачка','100 г томатов черри','30 г натурального йогурта 2%','5 г оливкового масла','110 мл воды','соль и укроп'],method:['Промойте 45 г гречки, залейте 90 мл воды, доведите до кипения и варите под крышкой 15 минут на слабом огне; снимите и оставьте на 5 минут.','Смешайте фарш, морковь, яйцо, половину укропа и соль; сформируйте 3 небольшие фрикадельки.','Запекайте фрикадельки 18–20 минут при 190 °C до полной готовности.','Нарежьте кабачок, прогрейте на масле 2 минуты, добавьте томаты и 20 мл воды; накройте и готовьте 6–8 минут.','Смешайте йогурт с оставшимся укропом и подайте отдельно.'],ingredients:{protein:['фарш индейки','яйца','натуральный йогурт 2%'],produce:['морковь','кабачок','томаты черри','укроп'],pantry:['гречка','оливковое масло']}},
+      turkey:{id:'turkey',type:'main',title:'Фрикадельки из индейки с гречкой и овощами',image:A+'2026-08-14_glp1_dish_turkey_buckwheat_vegetables_v2.png',protein:'индейка, яйцо и йогуртовый соус',time:'35 минут',nutrition:{kcal:465,p:39,f:14,c:47},intro:'Фрикадельки с морковью внутри, гречкой, сочными овощами и йогуртовым соусом.',note:'Морковь входит в фарш; рядом — кабачок и томаты, чтобы блюдо не было сухим.',low:'Начните с 2 фрикаделек и овощей; гречку можно перенести на следующий приём.',store:'Фрикадельки и гречку хранить до 2 дней в холодильнике; овощи и соус — отдельно.',portion:['130 г фарша индейки (сырой вес)','50 г мелко натёртой моркови','20 г яйца','45 г гречки (сухой вес; выход около 130 г)','100 г кабачка','100 г томатов черри','30 г натурального йогурта 2%','5 г оливкового масла','110 мл воды','соль и укроп'],method:['Промойте 45 г гречки, залейте 90 мл воды, доведите до кипения и варите под крышкой 15 минут на слабом огне; снимите и оставьте на 5 минут.','Смешайте фарш, морковь, яйцо, половину укропа и соль; сформируйте 4 небольшие фрикадельки.','Запекайте фрикадельки 18–20 минут при 190 °C до полной готовности.','Нарежьте кабачок, прогрейте на масле 2 минуты, добавьте томаты и 20 мл воды; накройте и готовьте 6–8 минут.','Смешайте йогурт с оставшимся укропом и подайте отдельно.'],ingredients:{protein:['фарш индейки','яйца','натуральный йогурт 2%'],produce:['морковь','кабачок','томаты черри','укроп'],pantry:['гречка','оливковое масло']}},
       whiteFish:{id:'whiteFish',type:'main',title:'Белая рыба с рисом и стручковой фасолью',image:A+'2026-08-13_glp1_dish_white_fish_rice_v1.png',protein:'белая рыба',time:'25 минут',nutrition:{kcal:390,p:34,f:8,c:46},intro:'Нейтральное основное блюдо с мягким гарниром.',note:'Вес рыбы указан до приготовления, риса — после.',low:'Сначала съешьте рыбу; рис и фасоль добавляйте по переносимости.',store:'Готовую рыбу хранить до 24 часов, рис — до 2 дней в холодильнике.',portion:['150 г филе трески или хека (сырой вес)','140 г готового белого риса','100 г стручковой фасоли','6 г оливкового масла','соль и лимон по переносимости'],method:['Смажьте рыбу половиной масла и запекайте 12–15 минут при 190 °C.','Отварите рис и отдельно приготовьте фасоль до мягкости.','Добавьте оставшееся масло к гарниру и подайте вместе.'],ingredients:{protein:['филе белой рыбы'],produce:['стручковая фасоль','лимон'],pantry:['белый рис','оливковое масло']}},
-      chickenSoup:{id:'chickenSoup',type:'main',title:'Куриный суп с мягкой лапшой',image:A+'2026-08-13_glp1_dish_chicken_noodle_soup_v1.png',protein:'куриное филе',time:'35 минут',nutrition:{kcal:370,p:31,f:9,c:38},intro:'Тёплый суп с привычным вкусом и мягкой текстурой.',note:'Одна порция — около 450 мл; хлеб уже включён в расчёт.',low:'Начните с небольшого объёма бульона, курицы и мягкой лапши.',store:'До 2 дней в холодильнике; повторно разогревать только одну порцию.',portion:['120 г куриного филе (сырой вес)','35 г мелкой лапши (сухой вес)','70 г моркови','30 г цельнозернового хлеба','4 г оливкового масла','500 мл воды, укроп и соль'],method:['Отварите курицу до готовности и разберите на небольшие волокна.','Добавьте мелко нарезанную морковь и варите до мягкости.','Добавьте лапшу, затем верните курицу.','Снимите с огня, добавьте масло и подайте с хлебом.'],ingredients:{protein:['куриное филе'],produce:['морковь','укроп'],pantry:['мелкая лапша','цельнозерновой хлеб','оливковое масло']}},
+      chickenSoup:{id:'chickenSoup',type:'main',title:'Куриный суп с лапшой',image:A+'2026-08-13_glp1_dish_chicken_noodle_soup_v1.png',protein:'куриное филе',time:'35 минут',nutrition:{kcal:370,p:31,f:9,c:38},intro:'Тёплый куриный суп с лапшой и морковью.',note:'Одна порция — около 450 мл; хлеб уже включён в расчёт.',low:'Начните с небольшого объёма бульона, курицы и лапши.',store:'До 2 дней в холодильнике; повторно разогревать только одну порцию.',portion:['120 г куриного филе (сырой вес)','35 г мелкой лапши (сухой вес)','70 г моркови','30 г цельнозернового хлеба','4 г оливкового масла','500 мл воды, укроп и соль'],method:['Отварите курицу до готовности и разберите на небольшие волокна.','Добавьте мелко нарезанную морковь и варите 8–10 минут.','Добавьте лапшу, затем верните курицу.','Снимите с огня, добавьте масло и подайте с хлебом.'],ingredients:{protein:['куриное филе'],produce:['морковь','укроп'],pantry:['мелкая лапша','цельнозерновой хлеб','оливковое масло']}},
       salmon:{id:'salmon',type:'main',title:'Лосось с картофелем и кабачком',image:A+'2026-08-13_glp1_dish_salmon_potato_v1.png',protein:'лосось',time:'25 минут',nutrition:{kcal:452,p:30,f:22,c:34},intro:'Основное блюдо из трёх знакомых компонентов.',note:'Порцию можно разделить на два небольших приёма.',low:'Начните с половины рыбы; картофель и кабачок оставьте на второй приём.',store:'До 24 часов в холодильнике; лучше не разогревать повторно.',portion:['120 г филе лосося (сырой вес)','170 г картофеля','150 г кабачка','5 г оливкового масла','соль и укроп'],method:['Запекайте лосось 12–15 минут при 190 °C.','Отварите картофель до мягкости.','Потушите кабачок на масле, не подрумянивая.','Подайте компоненты отдельно или разомните гарнир вилкой.'],ingredients:{protein:['филе лосося'],produce:['кабачок','укроп'],pantry:['картофель','оливковое масло']}},
       lentil:{id:'lentil',type:'main',title:'Крем-суп из красной чечевицы с йогуртом',image:A+'2026-08-13_glp1_dish_lentil_soup_v1.png',protein:'чечевица и йогурт',time:'30 минут',nutrition:{kcal:357,p:20,f:8,c:50},intro:'Однородный суп, который удобно готовить заранее.',note:'Хлеб и йогурт включены в одну порцию.',low:'Подавайте небольшую порцию комфортной температуры; хлеб можно перенести.',store:'До 3 дней в холодильнике или до месяца в морозилке без йогурта.',portion:['60 г красной чечевицы (сухой вес)','70 г моркови','50 г натурального йогурта 2%','20 г цельнозернового хлеба','4 г оливкового масла','400 мл воды и соль'],method:['Промойте чечевицу, добавьте морковь и воду.','Доведите до кипения и варите 20 минут на слабом огне.','Пробейте блендером и добавьте масло.','Подавайте с йогуртом и хлебом.'],ingredients:{protein:['красная чечевица','натуральный йогурт 2%'],produce:['морковь'],pantry:['цельнозерновой хлеб','оливковое масло']}},
       oatsApple:{id:'oatsApple',type:'breakfast',title:'Овсяная каша с яблоком и рикоттой',image:A+'2026-08-14_glp1_dish_oatmeal_apple_ricotta_v1.png',protein:'молоко и рикотта',time:'15 минут',nutrition:{kcal:338,p:17,f:10,c:47},intro:'Тёплая овсяная каша с яблоком и рикоттой.',note:'Рикотта добавляется после варки и делает завтрак более питательным.',low:'Начните с половины каши; яблоко можно натереть мелко.',store:'Готовую кашу хранить до 24 часов; рикотту добавлять после разогрева.',portion:['45 г овсяных хлопьев','150 мл молока 1,5%','100 мл воды','80 г яблока','60 г рикотты','корица по желанию'],method:['Смешайте хлопья, молоко и воду.','Варите 7–8 минут на слабом огне, помешивая.','Добавьте натёртое яблоко и готовьте ещё 2 минуты.','Снимите с огня и добавьте рикотту.'],ingredients:{protein:['молоко 1,5%','рикотта'],produce:['яблоки'],pantry:['овсяные хлопья']}},
@@ -475,15 +535,15 @@
       cottageCucumber:{protein:[['творог 2%',140,'г'],['натуральный йогурт 2%',30,'г']],produce:[['огурцы',100,'г']],pantry:[['цельнозерновые хлебцы',20,'г']]}
     };
     const energyShopping={
-      level1500:[{produce:[['бананы',60,'г']]},{pantry:[['крупа для гарнира, готовый вес',40,'г']]},{produce:[['ягоды',50,'г']]},{pantry:[['оливковое масло',2,'г']]}],
+      level1500:[{produce:[['бананы',60,'г']]},{},{produce:[['ягоды',50,'г']]},{pantry:[['оливковое масло',2,'г']]}],
       level1800:[{produce:[['бананы',120,'г']],pantry:[['ореховая паста',10,'г']]},{pantry:[['крупа для гарнира, готовый вес',80,'г'],['оливковое масло',5,'г']]},{produce:[['фрукты для перекуса',150,'г']]},{pantry:[['оливковое масло',6,'г']]}],
       level2100:[{pantry:[['цельнозерновой хлеб',35,'г'],['ореховая паста',15,'г']]},{pantry:[['крупа для гарнира, готовый вес',100,'г'],['оливковое масло',8,'г']]},{protein:[['греческий йогурт 2%',150,'г']],produce:[['фрукты для перекуса',100,'г']],pantry:[['грецкие орехи',8,'г']]},{pantry:[['картофель',150,'г'],['оливковое масло',6,'г']]}
       ]
     };
     const energyProfiles={
-      level1500:{id:'level1500',label:'≈1500 ккал',module:{kcal:144,p:2,f:3,c:27},adds:[
+      level1500:{id:'level1500',label:'≈1500 ккал',module:{kcal:96,p:1,f:2,c:17},adds:[
         {title:'½ банана',detail:'60 г к завтраку',kcal:53,shopping:{produce:['бананы']}},
-        {title:'Небольшая добавка гарнира',detail:'40 г готовой крупы к обеду',kcal:48,shopping:{pantry:['крупа для гарнира']}},
+        {title:'Гарнир уже включён',detail:'без отдельной добавки к обеду',kcal:0,shopping:{}},
         {title:'Ягоды',detail:'50 г к перекусу',kcal:25,shopping:{produce:['ягоды']}},
         {title:'Оливковое масло',detail:'2 г к ужину',kcal:18,shopping:{pantry:['оливковое масло']}}
       ]},
