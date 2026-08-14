@@ -199,6 +199,18 @@
     .revision-status.expert { background: #edf0ee; color: #46534d; }
     .revision-item p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
     .revision-item strong { color: var(--ink); }
+    .benchmark-review { scroll-margin-top: 78px; margin-top: 58px; padding-top: 38px; border-top: 1px solid var(--line); }
+    .benchmark-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
+    .benchmark-head h3 { scroll-margin-top: 88px; margin-bottom: 8px; font-family: var(--serif); font-size: 32px; line-height: 1.1; }
+    .benchmark-head p { max-width: 72ch; margin: 0; color: var(--muted); }
+    .benchmark-source { flex: 0 0 auto; display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--green-dark); border-radius: 10px; color: var(--green-dark); font-size: 12px; font-weight: 800; text-decoration: none; }
+    .benchmark-source:hover { background: var(--green-soft); }
+    .benchmark-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 30px; }
+    .benchmark-column + .benchmark-column { padding-left: 32px; border-left: 1px solid var(--line); }
+    .benchmark-column h4 { margin: 0 0 13px; font-size: 12px; line-height: 1.35; text-transform: uppercase; letter-spacing: .08em; }
+    .benchmark-column ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+    .benchmark-column li + li { margin-top: 9px; }
+    .benchmark-boundary { margin: 30px 0 0; padding: 16px 18px; border-radius: 12px; background: var(--green-soft); color: var(--green-dark); font-size: 13px; }
     .page-note { padding: 28px 0 86px; color: var(--muted); font-size: 13px; }
     dialog { width: min(720px, calc(100% - 32px)); max-height: min(840px, calc(100vh - 32px)); padding: 0; border: 0; border-radius: 16px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 70px rgba(18, 34, 28, .24); }
     dialog::backdrop { background: rgba(14, 29, 24, .62); backdrop-filter: blur(3px); }
@@ -269,6 +281,10 @@
       .shop-layout { grid-template-columns: 1fr; }
       .revision-groups { grid-template-columns: 1fr; gap: 28px; }
       .revision-group + .revision-group { padding: 28px 0 0; border-top: 1px solid var(--line); border-left: 0; }
+      .benchmark-head { display: block; }
+      .benchmark-source { margin-top: 18px; }
+      .benchmark-columns { grid-template-columns: 1fr; gap: 24px; }
+      .benchmark-column + .benchmark-column { padding: 24px 0 0; border-top: 1px solid var(--line); border-left: 0; }
     }
     @media (max-width: 720px) {
       .shell { width: min(100% - 28px, 1240px); }
@@ -455,7 +471,7 @@
         <div class="section-head">
           <div><h2 class="section-title" id="revisionTitle">Что ещё нужно сделать перед публикацией</h2><p class="revision-intro">Рабочий реестр комментариев Ксении прямо в интерфейсе. Выполненное уже отражено в меню; пункты со статусами «Решение» и «Эксперт» остаются открытыми.</p></div>
         </div>
-        <div class="revision-summary" aria-label="Сводка статусов"><span>7 сделано</span><span>6 продуктовых решений</span><span>5 экспертных проверок</span></div>
+        <div class="revision-summary" aria-label="Сводка статусов"><span>7 сделано</span><span>6 продуктовых решений</span><span>5 экспертных проверок</span><span>Benchmark обработан</span></div>
         <div class="revision-groups">
           <section class="revision-group" aria-labelledby="doneTitle">
             <h3 id="doneTitle">Исправлено в этой версии</h3>
@@ -491,9 +507,30 @@
             </ul>
           </section>
         </div>
+        <section class="benchmark-review" aria-labelledby="benchmarkTitle">
+          <div class="benchmark-head">
+            <div><h3 id="benchmarkTitle">Что добавил benchmark программ GLP‑1</h3><p>Сверили текущий курс с публично заявленными функциями Mayo Clinic Diet, WeightWatchers, Noom и Omada. Ниже — только продуктовые выводы: без переноса чужих медицинских обещаний и без автоматического назначения норм.</p></div>
+            <a class="benchmark-source" href="https://maleevamd.github.io/GLP_benchmark/" target="_blank" rel="noreferrer">Открыть benchmark</a>
+          </div>
+          <div class="benchmark-columns">
+            <section class="benchmark-column" aria-labelledby="benchmarkConfirmTitle">
+              <h4 id="benchmarkConfirmTitle">Подтверждает текущую логику</h4>
+              <ul><li>Неделя, рецепты, подготовка и покупки работают как единый набор инструментов.</li><li>Замена отдельного блюда — ожидаемая функция меню.</li><li>Заготовки и повтор приготовленного блюда экономят решения и время.</li><li>Порция, калории и белок должны описывать рецепт, а не оценивать человека.</li></ul>
+            </section>
+            <section class="benchmark-column" aria-labelledby="benchmarkBacklogTitle">
+              <h4 id="benchmarkBacklogTitle">Добавить в backlog питания</h4>
+              <ul><li>Проверяемый тег «Можно разделить на два приёма» и интервал только после экспертного согласования.</li><li>Тег «Подходит для заморозки» и инструкции для индивидуальных порций.</li><li>Единые теги формата: небольшой объём, суп, смуси, рагу, можно приготовить заранее.</li><li>Отдельно решить, где показывать клетчатку, гидратацию и питательную плотность.</li></ul>
+            </section>
+            <section class="benchmark-column" aria-labelledby="benchmarkCourseTitle">
+              <h4 id="benchmarkCourseTitle">Уровень всего курса</h4>
+              <ul><li>Трекинг препарата, дозы, места инъекции и побочных эффектов.</li><li>Связка питания, силовых тренировок и сохранения мышечной массы.</li><li>Живой специалист, кураторская поддержка и сообщество.</li><li>Маршрут после изменения терапии и при возвращении аппетита.</li></ul>
+            </section>
+          </div>
+          <p class="benchmark-boundary"><strong>Граница решения:</strong> наличие функции у другой программы не делает её автоматически подходящей для нашего курса. Формулы белка и калорий, интервалы между приёмами пищи, заморозка, клетчатка, гидратация и трекинг терапии проходят отдельное продуктовое и экспертное согласование.</p>
+        </section>
       </div>
     </section>
-    <div class="shell page-note">Preview для review. Открытые продуктовые и экспертные задачи перечислены в разделе «Правки». До их закрытия эта версия не предназначена для публикации участникам.</div>
+    <div class="shell page-note">Preview для review. Открытые продуктовые и экспертные задачи, включая выводы из benchmark программ GLP‑1, перечислены в разделе «Правки». До их закрытия эта версия не предназначена для публикации участникам.</div>
   </main>
 
   <dialog id="recipeDialog" aria-labelledby="dialogTitle">
