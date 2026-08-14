@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Исследовательское основание курса поддержки людей на терапии GLP-1: проблематика, задачи курса и библиотека научных материалов.">
+  <title>GLP‑1 — курс на устойчивость · Исследовательское основание</title>
+  <style>
+    :root {
+      --page: #f6f7f9;
+      --surface: #ffffff;
+      --surface-subtle: #f7f8fa;
+      --ink: #172033;
+      --ink-soft: #4d576b;
+      --muted: #687184;
+      --line: #e3e7ed;
+      --line-strong: #ced5df;
+      --accent: #315fcb;
+      --accent-hover: #244b9a;
+      --accent-soft: #f1f5fd;
+      --accent-line: #d7e2f7;
+      --success: #287a55;
+      --success-soft: #edf8f2;
+      --warning: #8a5a18;
+      --warning-soft: #fff8ec;
+      --warning-line: #ead5ae;
+      --danger: #8b3f46;
+      --danger-soft: #fff2f2;
+      --danger-line: #efd4d7;
+      --radius: 12px;
+      --topbar: 58px;
+      --weekbar: 68px;
+      --sidebar-width: 260px;
+      --lesson-width: 760px;
+      --measure: 70ch;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font: 16px/1.68 var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent-hover); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid rgba(49, 95, 203, .24); outline-offset: 3px; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 50;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      align-items: center;
+      height: var(--topbar);
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      padding: 0 24px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--muted); font-weight: 400; }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      width: min(calc(100% - 32px), var(--lesson-width));
+      margin-left: clamp(16px, calc((100vw - var(--sidebar-width) - var(--lesson-width)) / 2), 180px);
+    }
+    .control {
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .control:hover { border-color: var(--line-strong); background: var(--surface-subtle); }
+    .control[aria-pressed="true"] { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+
+    .week-nav {
+      position: sticky;
+      top: var(--topbar);
+      z-index: 20;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 2px;
+      height: var(--weekbar);
+      padding: 6px 16px;
+      overflow-x: auto;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: none;
+    }
+    .week-nav::-webkit-scrollbar { display: none; }
+    .week-nav a {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 155px;
+      padding: 0 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .week-nav a::before { color: var(--muted); font-size: 11px; font-weight: 400; }
+    .week-nav a:nth-child(1)::before { content: "01"; }
+    .week-nav a:nth-child(2)::before { content: "02"; }
+    .week-nav a:nth-child(3)::before { content: "03"; }
+    .week-nav a:nth-child(4)::before { content: "04"; }
+    .week-nav a:nth-child(5)::before { content: "05"; }
+    .week-nav a:nth-child(6)::before { content: "06"; }
+    .week-nav a:hover { color: var(--ink); background: var(--surface-subtle); }
+    .week-nav a.active { color: var(--ink); background: var(--accent-soft); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      min-height: calc(100vh - var(--topbar) - var(--weekbar));
+    }
+
+    .side-nav {
+      position: sticky;
+      top: calc(var(--topbar) + var(--weekbar));
+      align-self: start;
+      height: calc(100vh - var(--topbar) - var(--weekbar));
+      padding: 24px 16px 112px;
+      overflow-y: auto;
+      background: #f8f9fb;
+      border-right: 1px solid var(--line);
+      counter-reset: nav;
+    }
+    .side-nav p {
+      margin: 4px 12px 18px;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .side-nav a {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 2px 0;
+      padding: 10px 12px;
+      border-radius: 9px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      text-decoration: none;
+      counter-increment: nav;
+    }
+    .side-nav a::before {
+      content: counter(nav, decimal-leading-zero);
+      color: var(--muted);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .side-nav a:hover { color: var(--ink); background: #eef1f5; }
+    .side-nav a.active { color: var(--ink); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent-line); }
+
+    main {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      background: var(--surface);
+    }
+
+    main > header {
+      width: min(calc(100% - 32px), var(--lesson-width));
+      margin-left: clamp(16px, calc((100vw - var(--sidebar-width) - var(--lesson-width)) / 2), 180px);
+      padding: 64px 0 40px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    h1, h2, h3 { letter-spacing: -.02em; }
+    h1 { max-width: 22ch; margin: 0; font-size: clamp(30px, 3vw, 41px); line-height: 1.12; }
+    h2 { max-width: 30ch; margin: 0 0 18px; font-size: clamp(21px, 2vw, 27px); line-height: 1.28; }
+    h3 { margin: 28px 0 10px; font-size: 18px; line-height: 1.35; font-weight: 700; }
+    p { margin: 0 0 18px; }
+    .lede { max-width: 62ch; margin: 18px 0 0; color: var(--ink-soft); font-size: 17px; line-height: 1.62; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 24px; color: var(--muted); font-size: 13px; }
+    .meta span + span::before { content: "·"; margin-right: 22px; color: var(--line-strong); }
+
+    main > section, main > footer {
+      width: min(calc(100% - 32px), var(--lesson-width));
+      margin-left: clamp(16px, calc((100vw - var(--sidebar-width) - var(--lesson-width)) / 2), 180px);
+    }
+    section { scroll-margin-top: calc(var(--topbar) + var(--weekbar) + 20px); padding: 48px 0; border-top: 1px solid var(--line); }
+    section > p:not(.eyebrow):not(.detail), section > .detail { max-width: var(--measure); color: var(--ink-soft); }
+
+    .thesis {
+      margin: 34px 0 0;
+      padding: 22px 24px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.68;
+    }
+    .thesis small { display: block; margin-bottom: 8px; color: var(--accent-hover); font-size: 14px; font-weight: 700; }
+
+    .equation {
+      margin: 30px 0 8px;
+      border-top: 1px solid var(--line);
+    }
+    .equation article { display: grid; grid-template-columns: 160px 1fr; gap: 0 18px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .equation b { font-size: 14px; line-height: 1.5; }
+    .equation span { color: var(--muted); font-size: 15px; line-height: 1.58; }
+
+    .problem-list { margin-top: 28px; counter-reset: problem; border-top: 1px solid var(--line); }
+    .problem {
+      position: relative;
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      column-gap: 12px;
+      align-items: start;
+      padding: 26px 0;
+      counter-increment: problem;
+      border-bottom: 1px solid var(--line);
+    }
+    .problem::before {
+      content: counter(problem, decimal-leading-zero);
+      grid-column: 1;
+      grid-row: 1 / span 6;
+      color: var(--accent);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .problem h3 { grid-column: 2; margin: -4px 0 10px; color: var(--accent-hover); font-size: 18px; }
+    .problem > p { grid-column: 2; }
+    .evidence { color: var(--ink-soft); }
+    .implication { margin: 4px 0 0; padding: 14px 16px; border: 1px solid var(--accent-line); border-radius: 9px; background: var(--accent-soft); color: var(--ink-soft); font-size: 14px; }
+    .implication strong { color: var(--accent-hover); }
+
+    .source-link {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: .72em;
+      font-weight: 700;
+      vertical-align: super;
+      text-decoration: none;
+    }
+
+    .objective {
+      margin: 30px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+    .objective p:last-child { margin-bottom: 0; }
+    .objective .label { color: var(--accent-hover); font-size: 13px; font-weight: 700; }
+    .objective .statement { max-width: 46ch; margin: 8px 0 14px; font-size: 18px; line-height: 1.55; font-weight: 650; }
+
+    .jobs { margin: 28px 0 0; padding: 0; list-style: none; }
+    .jobs li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .jobs li:first-child { border-top: 1px solid var(--line); }
+    .jobs b { color: var(--accent); }
+    .jobs span { color: var(--ink-soft); }
+
+    .journey { margin-top: 30px; }
+    .chapter { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 24px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .chapter:last-child { border-bottom: 1px solid var(--line); }
+    .chapter-label { color: var(--accent); font-size: 13px; font-weight: 650; }
+    .chapter h3 { margin: 0 0 5px; font-size: 16px; }
+    .chapter p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .certainty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 28px; }
+    .certainty article { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .certainty .known { border-color: #cfe7da; background: var(--success-soft); }
+    .certainty .likely { border-color: var(--warning-line); background: var(--warning-soft); }
+    .certainty .unknown { background: var(--surface-subtle); }
+    .certainty h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: -.01em; }
+    .certainty p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .reading-lead {
+      margin: 32px 0 38px;
+      padding: 24px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+    .reading-lead .tag, .reading .tag {
+      display: inline-block;
+      margin-bottom: 13px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--accent-hover);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .reading-lead h3 { margin: 0 0 10px; font-size: 20px; }
+    .reading-lead p { color: var(--ink-soft); }
+    .reading-lead a.button-link, .reading a.button-link {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 9px 13px;
+      border: 1px solid currentColor;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .reading-list { border-top: 1px solid var(--line); }
+    .reading { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .reading > .tag { justify-self: start; }
+    .reading .tag { color: var(--accent); background: var(--accent-soft); }
+    .reading h3 { margin: 0 0 8px; font-size: 18px; }
+    .reading p { color: var(--muted); font-size: 15px; }
+    .reading .meta-line { margin-top: 11px; color: #7d857e; font-size: 12px; }
+
+    details { margin: 16px 0 0; border-top: 1px solid var(--accent-line); }
+    summary { padding: 12px 0 0; color: var(--accent); font-size: 14px; font-weight: 700; cursor: pointer; }
+    details p { margin: 12px 0 0; font-size: 14px; }
+
+    .boundary { padding: 22px 24px; border: 1px solid var(--danger-line); border-radius: var(--radius); background: var(--danger-soft); color: var(--danger); }
+    .boundary h3 { margin-top: 0; color: var(--danger); }
+    .boundary p:last-child { margin-bottom: 0; }
+
+    .references { padding-left: 22px; font-size: 14px; color: var(--ink-soft); }
+    .references li { margin-bottom: 12px; padding-left: 4px; }
+
+    .footer { margin-top: 16px; padding: 28px 0 96px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .compact .detail { display: none; }
+    .compact .problem { padding-bottom: 22px; }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      padding: 11px 14px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 820px) {
+      .topbar { display: flex; justify-content: space-between; padding: 0 16px; }
+      .brand { padding: 0; }
+      .toolbar { width: auto; margin: 0; }
+      .week-nav { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 155px; }
+      .layout { display: block; }
+      .side-nav {
+        top: calc(var(--topbar) + var(--weekbar));
+        z-index: 15;
+        display: flex;
+        gap: 6px;
+        height: auto;
+        padding: 10px 12px;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        scrollbar-width: none;
+      }
+      .side-nav p { display: none; }
+      .side-nav a { flex: 0 0 auto; min-height: 46px; align-items: center; padding: 8px 11px; white-space: nowrap; }
+      main > header, main > section, main > footer { width: min(calc(100% - 32px), var(--lesson-width)); margin: 0 auto; }
+      main > header { padding-top: 46px; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 15.5px; }
+      .brand span { display: inline; font-size: 11px; }
+      #copyButton { display: none; }
+      .control { padding-inline: 10px; font-size: 12px; }
+      .week-nav { height: 60px; grid-auto-columns: 142px; padding-inline: 8px; }
+      .week-nav a { min-width: 0; padding-inline: 10px; }
+      .side-nav { top: calc(var(--topbar) + 60px); }
+      main > header { padding: 40px 0 34px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 22px; }
+      .lede { font-size: 16px; }
+      .meta { display: block; }
+      .meta span { display: block; margin-top: 4px; }
+      .meta span + span::before { display: none; }
+      .equation article, .chapter { grid-template-columns: 1fr; gap: 6px; }
+      .certainty { grid-template-columns: 1fr; }
+      .problem { grid-template-columns: 26px minmax(0, 1fr); }
+      .thesis, .objective, .reading-lead, .boundary { padding: 19px; }
+      section { padding: 40px 0; }
+    }
+
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      .topbar, .week-nav, .side-nav, .progress, .toast { display: none; }
+      .layout { display: block; width: auto; }
+      main > header, main > section, main > footer { width: auto; margin: 0; }
+      section { break-inside: avoid; }
+      a { color: inherit; }
+    }
+  
+    :root{--workspace-bar-height:64px}
+    .workspace-bar,.workspace-bar *{box-sizing:border-box}
+    .workspace-bar{position:sticky;z-index:1000;top:0;display:flex;min-height:var(--workspace-bar-height);align-items:center;padding:8px 20px;border-bottom:1px solid #dfe2df;background:#fff;color:#111211;font-family:Manrope,Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .workspace-bar-inner{width:min(1240px,100%);min-width:0;margin:0 auto}
+    .workspace-links{display:flex;width:100%;min-width:0;min-height:48px;align-items:center;gap:3px;padding:1px 3px;overflow-x:auto;border:1px solid #dfe2df;background:#f4f5f3;scrollbar-color:#b7bcb8 transparent;scrollbar-width:thin}
+    .workspace-links a{display:flex;min-height:44px;flex:0 0 auto;align-items:center;padding:7px 11px;color:#626562;font-size:12px;font-weight:750;line-height:1.15;text-decoration:none;white-space:nowrap}
+    .workspace-links a:hover{background:#f4f5f3;color:#111211}
+    .workspace-links a.active{background:#d9cff2;color:#514273}
+    .workspace-links a:focus-visible{outline:3px solid #514273;outline-offset:-3px}
+    body>.workspace-bar~.topbar,body>.workspace-bar~.site-header,body>.workspace-bar~.top{top:var(--workspace-bar-height)!important}
+    body>.workspace-bar~.shell .side{top:var(--workspace-bar-height)!important;height:calc(100vh - var(--workspace-bar-height))!important}
+    body>.workspace-bar~.shell .top{top:var(--workspace-bar-height)!important}
+    body>.workspace-bar~.tabs-shell{top:calc(var(--workspace-bar-height) + var(--topbar))!important}
+    body>.workspace-bar~.workspace .local-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + var(--tabsbar))!important;height:calc(100vh - var(--workspace-bar-height) - var(--topbar) - var(--tabsbar))!important}
+    body>.workspace-bar~.week-nav{top:calc(var(--workspace-bar-height) + var(--topbar))!important}
+    body>.workspace-bar~.layout .side-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + var(--weekbar))!important;height:calc(100vh - var(--workspace-bar-height) - var(--topbar) - var(--weekbar))!important}
+    body>.workspace-bar~.layout section{scroll-margin-top:calc(var(--workspace-bar-height) + var(--topbar) + var(--weekbar) + 20px)!important}
+    body>.workspace-bar~.progress{top:var(--workspace-bar-height)!important}
+    body>.workspace-bar~main .week-actions{top:calc(var(--workspace-bar-height) + 78px)}
+    @media(max-width:900px){body>.workspace-bar~.shell .side{top:var(--workspace-bar-height)!important;height:58px!important}body>.workspace-bar~.shell .top{top:calc(var(--workspace-bar-height) + 58px)!important}}
+    @media(max-width:820px){body>.workspace-bar~.layout .side-nav{height:auto!important}}
+    @media(max-width:620px){body>.workspace-bar~.layout .side-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + 60px)!important}}
+    @media(max-width:760px){.workspace-bar{padding-inline:12px}.workspace-links{scrollbar-width:none}.workspace-links::-webkit-scrollbar{display:none}}
+
+  </style>
+</head>
+<body>
+  <div class="workspace-bar"><div class="workspace-bar-inner"><nav class="workspace-links" aria-label="Рабочие представления курса"><a class="active" aria-current="page" href="./">Карта курса</a><a href="constructor.html">Конструктор</a><a href="nutrition-week.html">Питание</a><a href="course-entry-preview.html">Продуктовая логика</a><a href="course-preview.html">Прототип курса</a></nav></div></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">GLP‑1 <span>— курс на устойчивость</span></div>
+    <div class="toolbar" aria-label="Настройки чтения">
+      <button class="control" id="compactButton" type="button" aria-pressed="false">Краткий режим</button>
+      <button class="control" id="copyButton" type="button">Скопировать тезис</button>
+    </div>
+  </header>
+
+  <nav class="week-nav" aria-label="Логика курса">
+    <a class="active" href="#problem">Контекст</a>
+    <a href="#gaps">Риски</a>
+    <a href="#objective">Задача курса</a>
+    <a href="#architecture">Путь участника</a>
+    <a href="#reading">Материалы</a>
+    <a href="#safety">Границы</a>
+  </nav>
+
+  <div class="layout">
+    <nav class="side-nav" aria-label="Содержание">
+      <p>Исследовательская основа</p>
+      <a href="#problem">Проблематика</a>
+      <a href="#gaps">Шесть разрывов</a>
+      <a href="#objective">Задача курса</a>
+      <a href="#architecture">Архитектура</a>
+      <a href="#certainty">Границы знания</a>
+      <a href="#reading">Что читать</a>
+      <a href="#safety">Безопасность</a>
+      <a href="#sources">Источники</a>
+    </nav>
+
+    <main id="document">
+      <header>
+        <p class="eyebrow">Версия 0.1 · 11 августа 2026</p>
+        <h1>Курс начинается не с препарата. Он начинается с качества жизни во время больших изменений.</h1>
+        <p class="lede">Научное основание курса поддержки людей, которые уже получают терапию GLP-1 по назначению врача: в чём реальная проблема, какие разрывы остаются после назначения лекарства и что именно должен сделать курс.</p>
+        <div class="meta">
+          <span>Формат: исследовательский скелет</span>
+          <span>Аудитория: команда курса</span>
+          <span>Не является медицинской рекомендацией</span>
+        </div>
+        <blockquote class="thesis" id="courseThesis">
+          <small>Главный тезис</small>
+          GLP-1 могут эффективно снижать вес и уменьшать пищевой шум. Но лекарство само по себе не учит человека питаться при исчезнувшем голоде, сохранять силу, справляться с симптомами, узнавать новое тело и строить жизнь на длинной дистанции. Именно этот разрыв должен закрыть курс.
+        </blockquote>
+      </header>
+
+      <section id="problem">
+        <p class="eyebrow">01 / Проблематика</p>
+        <h2>Медицина научилась сильно менять вес. Система поддержки пока не успела научиться сопровождать последствия.</h2>
+        <p>Препараты на основе GLP-1 и двойные инкретиновые агонисты стали одним из самых эффективных инструментов лечения ожирения. WHO рассматривает их как часть долгосрочной помощи при хроническом, рецидивирующем заболевании — вместе с питанием, физической активностью и поддержкой специалистов.<a class="source-link" href="#ref-1" aria-label="Источник 1">[1]</a></p>
+        <p class="detail">Но клиническая эффективность препарата отвечает только на один вопрос: может ли измениться масса тела и связанные с ней риски? Она не отвечает автоматически на другой, не менее важный вопрос: <strong>каким будет здоровье, функция и жизнь человека внутри этого снижения веса?</strong></p>
+
+        <div class="equation" aria-label="Три части проблематики">
+          <article>
+            <b>Препарат меняет сигналы</b>
+            <span>Голод, насыщение, пищевой шум, скорость опорожнения желудка и объём еды.</span>
+          </article>
+          <article>
+            <b>Тело меняется быстро</b>
+            <span>Снижается жировая и безжировая масса, меняются энергия, форма и переносимость нагрузки.</span>
+          </article>
+          <article>
+            <b>Поведение должно догнать</b>
+            <span>Нужно заново собрать питание, движение, самоощущение и долгосрочные опоры.</span>
+          </article>
+        </div>
+
+        <p class="detail">Новый европейский консенсус EASO, EFAD и ECPO 2026 года описывает оптимальное сопровождение как сочетание медицинской нутритивной помощи, функциональной и психологической поддержки. Среди приоритетов — переносимость лечения, достаточность питания, сохранение безжировой массы и функции, внимание к идентичности, копингу и нарушенному пищевому поведению.<a class="source-link" href="#ref-2" aria-label="Источник 2">[2]</a></p>
+      </section>
+
+      <section id="gaps">
+        <p class="eyebrow">02 / Основные разрывы</p>
+        <h2>Шесть задач, которые лекарство не решает автоматически</h2>
+
+        <div class="problem-list">
+          <article class="problem">
+            <h3>Аппетит уменьшается быстрее, чем потребности тела</h3>
+            <p class="evidence">На терапии GLP-1 снижение голода и раннее насыщение могут резко уменьшить объём и частоту еды. Совместный клинический обзор четырёх профессиональных обществ приводит наблюдавшееся снижение энергетического потребления на 16–39% и выделяет риски недостатка белка, жидкости и микронутриентов.<a class="source-link" href="#ref-3" aria-label="Источник 3">[3]</a></p>
+            <p class="detail">Парадокс новой ситуации: раньше человеку было трудно остановиться, теперь ему может быть трудно начать есть. Старое правило «слушай голод» перестаёт быть достаточным. При этом курс не должен романтизировать отказ от еды или переводить питание в насилие над собой.</p>
+            <p class="implication"><strong>Задача курса:</strong> научить мягкой структуре питания без ожидания сильного голода: небольшой объём, питательная плотность, белковая часть, переносимые варианты и своевременное обращение к специалисту.</p>
+          </article>
+
+          <article class="problem">
+            <h3>Большая потеря веса не равна автоматически качественной потере веса</h3>
+            <p class="evidence">В DXA-анализе STEP 1 на семаглутиде жировая масса снизилась на 19,3%, а безжировая — на 9,7%. В SURMOUNT-1 на тирзепатиде соответствующие изменения составили 33,9% и 10,9%. DXA-безжировая масса включает не только мышцы, поэтому эти цифры нельзя переводить напрямую в «потерянные мышцы».<a class="source-link" href="#ref-4" aria-label="Источник 4">[4]</a><a class="source-link" href="#ref-5" aria-label="Источник 5">[5]</a></p>
+            <p class="detail">Научный фокус постепенно смещается от количества потерянных килограммов к качеству потери веса: силе, физической функции, мышечной ткани, костям и способности оставаться активным. Современные обзоры подчёркивают, что риск нельзя оценивать только по весам или одному измерению состава тела.<a class="source-link" href="#ref-6" aria-label="Источник 6">[6]</a></p>
+            <p class="implication"><strong>Задача курса:</strong> сделать силовую нагрузку, достаточное питание и функциональный прогресс центральными — без обещания «сохранить каждую мышцу» и без языка сжигания калорий.</p>
+          </article>
+
+          <article class="problem">
+            <h3>Готовность к нагрузке становится непредсказуемой</h3>
+            <p class="evidence">Тошнота, рвота, диарея, запор, боль в животе, утомляемость и головокружение входят в известный профиль нежелательных реакций. Продолжительные ЖКТ-симптомы могут приводить к обезвоживанию; у части людей с диабетом риск гипогликемии зависит от сопутствующей терапии.<a class="source-link" href="#ref-7" aria-label="Источник 7">[7]</a></p>
+            <p class="detail">Одинаковое расписание может ощущаться совершенно по-разному в разные недели, дни титрации или после изменения дозы. Универсальное правило «в день укола не тренироваться» тоже неверно: время и выраженность реакций индивидуальны.</p>
+            <p class="implication"><strong>Задача курса:</strong> дать три режима дня — полный, сокращённый и восстановительный — и ясную границу, где заканчивается адаптация тренировки и начинается медицинская помощь.</p>
+          </article>
+
+          <article class="problem">
+            <h3>Исчезновение пищевого шума освобождает — и одновременно перестраивает идентичность</h3>
+            <p class="evidence">В качественных исследованиях люди описывают снижение психологического голода и постоянных мыслей о еде, больше свободы в выборе, но также широкий спектр побочных эффектов, стигму, разное качество медицинской поддержки и ценность опыта других участников.<a class="source-link" href="#ref-8" aria-label="Источник 8">[8]</a></p>
+            <p class="detail">Человек может впервые получить ментальное пространство, которого раньше не было, и не знать, чем его заполнить. Параллельно быстро меняется тело, внимание окружающих и собственный образ себя. Возможны стыд «я сделала это не сама», страх разоблачения, тревога перед едой и потеря знакомых способов успокоения.</p>
+            <p class="implication"><strong>Задача курса:</strong> создать нестигматизирующий язык, human touch и сообщество, где препарат признаётся инструментом лечения, а психологические изменения — реальной частью пути, а не слабостью.</p>
+          </article>
+
+          <article class="problem">
+            <h3>Результат на препарате не равен освоенному способу жизни</h3>
+            <p class="evidence">WHO подчёркивает, что терапия не должна заменять питание, движение и долгосрочную помощь. При этом сама WHO оценивает доказательность дополнительных интенсивных поведенческих интервенций именно вместе с GLP-1 как пока невысокую: направление логично и рекомендовано, но идеальная модель сопровождения ещё исследуется.<a class="source-link" href="#ref-1" aria-label="Источник 1">[1]</a></p>
+            <p class="detail">Это важная научная честность: нельзя обещать, что шестинедельный курс гарантированно предотвратит возврат веса, потерю мышц или прекращение терапии. Можно создать условия, в которых человек лучше ест, двигается, понимает симптомы и удерживает полезные навыки.</p>
+            <p class="implication"><strong>Задача курса:</strong> не «усилить похудение любой ценой», а помочь использовать период сниженного пищевого шума для построения переносимых навыков.</p>
+          </article>
+
+          <article class="problem">
+            <h3>Отмена или потеря доступа часто возвращает не только аппетит, но и страх</h3>
+            <p class="evidence">В продолжении STEP 1 через год после отмены семаглутида участники в среднем вернули около двух третей ранее потерянного веса. В SURMOUNT-4 люди, переведённые с тирзепатида на плацебо, заметно набирали вес, тогда как продолжившие терапию в среднем сохраняли и усиливали снижение.<a class="source-link" href="#ref-9" aria-label="Источник 9">[9]</a><a class="source-link" href="#ref-10" aria-label="Источник 10">[10]</a></p>
+            <p class="detail">Эти исследования не означают, что каждый человек обязательно вернётся к исходному весу, и не доказывают, что один только lifestyle-курс предотвратит возврат. Они показывают хроническую природу заболевания и необходимость заранее обсуждать долгосрочную поддержку без обвинения человека.</p>
+            <p class="implication"><strong>Задача курса:</strong> отделить медицинское решение о терапии от навыков поддержки себя и закончить курс не «финальным рывком», а планом следующего периода.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="objective">
+        <p class="eyebrow">03 / Научная задача курса</p>
+        <h2>Не сделать снижение веса быстрее. Сделать его более функциональным, питательно достаточным и психологически устойчивым.</h2>
+
+        <div class="objective">
+          <p class="label">Рабочая цель</p>
+          <p class="statement">Помочь человеку на назначенной терапии GLP-1 сохранить силу и функцию, организовать питание при изменённом аппетите, безопасно адаптировать активность к симптомам и сформировать долгосрочные опоры, не подменяя врача.</p>
+          <p>Это цель поддержки и образования. Она не является обещанием клинического результата и должна быть согласована с медицинской командой курса.</p>
+        </div>
+
+        <h3>Jobs to be done участника</h3>
+        <ul class="jobs">
+          <li><b>1</b><span>Когда я не чувствую голода, я хочу понимать, как всё равно дать телу необходимое без огромных порций и насилия над собой.</span></li>
+          <li><b>2</b><span>Когда вес быстро снижается, я хочу сохранить силу и качество тела, а не только увидеть меньшую цифру.</span></li>
+          <li><b>3</b><span>Когда самочувствие меняется, я хочу знать, как адаптировать нагрузку и когда остановиться.</span></li>
+          <li><b>4</b><span>Когда окружающие комментируют моё тело или препарат, я хочу не оправдываться и не стыдиться лечения.</span></li>
+          <li><b>5</b><span>Когда вес стоит или терапия меняется, я хочу видеть другие признаки прогресса и иметь план, а не ощущение провала.</span></li>
+        </ul>
+      </section>
+
+      <section id="architecture">
+        <p class="eyebrow">04 / Архитектура с нуля</p>
+        <h2>Сначала путь участника. Количество недель и список видео — потом.</h2>
+        <p>Ниже не финальная программа, а логическая последовательность. Она позволяет проверить, закрывает ли каждый будущий модуль реальную проблему.</p>
+
+        <div class="journey">
+          <article class="chapter">
+            <div class="chapter-label">Вход</div>
+            <div><h3>Безопасная рамка</h3><p>Для кого курс, что остаётся у врача, стартовый скрининг, красные флаги, личная цель кроме веса.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Изменения</div>
+            <div><h3>Что препарат меняет — и чего не делает за нас</h3><p>Голод, насыщение, пищевой шум, разные ответы на терапию, нормализация без идеализации.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Питание</div>
+            <div><h3>Есть, когда не хочется есть</h3><p>Маленький объём, белковая опора, жидкости, клетчатка, переносимость, практические сценарии.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Функция</div>
+            <div><h3>Сохранить мышечную массу, силу и качество движения</h3><p>2–3 силовые тренировки с прогрессируемым сопротивлением, ходьба, постепенное увеличение нагрузки и оценка физической функции.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Адаптация</div>
+            <div><h3>Хороший день, трудный день, медицинский сигнал</h3><p>Авторегуляция, симптомы, сокращённые версии, восстановление и ясная эскалация к врачу.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Психика</div>
+            <div><h3>Тело, еда, идентичность и чужие взгляды</h3><p>Стыд, пищевой шум, эмоциональная регуляция, образ тела, комментарии окружающих, поддержка.</p></div>
+          </article>
+          <article class="chapter">
+            <div class="chapter-label">Дальше</div>
+            <div><h3>Не выпускной, а следующий период</h3><p>Плато, продолжение или изменение терапии с врачом, возврат аппетита, поддерживающая структура и сообщество.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="certainty">
+        <p class="eyebrow">05 / Границы знания</p>
+        <h2>Курс должен различать доказанное, вероятное и пока неизвестное</h2>
+        <div class="certainty">
+          <article class="known">
+            <h3>Знаем достаточно уверенно</h3>
+            <p>GLP-1 эффективно снижают вес у многих людей; меняют аппетит и насыщение; ЖКТ-симптомы распространены; при большой потере веса уменьшается и безжировая масса; после отмены вес часто частично возвращается.</p>
+          </article>
+          <article class="likely">
+            <h3>Обоснованно рекомендуем</h3>
+            <p>Питательно плотный рацион, достаточный белок, силовая нагрузка, аэробная активность, мониторинг функции, психологическая и поведенческая поддержка.</p>
+          </article>
+          <article class="unknown">
+            <h3>Пока не можем обещать</h3>
+            <p>Какой точный протокол полностью предотвращает потерю мышц; какой lifestyle-компонент лучше всего предотвращает возврат веса; единые нормы питания и тренировок для всех препаратов и всех людей.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="reading">
+        <p class="eyebrow">06 / Библиотека чтения</p>
+        <h2>Один главный обзор для команды и несколько понятных материалов для участников</h2>
+
+        <article class="reading-lead">
+          <span class="tag">Главный обзор · 2026</span>
+          <h3>EASO · EFAD · ECPO: питание, функция и психология при инкретиновой терапии</h3>
+          <p>Самая подходящая основа именно для этого курса. Консенсус объединяет медицинское питание, ЖКТ-переносимость, белок и микронутриенты, сохранение функции и безжировой массы, психологию, идентичность и нарушенное пищевое поведение. Подготовлен европейскими организациями по изучению ожирения, диетологии и людьми с lived experience.</p>
+          <a class="button-link" href="https://easo.org/nutritional-functional-and-psychological-considerations-for-obesity-management-medications-in-adults-an-easo-efad-and-ecpo-consensus-statement/" target="_blank" rel="noopener">Открыть обзор и инфографику</a>
+          <details>
+            <summary>Как использовать в курсе</summary>
+            <p>Команде — прочитать полностью и использовать как карту медицинской редакции. Участникам — дать официальную инфографику и короткий русскоязычный конспект после согласования врачом, а не отправлять без сопровождения в большой англоязычный текст.</p>
+          </details>
+        </article>
+
+        <div class="reading-list">
+          <article class="reading">
+            <span class="tag">Начать здесь · участникам</span>
+            <h3>WHO: вопросы и ответы о GLP-1-терапии при ожирении</h3>
+            <p>Коротко и без маркетинга: как работают препараты, для кого предназначены, какие бывают побочные эффекты и почему лекарство не заменяет питание и движение.</p>
+            <a class="button-link" href="https://www.who.int/news-room/questions-and-answers/item/obesity-glp-1-therapies" target="_blank" rel="noopener">Читать на сайте WHO</a>
+            <p class="meta-line">Сложность: низкая · английский · официальный материал</p>
+          </article>
+
+          <article class="reading">
+            <span class="tag">Основной open access · команда</span>
+            <h3>Совместное руководство по питанию и образу жизни во время GLP-1-терапии</h3>
+            <p>Большой открытый обзор от ACLM, ASN, OMA и The Obesity Society. Покрывает симптомы, пищевую достаточность, белок, мышцы и кости, физическую активность, психологическую поддержку и долгосрочное сопровождение.</p>
+            <a class="button-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12264624/" target="_blank" rel="noopener">Открыть полный текст</a>
+            <p class="meta-line">Сложность: высокая · английский · полный текст доступен бесплатно</p>
+          </article>
+
+          <article class="reading">
+            <span class="tag">Простой медицинский обзор · участникам</span>
+            <h3>NIDDK: лекарства для лечения избыточного веса и ожирения</h3>
+            <p>Понятное объяснение роли препаратов в общей программе лечения, ожидаемых результатов, длительного применения, возможного возврата веса и базовых целей физической активности.</p>
+            <a class="button-link" href="https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" target="_blank" rel="noopener">Читать обзор NIDDK</a>
+            <p class="meta-line">Сложность: низкая · английский · государственный медицинский ресурс США</p>
+          </article>
+
+          <article class="reading">
+            <span class="tag">Человеческий опыт · по желанию</span>
+            <h3>Patient Experiences With GLP-1 Receptor Agonists</h3>
+            <p>Качественное исследование 30 участников: исчезновение пищевого шума, свобода выбора, побочные эффекты, стигма, доступ к лечению и важность поддержки. Полезно команде для языка курса и human touch.</p>
+            <a class="button-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13241945/" target="_blank" rel="noopener">Открыть исследование</a>
+            <p class="meta-line">Сложность: средняя · английский · не руководство, а исследование опыта</p>
+          </article>
+
+          <article class="reading">
+            <span class="tag">Качество потери веса · углубление</span>
+            <h3>Lean Mass and Musculoskeletal Preservation in GLP-1-Based Obesity Treatment</h3>
+            <p>Свежий обзор 2026 года о различии между безжировой и мышечной массой, оценке риска, питании, силовых тренировках, функции и костях. Хорошая защита от алармистских формулировок о «сгорающих мышцах».</p>
+            <a class="button-link" href="https://pubmed.ncbi.nlm.nih.gov/42346344/" target="_blank" rel="noopener">Открыть обзор в PubMed</a>
+            <p class="meta-line">Сложность: высокая · английский · научный обзор</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="safety">
+        <p class="eyebrow">07 / Граница продукта</p>
+        <h2>Курс сопровождает человека. Он не сопровождает назначение препарата.</h2>
+        <div class="boundary">
+          <h3>Что остаётся вне курса</h3>
+          <p>Назначение и отмена препарата, выбор бренда и дозы, титрация, перенос дня инъекции, трактовка анализов, лечение побочных эффектов и решение о срочности медицинской помощи. Курс может объяснить границы и направить к врачу, но не принимать эти решения.</p>
+        </div>
+        <p class="detail" style="margin-top:24px">До публикации участникам медицинский редактор должен проверить формулировки о противопоказаниях, красных флагах, гипогликемии, обезвоживании, беременности, расстройствах пищевого поведения и сочетании с другими препаратами.</p>
+      </section>
+
+      <section id="sources">
+        <p class="eyebrow">08 / Научные источники</p>
+        <h2>Опорная литература</h2>
+        <ol class="references">
+          <li id="ref-1"><a href="https://www.who.int/news/item/01-12-2025-who-issues-global-guideline-on-the-use-of-glp-1-medicines-in-treating-obesity" target="_blank" rel="noopener">WHO guideline on GLP-1 medicines for treating obesity</a>, 2025.</li>
+          <li id="ref-2"><a href="https://easo.org/nutritional-functional-and-psychological-considerations-for-obesity-management-medications-in-adults-an-easo-efad-and-ecpo-consensus-statement/" target="_blank" rel="noopener">EASO, EFAD and ECPO Consensus Statement: Nutritional, Functional and Psychological Considerations</a>, 2026.</li>
+          <li id="ref-3"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12264624/" target="_blank" rel="noopener">Mozaffarian D, et al. Nutritional priorities to support GLP-1 therapy for obesity</a>, 2025.</li>
+          <li id="ref-4"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8089287/" target="_blank" rel="noopener">STEP 1 exploratory body composition analysis</a>, 2021.</li>
+          <li id="ref-5"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11965027/" target="_blank" rel="noopener">SURMOUNT-1 DXA substudy</a>, 2025.</li>
+          <li id="ref-6"><a href="https://pubmed.ncbi.nlm.nih.gov/42346344/" target="_blank" rel="noopener">Lean Mass and Musculoskeletal Preservation in GLP-1-Based Obesity Treatment</a>, 2026.</li>
+          <li id="ref-7"><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/215256s029lbl.pdf" target="_blank" rel="noopener">FDA Wegovy prescribing information</a>, 2026.</li>
+          <li id="ref-8"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13241945/" target="_blank" rel="noopener">Patient Experiences With GLP-1 Receptor Agonists</a>, 2026.</li>
+          <li id="ref-9"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9542252/" target="_blank" rel="noopener">STEP 1 trial extension after semaglutide withdrawal</a>, 2022.</li>
+          <li id="ref-10"><a href="https://jamanetwork.com/journals/jama/fullarticle/2812936" target="_blank" rel="noopener">SURMOUNT-4 randomized withdrawal trial</a>, 2023.</li>
+        </ol>
+      </section>
+
+      <footer class="footer">
+        <p>Рабочий документ команды Sekta. Следующий этап — медицинская редакция проблематики и перевод каждого разрыва в конкретные результаты обучения, практики и критерии отбора существующего контента.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Тезис скопирован</div>
+
+  <script>
+    const compactButton = document.getElementById('compactButton');
+    const copyButton = document.getElementById('copyButton');
+    const documentNode = document.getElementById('document');
+    const progress = document.getElementById('progress');
+    const toast = document.getElementById('toast');
+    const navLinks = [...document.querySelectorAll('.side-nav a')];
+    const weekLinks = [...document.querySelectorAll('.week-nav a')];
+    const sections = [...document.querySelectorAll('main section[id]')];
+
+    compactButton.addEventListener('click', () => {
+      const isCompact = documentNode.classList.toggle('compact');
+      compactButton.setAttribute('aria-pressed', String(isCompact));
+      compactButton.textContent = isCompact ? 'Показать доказательства' : 'Краткий режим';
+    });
+
+    copyButton.addEventListener('click', async () => {
+      const thesisNode = document.getElementById('courseThesis');
+      const thesis = [...thesisNode.childNodes]
+        .filter(node => node.nodeName !== 'SMALL')
+        .map(node => node.textContent)
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      try {
+        await navigator.clipboard.writeText(thesis);
+        toast.classList.add('show');
+        window.setTimeout(() => toast.classList.remove('show'), 1800);
+      } catch (_) {
+        copyButton.textContent = 'Выделите тезис вручную';
+      }
+    });
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const value = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progress.style.width = value + '%';
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id));
+      const directWeekLink = weekLinks.find(link => link.getAttribute('href') === '#' + visible.target.id);
+      if (directWeekLink) {
+        weekLinks.forEach(link => link.classList.toggle('active', link === directWeekLink));
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .25, .5] });
+
+    sections.forEach(section => observer.observe(section));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+<script>
+    (()=>{
+      const alignActiveWorkspaceLink=()=>{
+        const nav=document.querySelector('.workspace-links');
+        const active=nav?.querySelector('[aria-current="page"]');
+        if(!nav||!active||nav.scrollWidth<=nav.clientWidth)return;
+        const target=active.offsetLeft-(nav.clientWidth-active.offsetWidth)/2;
+        nav.scrollLeft=Math.max(0,Math.min(target,nav.scrollWidth-nav.clientWidth));
+      };
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',alignActiveWorkspaceLink,{once:true});
+      else alignActiveWorkspaceLink();
+      window.addEventListener('resize',alignActiveWorkspaceLink,{passive:true});
+    })();
+  </script>
+</body>
+</html>

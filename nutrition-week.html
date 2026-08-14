@@ -346,9 +346,14 @@
     body>.workspace-bar~.shell .top{top:var(--workspace-bar-height)!important}
     body>.workspace-bar~.tabs-shell{top:calc(var(--workspace-bar-height) + var(--topbar))!important}
     body>.workspace-bar~.workspace .local-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + var(--tabsbar))!important;height:calc(100vh - var(--workspace-bar-height) - var(--topbar) - var(--tabsbar))!important}
+    body>.workspace-bar~.week-nav{top:calc(var(--workspace-bar-height) + var(--topbar))!important}
+    body>.workspace-bar~.layout .side-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + var(--weekbar))!important;height:calc(100vh - var(--workspace-bar-height) - var(--topbar) - var(--weekbar))!important}
+    body>.workspace-bar~.layout section{scroll-margin-top:calc(var(--workspace-bar-height) + var(--topbar) + var(--weekbar) + 20px)!important}
     body>.workspace-bar~.progress{top:var(--workspace-bar-height)!important}
     body>.workspace-bar~main .week-actions{top:calc(var(--workspace-bar-height) + 78px)}
     @media(max-width:900px){body>.workspace-bar~.shell .side{top:var(--workspace-bar-height)!important;height:58px!important}body>.workspace-bar~.shell .top{top:calc(var(--workspace-bar-height) + 58px)!important}}
+    @media(max-width:820px){body>.workspace-bar~.layout .side-nav{height:auto!important}}
+    @media(max-width:620px){body>.workspace-bar~.layout .side-nav{top:calc(var(--workspace-bar-height) + var(--topbar) + 60px)!important}}
     @media(max-width:760px){.workspace-bar{padding-inline:12px}.workspace-links{scrollbar-width:none}.workspace-links::-webkit-scrollbar{display:none}}
 
   </style>
