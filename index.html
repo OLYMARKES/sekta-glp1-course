@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Рабочая карта курса Sekta для команды: обещание участнику, темы и материалы шести недель, открытые продуктовые и экспертные решения.">
-  <title>GLP‑1 — курс на устойчивость · Карта команды · 17 августа 2026</title>
+  <meta name="description" content="Рабочая карта курса Sekta: обещание, путь участника, модель подачи, пять опор, медицинская граница и программа шести недель.">
+  <title>GLP‑1 — курс на устойчивость · Карта команды · 19 августа 2026</title>
   <style>
     :root {
       --page: #f3f4f3;
@@ -249,28 +249,81 @@
       padding-top: 46px;
     }
 
-    .overview-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr);
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 48px;
+    .onepager { padding-bottom: 32px; border-bottom: 1px solid var(--line-strong); }
+    .source-meta { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .overview-update {
+      margin-bottom: 28px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
     }
-    .overview-head h1 { max-width: 18ch; font-size: clamp(38px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
-    .overview-head .lede { max-width: 68ch; }
-    .overview-guardrail { padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-subtle); }
-    .overview-guardrail strong { display: block; margin-bottom: 7px; font-size: 13px; }
-    .overview-guardrail p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.55; }
-
+    .overview-update summary {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      min-height: 58px;
+      padding: 7px 14px;
+      cursor: pointer;
+      list-style: none;
+    }
+    .overview-update summary::-webkit-details-marker { display: none; }
+    .overview-update summary:focus-visible { outline: 3px solid var(--accent-deep); outline-offset: 2px; }
+    .overview-update[open] summary { border-bottom: 1px solid var(--accent-line); }
+    .overview-update-date { color: var(--accent-deep); font-size: 13px; white-space: nowrap; }
+    .overview-update-line { min-width: 0; overflow: hidden; color: var(--ink-soft); font-size: 13px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+    .overview-update-action { display: inline-flex; min-height: 44px; align-items: center; gap: 8px; color: var(--accent-deep); font-size: 12.5px; font-weight: 750; white-space: nowrap; }
+    .overview-update-action::after { width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; content: ''; transform: rotate(45deg) translateY(-2px); transition: transform 160ms ease; }
+    .overview-update[open] .overview-update-action::after { transform: rotate(-135deg) translate(-1px, -1px); }
+    .overview-feedback { padding: 18px; }
+    .overview-feedback-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .overview-feedback-section { min-width: 0; padding-right: 22px; }
+    .overview-feedback-section + .overview-feedback-section { padding-right: 0; padding-left: 22px; border-left: 1px solid var(--accent-line); }
+    .overview-feedback-section h3 { margin: 0 0 10px; color: var(--accent-deep); font-size: 14px; }
+    .overview-feedback-section ul { margin: 0; padding-left: 18px; }
+    .overview-feedback-section li { padding-left: 3px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.48; }
+    .overview-feedback-section li + li { margin-top: 7px; }
+    .overview-feedback-status { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--accent-line); color: var(--ink-soft); font-size: 12.5px; line-height: 1.48; }
+    .onepager-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
+      gap: 42px;
+      align-items: start;
+      padding-bottom: 24px;
+    }
+    .onepager-head h1 {
+      max-width: 18ch;
+      margin-bottom: 14px;
+      font-size: clamp(40px, 4.2vw, 54px);
+      line-height: 1.01;
+      letter-spacing: -.038em;
+      text-wrap: balance;
+    }
+    .onepager-promise { max-width: 66ch; margin: 0; color: var(--ink-soft); font-size: 17.5px; line-height: 1.52; }
+    .onepager-destination { border-top: 1px solid var(--line-strong); }
+    .destination-row { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .destination-row strong { font-size: 13px; }
+    .destination-row span { color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+    .onepager-body { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(310px, .7fr); border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+    .onepager-column { min-width: 0; padding: 22px 26px 22px 0; }
+    .onepager-column + .onepager-column { padding-right: 0; padding-left: 26px; border-left: 1px solid var(--line); }
+    .onepager-column h2 { margin: 0 0 14px; font-size: 22px; }
+    .delivery-step { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 20px; padding: 11px 0; border-top: 1px solid var(--line); }
+    .delivery-step:first-of-type { border-top-color: var(--line-strong); }
+    .delivery-step strong { font-size: 13px; line-height: 1.4; }
+    .delivery-step p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+    .pillar-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-strong); }
+    .pillar-list li { padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; line-height: 1.4; }
+    .onepager-tools { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .onepager-tools strong { font-size: 13px; }
+    .onepager-tools p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    .onepager-safety { display: grid; grid-template-columns: 148px minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: 16px; background: var(--surface-subtle); border: 1px solid var(--line); border-top: 0; }
+    .onepager-safety strong { font-size: 13px; }
+    .onepager-safety p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+    .onepager-safety .review-button { align-self: center; }
     .overview-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 22px; }
     .overview-section-heading h2 { margin-bottom: 0; }
     .overview-section-heading p { max-width: 50ch; margin: 0; color: var(--muted); font-size: 14px; text-align: right; }
-
-    .outcome-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .outcome-item { min-width: 0; padding: 20px; background: var(--surface); }
-    .outcome-item + .outcome-item { border-left: 1px solid var(--line); }
-    .outcome-item strong { display: block; margin-bottom: 8px; font-size: 15px; line-height: 1.35; }
-    .outcome-item p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.55; }
 
     .overview-week-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); }
     .overview-week { min-width: 0; padding: 28px 30px 30px 0; border-bottom: 1px solid var(--line); }
@@ -302,6 +355,168 @@
     .decision-question { margin: 0; color: var(--ink); font-size: 15px; line-height: 1.5; }
     .panel-action { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--accent-deep); font-weight: 700; cursor: pointer; }
     .panel-action:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+
+    .review-mode-banner {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 18px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+    .review-mode-copy strong { display: block; margin-bottom: 3px; font-size: 14px; }
+    .review-mode-copy span { display: block; max-width: 72ch; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+    .review-mode-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; }
+    .review-sync { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .review-sync.ready { color: var(--success); }
+    .review-sync.error { color: var(--danger); }
+    .review-user-button,
+    .review-button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+    .review-user-button:hover,
+    .review-button:hover { border-color: var(--accent); background: var(--surface); }
+    .review-user-button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .review-user-button.primary:hover { background: var(--accent-deep); }
+    .review-badge {
+      display: grid;
+      min-width: 22px;
+      height: 22px;
+      place-items: center;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+    .review-button.compact { min-height: 38px; padding: 6px 9px; font-size: 12px; }
+    .overview-week .review-button { margin-top: 18px; }
+    .overview-section-heading-copy { min-width: 0; }
+    .overview-section-heading-actions { display: flex; align-items: center; gap: 14px; }
+    .overview-section-heading-actions p { max-width: 42ch; }
+
+    .idea-bank {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: 32px;
+      align-items: start;
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+    .idea-bank h2 { margin-bottom: 10px; }
+    .idea-bank-intro { max-width: 62ch; margin: 0 0 24px; color: var(--ink-soft); }
+    .idea-compose { display: grid; gap: 10px; }
+    .idea-compose label { font-size: 13px; font-weight: 700; }
+    .idea-compose textarea,
+    .review-compose textarea {
+      width: 100%;
+      min-height: 148px;
+      padding: 13px 14px;
+      resize: vertical;
+      border: 1px solid var(--line-strong);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      line-height: 1.5;
+    }
+    .idea-compose textarea:focus,
+    .review-compose textarea:focus { border-color: var(--accent); outline: 3px solid rgba(49, 95, 203, .14); }
+    .idea-compose-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .draft-state { color: var(--muted); font-size: 12px; }
+    .draft-state.waiting { color: var(--warning); }
+    .draft-state.synced { color: var(--success); }
+    .draft-state.error { color: var(--danger); }
+    .idea-thread { display: grid; gap: 10px; }
+    .idea-thread-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .idea-thread-head strong { font-size: 14px; }
+    .review-empty { padding: 18px; border: 1px dashed var(--line-strong); color: var(--muted); font-size: 13px; text-align: center; }
+
+    dialog.review-drawer {
+      inset: 0 0 0 auto;
+      width: min(500px, 100%);
+      max-width: none;
+      height: 100dvh;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-left: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: -18px 0 48px rgba(23, 32, 51, .14);
+    }
+    dialog.review-drawer::backdrop { background: rgba(23, 32, 51, .24); }
+    .review-drawer-shell { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+    .review-drawer-head { display: flex; align-items: start; justify-content: space-between; gap: 18px; padding: 22px; border-bottom: 1px solid var(--line); }
+    .review-drawer-head small { display: block; margin-bottom: 5px; color: var(--muted); font-size: 12px; }
+    .review-drawer-head h2 { margin: 0; font-size: 22px; line-height: 1.25; }
+    .review-close { display: grid; flex: 0 0 auto; width: 44px; height: 44px; place-items: center; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); color: var(--ink); font-size: 22px; cursor: pointer; }
+    .review-thread { min-height: 0; overflow-y: auto; padding: 18px 22px 26px; }
+    .review-thread-state { padding: 30px 10px; color: var(--muted); text-align: center; }
+    .review-item { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 11px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .review-avatar { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 750; }
+    .review-item-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; margin-bottom: 5px; color: var(--muted); font-size: 11px; }
+    .review-item-meta strong { color: var(--ink); font-size: 12px; }
+    .review-kind { color: var(--accent-deep); }
+    .review-item p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.55; white-space: pre-wrap; }
+    .review-compose { padding: 18px 22px 22px; border-top: 1px solid var(--line); background: var(--surface-subtle); }
+    .review-kind-tabs { display: inline-flex; gap: 3px; margin-bottom: 10px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: var(--neutral-soft); }
+    .review-kind-tabs button { min-height: 36px; padding: 7px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 700; cursor: pointer; }
+    .review-kind-tabs button.active { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(23, 32, 51, .1); }
+    .review-compose textarea { min-height: 118px; }
+    .review-compose-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 10px; }
+    .review-writer { min-width: 0; color: var(--muted); font-size: 12px; }
+    .review-writer strong { display: block; overflow: hidden; color: var(--ink); text-overflow: ellipsis; white-space: nowrap; }
+
+    @media (max-width: 820px) {
+      .review-mode-banner,
+      .overview-section-heading-actions,
+      .idea-compose-footer,
+      .review-compose-footer { align-items: stretch; flex-direction: column; }
+      .review-mode-actions { width: 100%; justify-content: space-between; }
+      .idea-bank { grid-template-columns: 1fr; padding: 22px; }
+      .overview-section-heading-actions p { max-width: none; text-align: left; }
+      .overview-section-heading-actions .review-button { align-self: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      .review-mode-actions { display: grid; grid-template-columns: 1fr; align-items: stretch; }
+      .review-sync { white-space: normal; }
+      .review-user-button,
+      .review-button { width: 100%; }
+      .review-button.compact { min-height: 44px; }
+      .outcome-item .review-button { align-self: stretch; }
+      .overview-week .review-button { width: auto; }
+      .idea-bank { margin-inline: -2px; padding: 18px; }
+      dialog.review-drawer { width: 100%; border-left: 0; }
+      .review-drawer-head { padding: 17px 16px; }
+      .review-thread { padding: 10px 16px 20px; }
+      .review-compose { padding: 14px 16px 16px; }
+      .review-kind-tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+      .review-kind-tabs button { min-height: 44px; }
+    }
 
     .foundation-reference { margin-top: 52px; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
     .foundation-reference > summary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 420px) auto; gap: 24px; align-items: center; min-height: 86px; padding: 16px 0; cursor: pointer; list-style: none; }
@@ -602,10 +817,9 @@
       .protein-priority { grid-template-columns: 200px minmax(0, 1fr); gap: 24px; }
       .protein-plate { width: 180px; }
       .chapter { padding-top: 52px; }
-      .overview-head { grid-template-columns: 1fr; gap: 24px; align-items: start; }
-      .outcome-grid { grid-template-columns: repeat(2, 1fr); }
-      .outcome-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
-      .outcome-item:nth-child(4) { border-top: 1px solid var(--line); }
+      .onepager-head, .onepager-body { grid-template-columns: 1fr; }
+      .onepager-head { gap: 24px; }
+      .onepager-column + .onepager-column { padding: 22px 0; border-left: 0; border-top: 1px solid var(--line); }
     }
 
     @media (max-width: 820px) {
@@ -677,11 +891,21 @@
       .week-detail { grid-template-columns: 1fr; gap: 2px; }
       .callout, .mode { padding: 18px; }
       body[data-active-panel="foundation"] #panel-foundation { width: min(calc(100% - 28px), 620px); padding-top: 32px; }
-      .overview-head h1 { font-size: 34px; }
+      .onepager-head h1 { font-size: 34px; }
+      .overview-update summary { grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; min-height: 76px; padding: 8px 14px; }
+      .overview-update-date { grid-column: 1; grid-row: 1; }
+      .overview-update-line { grid-column: 1 / -1; grid-row: 2; font-size: 12px; }
+      .overview-update-action { grid-column: 2; grid-row: 1; }
+      .overview-feedback { padding: 16px 14px; }
+      .overview-feedback-grid { grid-template-columns: 1fr; }
+      .overview-feedback-section { padding-right: 0; }
+      .overview-feedback-section + .overview-feedback-section { margin-top: 16px; padding-top: 16px; padding-left: 0; border-top: 1px solid var(--accent-line); border-left: 0; }
+      .delivery-step, .onepager-tools, .onepager-safety { grid-template-columns: 1fr; gap: 6px; }
+      .onepager-safety .review-button { width: 100%; margin-top: 6px; }
       .overview-section-heading { display: block; }
       .overview-section-heading p { margin-top: 8px; text-align: left; }
-      .outcome-grid, .package-grid { grid-template-columns: 1fr; }
-      .outcome-item + .outcome-item, .outcome-item:nth-child(3), .outcome-item:nth-child(4), .package-item:nth-child(even), .package-item:not(:nth-child(3n + 1)) { border-left: 0; border-top: 1px solid var(--line); }
+      .package-grid { grid-template-columns: 1fr; }
+      .package-item:nth-child(even), .package-item:not(:nth-child(3n + 1)) { border-left: 0; border-top: 1px solid var(--line); }
       .package-item, .package-item:nth-last-child(-n + 3), .package-item:nth-last-child(-n + 2) { border-bottom: 0; }
       .overview-week dl div, .week-question { grid-template-columns: 1fr; gap: 3px; }
       .training-settled { display: block; }
@@ -762,30 +986,88 @@
 
     <main>
       <article class="chapter" id="panel-foundation" role="tabpanel" aria-labelledby="tab-foundation" data-title="Обзор курса">
-        <header class="overview-head">
-          <div>
-            <h1>Что человек получит за шесть недель курса</h1>
-            <p class="lede">Помочь человеку во время назначенной врачом GLP‑1-терапии поддерживать полноценное питание, сохранять силу и повседневную функцию, адаптировать питание и движение к самочувствию и собрать систему, которой можно пользоваться после курса.</p>
-            <div class="meta-row"><span>Рабочая формулировка обещания</span><span>6 недель</span><span>Питание + движение + поведение + сопровождение</span></div>
-          </div>
-          <aside class="overview-guardrail">
-            <strong>Граница обещания</strong>
-            <p>Курс не меняет препарат или дозу, не заменяет врача и не обещает предотвратить потерю мышц или возврат веса. Медицинские решения остаются у назначившего специалиста.</p>
-          </aside>
-        </header>
+        <section class="onepager" id="overview-onepager" data-nav="Курс одним взглядом">
+          <details class="overview-update">
+            <summary>
+              <strong class="overview-update-date">Среда, 19 августа</strong>
+              <span class="overview-update-line">2 комментария → one‑pager; дальше — два ревью</span>
+              <span class="overview-update-action">Комментарий Нестеровой</span>
+            </summary>
+            <div class="overview-feedback">
+              <div class="overview-feedback-grid">
+                <section class="overview-feedback-section" aria-labelledby="nesterova-theses-title">
+                  <h3 id="nesterova-theses-title">Главные тезисы</h3>
+                  <ul>
+                    <li class="overview-feedback-thesis">GLP‑1 — лекарственная терапия; курс сохраняет медицинскую честность и границы.</li>
+                    <li class="overview-feedback-thesis">Нельзя превращать препарат в лёгкий lifestyle‑продукт, «витамины» или biohacking.</li>
+                    <li class="overview-feedback-thesis">Нельзя определять человека через симптомы и специальные протоколы на каждом шагу.</li>
+                    <li class="overview-feedback-thesis">Участник остаётся обычным взрослым; терапия — контекст решений, а не его идентичность.</li>
+                    <li class="overview-feedback-thesis">Science‑based позиция требует прямых источников, человеческого языка и двух ревью.</li>
+                  </ul>
+                </section>
+                <section class="overview-feedback-section" aria-labelledby="nesterova-proposals-title">
+                  <h3 id="nesterova-proposals-title">Предложения</h3>
+                  <ul>
+                    <li class="overview-feedback-proposal">Зафиксировать общую рамку: лекарственная терапия + нормальная повседневная жизнь.</li>
+                    <li class="overview-feedback-proposal">Собрать механизм, побочные эффекты, взаимодействия и красные флаги в отдельный medical block.</li>
+                    <li class="overview-feedback-proposal">Основной поток строить вокруг обычной еды, движения и жизни; адаптации показывать по потребности.</li>
+                    <li class="overview-feedback-proposal">Убрать постоянные упоминания симптомов из меню и тренировок и провести human‑language pass.</li>
+                    <li class="overview-feedback-proposal">Дать прямые ссылки на источники и провести medical + human editorial review.</li>
+                  </ul>
+                </section>
+              </div>
+              <p class="overview-feedback-status"><strong>Статус:</strong> предложения Нестеровой зафиксированы, но ещё не применены к тексту one‑pager.</p>
+            </div>
+          </details>
 
-        <section id="overview-outcomes" data-nav="Что получит человек">
-          <div class="overview-section-heading">
-            <h2>С чем участник должен уйти</h2>
-            <p>Не список уроков, а четыре применимых результата курса.</p>
+          <header class="onepager-head">
+            <div>
+              <h1>Что мы делаем и как ведём человека</h1>
+              <p class="onepager-promise">Помогаем человеку во время назначенной врачом GLP‑1-терапии поддерживать полноценное питание, силу и энергию, упрощать ежедневные решения и собирать систему, которой можно пользоваться после курса.</p>
+              <div class="meta-row"><span>Рабочая рамка v2</span><span>6 недель</span><span>Питание + движение + сопровождение</span></div>
+            </div>
+            <aside aria-labelledby="destination-title">
+              <h2 id="destination-title">Куда ведём</h2>
+              <div class="onepager-destination">
+                <div class="destination-row"><strong>Питание</strong><span>Собирать полноценную еду при разном аппетите, дома и вне дома.</span></div>
+                <div class="destination-row"><strong>Сила</strong><span>Начать с доступной нагрузки и оценивать прогресс шире цифры на весах.</span></div>
+                <div class="destination-row"><strong>День</strong><span>Понимать ближайший приоритет, когда решений много, а сил мало.</span></div>
+                <div class="destination-row"><strong>Система</strong><span>Иметь повторяемые блюда, ритм движения и понятный следующий шаг.</span></div>
+              </div>
+            </aside>
+          </header>
+
+          <div class="onepager-body">
+            <section class="onepager-column" aria-labelledby="delivery-title">
+              <h2 id="delivery-title">Как подаём</h2>
+              <div class="delivery-step"><strong>Основной поток</strong><p>Одно понятное действие и минимальное объяснение, нужное именно сейчас.</p></div>
+              <div class="delivery-step"><strong>Углубление по потребности</strong><p>Физиология, психология, подкасты и самонаблюдение открываются контекстно или по желанию.</p></div>
+              <div class="delivery-step"><strong>Сопровождение</strong><p>Куратор использует утверждённый check‑in, помогает выбрать следующий шаг и передаёт человека в медицинский маршрут в красной зоне.</p></div>
+            </section>
+            <section class="onepager-column" aria-labelledby="pillars-title">
+              <h2 id="pillars-title">На чём держится курс</h2>
+              <ul class="pillar-list">
+                <li>Сила, энергия и повседневная функция</li>
+                <li>Приоритеты дня при низком ресурсе</li>
+                <li>Низкий порог входа в силовые</li>
+                <li>Простая еда, включая варианты без готовки</li>
+                <li>Достаточность питания при сниженном аппетите</li>
+              </ul>
+            </section>
           </div>
-          <div class="outcome-grid">
-            <article class="outcome-item"><strong>Понимать, что меняется</strong><p>Связывать изменения аппетита, насыщения, пищеварения и энергии с понятными действиями и знать медицинскую границу.</p></article>
-            <article class="outcome-item"><strong>Поддерживать питание</strong><p>Собирать полноценную еду при разном аппетите, пользоваться меню, заменами, рецептами, закупкой и заготовкой.</p></article>
-            <article class="outcome-item"><strong>Сохранять силу и функцию</strong><p>Регулярно выполнять подходящий вариант силовой нагрузки и оценивать прогресс шире цифры на весах.</p></article>
-            <article class="outcome-item"><strong>Иметь личную систему</strong><p>Выбрать повторяемые блюда, сценарии вне дома и план действий при изменении аппетита или терапии вместе с врачом.</p></article>
-          </div>
+
+          <div class="onepager-tools"><strong>Уже поддерживают рамку</strong><p>«Собери белок» · check‑in из пяти вопросов · «Что поесть сейчас» · динамическая закупка</p></div>
+          <aside class="onepager-safety" aria-labelledby="safety-title">
+            <strong id="safety-title">Граница безопасности</strong>
+            <p>Красные флаги и маршрут помощи видит сам участник. Курс не меняет препарат или дозу, не лечит симптомы и не заменяет врача.</p>
+            <button class="review-button compact" type="button" data-review-block="v3-overview-promise" data-review-title="One-pager: обещание и граница"><span>Обсудить рамку</span><span class="review-badge" data-review-count>—</span></button>
+          </aside>
         </section>
+
+        <div class="review-mode-banner">
+          <div class="review-mode-copy"><strong>Review Mode · рабочая доска команды</strong><span>Новая модель подачи вынесена в отдельный preview. Детальная карта ниже сохранена, а комментарии продолжают жить у конкретных блоков.</span></div>
+          <div class="review-mode-actions"><span class="review-sync" id="reviewSync">Подключаем обсуждения…</span><button class="review-user-button primary" id="reviewLogin" type="button">Войти для комментариев</button></div>
+        </div>
 
         <section id="overview-weeks" data-nav="Шесть недель">
           <div class="overview-section-heading">
@@ -799,6 +1081,7 @@
               <p class="week-outcome">Собирать небольшой полноценный приём пищи, даже если выраженного голода нет.</p>
               <dl><div><dt>Подача</dt><dd>Вводное видео Оли + основной материал Сони + практика выбора 3–5 источников белка.</dd></div><div><dt>Материалы</dt><dd>Меню недели, 15 уникальных рецептов, список покупок и первая заготовка.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Утвердить финальную роль видео Оли и состав стартового комплекта.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-1" data-review-title="Неделя 1 · Питание при сниженном аппетите"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
             <article class="overview-week">
               <div class="overview-week-head"><span>Неделя 2 из 6</span><span>тема собрана</span></div>
@@ -806,6 +1089,7 @@
               <p class="week-outcome">Различать причины приёма пищи и поддерживать переносимый ритм.</p>
               <dl><div><dt>Подача</dt><dd>Экспертные материалы + наблюдение без подсчёта калорий + бытовая практика среды.</dd></div><div><dt>Материалы</dt><dd>Повторяемое меню, тематические рецепты, закупка и подготовка базы на 2–3 дня.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Выбрать основной материал недели и окончательный формат ежедневной подачи.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-2" data-review-title="Неделя 2 · Регулярность, эмоциональный голод и работа кишечника"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
             <article class="overview-week">
               <div class="overview-week-head"><span>Неделя 3 из 6</span><span>нужен медред</span></div>
@@ -813,6 +1097,7 @@
               <p class="week-outcome">Поддерживать питание и выбирать нагрузку при тошноте, раннем насыщении и сниженной энергии.</p>
               <dl><div><dt>Подача</dt><dd>Материал Сони + эндокринолог + личный план A / B / C + видео Оли о выборе нагрузки.</dd></div><div><dt>Материалы</dt><dd>Базовое меню, резерв на трудный день, карточка медицинской границы и тематические рецепты.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Провести медицинскую редактуру сценариев симптомов и критериев остановки.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-3" data-review-title="Неделя 3 · Симптомы, мышечная масса и адаптация нагрузки"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
             <article class="overview-week">
               <div class="overview-week-head"><span>Неделя 4 из 6</span><span>тема собрана</span></div>
@@ -820,6 +1105,7 @@
               <p class="week-outcome">Проверять рацион по разнообразию и переносимости, а прогресс — не только по весу.</p>
               <dl><div><dt>Подача</dt><dd>Материалы экспертов + карта замен + практика выбора перекусов и показателей прогресса.</dd></div><div><dt>Материалы</dt><dd>Меню с ротацией продуктов, тематические рецепты, сезонные замены и модульная заготовка.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Собрать один ясный главный материал вместо нескольких равных фрагментов.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-4" data-review-title="Неделя 4 · Полноценность рациона и оценка прогресса"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
             <article class="overview-week">
               <div class="overview-week-head"><span>Неделя 5 из 6</span><span>нужна практика</span></div>
@@ -827,6 +1113,7 @@
               <p class="week-outcome">Переносить систему в работу, ресторан, поездку и семейную жизнь без оценки дня как срыва.</p>
               <dl><div><dt>Подача</dt><dd>Видео Оли + материал об образе тела + практика реального сценария вне дома.</dd></div><div><dt>Материалы</dt><dd>Гибридное меню, готовые решения, варианты без готовки и семейное масштабирование.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Создать и протестировать практику для ресторана, доставки, дороги и семьи.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-5" data-review-title="Неделя 5 · Питание вне дома, образ тела и гибкость"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
             <article class="overview-week">
               <div class="overview-week-head"><span>Неделя 6 из 6</span><span>нужен медред</span></div>
@@ -834,12 +1121,13 @@
               <p class="week-outcome">Иметь повторяемое меню и план действий при изменении аппетита или терапии.</p>
               <dl><div><dt>Подача</dt><dd>Материалы об изменении веса + видео Оли + итоговая практика личной системы.</dd></div><div><dt>Материалы</dt><dd>Шаблон личного меню, выбранные блюда, два сценария закупки и два сценария подготовки.</dd></div></dl>
               <div class="week-question"><strong>Решить</strong><span>Утвердить медицинский язык продолжения и периода после изменения терапии.</span></div>
+              <button class="review-button compact" type="button" data-review-block="v3-overview-week-6" data-review-title="Неделя 6 · Личная система и поддержание навыков"><span>Обсудить неделю</span><span class="review-badge" data-review-count>—</span></button>
             </article>
           </div>
         </section>
 
         <section id="overview-package" data-nav="Комплект недели">
-          <div class="overview-section-heading"><h2>Что повторяется каждую неделю</h2><p>Один узнаваемый комплект вместо набора несвязанных материалов.</p></div>
+          <div class="overview-section-heading"><h2>Что повторяется каждую неделю</h2><div class="overview-section-heading-actions"><p>Один узнаваемый комплект вместо набора несвязанных материалов.</p><button class="review-button compact" type="button" data-review-block="v3-overview-package" data-review-title="Повторяемый комплект недели"><span>Обсудить комплект</span><span class="review-badge" data-review-count>—</span></button></div></div>
           <div class="package-grid">
             <div class="package-item"><strong>Тема и результат</strong><p>Один главный смысл и одно действие, которое участник сможет применять.</p></div>
             <div class="package-item"><strong>Основное объяснение</strong><p>Видео, аудио или текст эксперта — формат выбираем под содержание.</p></div>
@@ -852,7 +1140,7 @@
         </section>
 
         <section id="overview-decisions" data-nav="Открытые решения">
-          <div class="overview-section-heading"><h2>Вопросы, на которые сейчас отвечает команда</h2><p>Каждый вопрос ведёт в раздел, где хранится подробный контекст.</p></div>
+          <div class="overview-section-heading"><h2>Вопросы, на которые сейчас отвечает команда</h2><div class="overview-section-heading-actions"><p>Каждый вопрос ведёт в раздел, где хранится подробный контекст.</p><button class="review-button compact" type="button" data-review-block="v3-overview-decisions" data-review-title="Открытые решения команды"><span>Дополнить вопросы</span><span class="review-badge" data-review-count>—</span></button></div></div>
           <div class="decision-board">
             <div class="decision-row"><div class="decision-area">Обещание</div><p class="decision-question">Какую короткую формулировку результата курса можно вынести участнику после медицинской и продуктовой проверки?</p><button class="panel-action" type="button" data-open-panel="concept">Открыть концепцию</button></div>
             <div class="decision-row"><div class="decision-area">Темы недель</div><p class="decision-question">Подтверждаем ли этот порядок шести тем и один главный результат на каждую неделю?</p><button class="panel-action" type="button" data-open-panel="weeks">Открыть недели</button></div>
@@ -861,6 +1149,24 @@
             <div class="decision-row"><div class="decision-area">Персонализация</div><p class="decision-question">Какие параметры реально меняют подсказки, белок, порции или меню и какие формулы требуют эксперта?</p><button class="panel-action" type="button" data-open-panel="nutrition">Открыть питание</button></div>
             <div class="decision-row"><div class="decision-area">Производство</div><p class="decision-question">У каждого ли материала есть владелец, финальный формат, файл, длительность, статус монтажа и дата готовности?</p><button class="panel-action" type="button" data-open-panel="weeks">Открыть готовность</button></div>
             <div class="decision-row"><div class="decision-area">Медицинская проверка</div><p class="decision-question">Какие блоки требуют отдельного согласования врача до участнической публикации?</p><button class="panel-action" type="button" data-open-panel="support">Открыть границы</button></div>
+          </div>
+        </section>
+
+        <section id="overview-ideas" data-nav="Банк идей">
+          <div class="idea-bank">
+            <div>
+              <h2>Идеи, комментарии и мысли о курсе</h2>
+              <p class="idea-bank-intro">Сюда можно складывать большой контекст, ссылки, наблюдения и гипотезы, которые пока не относятся к одному блоку. Ничего не нужно заранее сокращать или формализовывать.</p>
+              <div class="idea-compose">
+                <label for="ideaText">Добавить мысль в общий банк</label>
+                <textarea id="ideaText" placeholder="Напишите идею, контекст, ссылку или вопрос. Черновик сохранится в этом браузере до отправки."></textarea>
+                <div class="idea-compose-footer"><span class="draft-state" id="ideaDraftState">Можно писать сразу — вход понадобится только при отправке.</span><button class="review-user-button primary" id="ideaSubmit" type="button">Войти и добавить идею</button></div>
+              </div>
+            </div>
+            <div class="idea-thread">
+              <div class="idea-thread-head"><strong>Последние мысли команды</strong><button class="review-button compact" type="button" data-review-block="v3-overview-ideas" data-review-title="Общий банк идей курса"><span>Открыть все</span><span class="review-badge" data-review-count>—</span></button></div>
+              <div id="ideaList"><div class="review-empty">Подключаем общий банк идей…</div></div>
+            </div>
           </div>
         </section>
 
@@ -1458,6 +1764,22 @@
     </main>
   </div>
 
+  <dialog class="review-drawer" id="reviewDrawer" aria-labelledby="reviewDrawerTitle">
+    <div class="review-drawer-shell">
+      <header class="review-drawer-head">
+        <div><small id="reviewDrawerContext">Обсуждение блока</small><h2 id="reviewDrawerTitle">Комментарий к карте курса</h2></div>
+        <button class="review-close" id="reviewClose" type="button" aria-label="Закрыть обсуждение">×</button>
+      </header>
+      <div class="review-thread" id="reviewThread" aria-live="polite"><div class="review-thread-state">Загружаем обсуждение…</div></div>
+      <div class="review-compose">
+        <div class="review-kind-tabs" role="group" aria-label="Тип записи"><button class="active" type="button" data-review-kind="comment">Комментарий</button><button type="button" data-review-kind="proposal">Идея / предложение</button></div>
+        <textarea id="reviewText" aria-label="Текст комментария" placeholder="Добавьте контекст: что важно изменить, проверить или учесть. Черновик сохранится локально."></textarea>
+        <div class="review-compose-footer"><div class="review-writer" id="reviewWriter">Вход понадобится только при отправке.</div><button class="review-user-button primary" id="reviewSubmit" type="button">Войти и отправить</button></div>
+        <div class="draft-state" id="reviewDraftState">Черновик пока пуст.</div>
+      </div>
+    </div>
+  </dialog>
+
   <script>
     // Keep the participant-built six-week map in Nutrition 3.1, directly after the
     // editorial week sequence. The remaining former 3.2 blocks belong to Support.
@@ -1472,6 +1794,190 @@
     const localLinks = document.getElementById('localLinks');
     const progress = document.getElementById('progress');
     let sectionObserver;
+
+    const REVIEW_API_ORIGIN = 'https://sekta-glp1-course-studio.olymarkes.chatgpt.site';
+    const REVIEW_API_URL = REVIEW_API_ORIGIN + '/api/workspace?schema=v3&pages=1&scope=overview';
+    const REVIEW_AUTH_URL = REVIEW_API_ORIGIN + '/api/pages-auth?origin=' + encodeURIComponent(location.origin);
+    const reviewDrawer = document.getElementById('reviewDrawer');
+    const reviewText = document.getElementById('reviewText');
+    const ideaText = document.getElementById('ideaText');
+    let reviewWorkspace = null;
+    let reviewToken = '';
+    let activeReviewBlock = '';
+    let activeReviewTitle = '';
+    let reviewKind = 'comment';
+    let reviewLoading = false;
+    let reviewLoadError = '';
+
+    const reviewEsc = value => String(value ?? '').replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
+    const reviewProfile = id => reviewWorkspace?.profiles.find(item => item.id === id);
+    const reviewItems = blockId => reviewWorkspace?.reviews.filter(item => item.blockId === blockId) || [];
+    const openReviewCount = blockId => reviewItems(blockId).filter(item => item.status === 'open').length;
+    const draftKey = blockId => 'glp1-overview-review-draft-v1:' + blockId;
+
+    function reviewInitials(name) {
+      return String(name || '?').trim().split(/\s+/).slice(0, 2).map(part => part[0]).join('').toUpperCase();
+    }
+
+    function reviewDate(value) {
+      if (!value) return '';
+      const normalized = value.includes('T') ? value : value.replace(' ', 'T') + 'Z';
+      const date = new Date(normalized);
+      if (Number.isNaN(date.getTime())) return '';
+      return new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(date);
+    }
+
+    function readDraft(blockId) {
+      try { return localStorage.getItem(draftKey(blockId)) || ''; } catch { return ''; }
+    }
+
+    function writeDraft(blockId, value) {
+      try {
+        if (value) localStorage.setItem(draftKey(blockId), value);
+        else localStorage.removeItem(draftKey(blockId));
+      } catch {}
+    }
+
+    function setReviewSync(state, text) {
+      const element = document.getElementById('reviewSync');
+      element.className = 'review-sync ' + state;
+      element.textContent = text;
+    }
+
+    function reviewItemMarkup(item) {
+      const author = reviewProfile(item.authorId);
+      const name = author?.displayName || 'Участник команды';
+      const status = item.status === 'open' ? '' : ` · ${item.status === 'accepted' ? 'принято' : 'закрыто'}`;
+      return `<article class="review-item"><span class="review-avatar" style="background:${reviewEsc(author?.color || '#596579')}">${reviewEsc(reviewInitials(name))}</span><div><div class="review-item-meta"><strong>${reviewEsc(name)}</strong><span>${reviewEsc(author?.department || 'Команда')}</span><span class="review-kind">${item.kind === 'proposal' ? 'идея / предложение' : 'комментарий'}${status}</span><span>${reviewEsc(reviewDate(item.createdAt))}</span></div><p>${reviewEsc(item.body)}</p></div></article>`;
+    }
+
+    function renderReviewCounts() {
+      document.querySelectorAll('[data-review-block]').forEach(button => {
+        const count = openReviewCount(button.dataset.reviewBlock);
+        const badge = button.querySelector('[data-review-count]');
+        if (!badge) return;
+        badge.textContent = String(count);
+        badge.setAttribute('aria-label', `Открытых записей: ${count}`);
+        button.setAttribute('aria-label', `${button.dataset.reviewTitle}. Открытых записей: ${count}`);
+      });
+    }
+
+    function renderIdeaBank() {
+      const items = reviewItems('v3-overview-ideas');
+      document.getElementById('ideaList').innerHTML = items.length
+        ? items.slice(0, 3).map(reviewItemMarkup).join('')
+        : '<div class="review-empty">Здесь пока нет идей. Можно начать с большого контекста — сокращать его не нужно.</div>';
+      document.getElementById('ideaSubmit').textContent = reviewWorkspace?.authenticated ? 'Добавить идею' : 'Войти и добавить идею';
+      const state = document.getElementById('ideaDraftState');
+      if (ideaText.value.trim()) state.textContent = 'Черновик сохранён локально и ещё не виден команде.';
+      else state.textContent = reviewWorkspace?.authenticated ? `Вы вошли как ${reviewWorkspace.currentUser.displayName}.` : 'Можно писать сразу — вход понадобится только при отправке.';
+    }
+
+    function renderReviewDrawer() {
+      if (!activeReviewBlock) return;
+      document.getElementById('reviewDrawerTitle').textContent = activeReviewTitle;
+      const items = reviewItems(activeReviewBlock);
+      document.getElementById('reviewThread').innerHTML = reviewWorkspace
+        ? (items.length ? items.map(reviewItemMarkup).join('') : '<div class="review-thread-state">Обсуждение пока пустое. Начните с вопроса, комментария или развёрнутой идеи.</div>')
+        : `<div class="review-thread-state">${reviewEsc(reviewLoadError || 'Загружаем обсуждение…')}</div>`;
+      document.querySelectorAll('[data-review-kind]').forEach(button => button.classList.toggle('active', button.dataset.reviewKind === reviewKind));
+      const writer = document.getElementById('reviewWriter');
+      const submit = document.getElementById('reviewSubmit');
+      if (reviewWorkspace?.authenticated) {
+        writer.innerHTML = `<strong>${reviewEsc(reviewWorkspace.currentUser.displayName)}</strong>${reviewEsc(reviewWorkspace.currentUser.department || 'Команда')}`;
+        submit.textContent = reviewKind === 'proposal' ? 'Добавить идею' : 'Добавить комментарий';
+      } else {
+        writer.textContent = 'Вход понадобится только при отправке.';
+        submit.textContent = 'Войти и отправить';
+      }
+      const draftState = document.getElementById('reviewDraftState');
+      draftState.className = 'draft-state';
+      draftState.textContent = reviewText.value.trim() ? 'Черновик сохранён локально и ещё не виден команде.' : 'Черновик пока пуст.';
+    }
+
+    function renderReviewWorkspace() {
+      const total = reviewWorkspace.reviews.filter(item => item.status === 'open').length;
+      setReviewSync('ready', total ? `${total} открытых записей` : 'Обсуждения синхронизированы');
+      const login = document.getElementById('reviewLogin');
+      login.textContent = reviewWorkspace.authenticated ? `${reviewWorkspace.currentUser.displayName} · выйти` : 'Войти для комментариев';
+      login.classList.toggle('primary', !reviewWorkspace.authenticated);
+      renderReviewCounts();
+      renderIdeaBank();
+      renderReviewDrawer();
+    }
+
+    const reviewPost = body => fetch(REVIEW_API_ORIGIN + '/api/workspace', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ ...body, pagesToken: reviewToken, scope: 'overview' }),
+    });
+
+    async function loadReviewWorkspace() {
+      if (reviewLoading) return;
+      reviewLoading = true;
+      setReviewSync('', 'Подключаем обсуждения…');
+      try {
+        const response = reviewToken ? await reviewPost({ action: 'authenticate' }) : await fetch(REVIEW_API_URL, { cache: 'no-store' });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Не удалось загрузить обсуждения.');
+        reviewWorkspace = data;
+        reviewLoadError = '';
+        renderReviewWorkspace();
+      } catch (error) {
+        reviewLoadError = 'Обсуждение сейчас недоступно. Черновик можно написать и сохранить локально.';
+        setReviewSync('error', 'Обсуждения временно недоступны');
+        document.getElementById('ideaList').innerHTML = '<div class="review-empty">Не удалось подключить общий банк идей. Черновик всё равно сохранится в этом браузере.</div>';
+        if (reviewDrawer.open) renderReviewDrawer();
+      } finally {
+        reviewLoading = false;
+      }
+    }
+
+    function openReview(blockId, title) {
+      activeReviewBlock = blockId;
+      activeReviewTitle = title;
+      reviewKind = blockId === 'v3-overview-ideas' ? 'proposal' : 'comment';
+      reviewText.value = readDraft(blockId);
+      renderReviewDrawer();
+      if (!reviewDrawer.open) reviewDrawer.showModal();
+      requestAnimationFrame(() => reviewText.focus());
+    }
+
+    function startReviewLogin() {
+      const popup = window.open(REVIEW_AUTH_URL, 'glp1-auth', 'width=520,height=680');
+      if (!popup) setReviewSync('error', 'Разрешите всплывающее окно для входа');
+    }
+
+    async function submitReview(blockId, kind, text, stateElement, button) {
+      if (!text.trim()) return;
+      writeDraft(blockId, text);
+      if (!reviewWorkspace?.authenticated) {
+        stateElement.className = 'draft-state';
+        stateElement.textContent = 'Черновик сохранён локально. После входа нажмите отправить ещё раз.';
+        startReviewLogin();
+        return;
+      }
+      button.disabled = true;
+      stateElement.className = 'draft-state waiting';
+      stateElement.textContent = 'Отправляем в общую историю…';
+      try {
+        const response = await reviewPost({ action: 'addReview', blockId, kind, body: text.trim() });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Комментарий не сохранился.');
+        reviewWorkspace = data;
+        writeDraft(blockId, '');
+        if (blockId === 'v3-overview-ideas') ideaText.value = '';
+        if (blockId === activeReviewBlock) reviewText.value = '';
+        renderReviewWorkspace();
+        stateElement.className = 'draft-state synced';
+        stateElement.textContent = 'Синхронизировано — запись видна всей команде.';
+      } catch (error) {
+        stateElement.className = 'draft-state error';
+        stateElement.textContent = error.message;
+      } finally {
+        button.disabled = false;
+      }
+    }
 
     function panelSections(panel) {
       return [...panel.querySelectorAll('section[data-nav]')];
@@ -1539,6 +2045,43 @@
       progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
     }
 
+    ideaText.value = readDraft('v3-overview-ideas');
+    ideaText.addEventListener('input', () => {
+      writeDraft('v3-overview-ideas', ideaText.value);
+      renderIdeaBank();
+    });
+    reviewText.addEventListener('input', () => {
+      if (!activeReviewBlock) return;
+      writeDraft(activeReviewBlock, reviewText.value);
+      renderReviewDrawer();
+    });
+    document.querySelectorAll('[data-review-block]').forEach(button => {
+      button.addEventListener('click', () => openReview(button.dataset.reviewBlock, button.dataset.reviewTitle));
+    });
+    document.querySelectorAll('[data-review-kind]').forEach(button => {
+      button.addEventListener('click', () => {
+        reviewKind = button.dataset.reviewKind;
+        renderReviewDrawer();
+      });
+    });
+    document.getElementById('reviewSubmit').addEventListener('click', () => submitReview(activeReviewBlock, reviewKind, reviewText.value, document.getElementById('reviewDraftState'), document.getElementById('reviewSubmit')));
+    document.getElementById('ideaSubmit').addEventListener('click', () => submitReview('v3-overview-ideas', 'proposal', ideaText.value, document.getElementById('ideaDraftState'), document.getElementById('ideaSubmit')));
+    document.getElementById('reviewClose').addEventListener('click', () => reviewDrawer.close());
+    reviewDrawer.addEventListener('click', event => { if (event.target === reviewDrawer) reviewDrawer.close(); });
+    document.getElementById('reviewLogin').addEventListener('click', () => {
+      if (reviewWorkspace?.authenticated) {
+        reviewToken = '';
+        reviewWorkspace = null;
+        loadReviewWorkspace();
+      } else startReviewLogin();
+    });
+    window.addEventListener('message', event => {
+      if (event.origin !== REVIEW_API_ORIGIN || event.data?.type !== 'glp1-pages-auth') return;
+      reviewToken = event.data.token;
+      reviewWorkspace = null;
+      loadReviewWorkspace();
+    });
+
     window.addEventListener('scroll', updateProgress, { passive: true });
     const initialHash = location.hash.slice(1);
     const initialSection = document.getElementById(initialHash);
@@ -1553,6 +2096,7 @@
         history.replaceState(null, '', '#' + initialSection.id);
       });
     }
+    loadReviewWorkspace();
   </script>
 <script>
     (()=>{
