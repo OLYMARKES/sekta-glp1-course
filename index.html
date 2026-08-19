@@ -284,6 +284,25 @@
     .overview-feedback-section li { padding-left: 3px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.48; }
     .overview-feedback-section li + li { margin-top: 7px; }
     .overview-feedback-status { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--accent-line); color: var(--ink-soft); font-size: 12.5px; line-height: 1.48; }
+    .overview-feedback-author + .overview-feedback-author { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--accent-line); }
+    .overview-feedback-author-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 12px; }
+    .overview-feedback-author-head h3 { margin: 0; color: var(--accent-deep); font-size: 16px; }
+    .overview-feedback-author-head span { color: var(--ink-soft); font-size: 12px; font-weight: 700; }
+    .overview-feedback-intro { max-width: 78ch; margin: 0 0 16px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.52; }
+    .overview-naming-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .overview-naming-option { min-width: 0; padding-right: 20px; }
+    .overview-naming-option + .overview-naming-option { padding-right: 0; padding-left: 20px; border-left: 1px solid var(--accent-line); }
+    .overview-naming-option h4 { margin: 0 0 9px; color: var(--ink); font-size: 13px; }
+    .overview-naming-option ol { margin: 0; padding-left: 20px; }
+    .overview-naming-option li { padding-left: 2px; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+    .overview-naming-option li + li { margin-top: 6px; }
+    .overview-naming-note { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--accent-line); color: var(--ink-soft); font-size: 12.5px; line-height: 1.48; }
+    @media (max-width: 620px) {
+      .overview-feedback-author-head { align-items: flex-start; }
+      .overview-naming-grid { grid-template-columns: 1fr; }
+      .overview-naming-option { padding-right: 0; }
+      .overview-naming-option + .overview-naming-option { margin-top: 14px; padding-top: 14px; padding-left: 0; border-top: 1px solid var(--accent-line); border-left: 0; }
+    }
     .onepager-head {
       display: grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
@@ -990,33 +1009,77 @@
           <details class="overview-update">
             <summary>
               <strong class="overview-update-date">Среда, 19 августа</strong>
-              <span class="overview-update-line">2 комментария → one‑pager; дальше — два ревью</span>
-              <span class="overview-update-action">Комментарий Нестеровой</span>
+              <span class="overview-update-line">3 комментария → one‑pager; дальше — нейминг и два ревью</span>
+              <span class="overview-update-action">Нестерова · Оля</span>
             </summary>
             <div class="overview-feedback">
-              <div class="overview-feedback-grid">
-                <section class="overview-feedback-section" aria-labelledby="nesterova-theses-title">
-                  <h3 id="nesterova-theses-title">Главные тезисы</h3>
-                  <ul>
-                    <li class="overview-feedback-thesis">GLP‑1 — лекарственная терапия; курс сохраняет медицинскую честность и границы.</li>
-                    <li class="overview-feedback-thesis">Нельзя превращать препарат в лёгкий lifestyle‑продукт, «витамины» или biohacking.</li>
-                    <li class="overview-feedback-thesis">Нельзя определять человека через симптомы и специальные протоколы на каждом шагу.</li>
-                    <li class="overview-feedback-thesis">Участник остаётся обычным взрослым; терапия — контекст решений, а не его идентичность.</li>
-                    <li class="overview-feedback-thesis">Science‑based позиция требует прямых источников, человеческого языка и двух ревью.</li>
-                  </ul>
-                </section>
-                <section class="overview-feedback-section" aria-labelledby="nesterova-proposals-title">
-                  <h3 id="nesterova-proposals-title">Предложения</h3>
-                  <ul>
-                    <li class="overview-feedback-proposal">Зафиксировать общую рамку: лекарственная терапия + нормальная повседневная жизнь.</li>
-                    <li class="overview-feedback-proposal">Собрать механизм, побочные эффекты, взаимодействия и красные флаги в отдельный medical block.</li>
-                    <li class="overview-feedback-proposal">Основной поток строить вокруг обычной еды, движения и жизни; адаптации показывать по потребности.</li>
-                    <li class="overview-feedback-proposal">Убрать постоянные упоминания симптомов из меню и тренировок и провести human‑language pass.</li>
-                    <li class="overview-feedback-proposal">Дать прямые ссылки на источники и провести medical + human editorial review.</li>
-                  </ul>
-                </section>
-              </div>
-              <p class="overview-feedback-status"><strong>Статус:</strong> предложения Нестеровой зафиксированы, но ещё не применены к тексту one‑pager.</p>
+              <section class="overview-feedback-author" aria-labelledby="nesterova-comment-title">
+                <div class="overview-feedback-author-head"><h3 id="nesterova-comment-title">Комментарий Нестеровой</h3><span>5 тезисов · 5 предложений</span></div>
+                <div class="overview-feedback-grid">
+                  <section class="overview-feedback-section" aria-labelledby="nesterova-theses-title">
+                    <h3 id="nesterova-theses-title">Главные тезисы</h3>
+                    <ul>
+                      <li class="overview-feedback-thesis">GLP‑1 — лекарственная терапия; курс сохраняет медицинскую честность и границы.</li>
+                      <li class="overview-feedback-thesis">Нельзя превращать препарат в лёгкий lifestyle‑продукт, «витамины» или biohacking.</li>
+                      <li class="overview-feedback-thesis">Нельзя определять человека через симптомы и специальные протоколы на каждом шагу.</li>
+                      <li class="overview-feedback-thesis">Участник остаётся обычным взрослым; терапия — контекст решений, а не его идентичность.</li>
+                      <li class="overview-feedback-thesis">Science‑based позиция требует прямых источников, человеческого языка и двух ревью.</li>
+                    </ul>
+                  </section>
+                  <section class="overview-feedback-section" aria-labelledby="nesterova-proposals-title">
+                    <h3 id="nesterova-proposals-title">Предложения</h3>
+                    <ul>
+                      <li class="overview-feedback-proposal">Зафиксировать общую рамку: лекарственная терапия + нормальная повседневная жизнь.</li>
+                      <li class="overview-feedback-proposal">Собрать механизм, побочные эффекты, взаимодействия и красные флаги в отдельный medical block.</li>
+                      <li class="overview-feedback-proposal">Основной поток строить вокруг обычной еды, движения и жизни; адаптации показывать по потребности.</li>
+                      <li class="overview-feedback-proposal">Убрать постоянные упоминания симптомов из меню и тренировок и провести human‑language pass.</li>
+                      <li class="overview-feedback-proposal">Дать прямые ссылки на источники и провести medical + human editorial review.</li>
+                    </ul>
+                  </section>
+                </div>
+                <p class="overview-feedback-status"><strong>Статус:</strong> предложения Нестеровой зафиксированы, но ещё не применены к тексту one‑pager.</p>
+              </section>
+
+              <section class="overview-feedback-author" aria-labelledby="olya-comment-title">
+                <div class="overview-feedback-author-head"><h3 id="olya-comment-title">Комментарий Оли</h3><span>идеи · не применено</span></div>
+                <p class="overview-feedback-intro"><strong>Concern:</strong> нынешние названия недель звучат скучно и медицински — через сниженный аппетит, симптомы и кишечник. Хочется более бодрой, позитивной серии: про энергию, вкус, свободу и обычную жизнь.</p>
+                <div class="overview-naming-grid" aria-label="Три направления нейминга недель">
+                  <section class="overview-naming-option">
+                    <h4>Действие и энергия</h4>
+                    <ol>
+                      <li>Собираем тарелку для бодрости</li>
+                      <li>Находим свой ритм</li>
+                      <li>Поддерживаем силы в разные дни</li>
+                      <li>Добавляем вкус и разнообразие</li>
+                      <li>Едим свободно дома и вне дома</li>
+                      <li>Собираем свою систему на каждый день</li>
+                    </ol>
+                  </section>
+                  <section class="overview-naming-option">
+                    <h4>Больше жизни</h4>
+                    <ol>
+                      <li>Еда, которая даёт силы</li>
+                      <li>Ритм, в котором удобно жить</li>
+                      <li>Бережный план на разные дни</li>
+                      <li>Больше вкуса, больше выбора</li>
+                      <li>Жизнь шире домашней кухни</li>
+                      <li>Своя опора после курса</li>
+                    </ol>
+                  </section>
+                  <section class="overview-naming-option">
+                    <h4>Короткая серия</h4>
+                    <ol>
+                      <li>Бодрая тарелка</li>
+                      <li>Свой ритм</li>
+                      <li>Запас сил</li>
+                      <li>Вкус и разнообразие</li>
+                      <li>Свобода вне дома</li>
+                      <li>Своя система</li>
+                    </ol>
+                  </section>
+                </div>
+                <p class="overview-naming-note"><strong>Пока не меняем:</strong> это три направления для будущего выбора. Текущие названия и содержание всех шести недель остаются без изменений. «Идеальную тарелку» проверяем рядом с более нейтральными вариантами «для бодрости» и «которая поддерживает».</p>
+              </section>
             </div>
           </details>
 
