@@ -293,15 +293,25 @@
     .overview-naming-option { min-width: 0; padding-right: 20px; }
     .overview-naming-option + .overview-naming-option { padding-right: 0; padding-left: 20px; border-left: 1px solid var(--accent-line); }
     .overview-naming-option h4 { margin: 0 0 9px; color: var(--ink); font-size: 13px; }
+    .overview-naming-option p { margin: 0 0 10px; color: var(--ink-soft); font-size: 13px; line-height: 1.48; }
     .overview-naming-option ol { margin: 0; padding-left: 20px; }
     .overview-naming-option li { padding-left: 2px; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
     .overview-naming-option li + li { margin-top: 6px; }
     .overview-naming-note { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--accent-line); color: var(--ink-soft); font-size: 12.5px; line-height: 1.48; }
+    .overview-naming-next { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--accent-line); }
+    .overview-naming-next h4 { margin: 0 0 10px; color: var(--accent-deep); font-size: 14px; }
+    .overview-naming-next > ol { margin: 0; padding-left: 20px; }
+    .overview-naming-next > ol > li { padding-left: 3px; color: var(--ink-soft); font-size: 13px; line-height: 1.48; }
+    .overview-naming-next > ol > li + li { margin-top: 7px; }
+    .overview-science-seeds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; margin: 12px 0 0; padding: 0; list-style: none; }
+    .overview-science-seeds li { color: var(--ink-soft); font-size: 12.5px; line-height: 1.42; }
+    .overview-science-seeds strong { color: var(--ink); }
     @media (max-width: 620px) {
       .overview-feedback-author-head { align-items: flex-start; }
       .overview-naming-grid { grid-template-columns: 1fr; }
       .overview-naming-option { padding-right: 0; }
       .overview-naming-option + .overview-naming-option { margin-top: 14px; padding-top: 14px; padding-left: 0; border-top: 1px solid var(--accent-line); border-left: 0; }
+      .overview-science-seeds { grid-template-columns: 1fr; }
     }
     .onepager-head {
       display: grid;
@@ -1041,11 +1051,12 @@
               </section>
 
               <section class="overview-feedback-author" aria-labelledby="olya-comment-title">
-                <div class="overview-feedback-author-head"><h3 id="olya-comment-title">Комментарий Оли</h3><span>идеи · не применено</span></div>
-                <p class="overview-feedback-intro"><strong>Concern:</strong> нынешние названия недель звучат скучно и медицински — через сниженный аппетит, симптомы и кишечник. Хочется более бодрой, позитивной серии: про энергию, вкус, свободу и обычную жизнь.</p>
-                <div class="overview-naming-grid" aria-label="Три направления нейминга недель">
+                <div class="overview-feedback-author-head"><h3 id="olya-comment-title">Комментарий Оли</h3><span>1 promising · 2 отклонены</span></div>
+                <p class="overview-feedback-intro"><strong>Concern:</strong> нынешние названия недель звучат скучно и медицински — через сниженный аппетит, симптомы и кишечник. Первое направление можно развивать; второе и третье получились слишком общими и упрощёнными. Нужны более сложные, интересные формулировки, выросшие из реальных научных идей курса.</p>
+                <div class="overview-naming-grid" aria-label="Оценка трёх направлений нейминга недель">
                   <section class="overview-naming-option">
-                    <h4>Действие и энергия</h4>
+                    <h4>1 · Действие и энергия</h4>
+                    <p><strong>Promising, но не финал.</strong> Здесь есть действие и энергия; серию можно углубить через научные крючки недель.</p>
                     <ol>
                       <li>Собираем тарелку для бодрости</li>
                       <li>Находим свой ритм</li>
@@ -1056,29 +1067,32 @@
                     </ol>
                   </section>
                   <section class="overview-naming-option">
-                    <h4>Больше жизни</h4>
-                    <ol>
-                      <li>Еда, которая даёт силы</li>
-                      <li>Ритм, в котором удобно жить</li>
-                      <li>Бережный план на разные дни</li>
-                      <li>Больше вкуса, больше выбора</li>
-                      <li>Жизнь шире домашней кухни</li>
-                      <li>Своя опора после курса</li>
-                    </ol>
+                    <h4>2 · Больше жизни</h4>
+                    <p><strong>Отклонено.</strong> Слишком общий рекламный язык: эти формулировки можно поставить почти на любой wellness‑курс, и они не держатся на содержании конкретных недель.</p>
                   </section>
                   <section class="overview-naming-option">
-                    <h4>Короткая серия</h4>
-                    <ol>
-                      <li>Бодрая тарелка</li>
-                      <li>Свой ритм</li>
-                      <li>Запас сил</li>
-                      <li>Вкус и разнообразие</li>
-                      <li>Свобода вне дома</li>
-                      <li>Своя система</li>
-                    </ol>
+                    <h4>3 · Короткая серия</h4>
+                    <p><strong>Отклонено.</strong> Сокращение обедняет смысл и характер курса. Получается generic wellness вместо интеллектуально интересной серии.</p>
                   </section>
                 </div>
-                <p class="overview-naming-note"><strong>Пока не меняем:</strong> это три направления для будущего выбора. Текущие названия и содержание всех шести недель остаются без изменений. «Идеальную тарелку» проверяем рядом с более нейтральными вариантами «для бодрости» и «которая поддерживает».</p>
+                <div class="overview-naming-next">
+                  <h4>Что можем сделать дальше</h4>
+                  <ol>
+                    <li><strong>Найти научный крючок каждой недели.</strong> Взять реальный механизм или принцип из проверенных материалов курса и перевести его в живой редакционный образ — без нового медицинского claim.</li>
+                    <li><strong>Развести заголовок и подзаголовок.</strong> Заголовок даёт характер и энергию; подзаголовок спокойно объясняет точное содержание недели.</li>
+                    <li><strong>Собрать три новых профессиональных прохода.</strong> Научно‑редакционный, «образ + точный подзаголовок» и авторский голос Оли — без рекламной wellness‑интонации.</li>
+                    <li><strong>Отсекать generic.</strong> Если название без изменений подходит любому курсу про wellbeing, оно не проходит.</li>
+                  </ol>
+                  <ul class="overview-science-seeds" aria-label="Научные крючки для следующего прохода">
+                    <li><strong>1.</strong> Энергия в небольшой тарелке</li>
+                    <li><strong>2.</strong> Ритмы аппетита и сигналы тела</li>
+                    <li><strong>3.</strong> Мышцы как запас прочности</li>
+                    <li><strong>4.</strong> Разнообразие как стратегия</li>
+                    <li><strong>5.</strong> Гибкость без потери опоры</li>
+                    <li><strong>6.</strong> Система, которая остаётся</li>
+                  </ul>
+                </div>
+                <p class="overview-naming-note"><strong>Пока не меняем:</strong> это оценка и план следующего прохода. Текущие названия и содержание всех шести недель остаются без изменений.</p>
               </section>
             </div>
           </details>
