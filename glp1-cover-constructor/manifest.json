@@ -4,10 +4,17 @@
   "published_assets": 76,
   "downloads": [
     "current_png",
-    "saved_variants_zip"
+    "saved_variants_zip",
+    "visual_generation_guide_markdown",
+    "agent_photo_brief_json"
+  ],
+  "documentation": [
+    "guide.html",
+    "guide.md",
+    "agent-brief.json"
   ],
   "excludes": [
-    "prompts",
+    "private_identity_references",
     "internal_docs",
     "source_tools"
   ],

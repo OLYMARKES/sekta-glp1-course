@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GLP-1 · дизайн-система и генерация фото</title>
+<style>
+@font-face{font-family:Manrope;src:url('source/assets/design_system/manrope_regular_cyrillic_v20.ttf')}@font-face{font-family:Manrope;src:url('source/assets/design_system/manrope_bold_cyrillic_v20.ttf');font-weight:700 900}@font-face{font-family:Commissioner;src:url('source/assets/design_system/font_tinder/commissioner_vf.ttf');font-weight:100 900}
+:root{--ink:#111312;--muted:#686b68;--paper:#f7f5f0;--surface:#fff;--line:#deddd8;--mint:#bcebd0;--lavender:#d3c8ee;--pink:#efb4ce;--radius:16px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 Manrope,system-ui,sans-serif}a{color:inherit}.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:14px;min-height:62px;padding:9px 18px;border-bottom:1px solid var(--line);background:rgba(247,245,240,.94);backdrop-filter:blur(16px)}.brand{display:inline-flex;align-items:center;min-height:44px;font:850 23px/1 Commissioner,sans-serif;letter-spacing:-.04em}.top span{font-size:12px;font-weight:700}.top-actions{display:flex;gap:7px;margin-left:auto}.action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 13px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:11px;font-weight:800;text-decoration:none}.action.primary{border-color:var(--ink);background:var(--ink);color:#fff}.layout{display:grid;grid-template-columns:250px minmax(0,760px);gap:54px;justify-content:center;padding:42px 26px 90px}.side{position:sticky;top:88px;align-self:start;max-height:calc(100vh - 112px);overflow:auto}.side b{display:block;margin-bottom:10px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}.side a{display:block;padding:6px 9px;border-left:2px solid transparent;color:var(--muted);font-size:11px;text-decoration:none}.side a:hover,.side a:focus-visible{border-color:var(--mint);color:var(--ink);background:rgba(188,235,208,.22)}article{min-width:0}h1{max-width:690px;margin:0 0 18px;font:780 clamp(38px,6vw,72px)/.92 Commissioner,sans-serif;letter-spacing:-.055em}h2{margin:72px 0 18px;padding-top:16px;border-top:1px solid var(--line);font:760 31px/1.05 Commissioner,sans-serif;letter-spacing:-.035em}h3{margin:34px 0 10px;font:760 21px/1.15 Commissioner,sans-serif;letter-spacing:-.025em}p{margin:0 0 18px}li{margin:6px 0}ul,ol{margin:0 0 22px;padding-left:24px}blockquote{margin:26px 0;padding:18px 20px;border-left:5px solid var(--mint);border-radius:0 13px 13px 0;background:#fff;font:650 18px/1.45 Commissioner,sans-serif}.code-shell{position:relative;margin:22px 0}.code-shell pre{overflow:auto;margin:0;padding:22px;border-radius:14px;background:#121413;color:#eef2ee;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.copy-code{position:absolute;right:9px;top:9px;min-width:58px;min-height:44px;border:1px solid #3b403c;border-radius:8px;background:#232723;color:#fff;font:700 10px Manrope;cursor:pointer}code{padding:.12em .34em;border-radius:5px;background:#eceae5;font-size:.9em}.code-shell code{padding:0;background:none}.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:28px 0 42px}.examples figure{margin:0;overflow:hidden;border-radius:13px;background:#111}.examples img{display:block;width:100%;aspect-ratio:1.5/1;object-fit:cover}.examples figcaption{padding:8px 10px;color:#fff;font-size:10px}.download-note{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:24px 0}.download-note a{display:flex;align-items:center;min-height:44px;padding:15px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:12px;font-weight:800;text-decoration:none}article>p:first-of-type{font-size:18px;color:#4b4f4b}.footer{margin-top:72px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}:focus-visible{outline:3px solid #9b86d0;outline-offset:2px}
+@media(max-width:850px){.top{flex-wrap:wrap}.top>span{order:3;width:100%}.top-actions{margin-left:auto}.layout{display:block;padding:28px 17px 70px}.side{position:static;display:flex;gap:4px;overflow:auto;margin:0 0 34px;padding-bottom:8px}.side b{display:none}.side a{flex:0 0 auto;min-height:44px;display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;background:#fff}.examples{grid-template-columns:repeat(2,1fr)}h1{font-size:43px}h2{margin-top:54px;font-size:27px}}
+@media(max-width:520px){.top-actions .action:not(.primary){display:none}.examples{grid-template-columns:1fr 1fr}.download-note{grid-template-columns:1fr}h1{font-size:38px}.layout{padding-left:13px;padding-right:13px}.code-shell pre{font-size:11px}}
+</style></head><body>
+<header class="top"><a class="brand" href="index.html">GLP-1</a><span>Дизайн-система и генерация фото</span><div class="top-actions"><a class="action" href="guide.md" download>Скачать Markdown</a><a class="action primary" href="agent-brief.json" download>Agent brief JSON</a></div></header>
+<div class="layout"><nav class="side" aria-label="Разделы"><b>Содержание</b><a href="#1-что-должна-передавать-система">1. Что должна передавать система</a><a href="#2-две-визуальные-среды">2. Две визуальные среды</a><a href="#3-палитра-и-типографика">3. Палитра и типографика</a><a href="#4-обложка-как-система-слоёв">4. Обложка как система слоёв</a><a href="#5-роли-фотографий">5. Роли фотографий</a><a href="#6-кастинг-и-лица">6. Кастинг и лица</a><a href="#7-как-готовить-задачу-для-ai-агента">7. Как готовить задачу для AI-агента</a><a href="#8-мастер-формула-промпта">8. Мастер-формула промпта</a><a href="#9-готовые-prompt-шаблоны">9. Готовые prompt-шаблоны</a><a href="#10-работа-с-референсами">10. Работа с референсами</a><a href="#11-покадровый-workflow">11. Покадровый workflow</a><a href="#12-контроль-качества">12. Контроль качества</a><a href="#13-как-генерировать-серию-а-не-набор-случайных-картинок">13. Как генерировать серию, а не набор случайных картинок</a><a href="#14-носители-и-safe-zones">14. Носители и safe zones</a><a href="#15-чего-не-должно-быть-в-фотобанке">15. Чего не должно быть в фотобанке</a><a href="#16-формат-передачи-кадра">16. Формат передачи кадра</a><a href="#17-статусы-и-права">17. Статусы и права</a><a href="#18-как-передать-задачу-другому-агенту">18. Как передать задачу другому агенту</a><a href="#19-чек-лист-перед-загрузкой-в-конструктор">19. Чек-лист перед загрузкой в конструктор</a><a href="#20-короткая-формула">20. Короткая формула</a></nav><article><h1 id="glp-1-дизайн-система-и-генерация-фотографий">GLP‑1 · дизайн-система и генерация фотографий</h1>
+<p>Версия 1.0 · 27 августа 2026</p>
+<p>Это публичный production-протокол для людей и AI-агентов, которые создают новые фотографии и обложки для «GLP‑1 — курс на устойчивость». Он описывает не один шаблон, а грамматику системы: как выбирать сцену, кастинг, свет, кадр, цвет, носитель и режим проверки.</p>
+<blockquote>Главная мысль: мы не иллюстрируем «похудение». Мы показываем устойчивую жизнь: движение, силу, обычную еду, отдых, внимание к себе и спокойную компетентность.</blockquote>
+<h2 id="1-что-должна-передавать-система">1. Что должна передавать система</h2>
+<p>Дизайн собирает вместе пять качеств:</p>
+<ul>
+<li><strong>Устойчивость.</strong> Не рывок и не преображение, а ритм, опора и повторяемые действия.</li>
+<li><strong>Человечность.</strong> Реальная кожа, обычные тела, настоящее усилие, непостановочные паузы.</li>
+<li><strong>Современность.</strong> Молодая editorial-фотография без визуального клише «медицинского wellness».</li>
+<li><strong>Глубина.</strong> Фотография имеет среду, воздух, тактильность и понятный источник света.</li>
+<li><strong>Прикладность.</strong> Кадр заранее оставляет место для текста и переживает кадрирование под несколько носителей.</li>
+</ul>
+<p>Система не должна выглядеть как клиника, аптека, диетический марафон, агрессивный fitness-челлендж или премиальная spa-реклама.</p>
+<h2 id="2-две-визуальные-среды">2. Две визуальные среды</h2>
+<h3 id="care-светлая">CARE · светлая</h3>
+<p>Светлая среда нужна для утренних, вводных и более мягких материалов.</p>
+<ul>
+<li>Высокий ключ, белая или молочная студия, мягкий большой источник света.</li>
+<li>Белый не выгорает; контактные тени остаются чёткими.</li>
+<li>Мятный, лавандовый и мягкий розовый живут в одежде, предметах и акцентах, а не в воздушной цветной дымке.</li>
+<li>Одежда функциональная: топ, свободные брюки или легинсы, белые кроссовки; без случайных логотипов.</li>
+<li>Настроение: спокойная готовность, не беззаботная эйфория.</li>
+</ul>
+<h3 id="strength-тёмная">STRENGTH · тёмная</h3>
+<p>Тёмная среда нужна для силовых, основных и более жёстких материалов.</p>
+<ul>
+<li>Глубокий угольный фон, архитектура зала, шкафчики, стекло, текстиль, коврик или окно.</li>
+<li>Цветной свет ощущается физическим: свет за кадром, отражение, мягкое свечение, а не наложенный градиент.</li>
+<li>Кожа и еда не заливаются мятным или розовым: они остаются естественными.</li>
+<li>Контраст собирается постепенно: слои тени, бликов, размытия и матовой плёнки; жёсткий диагональный gradient cut запрещён.</li>
+<li>Настроение: опора, собранность, тихая сила; не агрессия и не бодибилдинг.</li>
+</ul>
+<h2 id="3-палитра-и-типографика">3. Палитра и типографика</h2>
+<p>Канонические цвета:</p>
+<ul>
+<li>Ink <code>#111111</code> — тёмная база и текст.</li>
+<li>Mint <code>#BCEBD0</code> — ведущий сигнал заботы и движения.</li>
+<li>Lavender <code>#D3C8EE</code> — опорный цвет.</li>
+<li>Pink <code>#EFB4CE</code> — живой акцент.</li>
+<li>Paper <code>#F7F5F0</code> — тёплая светлая поверхность.</li>
+<li>White <code>#FFFFFF</code> — рабочий свет, но не единственный фон.</li>
+</ul>
+<p>Цвет имеет роль. Не нужно одновременно красить всё мятой, лавандой и розовым. В кадре достаточно одного ведущего цвета и одного вторичного сигнала.</p>
+<p>Типографические роли:</p>
+<ul>
+<li><strong>Commissioner Variable</strong> — display, название курса, крупные заголовки обложек.</li>
+<li><strong>Golos Text Variable</strong> — служебные строки, подписи, вторичная иерархия.</li>
+<li><strong>Manrope</strong> — продуктовая оболочка и длинная инструкция.</li>
+</ul>
+<p>Шрифты не запекаются в фотографию. Фотография всегда генерируется без текста, логотипа, UI, рамки и watermark.</p>
+<h2 id="4-обложка-как-система-слоёв">4. Обложка как система слоёв</h2>
+<p>Обложка не рисуется одним плоским кадром. Она собирается в конструкторе.</p>
+<ol>
+<li><strong>Фотография.</strong> Независимый слой: масштаб, фокус, contain/cover, размер и смещение за край холста.</li>
+<li><strong>Защита контраста.</strong> Мягкая тень, свечение, дымка, плашка или split.</li>
+<li><strong>Пастельное поле.</strong> Физический off-canvas light falloff; не жёсткая цветная маска на коже.</li>
+<li><strong>Плашка.</strong> Solid, gradient или mesh; цвет подчиняется ролям палитры.</li>
+<li><strong>Aura-траектории.</strong> Одна крупная линия масштаба носителя, а не мелкий декор.</li>
+<li><strong>Матовая микроплёнка.</strong> Точки и оптическая фактура с низкой видимостью; не конфетти.</li>
+<li><strong>Типографика.</strong> Локап GLP‑1, название материала, тип и служебная строка.</li>
+<li><strong>Контекст.</strong> Обложка обязана пройти проверку в реальной карточке кабинета.</li>
+</ol>
+<p>Ключевое правило: не просите генератор нарисовать готовую обложку. Генерируйте чистую фотографию, а все слои бренда добавляйте детерминированно в конструкторе.</p>
+<h2 id="5-роли-фотографий">5. Роли фотографий</h2>
+<p>Каждый кадр перед генерацией получает одну ведущую роль:</p>
+<ul>
+<li><strong>Portrait.</strong> Узнаваемый эксперт или ведущий; лицо читается только после отдельного identity-гейта.</li>
+<li><strong>Movement.</strong> Движение, подготовка, пауза после практики, шаг, коврик, кроссовок, дверной проём.</li>
+<li><strong>Strength.</strong> Заземлённая стойка, функциональное усилие, собранный взгляд; без агрессии и гипертрофии.</li>
+<li><strong>Space.</strong> Пустая студия, стекло, текстиль, шкафчики, окно, оборудование. Среда может быть главным героем.</li>
+<li><strong>Audio.</strong> Наушники, дневник, скамья, вечерний свет, тихий интерьер.</li>
+<li><strong>Nutrition.</strong> Нормальная сытная еда, приготовление, руки, сервировка. Никаких крохотных порций и «диетического» реквизита.</li>
+<li><strong>Objects.</strong> Коврик, гантель, бутылка воды, полотенце, телефон, наушники и еда как тактильный still life.</li>
+</ul>
+<p>Не смешивайте в одном кадре все роли. Сильная серия собирается из кадров с ясной функцией.</p>
+<h2 id="6-кастинг-и-лица">6. Кастинг и лица</h2>
+<p>Есть три режима.</p>
+<h3 id="реальный-человек">Реальный человек</h3>
+<p>Используйте только разрешённые референсы того же человека. Референс — это доказательство личности, а не «вдохновение».</p>
+<p>Обязательно сохраняются:</p>
+<ul>
+<li>геометрия лица, расстояние между глазами, нос, губы, челюсть и линия волос;</li>
+<li>возраст, асимметрия, цвет кожи и естественная текстура;</li>
+<li>форма тела, пропорции, поза и распределение веса;</li>
+<li>причёска, татуировки, шрамы, веснушки, пирсинг и другие устойчивые признаки;</li>
+<li>сторона, масштаб, ориентация и обхват каждой татуировки.</li>
+</ul>
+<p>Запрещено молча омолаживать, «улучшать» тело, менять этнически считываемые черты, зеркалить татуировки или добавлять аксессуары.</p>
+<h3 id="повторяющийся-синтетический-персонаж">Повторяющийся синтетический персонаж</h3>
+<p>Сначала создайте и утвердите identity board: крупный план, три четверти, профиль, полный рост и нейтральная поза. После утверждения этот набор становится единственным identity source. Не смешивайте в одной серии несколько похожих синтетических лиц.</p>
+<h3 id="безличная-сцена">Безличная сцена</h3>
+<p>Если личность не нужна, покажите затылок, силуэт, руки, деталь одежды, движение за стеклом или пустую среду. «Без лица» не означает «без анатомии»: руки, суставы, тени и точки контакта всё равно проверяются.</p>
+<h2 id="7-как-готовить-задачу-для-ai-агента">7. Как готовить задачу для AI-агента</h2>
+<p>До запуска генератора агент должен записать:</p>
+<ol>
+<li><code>role</code> — portrait, movement, strength, space, audio, nutrition или objects.</li>
+<li><code>track</code> — care_light или strength_dark.</li>
+<li><code>carrier</code> — 16:10, 16:9, 4:5 или 1:1.</li>
+<li><code>copy_side</code> — left, right или none.</li>
+<li><code>subject</code> — real_authorized, synthetic_locked или faceless.</li>
+<li><code>action</code> — одно наблюдаемое действие.</li>
+<li><code>environment</code> — конкретная студия или интерьер.</li>
+<li><code>light</code> — направление, мягкость, цвет и поведение теней.</li>
+<li><code>wardrobe_props</code> — одежда и не более двух важных предметов.</li>
+<li><code>preserve</code> — неизменяемые свойства.</li>
+<li><code>exclude</code> — конкретные запреты.</li>
+<li><code>status</code> — generation, review_candidate или approved.</li>
+</ol>
+<p>Если не определены identity source, носитель и сторона под текст, генерацию не начинают.</p>
+<h2 id="8-мастер-формула-промпта">8. Мастер-формула промпта</h2>
+<p>Рабочий prompt лучше собирать как короткую production-спецификацию, а не как литературное описание.</p>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready [CARRIER] editorial photograph for the GLP-1 course.
+
+ROLE AND TRACK
+[ROLE]. Use the [CARE LIGHT / STRENGTH DARK] visual environment. The emotional tone is calm readiness, grounded effort and sustainable everyday practice — never transformation marketing.
+
+SUBJECT
+[REAL AUTHORIZED PERSON / LOCKED SYNTHETIC CHARACTER / FACELESS ADULT]. [ACTION AND POSE].
+
+IDENTITY LOCK
+[PRESERVE FACE, AGE, SKIN TONE, BODY PROPORTIONS, HAIR, DISTINCTIVE MARKS, TATTOOS AND THEIR EXACT SIDES]. Change only [ALLOWED CHANGE].
+
+SCENE AND LIGHT
+[ENVIRONMENT]. [LIGHT DIRECTION, SOFTNESS AND COLOR]. Keep skin and food naturally colored. Pastel light must feel physically present in the scene, never like a flat color overlay.
+
+COMPOSITION
+Place the subject in [SUBJECT ZONE]. Leave clean copy space on the [COPY SIDE]. Keep the full required anatomy and important props inside a 7% safe zone. Preserve useful visual information for alternate 16:9, 16:10, 4:5 and 1:1 crops.
+
+FINISH
+Natural skin texture, tactile fabric, coherent contact shadows, realistic perspective, controlled highlights, editorial photography, sRGB-ready color, no baked typography.
+
+EXCLUDE
+No text, logo, UI, frame, collage, watermark, pills, syringes, scales, measuring tape, before/after language, medical-result imagery, body reshaping, beauty retouch, plastic skin, anatomy distortion, extra fingers or limbs, mirrored tattoos, invented accessories, hard gradient cuts, generic spa mood or aggressive bodybuilding.</code></pre></div>
+<p>Для реального человека критические identity-ограничения повторяются на каждой итерации.</p>
+<h2 id="9-готовые-prompt-шаблоны">9. Готовые prompt-шаблоны</h2>
+<h3 id="care-движение-в-светлой-студии">CARE · движение в светлой студии</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready 16:10 editorial movement photograph for the GLP-1 course. Use a bright seamless white or warm-paper studio with soft large-source daylight and crisp believable contact shadows. Show one authorized adult or one previously approved synthetic course character in a stable standing mobility action. Functional wardrobe: one mint or lavender garment, a neutral supporting garment and white trainers. Place the subject in the right 42% and leave clean copy space on the left. Keep the full head, hands and feet inside a 7% safe zone. Natural skin, ordinary athletic proportions, tactile fabric, calm readiness. No text, logos, extra people, beauty retouch, body transformation cues, cropped limbs, yellow-dominant palette, dark background or decorative gradient.</code></pre></div>
+<h3 id="strength-заземлённая-сила">STRENGTH · заземлённая сила</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready 16:10 editorial strength photograph for the GLP-1 course. Show one authorized adult or locked synthetic character in a grounded shoulder-width stance or controlled functional strength action. Preserve believable weight distribution, shoulder and hip axes, joints, hands, feet and equipment contact. Deep charcoal studio or restrained gym architecture; one soft off-camera mint, lavender or pink light source creates a physical reflection and gradual falloff. Skin remains naturally colored. Place the subject in the left 43% and keep the right side quiet for typography. Calm authority and functional effort; no aggression, bodybuilding bulk, sweat-advertising, neon gym, hard gradient, extra people, text or anatomy distortion.</code></pre></div>
+<h3 id="тёмная-безличная-сцена">Тёмная безличная сцена</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one cinematic but believable 16:10 editorial photograph for the GLP-1 course. The environment leads: dark studio architecture, ribbed glass, a doorway, textile, mat or window. Include at most one partially obscured adult as a secondary human scale cue — back view, hands, silhouette or motion behind glass — with believable anatomy and contact shadows. Use deep charcoal values with one soft physical pastel reflection, gradual falloff and restrained grain. Leave a large quiet text zone. No readable generic face, horror mood, clinical cues, neon, hard diagonal gradient, text, logo, watermark or impossible body fragments.</code></pre></div>
+<h3 id="тихий-интерьер">Тихий интерьер</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready 16:10 editorial interior photograph for the GLP-1 course. Show a quiet contemporary training or recovery space after practice: ribbed glass, soft textile, bench, locker rhythm, mat or window light. No person is required. Compose one clear spatial depth sequence and reserve a clean side for typography. Deep neutral charcoal or warm paper base with one restrained mint, lavender or pink reflection that behaves like real light. Tactile materials, coherent perspective, controlled highlights and subtle grain. No luxury spa, medical room, signage, text, logo, clutter, hard gradient or generic 3D render look.</code></pre></div>
+<h3 id="аудио-still-life">Аудио · still life</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready 16:10 editorial still life for an audio material in the GLP-1 course. Use headphones as the primary object with one or two supporting objects such as a notebook, phone, towel or water bottle. Arrange the group on the right and leave clean copy space on the left. Use either a bright paper studio or a dark tactile interior with one physical pastel reflection. Real rubber, textile, paper, glass and metal texture; crisp contact shadows; calm evening attention. No people, food, packaging, labels, pills, syringes, scales, text, logo, watermark, gradient backdrop or clutter.</code></pre></div>
+<h3 id="питание-обычная-сытная-еда">Питание · обычная сытная еда</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one production-ready 16:10 editorial food photograph for the GLP-1 course. Show a normal satisfying meal or believable preparation moment: recognizable protein, grain or bread, vegetables or fruit, water and ordinary tableware. The portion must look normal, not miniature or diet-coded. Keep food naturally colored and appetizing; pastel color may appear only in a mat, napkin, dish or reflected light. Reserve a clean side for typography. No people unless hands are explicitly requested, no pills, syringes, scales, calorie numbers, measuring tape, before/after cues, tiny portions, packaging, labels, text, logo, watermark or glossy commercial food fakery.</code></pre></div>
+<h3 id="identity-preserving-нейрофотосет">Identity-preserving нейрофотосет</h3>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Create one new photographic scene using only the supplied authorized references of the same adult person. Preserve the exact recognizable identity: facial geometry, eye spacing, nose, lips, jaw, hairline, apparent age, skin tone, natural asymmetry, body shape and all stable distinctive marks. Preserve every visible tattoo or piercing with its correct side, placement, scale, orientation and wrap; do not mirror or invent details. Change only the requested scene, wardrobe, action and lighting. Keep anatomy, weight distribution, clothing seams, perspective, occlusion, contact points and shadows believable. Natural skin texture and coherent grain. No beautification, younger look, body reshaping, generic substitute face, invented accessories, plastic skin, extra fingers or limbs, text or watermark.</code></pre></div>
+<h2 id="10-работа-с-референсами">10. Работа с референсами</h2>
+<p>Для identity-preserving задачи нужны не «лучшие фото», а достаточные доказательства:</p>
+<ul>
+<li>фронтальное лицо в нейтральном свете;</li>
+<li>три четверти и профиль;</li>
+<li>полный рост для формы тела и пропорций;</li>
+<li>крупные кадры татуировок, пирсинга и других признаков;</li>
+<li>минимум один кадр в похожей позе, если меняется механика тела.</li>
+</ul>
+<p>Референсы разных людей не смешиваются. Если нужной стороны тела или татуировки не видно, агент не изобретает её, а запрашивает дополнительный референс или меняет кадр.</p>
+<h2 id="11-покадровый-workflow">11. Покадровый workflow</h2>
+<ol>
+<li><strong>Определить функцию.</strong> Записать role, track, carrier и copy side.</li>
+<li><strong>Проверить права.</strong> Подтвердить, что identity references можно использовать для этой задачи.</li>
+<li><strong>Разделить change/preserve.</strong> Один список описывает изменение; второй — всё, что нельзя двигать.</li>
+<li><strong>Собрать один prompt.</strong> Не десять противоречивых сцен, а одна production-спецификация.</li>
+<li><strong>Создать 4–8 кадров.</strong> Менять только композицию или микродействие, не всю арт-дирекцию.</li>
+<li><strong>Выбрать anchor.</strong> Один кадр становится эталоном света, кожи, контраста, зерна и цвета серии.</li>
+<li><strong>Провести критические гейты.</strong> Лицо, анатомия, татуировки, тени, одежда, геометрия среды.</li>
+<li><strong>Собрать серию.</strong> Остальные кадры сравниваются с anchor по экспозиции, балансу белого, коже, зерну и глубине чёрного.</li>
+<li><strong>Проверить носители.</strong> Примерить 16:10, 16:9, 4:5 и 1:1; не лечить плохой кадр экстремальным crop.</li>
+<li><strong>Передать в review.</strong> Статус после генерации — <code>review_candidate</code>, не <code>approved</code>.</li>
+</ol>
+<p>Для точечного исправления меняйте только один смысловой параметр за итерацию. Если после широкой правки появились каскадные артефакты, вернитесь к последней приемлемой версии.</p>
+<h2 id="12-контроль-качества">12. Контроль качества</h2>
+<p>Любой critical fail блокирует кадр:</p>
+<ul>
+<li>личность изменилась или заменилась более типовым лицом;</li>
+<li>искажены глаза, зубы, кисти, пальцы, стопы, суставы или торс;</li>
+<li>без запроса изменились возраст, форма тела, цвет кожи или лица;</li>
+<li>сломаны швы одежды, фон, тени, перспектива, окклюзии или точки контакта;</li>
+<li>добавлены текст, аксессуары, логотипы, части тела или предметы, которых не было в брифе.</li>
+</ul>
+<p>После критических гейтов каждый кадр оценивается по шкале 0–2:</p>
+<ul>
+<li>likeness;</li>
+<li>anatomy;</li>
+<li>skin;</li>
+<li>light;</li>
+<li>color;</li>
+<li>composition;</li>
+<li>integration;</li>
+<li>brief fidelity;</li>
+<li>series consistency.</li>
+</ul>
+<p>Ни одна применимая оценка не может быть равна 0. Для production-кадра likeness, anatomy, brief fidelity и series consistency должны быть равны 2.</p>
+<h2 id="13-как-генерировать-серию-а-не-набор-случайных-картинок">13. Как генерировать серию, а не набор случайных картинок</h2>
+<p>Один anchor-кадр фиксирует:</p>
+<ul>
+<li>среду и фон;</li>
+<li>направление и жёсткость света;</li>
+<li>баланс белого и глубину чёрного;</li>
+<li>контраст, насыщенность и зерно;</li>
+<li>одежду, предметы и их материалы;</li>
+<li>масштаб человека и логику свободного поля.</li>
+</ul>
+<p>На следующей итерации меняется только одно: ракурс, микродействие, крупность или copy side. Крупная смена сцены, света, одежды и позы одновременно создаёт новую фотосессию, а не продолжение.</p>
+<p>Для набора из 6–9 кадров полезно иметь:</p>
+<ul>
+<li>1 широкий establishing shot;</li>
+<li>2 полноростовых кадра с разным copy side;</li>
+<li>1 кадр три четверти;</li>
+<li>1 деталь рук, кроссовка, коврика или предмета;</li>
+<li>1 кадр после действия;</li>
+<li>1 пустая среда или faceless-кадр;</li>
+<li>1 альтернативное кадрирование для mobile.</li>
+</ul>
+<h2 id="14-носители-и-safe-zones">14. Носители и safe zones</h2>
+<p>Базовый мастер — landscape 16:10. Он должен давать поле для 16:9 и кабинета. Для движения дополнительно нужен 4:5-мастер, потому что механический crop широкого кадра часто ломает позу.</p>
+<p>Минимальные master-размеры:</p>
+<ul>
+<li>16:10 — 2400×1500 px;</li>
+<li>16:9 — 2560×1440 px;</li>
+<li>4:5 — 2160×2700 px;</li>
+<li>1:1 — 2048×2048 px.</li>
+</ul>
+<p>Для человека или важного предмета держите минимум 7% от края. Важная анатомия не должна зависеть от <code>outpainting</code>. Если кадр изначально обрезал ноги, кадрирование их не вернёт.</p>
+<p>Для свободного поля оставляйте 36–45% площади кадра. Важные детали не помещаются в предполагаемую зону текста.</p>
+<h2 id="15-чего-не-должно-быть-в-фотобанке">15. Чего не должно быть в фотобанке</h2>
+<ul>
+<li>Случайные глянцевые блондинки и «идеальные» fitness-тела.</li>
+<li>Доктора в халатах, шприцы, таблетки, весы и сантиметровые ленты.</li>
+<li>До/после, визуальные обещания похудения, открытое измерение талии.</li>
+<li>Крохотные порции, пустая тарелка, стыд вокруг еды и «диетическая» эстетика.</li>
+<li>Агрессивный спорт, бодибилдинг, сильно выставленный пот и наказывающее усилие.</li>
+<li>Слишком мягкий spa/wellness-мир с камнями, свечами, бежевым туманом и лотосами.</li>
+<li>Кислотный неон, глянцевое candy glass, жёсткие градиенты и наложенный цвет на коже.</li>
+<li>Случайные логотипы, текст, watermark, UI, рама и collage внутри фотографии.</li>
+</ul>
+<h2 id="16-формат-передачи-кадра">16. Формат передачи кадра</h2>
+<p>Каждый принятый кадр передаётся пакетом:</p>
+<ul>
+<li>исходный PNG/JPEG в sRGB;</li>
+<li>точный prompt и negative prompt;</li>
+<li>название и версия модели/инструмента, если они известны;</li>
+<li>seed и параметры, если инструмент их отдаёт;</li>
+<li>ID разрешённого reference set без публикации самих приватных референсов;</li>
+<li>role, track, carrier, copy side и status;</li>
+<li>результат QA по каждому пункту 0–2;</li>
+<li>короткая заметка: что изменилось от предыдущей версии.</li>
+</ul>
+<p>Имя файла:</p>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>YYYY-MM-DD_glp1_[role]_[subject-or-scene]_[track]_vNN.png</code></pre></div>
+<p>Пример:</p>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>2026-08-27_glp1_movement_elena_doorway_strength_dark_v01.png</code></pre></div>
+<p>Только ASCII, lower-case, цифры, <code>_</code>, <code>-</code> и точка. Никаких <code>final</code>, <code>new</code>, <code>copy</code> и кириллицы в имени файла.</p>
+<h2 id="17-статусы-и-права">17. Статусы и права</h2>
+<ul>
+<li><code>generation</code> — сырой результат.</li>
+<li><code>review_candidate</code> — прошёл технические гейты, но не утверждён человеком.</li>
+<li><code>approved</code> — человек с правом утверждения одобрил кадр и его конкретное использование.</li>
+<li><code>rejected</code> — кадр не используется; причина сохраняется.</li>
+<li><code>archive</code> — исторический материал, не текущий канон.</li>
+</ul>
+<p>Автоматическая генерация не даёт статус <code>approved</code>. Статус кадра и разрешение на публикацию — два разных решения.</p>
+<h2 id="18-как-передать-задачу-другому-агенту">18. Как передать задачу другому агенту</h2>
+<p>Передайте агенту:</p>
+<ol>
+<li>этот гайд;</li>
+<li><code>agent-brief.json</code>;</li>
+<li>разрешённые identity references или approved synthetic identity board;</li>
+<li>одну конкретную задачу в формате <code>role + track + carrier + action + copy side</code>;</li>
+<li>папку для новых results.</li>
+</ol>
+<p>Готовая инструкция:</p>
+<div class="code-shell"><button type="button" class="copy-code">Copy</button><pre><code>Read the attached GLP-1 visual generation guide and agent-brief.json completely. Treat them as the production contract. Before generating, return a short structured brief with role, track, carrier, copy side, subject mode, change, preserve and exclude. Do not start if authorization for a real person's identity references is unclear. Generate clean photography without text or branding. Change one design variable per iteration. Reject any frame that fails identity, anatomy, scene geometry or brief fidelity. Deliver the accepted image with a manifest containing prompt, negative prompt, model/tool name, parameters, reference-set ID, status and QA scores. Never mark an image approved automatically.</code></pre></div>
+<h2 id="19-чек-лист-перед-загрузкой-в-конструктор">19. Чек-лист перед загрузкой в конструктор</h2>
+<ul>
+<li>[ ] Кадр без текста, логотипа, UI и watermark.</li>
+<li>[ ] Указаны role, track, carrier, copy side и status.</li>
+<li>[ ] Для реального человека проверены права и identity.</li>
+<li>[ ] Нет critical fails по лицу, анатомии, одежде, теням и геометрии.</li>
+<li>[ ] Кожа и еда сохраняют естественный цвет.</li>
+<li>[ ] Цветной свет выглядит физическим, а не фильтром.</li>
+<li>[ ] Поза или предмет не обрезаны и имеют 7% safe zone.</li>
+<li>[ ] Есть 36–45% свободного поля под текст.</li>
+<li>[ ] Фото выдерживает нужные crop-тесты.</li>
+<li>[ ] Имя файла соответствует ASCII-стандарту.</li>
+<li>[ ] Рядом лежит manifest с prompt, параметрами, reference-set ID и QA.</li>
+<li>[ ] Кадр получил <code>review_candidate</code>; <code>approved</code> выдаёт только уполномоченный человек.</li>
+</ul>
+<h2 id="20-короткая-формула">20. Короткая формула</h2>
+<blockquote>Функция кадра → разрешённая личность → одна сцена → физический свет → свободное поле → чистая фотография → критические гейты → примерка на носителях → только потом review.</blockquote>
+<section class="examples" aria-label="Примеры фотосистемы"><figure><img src="source/assets/design_system/olya/2026-08-21_glp1_olya_dynamic_white_approved_v1.png" alt="Светлая система"><figcaption>CARE · светлый портрет</figcaption></figure><figure><img src="source/assets/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_mountain_climber_dark_review_v1.png" alt="Тёмная система"><figcaption>STRENGTH · тёмный review-кадр</figcaption></figure><figure><img src="source/assets/design_system/production/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1.png" alt="Безличная сцена"><figcaption>Среда · рифлёное стекло</figcaption></figure><figure><img src="source/assets/design_system/production/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1.png" alt="Движение"><figcaption>Movement · дверной проём</figcaption></figure><figure><img src="source/assets/design_system/production/2026-08-20_glp1_dark_cover_nutrition_breakfast_v1.png" alt="Питание"><figcaption>Nutrition · естественный цвет еды</figcaption></figure><figure><img src="source/assets/design_system/production/2026-08-20_glp1_dark_cover_background_architecture_v1.png" alt="Архитектура"><figcaption>Space · среда ведёт</figcaption></figure></section>
+<div class="download-note"><a href="guide.md" download>Исходный гайд · Markdown</a><a href="agent-brief.json" download>Машиночитаемый brief · JSON</a></div><p class="footer">Канонический источник: projects/glp1_cover_system/source/2026-08-27_glp1_visual_generation_guide_v1_ru.md</p></article></div>
+<script>document.querySelectorAll('.copy-code').forEach(button=>button.addEventListener('click',async()=>{const value=button.parentElement.querySelector('code').textContent;await navigator.clipboard.writeText(value);button.textContent='Скопировано';setTimeout(()=>button.textContent='Copy',1400)}));</script></body></html>

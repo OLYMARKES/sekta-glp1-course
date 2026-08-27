@@ -5,6 +5,21 @@
   "loadedThumbs": 72,
   "brokenImages": [],
   "overflow": 0,
+  "guideLink": "guide.html",
+  "guideDesktop": {
+    "h2": 20,
+    "codeBlocks": 11,
+    "copyButtons": 11,
+    "examples": 6,
+    "brokenImages": [],
+    "overflow": 0,
+    "markdownDownload": true,
+    "jsonDownload": true
+  },
+  "guideMobile": {
+    "overflow": 0,
+    "smallTargets": []
+  },
   "errors": [],
   "failed": []
 }

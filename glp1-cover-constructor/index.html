@@ -40,7 +40,8 @@
     .button[aria-busy="true"]{cursor:progress;opacity:.62}.download-actions{display:flex;gap:6px}.geometry-note{margin:7px 0 0;color:var(--muted);font-size:9px}.geometry-note strong{color:var(--ink)}
     @media(max-width:760px){.download-actions{margin-left:auto}.download-actions .button{width:44px;padding:0}.download-actions .button svg{margin:0}}
   
-  </style>
+  .guide-link{display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap}@media(max-width:760px){.guide-link{width:44px;padding:0;overflow:hidden;color:transparent}.guide-link::before{content:"?";display:grid;place-items:center;width:100%;color:var(--ink);font-weight:900}}
+</style>
 </head>
 <body>
   <!--
@@ -54,7 +55,7 @@
     <div class="doc-title">GLP-1 · конструктор обложек</div>
     <div class="top-status"><b id="saved-count">0</b> сохранено локально · proposal-only</div>
     <div class="top-actions">
-      <div class="download-actions"><button class="button" id="download-current" type="button" aria-label="Скачать текущую обложку PNG"><span>Скачать PNG</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></button><button class="button" id="download-all" type="button" aria-label="Скачать все сохранённые варианты ZIP"><span>Все варианты ZIP</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4zM8 3h8l2 4H6zM12 10v7m0 0 3-3m-3 3-3-3"/></svg></button></div><button class="button" id="reset" type="button">Сбросить</button>
+      <a class="button guide-link" href="guide.html" aria-label="Гайд по дизайн-системе и генерации фото">Гайд для AI-агентов</a><div class="download-actions"><button class="button" id="download-current" type="button" aria-label="Скачать текущую обложку PNG"><span>Скачать PNG</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></button><button class="button" id="download-all" type="button" aria-label="Скачать все сохранённые варианты ZIP"><span>Все варианты ZIP</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4zM8 3h8l2 4H6zM12 10v7m0 0 3-3m-3 3-3-3"/></svg></button></div><button class="button" id="reset" type="button">Сбросить</button>
       <button class="button primary" id="save" type="button" aria-label="Сохранить вариант"><span>Сохранить вариант</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4-6 4Z"/></svg></button>
     </div>
   </header>

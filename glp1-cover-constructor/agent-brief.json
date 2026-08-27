@@ -1,0 +1,161 @@
+{
+  "schema": "glp1-agent-photo-brief/v1",
+  "project": "glp1_cover_system",
+  "language": "ru",
+  "purpose": "Machine-readable production contract for generating clean GLP-1 course photography.",
+  "core_message": "sustainable_everyday_life_not_weight_loss_transformation",
+  "tracks": {
+    "care_light": {
+      "use_for": ["morning", "intro", "gentle_movement", "recovery"],
+      "environment": "white_or_warm_paper_high_key_studio",
+      "light": "soft_large_source_daylight_with_crisp_contact_shadows",
+      "tone": ["calm_readiness", "human", "clear"],
+      "color_rule": "pastels_live_in_wardrobe_props_or_physical_reflections"
+    },
+    "strength_dark": {
+      "use_for": ["main", "strength", "core_material", "deep_editorial"],
+      "environment": "deep_charcoal_studio_or_quiet_gym_architecture",
+      "light": "one_soft_off_camera_pastel_source_with_gradual_falloff",
+      "tone": ["grounded", "collected", "quiet_strength"],
+      "color_rule": "skin_and_food_remain_natural_no_flat_color_wash"
+    }
+  },
+  "palette": {
+    "ink": "#111111",
+    "mint": "#BCEBD0",
+    "lavender": "#D3C8EE",
+    "pink": "#EFB4CE",
+    "paper": "#F7F5F0",
+    "white": "#FFFFFF"
+  },
+  "typography": {
+    "display": "Commissioner Variable",
+    "support": "Golos Text Variable",
+    "product_shell": "Manrope",
+    "photo_rule": "never_bake_text_logo_ui_frame_or_watermark_into_raster"
+  },
+  "photo_roles": ["portrait", "movement", "strength", "space", "audio", "nutrition", "objects"],
+  "subject_modes": {
+    "real_authorized": {
+      "requires": ["explicit_authorization", "same_person_reference_set", "identity_gate"],
+      "preserve": ["facial_geometry", "apparent_age", "skin_tone", "natural_asymmetry", "body_shape", "hair", "tattoos", "piercings", "stable_marks"],
+      "forbid": ["beautification", "younger_look", "body_reshaping", "generic_substitute_face", "mirrored_or_invented_tattoos"]
+    },
+    "synthetic_locked": {
+      "requires": ["approved_identity_board", "single_identity_source"],
+      "identity_board_views": ["front", "three_quarter", "profile", "full_body", "neutral_pose"]
+    },
+    "faceless": {
+      "allowed_views": ["back", "hands", "silhouette", "motion_behind_glass", "environment_only"],
+      "still_requires": ["believable_anatomy", "contact_points", "shadows", "perspective"]
+    }
+  },
+  "brief_required_fields": [
+    "role",
+    "track",
+    "carrier",
+    "copy_side",
+    "subject_mode",
+    "action",
+    "environment",
+    "light",
+    "wardrobe_props",
+    "change",
+    "preserve",
+    "exclude",
+    "reference_set_id"
+  ],
+  "carriers": {
+    "16_10": {"minimum_px": [2400, 1500], "primary": true},
+    "16_9": {"minimum_px": [2560, 1440]},
+    "4_5": {"minimum_px": [2160, 2700]},
+    "1_1": {"minimum_px": [2048, 2048]}
+  },
+  "composition": {
+    "anatomy_safe_zone_percent": 7,
+    "recommended_copy_space_percent": [36, 45],
+    "copy_side_values": ["left", "right", "none"],
+    "rule": "important_anatomy_and_props_must_not_depend_on_outpainting"
+  },
+  "cover_layers": [
+    "photo_and_crop",
+    "contrast_protection",
+    "physical_pastel_light",
+    "plaque",
+    "aura_trajectories",
+    "matte_microfilm",
+    "typography",
+    "product_context_preview"
+  ],
+  "universal_exclusions": [
+    "text",
+    "logo",
+    "ui",
+    "frame",
+    "collage",
+    "watermark",
+    "pills",
+    "syringes",
+    "scales",
+    "measuring_tape",
+    "before_after",
+    "medical_result_promises",
+    "tiny_diet_portions",
+    "body_shaming",
+    "generic_glossy_fitness_casting",
+    "aggressive_bodybuilding",
+    "luxury_spa_cliches",
+    "plastic_skin",
+    "anatomy_distortion",
+    "extra_fingers_or_limbs",
+    "invented_accessories",
+    "hard_gradient_cuts",
+    "flat_color_wash_over_skin_or_food"
+  ],
+  "workflow": [
+    "define_function_track_carrier_and_copy_side",
+    "verify_identity_authorization",
+    "write_change_and_preserve_lists",
+    "generate_four_to_eight_controlled_candidates",
+    "select_one_anchor_frame",
+    "run_identity_anatomy_scene_and_brief_gates",
+    "expand_series_one_variable_per_iteration",
+    "test_required_carrier_crops",
+    "deliver_image_prompt_parameters_manifest_and_qa",
+    "assign_review_candidate_never_auto_approve"
+  ],
+  "critical_gates": [
+    "identity",
+    "anatomy",
+    "unauthorized_structure_change",
+    "fabric_and_scene_geometry",
+    "generative_fabrication"
+  ],
+  "scorecard": {
+    "scale": [0, 1, 2],
+    "dimensions": ["likeness", "anatomy", "skin", "light", "color", "composition", "integration", "brief_fidelity", "series_consistency"],
+    "acceptance": "all_critical_gates_pass_no_zero_scores",
+    "production_targets": {"likeness": 2, "anatomy": 2, "brief_fidelity": 2, "series_consistency": 2}
+  },
+  "statuses": ["generation", "review_candidate", "approved", "rejected", "archive"],
+  "approval_rule": "generation_never_implies_approval_and_asset_approval_never_implies_publication",
+  "file_name_pattern": "YYYY-MM-DD_glp1_[role]_[subject-or-scene]_[track]_vNN.png",
+  "delivery_manifest_fields": [
+    "file",
+    "role",
+    "track",
+    "carrier",
+    "copy_side",
+    "subject_mode",
+    "prompt",
+    "negative_prompt",
+    "tool_and_model",
+    "parameters",
+    "seed",
+    "reference_set_id",
+    "change_from_previous",
+    "qa_scores",
+    "status"
+  ],
+  "agent_instruction": "Read the public guide completely. Return a structured brief before generation. Do not start when real-person reference authorization is unclear. Generate clean photography without brand layers. Repeat identity invariants on every iteration. Change one meaningful variable per pass. Reject identity, anatomy, scene-geometry or brief-fidelity failures. Deliver prompt, parameters, reference-set ID, status and QA. Never auto-approve."
+}
