@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GLP‑1 — курс на устойчивость: питание, силовые тренировки и поддержка во время назначенной врачом терапии.">
+  <title>GLP‑1 — курс на устойчивость · #sekta</title>
+  <link rel="canonical" href="https://olymarkes.github.io/sekta-glp1-course/glp1-landing.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GLP‑1 — курс на устойчивость · #sekta">
+  <meta property="og:description" content="Питание, силовые тренировки и поддержка во время назначенной врачом терапии агонистами GLP‑1.">
+  <meta property="og:url" content="https://olymarkes.github.io/sekta-glp1-course/glp1-landing.html">
+  <style>
+    @font-face{font-family:Commissioner;src:url('assets/glp1-landing/commissioner_vf.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+    @font-face{font-family:GolosText;src:url('assets/glp1-landing/golos_text_vf.ttf') format('truetype');font-weight:400 900;font-style:normal;font-display:swap}
+    :root{
+      --ink:#131615;--black:#0a0e0e;--paper:#fff;--quiet:#f3f3f0;--line:#d9ddd8;--muted:#5f6662;
+      --mint:#c7efd8;--mint-strong:#9cdeb9;--mint-ink:#183f2e;
+      --lavender:#d9d0ef;--lavender-ink:#493e64;--pink:#efbed2;--pink-ink:#6c384d;
+      --container:1180px;--section:90px;--focus:#1f78ff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:auto}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:GolosText,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;line-height:1.375;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--lavender);color:var(--ink)}
+    a{color:inherit;text-underline-offset:4px}
+    button,a{font:inherit}
+    button:focus-visible,a:focus-visible,summary:focus-visible,.scroll-region:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--container),calc(100% - 60px));margin-inline:auto}
+    .utility{height:34px;background:linear-gradient(90deg,#f8d9c9 0%,#f3bfd7 35%,#cfc6f1 68%,#cbeff1 100%)}
+    .utility .container{height:100%;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600}
+    .utility nav{display:flex;gap:38px}
+    .site-header{height:62px;background:rgba(11,11,11,.97);color:#f7f7f3}
+    .site-header .container{height:100%;display:flex;align-items:center}
+    .wordmark{font-size:30px;line-height:1;font-weight:700;text-decoration:none;letter-spacing:-.04em}
+    .desktop-nav{margin-left:auto;display:flex;align-items:center;gap:30px;font-size:14px;font-weight:600;color:rgba(255,255,255,.82)}
+    .desktop-nav a{text-decoration:none;min-height:44px;display:flex;align-items:center}
+    .desktop-nav .cabinet{border:1px solid rgba(255,255,255,.28);padding:0 20px;border-radius:999px;color:#fff}
+    .mobile-actions{display:none;margin-left:auto;align-items:center;gap:20px}
+    .icon-button{width:44px;height:44px;border:0;background:transparent;color:inherit;padding:0;display:grid;place-items:center;cursor:pointer}
+    .icon-button svg{width:28px;height:28px;stroke:currentColor;stroke-width:2;fill:none}
+    .hero{min-height:903px;position:relative;overflow:hidden;background:#fff}
+    .hero .container{height:903px;position:relative}
+    .hero-copy{position:absolute;z-index:3;left:35px;top:145px;width:500px}
+    .course-type{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:700;margin-bottom:26px}
+    .course-type svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+    h1{font-family:Commissioner,GolosText,sans-serif;font-size:56px;line-height:1.02;letter-spacing:-.04em;margin:0;font-weight:720;max-width:620px}
+    .hero-lead{font-size:18px;line-height:1.42;margin:38px 0 0;max-width:520px}
+    .hero-tag{display:inline-block;margin-top:36px;padding:7px 12px;background:linear-gradient(90deg,var(--mint),#a4eff0);font-size:14px}
+    .hero-person{position:absolute;z-index:1;left:410px;bottom:-38px;width:560px;height:650px;object-fit:contain;object-position:center bottom}
+    .offer-card{position:absolute;z-index:4;right:0;top:150px;width:380px;min-height:300px;background:#171717;color:#fff;padding:40px;box-shadow:0 24px 40px rgba(0,0,0,.18)}
+    .offer-format{font-size:14px;font-weight:700;display:flex;align-items:center;gap:12px}
+    .offer-format::before{content:'';width:38px;height:20px;border-radius:999px;background:linear-gradient(90deg,var(--mint-strong),#7ce6ef);box-shadow:inset -16px 0 0 #171717,inset 0 0 0 1px #8fe0b0}
+    .offer-main{font-size:34px;line-height:1.15;margin:42px 0 4px;font-weight:400}
+    .offer-note{font-size:14px;color:rgba(255,255,255,.68);margin-bottom:30px}
+    .button{height:50px;padding:0 40px;border:0;border-radius:0;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:14px;font-weight:600;cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{background:linear-gradient(90deg,#a8ecbc,#8ee9e8);color:var(--ink);width:100%}
+    .button-dark{background:var(--ink);color:#fff}
+    .facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .facts-grid{min-height:195px;display:grid;grid-template-columns:repeat(3,1fr);align-items:center}
+    .fact{min-height:92px;padding:18px 38px;border-left:1px solid var(--line)}
+    .fact:first-child{border-left:0;padding-left:0}
+    .fact-label{font-size:14px;color:var(--muted);margin-bottom:12px}
+    .fact-value{font-size:26px;line-height:1.15;font-weight:600}
+    section.content{margin-top:var(--section)}
+    h2{font-family:Commissioner,GolosText,sans-serif;font-size:40px;line-height:1.1;letter-spacing:-.035em;font-weight:680;margin:0 0 60px}
+    h3{font-family:Commissioner,GolosText,sans-serif;font-size:26px;line-height:36px;letter-spacing:-.025em;font-weight:650;margin:0}
+    p{margin:0}
+    .olya{background:var(--lavender);padding:64px 82px;display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start}
+    .olya-name{font-size:14px;font-weight:700}
+    .olya-name strong{display:block;font-size:26px;line-height:1.2;margin-top:14px}
+    .olya-copy{font-size:24px;line-height:1.42;letter-spacing:-.018em;max-width:760px}
+    .olya-copy p+p{margin-top:26px}
+    .fit-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .fit-item{padding:34px 28px 40px;border-left:1px solid var(--line)}
+    .fit-item:first-child{border-left:0;padding-left:0}
+    .fit-item h3{font-size:21px;line-height:1.3;margin-bottom:18px}
+    .fit-item p{color:var(--muted);font-size:15px;line-height:1.55}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+    .section-head h2{margin:0}
+    .slider-controls{display:flex;gap:10px}
+    .slider-controls button{width:50px;height:50px;border:1px solid var(--ink);background:#fff;cursor:pointer;font-size:24px}
+    .cards-viewport{overflow:hidden}
+    .scroll-hint{display:none}
+    .cards-track{display:flex;gap:20px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+    .inside-card{flex:0 0 380px;min-height:520px;border-bottom:1px solid var(--line)}
+    .inside-card img,.inside-card .visual{width:100%;height:270px;object-fit:cover;background:var(--quiet)}
+    .inside-card .visual{display:grid;place-items:center;background:var(--lavender);color:var(--lavender-ink);font-size:56px;font-weight:700}
+    .inside-card:nth-child(2) img{object-position:62% center}
+    .inside-card-body{padding:22px 0 28px}
+    .inside-card h3{margin-bottom:14px}
+    .inside-card p{font-size:15px;line-height:1.55;color:var(--muted)}
+    .inside-card ul{padding-left:18px;margin:18px 0 0;color:var(--muted);font-size:14px;line-height:1.55}
+    .course-flow-intro{max-width:790px;font-size:21px;line-height:1.5;margin:-28px 0 46px}
+    .course-flow{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .flow-step{padding:32px 26px 36px;border-left:1px solid var(--line)}
+    .flow-step:first-child{border-left:0;padding-left:0}
+    .flow-kicker{display:block;margin-bottom:24px;color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+    .flow-step h3{font-size:21px;line-height:1.3;margin-bottom:14px}
+    .flow-step p{color:var(--muted);font-size:14px;line-height:1.58}
+    .routes{display:grid;grid-template-columns:400px 1fr;gap:70px;align-items:start}
+    .route-tabs{display:grid;gap:10px}
+    .route-tab{border:1px solid var(--ink);background:#fff;min-height:68px;text-align:left;padding:16px 20px;font-weight:600;cursor:pointer}
+    .route-tab[aria-selected='true']{background:var(--mint);border-color:var(--mint)}
+    .route-note{color:var(--muted);font-size:14px;line-height:1.55;margin-top:24px}
+    .route-stage{min-height:520px;display:grid;grid-template-columns:1.1fr 1fr;background:var(--quiet)}
+    .route-stage img{width:100%;height:520px;object-fit:contain;object-position:left bottom;background:#fff}
+    .route-copy{padding:52px 44px;display:flex;flex-direction:column;justify-content:center}
+    .route-copy h3{font-size:34px;line-height:1.15;margin-bottom:24px}
+    .route-copy p{line-height:1.6;color:var(--muted)}
+    .route-copy ul{margin:24px 0 0;padding-left:18px;line-height:1.7}
+    .week-wrap{background:var(--black);color:#fff;padding:80px 0 90px}
+    .week-wrap h2{margin-bottom:22px}
+    .week-intro{max-width:700px;color:rgba(255,255,255,.68);line-height:1.6;margin-bottom:54px}
+    .week-grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
+    .day{min-height:208px;padding:24px 16px;border-left:1px solid rgba(255,255,255,.22)}
+    .day:first-child{border-left:0}
+    .day-name{font-size:13px;text-transform:uppercase;font-weight:700;color:var(--mint-strong);margin-bottom:30px}
+    .day strong{display:block;font-size:15px;line-height:1.45;margin-bottom:12px}
+    .day span{font-size:13px;line-height:1.45;color:rgba(255,255,255,.6)}
+    .weekly-package{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px}
+    .package{padding:20px 24px;background:#fff;color:var(--ink);border-right:1px solid var(--line);min-height:112px}
+    .package:nth-child(1){background:var(--pink)}
+    .package:nth-child(2){background:var(--mint)}
+    .package:nth-child(3){background:var(--lavender)}
+    .package strong{display:block;margin-bottom:8px}
+    .package span{font-size:13px;line-height:1.45;color:var(--muted)}
+    .outcomes{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:start}
+    .outcomes-photo{height:610px;object-fit:cover;object-position:right center}
+    .outcome-list{border-top:1px solid var(--line)}
+    .outcome{display:grid;grid-template-columns:1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line)}
+    .outcome-index{font-size:14px;font-weight:700;color:var(--pink-ink)}
+    .outcome h3{font-size:21px;line-height:1.35;margin-bottom:8px}
+    .outcome p{color:var(--muted);font-size:14px;line-height:1.55}
+    .team-intro{max-width:780px;font-size:22px;line-height:1.5;margin-top:-28px;margin-bottom:48px}
+    .team-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+    .team-item{padding:28px 30px 32px 0;border-bottom:1px solid var(--line)}
+    .team-item:nth-child(even){border-left:1px solid var(--line);padding-left:30px}
+    .team-item strong{display:block;font-size:20px;margin-bottom:10px}
+    .team-item span{font-size:14px;color:var(--muted);line-height:1.5}
+    .safety{background:var(--quiet);padding:54px 60px;display:grid;grid-template-columns:280px 1fr;gap:54px;align-items:start}
+    .safety h2{font-size:30px;line-height:1.25;margin:0}
+    .safety p{font-size:18px;line-height:1.65;max-width:720px}
+    .faq{display:grid;grid-template-columns:300px 1fr;gap:70px;align-items:start}
+    .faq h2{margin:0;position:sticky;top:30px}
+    .faq-list{border-top:1px solid var(--ink)}
+    details{border-bottom:1px solid var(--line)}
+    summary{list-style:none;cursor:pointer;min-height:78px;padding:25px 54px 25px 0;display:flex;align-items:center;font-weight:600;position:relative}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';position:absolute;right:0;font-size:28px;font-weight:400;transition:transform .2s ease}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{padding:0 70px 28px 0;color:var(--muted);line-height:1.65}
+    .closing{margin-top:var(--section);background:var(--black);color:#fff;padding:80px 0}
+    .closing-grid{display:grid;grid-template-columns:1fr 380px;gap:70px;align-items:center}
+    .closing h2{font-size:42px;line-height:1.15;margin:0 0 18px;max-width:680px}
+    .closing p{color:rgba(255,255,255,.68);max-width:620px;line-height:1.6}
+    .closing-action .button{width:100%;background:var(--mint-strong);color:var(--ink)}
+    .closing-action small{display:block;margin-top:16px;color:rgba(255,255,255,.55);line-height:1.45}
+    footer{padding:58px 0 46px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:50px}
+    footer .wordmark{font-size:36px}
+    footer strong{display:block;margin-bottom:18px}
+    footer a,footer span{display:block;color:var(--muted);font-size:13px;line-height:2;text-decoration:none}
+    .footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cards-track,.button{transition:none}}
+    @media (max-width:900px){
+      :root{--section:60px}
+      .container{width:calc(100% - 60px)}
+      .utility,.desktop-nav{display:none}
+      .site-header{height:82px;background:#fff;color:var(--ink)}
+      .site-header .wordmark{font-size:34px}
+      .mobile-actions{display:flex}
+      .hero{min-height:0;overflow:visible}
+      .hero .container{height:auto;display:flex;flex-direction:column}
+      .hero-copy{position:relative;left:auto;top:auto;width:auto;padding-top:0;z-index:2}
+      .course-type{margin:0 0 20px;font-size:14px}
+      h1{font-size:34px;line-height:46px;max-width:330px}
+      .hero-lead{font-size:16px;line-height:22px;margin-top:34px}
+      .hero-tag{margin-top:34px}
+      .hero-person{position:relative;left:auto;bottom:auto;width:100%;height:310px;margin-top:14px;object-fit:contain;object-position:center bottom}
+      .offer-card{position:relative;right:auto;top:auto;width:calc(100% + 60px);margin-left:-30px;min-height:285px;box-shadow:none;padding:34px 30px}
+      .offer-main{font-size:30px;margin-top:34px}
+      .facts-grid{min-height:0;grid-template-columns:1fr;padding:30px 0}
+      .fact{min-height:auto;padding:22px 0;border-left:0;border-top:1px solid var(--line)}
+      .fact:first-child{border-top:0}
+      .fact-value{font-size:23px}
+      section.content{margin-top:60px}
+      h2{font-size:26px;line-height:36px;margin-bottom:20px}
+      h3{font-size:22px;line-height:30px}
+      .olya{padding:36px 24px;grid-template-columns:1fr;gap:28px}
+      .olya-name strong{font-size:22px}
+      .olya-copy{font-size:19px;line-height:1.5}
+      .fit-grid{grid-template-columns:1fr}
+      .fit-item,.fit-item:first-child{padding:28px 0;border-left:0;border-top:1px solid var(--line)}
+      .fit-item:first-child{border-top:0}
+      .section-head{margin-bottom:28px;align-items:center}
+      .slider-controls{display:none}
+      .cards-viewport{overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-30px;padding-inline:30px;scrollbar-width:none}
+      .cards-viewport::-webkit-scrollbar{display:none}
+      .cards-track{gap:16px;transform:none!important}
+      .inside-card{flex-basis:86vw;max-width:330px;min-height:500px;scroll-snap-align:start}
+      .inside-card img,.inside-card .visual{height:240px}
+      .course-flow-intro{font-size:18px;margin:0 0 30px}
+      .course-flow{grid-template-columns:1fr}
+      .flow-step,.flow-step:first-child{padding:26px 0;border-left:0;border-top:1px solid var(--line)}
+      .flow-step:first-child{border-top:0}
+      .flow-kicker{margin-bottom:14px}
+      .routes{grid-template-columns:1fr;gap:28px}
+      .route-tabs{grid-template-columns:1fr 1fr}
+      .route-tab{min-height:88px;padding:12px;font-size:14px}
+      .route-note{grid-column:1/-1}
+      .route-stage{grid-template-columns:1fr;min-height:0}
+      .route-stage img{height:300px;object-position:center bottom}
+      .route-copy{padding:32px 24px 36px}
+      .route-copy h3{font-size:28px}
+      .week-wrap{padding:58px 0 60px}
+      .week-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
+      .day{flex:0 0 152px;scroll-snap-align:start}
+      .weekly-package{grid-template-columns:1fr 1fr}
+      .package{min-height:130px}
+      .outcomes{grid-template-columns:1fr;gap:34px}
+      .outcomes-photo{height:330px}
+      .outcome{grid-template-columns:1fr}
+      .team-intro{font-size:18px;margin:0 0 30px}
+      .team-list{grid-template-columns:1fr}
+      .team-item,.team-item:nth-child(even){padding:24px 0;border-left:0}
+      .safety{padding:34px 24px;grid-template-columns:1fr;gap:24px}
+      .safety h2{font-size:26px}
+      .safety p{font-size:16px}
+      .faq{grid-template-columns:1fr;gap:26px}
+      .faq h2{position:static}
+      summary{min-height:72px;padding-right:40px}
+      details p{padding-right:0}
+      .closing{padding:58px 0}
+      .closing-grid{grid-template-columns:1fr;gap:34px}
+      .closing h2{font-size:30px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:34px 24px}
+    }
+
+    /* Dark neon v2 retained in source history, disabled for the approved hybrid direction.
+    :root{
+      --ink:#f4f5ef;--black:#050708;--paper:#07090b;--quiet:#101418;--line:#30363b;--muted:#aab0ad;
+      --mint:#c8ff00;--mint-strong:#c8ff00;--mint-ink:#07090b;
+      --lavender:#153dc1;--lavender-ink:#f4f5ef;--pink:#a72f20;--pink-ink:#fff5ef;
+      --acid:#c8ff00;--cobalt:#073fb8;--rust:#a82f1e;--focus:#c8ff00;
+    }
+    html{scrollbar-color:var(--acid) #0d1012}
+    body{background:var(--paper);color:var(--ink)}
+    ::selection{background:var(--acid);color:#050708}
+    h1,h2,.closing h2{font-family:AlumniSans,Montserrat,sans-serif;text-transform:uppercase;font-style:normal;font-weight:900;letter-spacing:-.018em}
+    h2{font-size:54px;line-height:.96;margin-bottom:48px}
+    h3{letter-spacing:-.025em}
+    .utility{height:30px;background:var(--acid);color:#050708}
+    .utility .container{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .site-header{height:72px;background:#07090b;color:#f4f5ef;border-bottom:1px solid #343a3d;position:sticky;top:0;z-index:60}
+    .wordmark{color:var(--acid);text-transform:uppercase}
+    .desktop-nav{color:#f4f5ef;text-transform:uppercase;font-size:12px;letter-spacing:.05em}
+    .desktop-nav a:hover{color:var(--acid)}
+    .desktop-nav .cabinet{border:1px solid var(--acid);border-radius:0;color:var(--acid)}
+    #mobileMenu{background:#07090b!important;color:#f4f5ef;border-color:#343a3d!important}
+    .hero{min-height:810px;background:#07090b;border-bottom:1px solid #343a3d;isolation:isolate}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(116deg,transparent 0 61%,rgba(200,255,0,.98) 61.1% 64%,transparent 64.1%),linear-gradient(116deg,transparent 0 66%,rgba(200,255,0,.36) 66.1% 67%,transparent 67.1%);z-index:-1;pointer-events:none}
+    .hero::after{content:'GLP·1';position:absolute;right:-28px;top:38px;font:900 230px/.8 AlumniSans,Montserrat,sans-serif;color:rgba(255,255,255,.045);letter-spacing:-.04em;z-index:-1;pointer-events:none}
+    .hero .container{height:810px}
+    .hero-copy{left:0;top:112px;width:600px}
+    .course-type{color:var(--acid);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+    h1{font-size:96px;line-height:.82;max-width:620px;text-wrap:balance}
+    .hero-lead{font-size:18px;line-height:1.52;max-width:500px;color:#cbd0cc;margin-top:34px}
+    .hero-tag{background:var(--acid);color:#050708;text-transform:uppercase;font-size:12px;font-weight:700;letter-spacing:.08em;padding:9px 12px}
+    .hero-person{left:auto;right:110px;bottom:0;width:470px;height:610px;object-fit:cover;object-position:50% 8%;filter:saturate(.96) contrast(1.02);border-left:1px solid #343a3d;border-right:1px solid #343a3d}
+    .offer-card{right:0;top:auto;bottom:56px;width:360px;min-height:250px;background:var(--cobalt);color:#fff;padding:30px;border:1px solid rgba(255,255,255,.22);box-shadow:0 22px 58px rgba(0,0,0,.44)}
+    .offer-format{color:var(--acid);text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+    .offer-format::before{width:28px;height:5px;border-radius:0;background:var(--acid);box-shadow:none}
+    .offer-main{font:900 55px/.9 AlumniSans,Montserrat,sans-serif;text-transform:uppercase;margin:28px 0 8px}
+    .offer-note{color:rgba(255,255,255,.74);line-height:1.5;margin-bottom:24px}
+    .button{min-height:52px;border:1px solid transparent;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+    .button-primary,.closing-action .button{background:var(--acid);color:#050708}
+    .button:hover{transform:translateY(-3px)}
+    .facts{border-color:#343a3d;background:#0b0e11}
+    .facts-grid{min-height:176px}
+    .fact{border-color:#343a3d}
+    .fact-label{color:var(--acid);text-transform:uppercase;font-size:11px;letter-spacing:.08em}
+    .fact-value{color:#f4f5ef;font-size:24px;line-height:1.25}
+    section.content{position:relative}
+    .olya{background:var(--cobalt);color:#fff;padding:68px 72px;border:1px solid rgba(255,255,255,.18);position:relative;overflow:hidden}
+    .olya::after{content:'';position:absolute;right:-60px;bottom:-130px;width:260px;height:260px;background:var(--acid);transform:rotate(48deg)}
+    .olya-name{color:var(--acid);text-transform:uppercase;letter-spacing:.07em;font-size:11px;position:relative;z-index:1}
+    .olya-name strong{font:900 40px/.9 AlumniSans,Montserrat,sans-serif;color:#fff;text-transform:uppercase;letter-spacing:0}
+    .olya-copy{font-size:22px;line-height:1.5;position:relative;z-index:1}
+    .fit-grid,.team-list,.outcome-list,.faq-list{border-color:#343a3d}
+    .fit-item,.team-item,.team-item:nth-child(even),.outcome,details{border-color:#343a3d}
+    .fit-item p,.inside-card p,.inside-card ul,.route-note,.route-copy p,.outcome p,.team-item span,details p,footer a,footer span,.footer-bottom{color:var(--muted)}
+    .fit-item h3{color:#f4f5ef}
+    .fit-item:nth-child(2) h3,.fit-item:nth-child(4) h3{color:var(--acid)}
+    .slider-controls button{border-color:var(--acid);background:#07090b;color:var(--acid)}
+    .inside-card{border-color:#343a3d;background:#0b0e11}
+    .inside-card img,.inside-card .visual{filter:saturate(.86) contrast(1.08);background:#11161a}
+    .inside-card .visual{background:var(--cobalt);color:#fff}
+    .inside-card-body{padding:24px}
+    .inside-card h3{color:#fff}
+    .routes{gap:32px}
+    .route-tab{border-color:#343a3d;background:#0b0e11;color:#f4f5ef;text-transform:uppercase;letter-spacing:.03em}
+    .route-tab[aria-selected='true']{background:var(--acid);color:#050708;border-color:var(--acid)}
+    .route-stage{background:#0d1114;border:1px solid #343a3d}
+    .route-stage img{background:#060809;filter:saturate(.82) contrast(1.08)}
+    .route-copy h3{font-family:AlumniSans,Montserrat,sans-serif;text-transform:uppercase;font-size:44px;line-height:.95}
+    .week-wrap{background:var(--cobalt);border-block:1px solid rgba(255,255,255,.18)}
+    .week-wrap h2{color:#fff}
+    .week-intro{color:rgba(255,255,255,.75)}
+    .week-grid{border-color:rgba(255,255,255,.26)}
+    .day{border-color:rgba(255,255,255,.26)}
+    .day-name{color:var(--acid)}
+    .day span{color:rgba(255,255,255,.7)}
+    .weekly-package{border:1px solid rgba(255,255,255,.26)}
+    .package{background:#080a0c;color:#fff;border-color:#30363b}
+    .package:nth-child(1){background:var(--rust);color:#fff}.package:nth-child(2){background:var(--acid);color:#050708}.package:nth-child(3){background:#071f70;color:#fff}
+    .package span{color:inherit;opacity:.76}
+    .outcomes-photo{filter:saturate(.82) contrast(1.12);border:1px solid #343a3d}
+    .outcome-index{color:var(--acid)}
+    .safety{background:#101418;border:1px solid #343a3d}
+    .safety h2{color:var(--acid)}
+    summary::after{color:var(--acid)}
+    .closing{background:#07090b;border-top:1px solid #343a3d;position:relative;overflow:hidden}
+    .closing::after{content:'';position:absolute;right:-80px;top:-240px;width:420px;height:520px;background:var(--acid);transform:rotate(42deg);opacity:.92}
+    .closing-grid{position:relative;z-index:1}
+    .closing h2{font-size:62px;line-height:.88;max-width:740px}
+    .closing p{color:#b9bfbb}
+    .closing-action{background:var(--cobalt);padding:28px;border:1px solid rgba(255,255,255,.2)}
+    footer{background:#050708;border-top:1px solid #343a3d}
+    section[id],section[aria-labelledby]{scroll-margin-top:112px}
+    .hero-person{width:510px;height:510px;right:105px;object-fit:contain;object-position:center;background:#050708}
+    .inside-card{position:relative;overflow:hidden}
+    .inside-card:nth-child(2) img,.inside-card:nth-child(3) img,.inside-card:nth-child(4) img{filter:none;object-position:center}
+    .inside-card:nth-child(2)::after,.inside-card:nth-child(4)::after{content:'';position:absolute;right:-52px;top:212px;width:130px;height:70px;background:var(--acid);transform:rotate(-42deg);pointer-events:none}
+    .route-stage{overflow:hidden;position:relative}
+    .route-stage::after{content:'';position:absolute;right:-96px;bottom:-112px;width:210px;height:240px;background:var(--acid);transform:rotate(43deg);pointer-events:none}
+    .route-stage img{object-fit:cover;object-position:center;filter:none}
+    .route-copy{position:relative;z-index:1;background:rgba(5,7,8,.88)}
+    .outcomes-photo{filter:none;object-position:center}
+    .slider-controls button:disabled{opacity:.32;cursor:not-allowed}
+
+    @media (max-width:900px){
+      .site-header{height:68px;background:#07090b;color:#f4f5ef}
+      .site-header .wordmark{font-size:30px;min-height:44px;display:inline-flex;align-items:center}
+      .hero{min-height:0;overflow:hidden}
+      .hero::before{background:linear-gradient(135deg,transparent 0 73%,rgba(200,255,0,.95) 73.2% 77%,transparent 77.2%)}
+      .hero::after{right:-6px;top:185px;font-size:150px}
+      .hero .container{height:auto;padding-top:48px}
+      .hero-copy{padding-top:0}
+      h1{font-size:64px;line-height:.84;max-width:340px}
+      .hero-lead{margin-top:28px;color:#cbd0cc}
+      .hero-person{width:calc(100% + 60px);height:470px;margin:34px -30px 0;right:auto;border:0;border-top:1px solid #343a3d;object-position:50% 6%}
+      .hero-person{height:390px;object-fit:contain;object-position:center;background:#050708}
+      .offer-card{width:calc(100% + 60px);margin:-250px 0 0 -30px;bottom:auto;background:var(--cobalt);border-inline:0;z-index:5;min-height:218px;padding:24px 30px}
+      .offer-main{margin:18px 0 6px;font-size:48px}
+      .offer-note{margin-bottom:14px;line-height:1.4}
+      .facts-grid{padding:20px 0}
+      .fact{border-color:#343a3d}
+      h2{font-size:42px;line-height:.95;margin-bottom:28px}
+      .olya{padding:38px 26px;gap:24px}
+      .olya::after{right:-95px;bottom:-170px}
+      .olya-copy{font-size:18px;line-height:1.56}
+      .inside-card{background:#0b0e11;border:1px solid #343a3d}
+      .slider-controls{display:none}
+      .cards-viewport{overflow:visible}
+      .cards-track{display:grid;gap:18px;transform:none!important}
+      .inside-card{width:100%;min-height:0}
+      .inside-card img,.inside-card .visual{height:auto;aspect-ratio:1/1;object-fit:cover}
+      .route-tabs{grid-template-columns:1fr}
+      .route-tab{min-height:64px}
+      .route-stage img{height:330px;object-fit:cover;object-position:center 20%}
+      .route-copy h3{font-size:38px}
+      .week-wrap{padding-top:60px}
+      .weekly-package{grid-template-columns:1fr}
+      .package{min-height:108px;border-right:0;border-bottom:1px solid #30363b}
+      .closing::after{opacity:.25}
+      .closing h2{font-size:48px;line-height:.9}
+      .closing-action{padding:22px}
+      footer a{display:inline-flex;min-height:44px;align-items:center}
+      #mobileMenu{position:fixed;top:68px;inset-inline:0;z-index:59;max-height:calc(100dvh - 68px);overflow:auto}
+    }
+    */
+
+    /* Hybrid v3: Sekta School editorial frame + approved GLP-1 v15 photographic fields. */
+    .utility{background:linear-gradient(90deg,#f4d8d0,#e7d0ea 52%,#d1ece3)}
+    .site-header{position:sticky;top:0;z-index:50}
+    .wordmark{font-family:Commissioner,GolosText,sans-serif;font-weight:720}
+    .hero{min-height:760px;background:#f7f7f4}
+    .hero .container{height:760px}
+    .hero-copy{left:0;top:100px;width:500px}
+    .course-type{margin-bottom:22px}
+    .hero-lead{margin-top:30px;max-width:470px}
+    .hero-tag{background:var(--lavender);padding:9px 13px}
+    .hero-photo-stage{position:absolute;left:480px;right:230px;top:54px;bottom:54px;background:#090d0d;overflow:hidden}
+    .hero-photo-stage::before,.week-wrap::before,.closing::before{content:'';position:absolute;inset:-20%;pointer-events:none;background:radial-gradient(circle at 12% 20%,rgba(184,238,211,.32),transparent 28%),radial-gradient(circle at 82% 16%,rgba(213,201,241,.31),transparent 30%),radial-gradient(circle at 72% 84%,rgba(239,174,207,.2),transparent 28%)}
+    .hero-photo-stage::after,.week-wrap::after,.closing::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.11;background-image:radial-gradient(circle,rgba(255,255,255,.88) 0 1px,transparent 1.2px);background-size:13px 13px}
+    .hero-person{left:0;right:auto;bottom:0;width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;z-index:1}
+    .offer-card{right:0;top:174px;width:330px;min-height:292px;background:var(--mint);color:var(--ink);box-shadow:none;padding:34px}
+    .offer-format::before{width:42px;height:5px;border-radius:0;background:linear-gradient(90deg,var(--black) 0 28%,transparent 28% 36%,var(--lavender) 36% 66%,transparent 66% 74%,var(--pink) 74% 100%);box-shadow:none}
+    .offer-note{color:var(--muted)}
+    .button-primary{background:var(--black);color:#fff}
+    .olya{grid-template-columns:230px 1fr;background:var(--lavender);padding:0;overflow:hidden;align-items:stretch}
+    .olya-portrait{min-height:430px;background:#111;position:relative;overflow:hidden}
+    .olya-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .olya-text{padding:58px 58px 58px 0;display:grid;grid-template-columns:170px 1fr;gap:38px;align-items:start}
+    .inside-card{background:#fff}
+    .inside-card img{background:#111;object-position:center}
+    .inside-card:nth-child(2) img{object-position:center}
+    .route-stage{background:#f1f1ed}
+    .route-stage img{object-fit:cover;object-position:center;background:#0b0f0f}
+    .week-wrap{position:relative;overflow:hidden;background:#0a0e0e}
+    .week-wrap .container{position:relative;z-index:1}
+    .week-grid{background:rgba(6,9,9,.54);backdrop-filter:blur(4px)}
+    .weekly-package{position:relative}
+    .outcomes-photo{background:#0b0f0f;object-position:center}
+    .team-list{grid-template-columns:repeat(5,1fr);gap:18px;border:0}
+    .team-item,.team-item:nth-child(even){padding:0;border:0}
+    .team-item img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--quiet);margin-bottom:18px}
+    .team-item strong{font-family:Commissioner,GolosText,sans-serif;font-size:19px}
+    .team-item span{display:block}
+    .safety{background:var(--mint)}
+    .closing{position:relative;overflow:hidden;background:#090d0d}
+    .closing-grid{position:relative;z-index:1}
+    .closing-action .button{background:var(--mint);color:var(--ink)}
+    @media (prefers-reduced-motion:no-preference){
+      .hero-photo-stage{animation:photo-stage-in .7s cubic-bezier(.2,.8,.2,1) both}
+      .offer-card{animation:offer-card-in .62s .08s cubic-bezier(.2,.8,.2,1) both}
+    }
+    @keyframes photo-stage-in{from{opacity:.92;transform:translateY(14px);filter:saturate(.88)}to{opacity:1;transform:none;filter:none}}
+    @keyframes offer-card-in{from{opacity:.94;transform:translateY(18px)}to{opacity:1;transform:none}}
+    section[id],section[aria-labelledby]{scroll-margin-top:82px}
+    @media (max-width:900px){
+      .site-header{height:68px;background:#0b0b0b;color:#fff}
+      .site-header .wordmark{font-size:30px}
+      .hero{min-height:0;overflow:hidden}
+      .hero .container{height:auto;padding-top:44px}
+      h1{font-size:42px;line-height:1.02;max-width:340px}
+      .hero-lead{margin-top:24px}
+      .hero-copy,.hero-lead{width:100%;max-width:100%;overflow-wrap:anywhere}
+      .hero-photo-stage{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:calc(100% + 60px);height:410px;margin:32px -30px 0}
+      .hero-person{height:100%;margin:0;object-fit:cover;object-position:center}
+      .offer-card{width:calc(100% + 60px);margin-left:-30px;top:auto;min-height:0;height:auto;padding:30px 30px 40px}
+      .olya{grid-template-columns:1fr}
+      .olya-portrait{min-height:340px}
+      .olya-text{padding:34px 24px;grid-template-columns:1fr;gap:24px}
+      .cards-viewport{overflow-x:auto}
+      .cards-track{display:flex;gap:16px}
+      .inside-card{flex-basis:86vw;max-width:330px}
+      .inside-card img{aspect-ratio:4/3;height:auto}
+      .route-stage img{object-fit:cover;object-position:center;height:340px}
+      .team-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-30px;padding-inline:30px;gap:14px}
+      .team-item{flex:0 0 78vw;max-width:290px;scroll-snap-align:start}
+      .scroll-hint{display:block;margin:-4px 0 14px;color:var(--muted);font-size:12px;line-height:1.45}
+      .week-wrap .scroll-hint{color:rgba(255,255,255,.72)}
+      .scroll-region{scrollbar-width:thin;scrollbar-color:var(--lavender) transparent;padding-bottom:8px}
+      .scroll-region::-webkit-scrollbar{display:block;height:5px}
+      .scroll-region::-webkit-scrollbar-thumb{background:var(--lavender);border-radius:999px}
+      .closing::before{inset:-40%}
+    }
+
+    /* V4: the recovered GLP-1 cover constructor v13 is the visual authority. */
+    html{scrollbar-color:var(--lavender) #111}
+    body{overflow-x:hidden}
+    .hero{min-height:724px;background:#fff}
+    .hero .container{height:724px}
+    .hero-photo-stage{left:0;right:270px;top:46px;bottom:46px;border-radius:14px;box-shadow:0 24px 55px rgba(10,14,14,.16)}
+    .hero-photo-stage::before{z-index:2;inset:0;background:linear-gradient(90deg,rgba(4,7,7,.9) 0%,rgba(4,7,7,.58) 44%,rgba(4,7,7,.05) 72%),linear-gradient(0deg,rgba(4,7,7,.4),transparent 55%)}
+    .hero-photo-stage::after{z-index:3;inset:0 42% 0 0;mask-image:linear-gradient(90deg,#000,transparent)}
+    .hero-person{z-index:1;object-position:center}
+    .hero-cover-copy{position:absolute;z-index:5;left:54px;top:48px;bottom:44px;width:min(530px,58%);display:flex;flex-direction:column;color:#fff}
+    .cover-meta{display:flex;justify-content:space-between;gap:20px;font-size:12px;font-weight:650;color:var(--mint);letter-spacing:.01em}
+    .hero-cover-copy h1{margin-top:92px;color:#c7efd8;font-size:72px;line-height:.88;max-width:560px;text-wrap:balance}
+    .hero-cover-copy .hero-lead{margin-top:auto;color:rgba(255,255,255,.84);font-size:17px;line-height:1.5;max-width:490px}
+    .hero-cover-copy .hero-tag{margin-top:20px;align-self:flex-start;background:var(--lavender);color:var(--ink);font-weight:650}
+    .aura-lines{position:absolute;z-index:4;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+    .aura-lines path{fill:none;stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.76}
+    .aura-lines .mint-line{stroke:#bcebd4}.aura-lines .lavender-line{stroke:#cfc4ec}.aura-lines .pink-line{stroke:#eab8ce}
+    .offer-card{right:0;top:142px;width:345px;min-height:326px;border-radius:14px;background:var(--mint);padding:38px;box-shadow:0 20px 40px rgba(10,14,14,.14)}
+    .offer-main{font-family:Commissioner,GolosText,sans-serif;font-size:46px;line-height:.95;font-weight:690;letter-spacing:-.035em;margin:44px 0 14px}
+    .offer-note{line-height:1.5;margin-bottom:26px}
+    .facts{background:#fff}
+    .fact-value{font-family:Commissioner,GolosText,sans-serif;font-size:30px;letter-spacing:-.025em}
+    .inside-card img{border-radius:14px;box-shadow:0 12px 28px rgba(10,14,14,.1)}
+    .route-stage{border-radius:14px;overflow:hidden}
+    .route-stage img{object-position:right center}
+    .outcomes-photo{border-radius:14px;box-shadow:0 18px 40px rgba(10,14,14,.12)}
+    .team-item img{border-radius:14px}
+    .button:disabled,.slider-controls button:disabled{cursor:not-allowed;opacity:.36;transform:none}
+    @media (max-width:900px){
+      .hero{min-height:0}
+      .hero .container{height:auto;padding-top:24px}
+      .hero-photo-stage{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:calc(100% + 60px);height:510px;margin:0 -30px;border-radius:0;box-shadow:none}
+      .hero-photo-stage::before{background:linear-gradient(0deg,rgba(4,7,7,.88) 0%,rgba(4,7,7,.18) 66%),linear-gradient(90deg,rgba(4,7,7,.55),transparent 65%)}
+      .hero-photo-stage::after{inset:0 0 42% 0;mask-image:linear-gradient(#000,transparent)}
+      .hero-cover-copy{left:30px;right:30px;top:28px;bottom:30px;width:auto}
+      .cover-meta{font-size:11px}
+      .hero-cover-copy h1{font-size:48px;line-height:.9;margin-top:auto;margin-bottom:24px;max-width:330px}
+      .hero-cover-copy .hero-lead{margin-top:0;font-size:15px;line-height:1.45;max-width:330px}
+      .hero-cover-copy .hero-tag{font-size:12px;margin-top:16px}
+      .hero-person{object-position:58% center}
+      .aura-lines{height:100%}
+      .offer-card{right:auto;top:auto;width:calc(100% + 60px);margin:0 0 0 -30px;border-radius:0;box-shadow:none;padding:32px 30px 38px}
+      .offer-main{font-size:42px;margin-top:30px}
+      .fact-value{font-size:27px}
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="utility" aria-hidden="true">
+    <div class="container"><nav><span>Сертификаты</span><span>Корпоративный фитнес</span><span>Научный журнал</span><span>Контакты</span></nav><span>8 (800) 350-14-89</span></div>
+  </div>
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="#top" aria-label="#sekta — наверх">#sekta</a>
+      <nav class="desktop-nav" aria-label="Навигация по лендингу">
+        <a href="#fit">Кому подходит</a><a href="#inside">Что внутри</a><a href="#format">Как проходит</a><a href="#routes">Тренировки</a><a href="#team">Команда</a><a href="#faq">Вопросы</a><a class="cabinet" href="https://sektaschool.ru/" target="_blank" rel="noreferrer">Все курсы</a>
+      </nav>
+      <div class="mobile-actions">
+        <a class="icon-button" href="https://sektaschool.ru/" target="_blank" rel="noreferrer" aria-label="Открыть сайт #sekta">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="9" r="5"></circle><path d="M6 28c0-6 4-10 10-10s10 4 10 10"></path></svg>
+        </a>
+        <button class="icon-button" id="menuButton" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 32 32"><path d="M3 8h26M3 16h26M3 24h26"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <nav id="mobileMenu" hidden aria-label="Мобильная навигация" style="padding:20px 30px 28px;border-bottom:1px solid var(--line);background:#fff">
+    <a href="#fit" style="display:block;padding:10px 0">Кому подходит</a><a href="#inside" style="display:block;padding:10px 0">Что внутри</a><a href="#format" style="display:block;padding:10px 0">Как проходит</a><a href="#routes" style="display:block;padding:10px 0">Тренировки</a><a href="#team" style="display:block;padding:10px 0">Команда</a><a href="#faq" style="display:block;padding:10px 0">Вопросы</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-photo-stage">
+          <img class="hero-person" src="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_1200.webp 1200w" sizes="(max-width:900px) 100vw, 910px" width="1200" height="751" fetchpriority="high" decoding="async" alt="Тёмное пространство курса с мятным и лавандовым светом и силуэтом в движении">
+          <svg class="aura-lines" viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true"><path class="mint-line" d="M-30 430 C180 180 390 190 600 365 S910 560 1060 280"/><path class="lavender-line" d="M-60 570 C190 710 380 500 570 270 S850 30 1050 190"/><path class="pink-line" d="M-30 620 C250 350 430 480 620 560 S900 610 1060 410"/></svg>
+          <div class="hero-cover-copy">
+            <div class="cover-meta"><span>#sekta / GLP‑1</span><span>курс поддержки</span></div>
+            <h1 id="hero-title">курс на устойчивость</h1>
+            <p class="hero-lead">Питание, силовые тренировки и поддержка для людей, которым врач назначил терапию агонистами GLP‑1.</p>
+            <span class="hero-tag">6 / 12 недель · 2 уровня тренировок</span>
+          </div>
+        </div>
+        <aside class="offer-card" aria-label="Коротко о формате курса">
+          <div class="offer-format">один курс · два уровня нагрузки</div>
+          <div class="offer-main">6 / 12 недель</div>
+          <div class="offer-note">Один цикл длится 6 недель. Можно пройти один уровень, повторить его или последовательно пройти оба уровня за 12 недель.</div>
+          <a class="button button-primary" href="#inside">Посмотреть программу</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="Коротко о курсе">
+      <div class="container facts-grid">
+        <div class="fact"><div class="fact-label">Длительность</div><div class="fact-value">6 недель · до 12 при продолжении</div></div>
+        <div class="fact"><div class="fact-label">Нагрузка</div><div class="fact-value">2 уровня тренировок</div></div>
+        <div class="fact"><div class="fact-label">Поддержка</div><div class="fact-value">Самостоятельно или с куратором</div></div>
+      </div>
+    </section>
+
+    <section class="content container" aria-labelledby="olya-title">
+      <div class="olya">
+        <div class="olya-portrait"><img src="assets/glp1-landing/markes.png" width="360" height="360" loading="lazy" decoding="async" alt="Оля Маркес"></div>
+        <div class="olya-text"><div class="olya-name" id="olya-title">Прямая речь<strong>Оля Маркес</strong></div>
+        <div class="olya-copy">
+          <p>Я Оля Маркес. Агонисты GLP‑1 могут снижать аппетит и поддерживать снижение веса. Это важная часть назначенной врачом терапии, но препарат не собирает за вас тарелку, не выбирает тренировку и не создаёт привычки на будущее.</p>
+          <p>Мы будем помогать выстраивать полноценное питание с белками, жирами и углеводами — чтобы поддерживать силу, энергию и достаточность рациона во время снижения веса. Научим есть дома и вне дома, делать закупки, тренироваться с собственным весом и гантелями — и собирать систему, которая не заканчивается последним днём курса.</p>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="content container" id="fit" aria-labelledby="fit-title">
+      <h2 id="fit-title">Курс подойдёт, если</h2>
+      <div class="fit-grid">
+        <article class="fit-item"><h3>Аппетит стал ниже</h3><p>Вы хотите понимать, как собирать полноценную еду, даже когда голод ощущается иначе или решения о еде даются сложнее.</p></article>
+        <article class="fit-item"><h3>Вес снижается, а силу хочется сохранить</h3><p>Вам важны мышцы, энергия и повседневная функция — не только цифра на весах.</p></article>
+        <article class="fit-item"><h3>Нужна подходящая нагрузка</h3><p>Вы начинаете с нуля или уже тренируетесь и ищете системную работу с сопротивлением без случайного набора видео.</p></article>
+        <article class="fit-item"><h3>Иногда сил и внимания мало</h3><p>Вам нужен не идеальный план, а один понятный следующий шаг: поесть, подготовить еду, потренироваться, сократить нагрузку или восстановиться.</p></article>
+      </div>
+    </section>
+
+    <section class="content container" id="inside" aria-labelledby="inside-title">
+      <div class="section-head"><h2 id="inside-title">Что внутри курса</h2><div class="slider-controls" aria-label="Переключить карточки"><button type="button" id="insidePrev" aria-label="Предыдущие карточки">←</button><button type="button" id="insideNext" aria-label="Следующие карточки">→</button></div></div>
+      <p class="scroll-hint" id="inside-scroll-hint">Листайте в сторону или используйте клавиши ← →</p>
+      <div class="cards-viewport scroll-region" tabindex="0" aria-label="Состав курса" aria-describedby="inside-scroll-hint"><div class="cards-track" id="insideTrack">
+        <article class="inside-card"><img src="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Приготовление полноценного приёма пищи с рыбой и овощами"><div class="inside-card-body"><h3>Питание на каждый день</h3><p>Белки, жиры, углеводы и разнообразие — в еде, которая подходит вашей жизни.</p><ul><li>тарелка дома и вне дома</li><li>закупки, рецепты и замены</li><li>варианты с готовкой и без неё</li></ul></div></article>
+        <article class="inside-card"><img src="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Силовая тренировка с гантелями в пространстве курса"><div class="inside-card-body"><h3>Силовые тренировки с сопротивлением</h3><p>Короткие тренировки на всё тело с понятной прогрессией и вариантами нагрузки.</p><ul><li>собственный вес и гантели</li><li>четыре силовых контакта в неделю</li><li>два уровня нагрузки</li></ul></div></article>
+        <article class="inside-card"><img src="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Спокойное движение и восстановление на коврике в пространстве курса"><div class="inside-card-body"><h3>Кардио и повседневное движение</h3><p>Короткие блоки для сердца и выносливости, прогулки и мобильность как доступные альтернативы.</p><ul><li>короткое кардио</li><li>ходьба и движение в течение дня</li><li>воскресенье без обязательного видео</li></ul></div></article>
+        <article class="inside-card"><img src="assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Наушники, дневник и чашка в пространстве поддержки курса"><div class="inside-card-body"><h3>Знания и поддержка</h3><p>Короткие материалы, психологические практики, самонаблюдение и поддержка кураторов.</p><ul><li>эмоциональный голод и отношение к меняющемуся телу</li><li>один понятный следующий шаг</li><li>самостоятельный формат или прохождение с куратором</li></ul></div></article>
+      </div></div>
+    </section>
+
+    <section class="content container" id="format" aria-labelledby="format-title">
+      <h2 id="format-title">Как устроен курс</h2>
+      <p class="course-flow-intro">Один курс объединяет питание, движение, психологию и повседневные навыки. Вы выбираете подходящий уровень нагрузки и проходите один шестинедельный цикл или оба уровня последовательно.</p>
+      <div class="course-flow">
+        <article class="flow-step"><span class="flow-kicker">До старта</span><h3>Спокойно подготовиться</h3><p>Вводное видео Оли, инструкция, карточка безопасности, меню, первая закупка и подготовка к началу недели.</p></article>
+        <article class="flow-step"><span class="flow-kicker">6 недель</span><h3>Пройти один уровень</h3><p>Выберите нагрузку по тренировочному опыту и соберите работающий ритм еды, силовых тренировок и движения.</p></article>
+        <article class="flow-step"><span class="flow-kicker">12 недель</span><h3>Продолжить или повторить</h3><p>Пройдите второй уровень следом за первым или повторите выбранный цикл, чтобы закрепить систему и прогрессию.</p></article>
+        <article class="flow-step"><span class="flow-kicker">Поддержка</span><h3>Самостоятельно или с куратором</h3><p>Материалы курса рассчитаны на самостоятельное прохождение. В формате с куратором вы получаете помощь с ближайшим шагом и использованием инструментов курса.</p></article>
+      </div>
+    </section>
+
+    <section class="content container" id="routes" aria-labelledby="routes-title">
+      <h2 id="routes-title">2 уровня силовых тренировок</h2>
+      <div class="routes">
+        <div class="route-tabs" role="tablist" aria-label="Выберите тренировочный маршрут">
+          <button class="route-tab" id="route-care" role="tab" aria-selected="true" aria-controls="routePanel" tabindex="0" data-route="care">Начинаю или возвращаюсь</button>
+          <button class="route-tab" id="route-strength" role="tab" aria-selected="false" aria-controls="routePanel" tabindex="-1" data-route="strength">Тренируюсь регулярно</button>
+          <p class="route-note">Уровень выбирается по тренировочному опыту. Интенсивность внутри уровня можно адаптировать под самочувствие и восстановление.</p>
+        </div>
+        <div class="route-stage" id="routePanel" role="tabpanel" aria-labelledby="route-care">
+          <img id="routeImage" src="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp 1200w" sizes="(max-width:900px) calc(100vw - 60px), 372px" width="1200" height="751" loading="lazy" decoding="async" alt="Доступная тренировка в тёмном пространстве курса">
+          <div class="route-copy"><h3 id="routeTitle">Доступная силовая работа</h3><p id="routeText">Для тех, кто только начинает, возвращается после паузы или хочет спокойнее входить в сопротивление.</p><ul id="routeList"><li>собственный вес и доступное сопротивление</li><li>техника и работа на всё тело</li><li>варианты амплитуды и темпа</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content week-wrap" aria-labelledby="week-title">
+      <div class="container">
+        <h2 id="week-title">Одна понятная неделя</h2>
+        <p class="week-intro">Не нужно каждый день придумывать программу заново. Силовая работа, короткое кардио, питание и поддержка складываются в повторяемый ритм.</p>
+        <p class="scroll-hint" id="week-scroll-hint">Листайте неделю в сторону или используйте клавиши ← →</p>
+        <div class="week-grid scroll-region" tabindex="0" aria-label="Пример недельного ритма" aria-describedby="week-scroll-hint">
+          <div class="day"><div class="day-name">Пн</div><strong>Силовая A</strong><span>около 20 минут · всё тело</span></div>
+          <div class="day"><div class="day-name">Вт</div><strong>Короткое кардио</strong><span>или прогулка / мобильность</span></div>
+          <div class="day"><div class="day-name">Ср</div><strong>Силовая B</strong><span>около 20 минут · новый акцент</span></div>
+          <div class="day"><div class="day-name">Чт</div><strong>Короткое кардио</strong><span>или прогулка / мобильность</span></div>
+          <div class="day"><div class="day-name">Пт</div><strong>Силовая C</strong><span>около 20 минут · прогрессия</span></div>
+          <div class="day"><div class="day-name">Сб</div><strong>Силовая D</strong><span>техника или меньшая плотность</span></div>
+          <div class="day"><div class="day-name">Вс</div><strong>Свободный выбор</strong><span>прогулка, мобильность или отдых</span></div>
+        </div>
+        <div class="weekly-package">
+          <div class="package"><strong>Меню и закупка</strong><span>Еда на неделю, замены и понятный список.</span></div>
+          <div class="package"><strong>Силовые контакты</strong><span>Не более одного обязательного видео в день.</span></div>
+          <div class="package"><strong>Материал и практика</strong><span>Одно объяснение и одно действие по теме недели.</span></div>
+          <div class="package"><strong>Самонаблюдение</strong><span>Коротко отметить аппетит, энергию и самочувствие.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content container" aria-labelledby="outcomes-title">
+      <h2 id="outcomes-title">Что останется с вами</h2>
+      <div class="outcomes">
+        <img class="outcomes-photo" src="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_1200.webp 1200w" sizes="(max-width:900px) calc(100vw - 60px), 560px" width="1200" height="751" loading="lazy" decoding="async" alt="Утренняя тренировка в тёмном пространстве курса">
+        <div class="outcome-list">
+          <article class="outcome"><div><h3>Своя рабочая тарелка</h3><p>Понимание, как достраивать полноценный приём пищи при разном аппетите.</p></div></article>
+          <article class="outcome"><div><h3>Еда в реальной жизни</h3><p>Повторяемые блюда, закупка, ресторан, доставка и дорога без отдельной «идеальной» жизни.</p></div></article>
+          <article class="outcome"><div><h3>Ритм движения</h3><p>Подходящий силовой маршрут, короткое кардио и варианты на дни с разным ресурсом.</p></div></article>
+          <article class="outcome"><div><h3>Прогресс шире веса</h3><p>Сила, энергия, регулярность питания и повседневная активность помогают замечать изменения, которые не показывают весы.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content container" id="team" aria-labelledby="team-title">
+      <h2 id="team-title">Курс делает команда #sekta</h2>
+      <p class="team-intro">Программу создаёт команда специалистов по питанию, тренировкам и психологии. Вместе мы помогаем выстроить полноценное питание, подходящую нагрузку и устойчивые привычки во время терапии агонистами GLP‑1.</p>
+      <p class="scroll-hint" id="team-scroll-hint">Листайте команду в сторону или используйте клавиши ← →</p>
+      <div class="team-list scroll-region" tabindex="0" aria-label="Команда курса" aria-describedby="team-scroll-hint">
+        <article class="team-item"><img src="assets/glp1-landing/markes.png" width="360" height="360" loading="lazy" decoding="async" alt="Оля Маркес"><strong>Оля Маркес</strong><span>Основательница и идеолог #sekta, автор рамки курса.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/nesterova.png" width="361" height="360" loading="lazy" decoding="async" alt="Аня Нестерова"><strong>Аня Нестерова</strong><span>Руководитель направления питания #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/knyazeva.png" width="360" height="360" loading="lazy" decoding="async" alt="Даша Князева"><strong>Даша Князева</strong><span>Эксперт тренировочного направления #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/yakimova.png" width="360" height="360" loading="lazy" decoding="async" alt="Ира Якимова"><strong>Ира Якимова</strong><span>Психолог и эксперт программ #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/shametova.png" width="360" height="360" loading="lazy" decoding="async" alt="Лена Шаметова"><strong>Лена Шаметова</strong><span>Эксперт образовательных программ #sekta.</span></article>
+      </div>
+    </section>
+
+    <section class="content container" aria-labelledby="safety-title">
+      <div class="safety"><h2 id="safety-title">Препарат и медицинские решения остаются у врача</h2><p>Курс не назначает агонисты GLP‑1, не меняет дозировку или схему терапии, не лечит побочные эффекты и не заменяет медицинское наблюдение. Если появляются тревожные симптомы или выраженные побочные эффекты, обратитесь к своему врачу.</p></div>
+    </section>
+
+    <section class="content container faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Вопросы</h2>
+      <div class="faq-list">
+        <details><summary>Можно проходить курс, если я только думаю о терапии?</summary><p>Курс рассчитан на взрослых, которые уже получают терапию по назначению врача и могут заниматься физической активностью. Если терапия ещё не началась, сначала обсудите её со своим врачом.</p></details>
+        <details><summary>Курс заменяет консультации врача?</summary><p>Нет. Препарат, дозировка, симптомы, обследования и медицинские решения остаются у вашего лечащего врача. Команда курса помогает с образовательной программой, питанием, движением и повседневными навыками.</p></details>
+        <details><summary>Что делать, если я давно не тренировался?</summary><p>Начните с маршрута доступной силовой работы. Он использует собственный вес и доступное сопротивление, даёт варианты амплитуды и темпа. Для уже тренирующихся есть маршрут с более выраженным сопротивлением.</p></details>
+        <details><summary>Как выбрать 6 или 12 недель?</summary><p>Один уровень курса рассчитан на 6 недель. Можно пройти только подходящий уровень, повторить его или последовательно пройти оба уровня нагрузки за 12 недель.</p></details>
+        <details><summary>Можно проходить курс без куратора?</summary><p>Да. Материалы и инструменты курса можно проходить самостоятельно. Формат с куратором добавляет поддержку в работе с материалами и помогает выбирать ближайший понятный шаг; медицинские вопросы остаются у врача.</p></details>
+        <details><summary>Нужны ли гантели и другое оборудование?</summary><p>Для первого уровня достаточно коврика и собственного веса. Для второго уровня понадобятся гантели или другое доступное сопротивление.</p></details>
+        <details><summary>Курс гарантирует сохранение мышц или веса после отмены?</summary><p>Нет. Курс поддерживает питание, силовую работу и навыки, но не обещает полностью предотвратить потерю мышц или изменение веса после изменения терапии. Такие решения и ожидания нужно обсуждать с врачом.</p></details>
+        <details><summary>Когда старт и сколько стоит участие?</summary><p>Дату старта, стоимость и варианты участия мы сообщим отдельно. Вы можете задать вопрос команде по почте.</p></details>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="container closing-grid">
+        <div><h2 id="closing-title">Терапия идёт. Жизнь вокруг неё тоже можно собрать.</h2><p>Полноценная еда, сила, подходящее движение и повторяемые привычки — шаг за шагом, вместе с командой #sekta.</p></div>
+        <div class="closing-action"><a class="button" href="mailto:info@sektaschool.ru?subject=GLP-1%20%E2%80%94%20%D0%BA%D1%83%D1%80%D1%81%20%D0%BD%D0%B0%20%D1%83%D1%81%D1%82%D0%BE%D0%B9%D1%87%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%8C">Задать вопрос команде</a><small>О старте, стоимости и формате участия мы сообщим отдельно.</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><div class="footer-grid"><div><a class="wordmark" href="#top">#sekta</a></div><div><strong>Курс</strong><a href="#fit">Кому подходит</a><a href="#inside">Что внутри</a><a href="#routes">Тренировки</a></div><div><strong>Поддержка</strong><a href="#team">Команда</a><a href="#faq">Вопросы</a><a href="mailto:info@sektaschool.ru">info@sektaschool.ru</a></div><div><strong>Важно</strong><span>18+</span><span>Не заменяет врача</span><a href="https://sektaschool.ru/" target="_blank" rel="noreferrer">sektaschool.ru</a></div></div><div class="footer-bottom">Курс на устойчивость · #sekta · 2026</div></div>
+  </footer>
+
+  <script>
+    const menuButton=document.getElementById('menuButton');
+    const mobileMenu=document.getElementById('mobileMenu');
+    function setMenu(open,{focus=false}={}){menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');mobileMenu.hidden=!open;if(open&&focus)mobileMenu.querySelector('a')?.focus();}
+    menuButton.addEventListener('click',()=>setMenu(menuButton.getAttribute('aria-expanded')!=='true',{focus:true}));
+    mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton.getAttribute('aria-expanded')==='true'){setMenu(false);menuButton.focus();}});
+
+    const track=document.getElementById('insideTrack');
+    let cardIndex=0;
+    const insidePrev=document.getElementById('insidePrev');const insideNext=document.getElementById('insideNext');
+    function updateCards(){const max=window.innerWidth>900?1:0;cardIndex=Math.max(0,Math.min(cardIndex,max));track.style.transform='translateX(-'+(cardIndex*400)+'px)';insidePrev.disabled=cardIndex===0;insideNext.disabled=cardIndex===max;}
+    insidePrev.addEventListener('click',()=>{cardIndex-=1;updateCards();});
+    insideNext.addEventListener('click',()=>{cardIndex+=1;updateCards();});
+    window.addEventListener('resize',updateCards);
+
+    const routeData={
+      care:{tab:'route-care',title:'Доступная силовая работа',text:'Для тех, кто только начинает, возвращается после паузы или хочет спокойнее входить в сопротивление.',image:'assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp',srcset:'assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp 1200w',alt:'Доступная тренировка в тёмном пространстве курса',items:['собственный вес и доступное сопротивление','техника и работа на всё тело','варианты амплитуды и темпа']},
+      strength:{tab:'route-strength',title:'Больше сопротивления и прогрессии',text:'Для тех, кто уже регулярно тренируется и ищет полноценную системную нагрузку с гантелями и более выраженным сопротивлением.',image:'assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp',srcset:'assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp 1200w',alt:'Силовая тренировка с гантелями в тёмном пространстве курса',items:['гантели и другое доступное сопротивление','управление подходами, темпом и весом','сильная работа без тренировки до отказа']}
+    };
+    const routeTabs=[...document.querySelectorAll('.route-tab')];
+    function selectRoute(tab,{focus=false}={}){
+      const data=routeData[tab.dataset.route];
+      routeTabs.forEach(item=>{const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;});
+      const panel=document.getElementById('routePanel');panel.setAttribute('aria-labelledby',data.tab);
+      const image=document.getElementById('routeImage');image.src=data.image;image.srcset=data.srcset;image.alt=data.alt;
+      document.getElementById('routeTitle').textContent=data.title;document.getElementById('routeText').textContent=data.text;
+      const list=document.getElementById('routeList');list.replaceChildren(...data.items.map(item=>{const li=document.createElement('li');li.textContent=item;return li;}));
+      if(focus)tab.focus();
+    }
+    routeTabs.forEach((tab,index)=>{tab.addEventListener('click',()=>selectRoute(tab));tab.addEventListener('keydown',event=>{let next=index;if(event.key==='ArrowRight')next=(index+1)%routeTabs.length;else if(event.key==='ArrowLeft')next=(index-1+routeTabs.length)%routeTabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=routeTabs.length-1;else return;event.preventDefault();selectRoute(routeTabs[next],{focus:true});});});
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+    document.querySelectorAll('.scroll-region').forEach(region=>region.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight'].includes(event.key)||region.scrollWidth<=region.clientWidth)return;event.preventDefault();region.scrollBy({left:(event.key==='ArrowRight'?1:-1)*Math.min(region.clientWidth*.8,340),behavior:reducedMotion.matches?'auto':'smooth'});}));
+    updateCards();
+  </script>
+</body>
+</html>
