@@ -1,0 +1,18 @@
+{
+  "schema": "glp1-cover-public/v1",
+  "project": "glp1_cover_system",
+  "published_assets": 76,
+  "downloads": [
+    "current_png",
+    "saved_variants_zip"
+  ],
+  "excludes": [
+    "prompts",
+    "internal_docs",
+    "source_tools"
+  ],
+  "repository": "OLYMARKES/sekta-glp1-course",
+  "branch": "main",
+  "source_path": "projects/glp1_course/github_pages/glp1-cover-constructor/",
+  "public_url": "https://olymarkes.github.io/sekta-glp1-course/glp1-cover-constructor/"
+}
