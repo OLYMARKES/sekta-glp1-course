@@ -11,8 +11,8 @@
   <meta property="og:description" content="Питание, силовые тренировки и поддержка во время назначенной врачом терапии агонистами GLP‑1.">
   <meta property="og:url" content="https://olymarkes.github.io/sekta-glp1-course/glp1-landing.html">
   <style>
-    @font-face{font-family:Commissioner;src:url('assets/glp1-landing/commissioner_vf.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
-    @font-face{font-family:GolosText;src:url('assets/glp1-landing/golos_text_vf.ttf') format('truetype');font-weight:400 900;font-style:normal;font-display:swap}
+    @font-face{font-family:Commissioner;src:url('assets/glp1-landing/design_system/font_tinder/commissioner_vf.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+    @font-face{font-family:GolosText;src:url('assets/glp1-landing/design_system/font_tinder/golos_text_vf.ttf') format('truetype');font-weight:400 900;font-style:normal;font-display:swap}
     :root{
       --ink:#131615;--black:#0a0e0e;--paper:#fff;--quiet:#f3f3f0;--line:#d9ddd8;--muted:#5f6662;
       --mint:#c7efd8;--mint-strong:#9cdeb9;--mint-ink:#183f2e;
@@ -460,16 +460,16 @@
       .closing::before{inset:-40%}
     }
 
-    /* V4: the recovered GLP-1 cover constructor v13 is the visual authority. */
+    /* V5: full-width Sekta course header geometry with the v13 visual authority. */
     html{scrollbar-color:var(--lavender) #111}
     body{overflow-x:hidden}
-    .hero{min-height:724px;background:#fff}
-    .hero .container{height:724px}
-    .hero-photo-stage{left:0;right:270px;top:46px;bottom:46px;border-radius:14px;box-shadow:0 24px 55px rgba(10,14,14,.16)}
+    .hero{min-height:724px;background:#0a0e0e}
+    .hero .container{width:min(100%,1920px);height:724px}
+    .hero-photo-stage{left:0;right:0;top:0;bottom:0;border-radius:0;box-shadow:none;touch-action:pan-y}
     .hero-photo-stage::before{z-index:2;inset:0;background:linear-gradient(90deg,rgba(4,7,7,.9) 0%,rgba(4,7,7,.58) 44%,rgba(4,7,7,.05) 72%),linear-gradient(0deg,rgba(4,7,7,.4),transparent 55%)}
     .hero-photo-stage::after{z-index:3;inset:0 42% 0 0;mask-image:linear-gradient(90deg,#000,transparent)}
-    .hero-person{z-index:1;object-position:center}
-    .hero-cover-copy{position:absolute;z-index:5;left:54px;top:48px;bottom:44px;width:min(530px,58%);display:flex;flex-direction:column;color:#fff}
+    .hero-person{z-index:1;object-position:center 54%}
+    .hero-cover-copy{position:absolute;z-index:5;left:max(30px,calc((100% - var(--container))/2));top:48px;bottom:44px;width:min(530px,56%);display:flex;flex-direction:column;color:#fff}
     .cover-meta{display:flex;justify-content:space-between;gap:20px;font-size:12px;font-weight:650;color:var(--mint);letter-spacing:.01em}
     .hero-cover-copy h1{margin-top:92px;color:#c7efd8;font-size:72px;line-height:.88;max-width:560px;text-wrap:balance}
     .hero-cover-copy .hero-lead{margin-top:auto;color:rgba(255,255,255,.84);font-size:17px;line-height:1.5;max-width:490px}
@@ -477,7 +477,7 @@
     .aura-lines{position:absolute;z-index:4;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
     .aura-lines path{fill:none;stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.76}
     .aura-lines .mint-line{stroke:#bcebd4}.aura-lines .lavender-line{stroke:#cfc4ec}.aura-lines .pink-line{stroke:#eab8ce}
-    .offer-card{right:0;top:142px;width:345px;min-height:326px;border-radius:14px;background:var(--mint);padding:38px;box-shadow:0 20px 40px rgba(10,14,14,.14)}
+    .offer-card{right:max(30px,calc((100% - var(--container))/2));top:142px;width:clamp(310px,24vw,345px);min-height:326px;border-radius:14px;background:var(--mint);padding:38px;box-shadow:0 20px 40px rgba(10,14,14,.22)}
     .offer-main{font-family:Commissioner,GolosText,sans-serif;font-size:46px;line-height:.95;font-weight:690;letter-spacing:-.035em;margin:44px 0 14px}
     .offer-note{line-height:1.5;margin-bottom:26px}
     .facts{background:#fff}
@@ -487,10 +487,13 @@
     .route-stage img{object-position:right center}
     .outcomes-photo{border-radius:14px;box-shadow:0 18px 40px rgba(10,14,14,.12)}
     .team-item img{border-radius:14px}
+    .olya{grid-template-columns:360px minmax(0,1fr);align-items:center}
+    .olya-portrait{min-height:0;aspect-ratio:1/1;align-self:center}
+    .olya-portrait img{object-fit:cover;object-position:center}
     .button:disabled,.slider-controls button:disabled{cursor:not-allowed;opacity:.36;transform:none}
     @media (max-width:900px){
       .hero{min-height:0}
-      .hero .container{height:auto;padding-top:24px}
+      .hero .container{width:calc(100% - 60px);height:auto;padding-top:0}
       .hero-photo-stage{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:calc(100% + 60px);height:510px;margin:0 -30px;border-radius:0;box-shadow:none}
       .hero-photo-stage::before{background:linear-gradient(0deg,rgba(4,7,7,.88) 0%,rgba(4,7,7,.18) 66%),linear-gradient(90deg,rgba(4,7,7,.55),transparent 65%)}
       .hero-photo-stage::after{inset:0 0 42% 0;mask-image:linear-gradient(#000,transparent)}
@@ -504,7 +507,64 @@
       .offer-card{right:auto;top:auto;width:calc(100% + 60px);margin:0 0 0 -30px;border-radius:0;box-shadow:none;padding:32px 30px 38px}
       .offer-main{font-size:42px;margin-top:30px}
       .fact-value{font-size:27px}
+      .olya{grid-template-columns:1fr;align-items:stretch}
+      .olya-portrait{min-height:0;aspect-ratio:1/1}
+      .olya-portrait img{object-fit:cover;object-position:center}
     }
+    /* V6: Olya's direct speech is one authored testimonial, not three detached columns. */
+    .olya{padding:56px;grid-template-columns:360px minmax(0,1fr);gap:64px;align-items:start}
+    .olya-media{display:flex;flex-direction:column;min-width:0}
+    .olya-portrait{width:100%;min-height:0;aspect-ratio:1/1;align-self:start;border-radius:14px;overflow:hidden;background:#111}
+    .olya-portrait img{width:100%;height:100%;object-fit:contain;object-position:center}
+    .olya-name{padding-top:22px;font-size:13px;line-height:1.3}
+    .olya-name strong{font-size:25px;line-height:1.1;margin-top:10px}
+    .olya-copy{max-width:660px;font-size:22px;line-height:1.48;letter-spacing:-.012em}
+    .olya-copy p+p{margin-top:28px}
+    @media (max-width:1050px){
+      .olya{padding:44px;grid-template-columns:320px minmax(0,1fr);gap:44px}
+    }
+    @media (max-width:900px){
+      .olya{padding:40px;grid-template-columns:1fr;gap:40px}
+      .olya-media{width:min(360px,100%)}
+      .olya-copy{font-size:20px;line-height:1.52;max-width:680px}
+    }
+    @media (max-width:600px){
+      .olya{padding:0;gap:0}
+      .olya-media{width:100%}
+      .olya-portrait{border-radius:0}
+      .olya-name{padding:30px 26px 0}
+      .olya-copy{padding:28px 26px 38px;font-size:19px;line-height:1.5}
+    }
+
+    /* V7: Olya's fitting-room decisions, with independent desktop/mobile assets and crops. */
+    .fitted-photo{object-fit:var(--fit-d,cover)!important;object-position:var(--x-d,50%) var(--y-d,50%)!important;transform:scale(var(--z-d,1));transform-origin:center;transition:none}
+    .hero-slide{position:absolute;inset:0;z-index:1;opacity:0;visibility:hidden;transition:opacity .38s ease,visibility .38s ease}
+    .hero-slide.is-active{opacity:1;visibility:visible}
+    .hero-slide picture,.hero-slide .hero-person{position:absolute;inset:0;width:100%;height:100%}
+    .hero-slide-plaque{display:none;position:absolute;z-index:2;left:var(--px-d);top:var(--py-d);width:var(--pw-d);height:var(--ph-d);opacity:var(--po-d);background:var(--pc-d);pointer-events:none}
+    .hero-slide-plaque.plaque-d{display:block}
+    .hero-carousel-controls{position:absolute;z-index:8;left:50%;bottom:24px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#fff}
+    .hero-carousel-controls button{width:48px;height:48px;border:1px solid rgba(255,255,255,.72);border-radius:50%;background:rgba(8,12,11,.58);color:#fff;display:grid;place-items:center;cursor:pointer;font-size:24px;line-height:1;backdrop-filter:blur(8px)}
+    .hero-carousel-controls button:hover{background:rgba(8,12,11,.82)}
+    .hero-carousel-count{min-width:58px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+    .hero-text-override-d .cover-meta,.hero-text-override-d h1,.hero-text-override-d .hero-lead{color:var(--hero-text-d)!important}
+    .inside-card .photo-frame{display:block;width:100%;height:270px;overflow:hidden;border-radius:14px;background:#111;box-shadow:0 12px 28px rgba(10,14,14,.1)}
+    .inside-card .photo-frame img{width:100%;height:100%;border-radius:0;box-shadow:none}
+    .route-photo-frame{display:block;height:520px;min-width:0;overflow:hidden;background:#0b0f0f}
+    .route-photo-frame img{width:100%;height:100%}
+    .outcome-photo-frame{display:block;height:610px;overflow:hidden;border-radius:14px;background:#0b0f0f;box-shadow:0 18px 40px rgba(10,14,14,.12)}
+    .outcome-photo-frame .outcomes-photo{width:100%;height:100%;border-radius:0;box-shadow:none}
+    @media (max-width:900px){
+      .fitted-photo{object-fit:var(--fit-m,var(--fit-d,cover))!important;object-position:var(--x-m,var(--x-d,50%)) var(--y-m,var(--y-d,50%))!important;transform:scale(var(--z-m,var(--z-d,1)))}
+      .hero-slide-plaque.plaque-d{display:none}.hero-slide-plaque.plaque-m{display:block;left:var(--px-m);top:var(--py-m);width:var(--pw-m);height:var(--ph-m);opacity:var(--po-m);background:var(--pc-m)}
+      .hero-carousel-controls{left:auto;right:18px;bottom:18px;transform:none}
+      .hero-text-override-d .cover-meta,.hero-text-override-d h1,.hero-text-override-d .hero-lead{color:inherit!important}
+      .hero-text-override-m .cover-meta,.hero-text-override-m h1,.hero-text-override-m .hero-lead{color:var(--hero-text-m)!important}
+      .inside-card .photo-frame{height:auto;aspect-ratio:4/3}
+      .route-photo-frame{height:340px}
+      .outcome-photo-frame{height:330px}
+    }
+    @media (prefers-reduced-motion:reduce){.hero-slide{transition:none}}
   </style>
 </head>
 <body id="top">
@@ -534,15 +594,16 @@
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
-        <div class="hero-photo-stage">
-          <img class="hero-person" src="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1_1200.webp 1200w" sizes="(max-width:900px) 100vw, 910px" width="1200" height="751" fetchpriority="high" decoding="async" alt="Тёмное пространство курса с мятным и лавандовым светом и силуэтом в движении">
+        <div class="hero-photo-stage" aria-roledescription="carousel" aria-label="Фотографии курса">
+          <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 из 4" aria-hidden="false"><picture><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_seated_studio_dark_approved_v1.png"><img class="hero-person fitted-photo" style="--x-d:49%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:50%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/production/2026-08-21_glp1_dark_cover_faceless_ribbed_screen_v1.png" fetchpriority="high" decoding="async" alt="Вариант 1 фотографии в шапке курса"></picture></div><div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 из 4" aria-hidden="true"><picture><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_seated_studio_dark_approved_v1.png"><img class="hero-person fitted-photo" style="--x-d:49%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:50%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_seated_studio_dark_approved_v1.png" loading="lazy" decoding="async" alt="Вариант 2 фотографии в шапке курса"></picture></div><div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 из 4" aria-hidden="true"><picture><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_seated_studio_dark_approved_v1.png"><img class="hero-person fitted-photo" style="--x-d:31%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:50%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_podcast_clean_horizontal_approved_v1.png" loading="lazy" decoding="async" alt="Вариант 3 фотографии в шапке курса"></picture></div><div class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 из 4" aria-hidden="true"><picture><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_seated_studio_dark_approved_v1.png"><img class="hero-person fitted-photo" style="--x-d:31%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:50%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/premium_reset/2026-08-20_glp1_elena_sport_approved_v1.png" loading="lazy" decoding="async" alt="Вариант 4 фотографии в шапке курса"></picture><span class="hero-slide-plaque plaque-d" style="--px-d:4%;--py-d:6%;--pw-d:60%;--ph-d:77%;--po-d:0.81;--pc-d:#0a0f0e;--px-m:8%;--py-m:8%;--pw-m:44%;--ph-m:76%;--po-m:0.92;--pc-m:#d9cff1" aria-hidden="true"></span></div>
           <svg class="aura-lines" viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true"><path class="mint-line" d="M-30 430 C180 180 390 190 600 365 S910 560 1060 280"/><path class="lavender-line" d="M-60 570 C190 710 380 500 570 270 S850 30 1050 190"/><path class="pink-line" d="M-30 620 C250 350 430 480 620 560 S900 610 1060 410"/></svg>
-          <div class="hero-cover-copy">
+          <div class="hero-cover-copy hero-text-override-m" style="--hero-text-d:#c7efd8;--hero-text-m:#efb5ce">
             <div class="cover-meta"><span>#sekta / GLP‑1</span><span>курс поддержки</span></div>
             <h1 id="hero-title">курс на устойчивость</h1>
             <p class="hero-lead">Питание, силовые тренировки и поддержка для людей, которым врач назначил терапию агонистами GLP‑1.</p>
             <span class="hero-tag">6 / 12 недель · 2 уровня тренировок</span>
           </div>
+          <div class="hero-carousel-controls" aria-label="Фотографии в шапке"><button type="button" id="heroPrev" aria-label="Предыдущая фотография">←</button><span class="hero-carousel-count" id="heroCount" aria-live="polite">1 / 4</span><button type="button" id="heroNext" aria-label="Следующая фотография">→</button></div>
         </div>
         <aside class="offer-card" aria-label="Коротко о формате курса">
           <div class="offer-format">один курс · два уровня нагрузки</div>
@@ -563,12 +624,14 @@
 
     <section class="content container" aria-labelledby="olya-title">
       <div class="olya">
-        <div class="olya-portrait"><img src="assets/glp1-landing/markes.png" width="360" height="360" loading="lazy" decoding="async" alt="Оля Маркес"></div>
-        <div class="olya-text"><div class="olya-name" id="olya-title">Прямая речь<strong>Оля Маркес</strong></div>
+        <div class="olya-media">
+          <div class="olya-portrait"><picture><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_headphones_full_color_approved_v1.png"><img class="fitted-photo" style="--x-d:50%;--y-d:100%;--z-d:1;--fit-d:cover;--x-m:49%;--y-m:100%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/2026-08-21_glp1_olya_headphones_full_color_approved_v1.png" width="1024" height="1536" loading="lazy" decoding="async" alt="Оля Маркес в наушниках"></picture></div>
+          <div class="olya-name" id="olya-title">Прямая речь<strong>Оля Маркес</strong></div>
+        </div>
         <div class="olya-copy">
           <p>Я Оля Маркес. Агонисты GLP‑1 могут снижать аппетит и поддерживать снижение веса. Это важная часть назначенной врачом терапии, но препарат не собирает за вас тарелку, не выбирает тренировку и не создаёт привычки на будущее.</p>
           <p>Мы будем помогать выстраивать полноценное питание с белками, жирами и углеводами — чтобы поддерживать силу, энергию и достаточность рациона во время снижения веса. Научим есть дома и вне дома, делать закупки, тренироваться с собственным весом и гантелями — и собирать систему, которая не заканчивается последним днём курса.</p>
-        </div></div>
+        </div>
       </div>
     </section>
 
@@ -586,10 +649,10 @@
       <div class="section-head"><h2 id="inside-title">Что внутри курса</h2><div class="slider-controls" aria-label="Переключить карточки"><button type="button" id="insidePrev" aria-label="Предыдущие карточки">←</button><button type="button" id="insideNext" aria-label="Следующие карточки">→</button></div></div>
       <p class="scroll-hint" id="inside-scroll-hint">Листайте в сторону или используйте клавиши ← →</p>
       <div class="cards-viewport scroll-region" tabindex="0" aria-label="Состав курса" aria-describedby="inside-scroll-hint"><div class="cards-track" id="insideTrack">
-        <article class="inside-card"><img src="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Приготовление полноценного приёма пищи с рыбой и овощами"><div class="inside-card-body"><h3>Питание на каждый день</h3><p>Белки, жиры, углеводы и разнообразие — в еде, которая подходит вашей жизни.</p><ul><li>тарелка дома и вне дома</li><li>закупки, рецепты и замены</li><li>варианты с готовкой и без неё</li></ul></div></article>
-        <article class="inside-card"><img src="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Силовая тренировка с гантелями в пространстве курса"><div class="inside-card-body"><h3>Силовые тренировки с сопротивлением</h3><p>Короткие тренировки на всё тело с понятной прогрессией и вариантами нагрузки.</p><ul><li>собственный вес и гантели</li><li>четыре силовых контакта в неделю</li><li>два уровня нагрузки</li></ul></div></article>
-        <article class="inside-card"><img src="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_back_mat_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Спокойное движение и восстановление на коврике в пространстве курса"><div class="inside-card-body"><h3>Кардио и повседневное движение</h3><p>Короткие блоки для сердца и выносливости, прогулки и мобильность как доступные альтернативы.</p><ul><li>короткое кардио</li><li>ходьба и движение в течение дня</li><li>воскресенье без обязательного видео</li></ul></div></article>
-        <article class="inside-card"><img src="assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_audio_journal_v1_1200.webp 1200w" sizes="(max-width:900px) 86vw, 380px" width="1200" height="751" loading="lazy" decoding="async" alt="Наушники, дневник и чашка в пространстве поддержки курса"><div class="inside-card-body"><h3>Знания и поддержка</h3><p>Короткие материалы, психологические практики, самонаблюдение и поддержка кураторов.</p><ul><li>эмоциональный голод и отношение к меняющемуся телу</li><li>один понятный следующий шаг</li><li>самостоятельный формат или прохождение с куратором</li></ul></div></article>
+        <article class="inside-card"><picture class="photo-frame"><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_nutrition_soup_v1.png"><img class="fitted-photo" style="--x-d:100%;--y-d:51%;--z-d:1.29;--fit-d:cover;--x-m:100%;--y-m:55%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/production/2026-08-21_glp1_dark_cover_faceless_nutrition_hands_v1.png" width="1200" height="751" loading="lazy" decoding="async" alt="Полноценный приём пищи; на мобильном — тарелка супа"></picture><div class="inside-card-body"><h3>Питание на каждый день</h3><p>Белки, жиры, углеводы и разнообразие — в еде, которая подходит вашей жизни.</p><ul><li>тарелка дома и вне дома</li><li>закупки, рецепты и замены</li><li>варианты с готовкой и без неё</li></ul></div></article>
+        <article class="inside-card"><picture class="photo-frame"><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_background_locker_v1.png"><img class="fitted-photo" style="--x-d:100%;--y-d:76%;--z-d:1;--fit-d:cover;--x-m:100%;--y-m:49%;--z-m:1.19;--fit-m:contain" src="assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_backbend_dark_review_v1.png" width="1586" height="992" loading="lazy" decoding="async" alt="Силовая работа; на мобильном — шкафчики зала"></picture><div class="inside-card-body"><h3>Силовые тренировки с сопротивлением</h3><p>Короткие тренировки на всё тело с понятной прогрессией и вариантами нагрузки.</p><ul><li>собственный вес и гантели</li><li>четыре силовых контакта в неделю</li><li>два уровня нагрузки</li></ul></div></article>
+        <article class="inside-card"><picture class="photo-frame"><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_dynamic_wide_dark_review_v1.png"><img class="fitted-photo" style="--x-d:82%;--y-d:64%;--z-d:1;--fit-d:cover;--x-m:54%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/premium_reset/2026-08-20_glp1_elena_sport_approved_v1.png" width="1200" height="751" loading="lazy" decoding="async" alt="Кардио и повседневное движение"></picture><div class="inside-card-body"><h3>Кардио и повседневное движение</h3><p>Короткие блоки для сердца и выносливости, прогулки и мобильность как доступные альтернативы.</p><ul><li>короткое кардио</li><li>ходьба и движение в течение дня</li><li>воскресенье без обязательного видео</li></ul></div></article>
+        <article class="inside-card"><picture class="photo-frame"><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_background_study_v1.png"><img class="fitted-photo" style="--x-d:97%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:100%;--y-m:45%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_background_study_v1.png" width="1586" height="992" loading="lazy" decoding="async" alt="Рабочая зона для материалов и поддержки курса"></picture><div class="inside-card-body"><h3>Знания и поддержка</h3><p>Короткие материалы, психологические практики, самонаблюдение и поддержка кураторов.</p><ul><li>эмоциональный голод и отношение к меняющемуся телу</li><li>один понятный следующий шаг</li><li>самостоятельный формат или прохождение с куратором</li></ul></div></article>
       </div></div>
     </section>
 
@@ -613,7 +676,7 @@
           <p class="route-note">Уровень выбирается по тренировочному опыту. Интенсивность внутри уровня можно адаптировать под самочувствие и восстановление.</p>
         </div>
         <div class="route-stage" id="routePanel" role="tabpanel" aria-labelledby="route-care">
-          <img id="routeImage" src="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp" srcset="assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp 1200w" sizes="(max-width:900px) calc(100vw - 60px), 372px" width="1200" height="751" loading="lazy" decoding="async" alt="Доступная тренировка в тёмном пространстве курса">
+          <picture class="route-photo-frame"><source id="routeImageMobile" media="(max-width:900px)" srcset="assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_kneeling_profile_dark_review_v1.png"><img class="fitted-photo" id="routeImage" style="--x-d:50%;--y-d:90%;--z-d:1;--fit-d:cover;--x-m:61%;--y-m:91%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_kneeling_profile_dark_review_v1.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Доступная силовая работа"></picture>
           <div class="route-copy"><h3 id="routeTitle">Доступная силовая работа</h3><p id="routeText">Для тех, кто только начинает, возвращается после паузы или хочет спокойнее входить в сопротивление.</p><ul id="routeList"><li>собственный вес и доступное сопротивление</li><li>техника и работа на всё тело</li><li>варианты амплитуды и темпа</li></ul></div>
         </div>
       </div>
@@ -645,7 +708,7 @@
     <section class="content container" aria-labelledby="outcomes-title">
       <h2 id="outcomes-title">Что останется с вами</h2>
       <div class="outcomes">
-        <img class="outcomes-photo" src="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_1200.webp" srcset="assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_morning_v1_1200.webp 1200w" sizes="(max-width:900px) calc(100vw - 60px), 560px" width="1200" height="751" loading="lazy" decoding="async" alt="Утренняя тренировка в тёмном пространстве курса">
+        <picture class="outcome-photo-frame"><source media="(max-width:900px)" srcset="assets/glp1-landing/design_system/production/2026-08-14_glp1_course_audio_objects_v1.png"><img class="outcomes-photo fitted-photo" style="--x-d:91%;--y-d:50%;--z-d:1;--fit-d:cover;--x-m:89%;--y-m:50%;--z-m:1;--fit-m:cover" src="assets/glp1-landing/design_system/production/2026-08-14_glp1_course_audio_objects_v1.png" width="1586" height="992" loading="lazy" decoding="async" alt="Пастельные объекты курса: наушники, блокнот и предметы повседневного ритма"></picture>
         <div class="outcome-list">
           <article class="outcome"><div><h3>Своя рабочая тарелка</h3><p>Понимание, как достраивать полноценный приём пищи при разном аппетите.</p></div></article>
           <article class="outcome"><div><h3>Еда в реальной жизни</h3><p>Повторяемые блюда, закупка, ресторан, доставка и дорога без отдельной «идеальной» жизни.</p></div></article>
@@ -660,11 +723,11 @@
       <p class="team-intro">Программу создаёт команда специалистов по питанию, тренировкам и психологии. Вместе мы помогаем выстроить полноценное питание, подходящую нагрузку и устойчивые привычки во время терапии агонистами GLP‑1.</p>
       <p class="scroll-hint" id="team-scroll-hint">Листайте команду в сторону или используйте клавиши ← →</p>
       <div class="team-list scroll-region" tabindex="0" aria-label="Команда курса" aria-describedby="team-scroll-hint">
-        <article class="team-item"><img src="assets/glp1-landing/markes.png" width="360" height="360" loading="lazy" decoding="async" alt="Оля Маркес"><strong>Оля Маркес</strong><span>Основательница и идеолог #sekta, автор рамки курса.</span></article>
-        <article class="team-item"><img src="assets/glp1-landing/nesterova.png" width="361" height="360" loading="lazy" decoding="async" alt="Аня Нестерова"><strong>Аня Нестерова</strong><span>Руководитель направления питания #sekta.</span></article>
-        <article class="team-item"><img src="assets/glp1-landing/knyazeva.png" width="360" height="360" loading="lazy" decoding="async" alt="Даша Князева"><strong>Даша Князева</strong><span>Эксперт тренировочного направления #sekta.</span></article>
-        <article class="team-item"><img src="assets/glp1-landing/yakimova.png" width="360" height="360" loading="lazy" decoding="async" alt="Ира Якимова"><strong>Ира Якимова</strong><span>Психолог и эксперт программ #sekta.</span></article>
-        <article class="team-item"><img src="assets/glp1-landing/shametova.png" width="360" height="360" loading="lazy" decoding="async" alt="Лена Шаметова"><strong>Лена Шаметова</strong><span>Эксперт образовательных программ #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/landing/v15_hybrid_v3/experts/markes.png" width="360" height="360" loading="lazy" decoding="async" alt="Оля Маркес"><strong>Оля Маркес</strong><span>Основательница и идеолог #sekta, автор рамки курса.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/landing/v15_hybrid_v3/experts/nesterova.png" width="361" height="360" loading="lazy" decoding="async" alt="Аня Нестерова"><strong>Аня Нестерова</strong><span>Руководитель направления питания #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/landing/v15_hybrid_v3/experts/knyazeva.png" width="360" height="360" loading="lazy" decoding="async" alt="Даша Князева"><strong>Даша Князева</strong><span>Эксперт тренировочного направления #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/landing/v15_hybrid_v3/experts/yakimova.png" width="360" height="360" loading="lazy" decoding="async" alt="Ира Якимова"><strong>Ира Якимова</strong><span>Психолог и эксперт программ #sekta.</span></article>
+        <article class="team-item"><img src="assets/glp1-landing/landing/v15_hybrid_v3/experts/shametova.png" width="360" height="360" loading="lazy" decoding="async" alt="Лена Шаметова"><strong>Лена Шаметова</strong><span>Эксперт образовательных программ #sekta.</span></article>
       </div>
     </section>
 
@@ -706,6 +769,16 @@
     mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton.getAttribute('aria-expanded')==='true'){setMenu(false);menuButton.focus();}});
 
+    const heroStage=document.querySelector('.hero-photo-stage');
+    const heroSlides=[...document.querySelectorAll('.hero-slide')];
+    const heroPrev=document.getElementById('heroPrev');const heroNext=document.getElementById('heroNext');const heroCount=document.getElementById('heroCount');
+    let heroIndex=0;let heroTouchX=0;let heroTouchY=0;
+    function showHero(nextIndex){heroIndex=(nextIndex+heroSlides.length)%heroSlides.length;heroSlides.forEach((slide,index)=>{const active=index===heroIndex;slide.classList.toggle('is-active',active);slide.setAttribute('aria-hidden',String(!active));});heroCount.textContent=(heroIndex+1)+' / '+heroSlides.length;}
+    heroPrev.addEventListener('click',()=>showHero(heroIndex-1));
+    heroNext.addEventListener('click',()=>showHero(heroIndex+1));
+    heroStage.addEventListener('touchstart',event=>{const touch=event.changedTouches[0];heroTouchX=touch.clientX;heroTouchY=touch.clientY;},{passive:true});
+    heroStage.addEventListener('touchend',event=>{const touch=event.changedTouches[0];const dx=touch.clientX-heroTouchX;const dy=touch.clientY-heroTouchY;if(Math.abs(dx)>44&&Math.abs(dx)>Math.abs(dy))showHero(heroIndex+(dx<0?1:-1));},{passive:true});
+
     const track=document.getElementById('insideTrack');
     let cardIndex=0;
     const insidePrev=document.getElementById('insidePrev');const insideNext=document.getElementById('insideNext');
@@ -715,15 +788,18 @@
     window.addEventListener('resize',updateCards);
 
     const routeData={
-      care:{tab:'route-care',title:'Доступная силовая работа',text:'Для тех, кто только начинает, возвращается после паузы или хочет спокойнее входить в сопротивление.',image:'assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp',srcset:'assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_640.webp 640w, assets/glp1-landing/2026-08-21_glp1_dark_cover_elena_motion_doorway_v1_1200.webp 1200w',alt:'Доступная тренировка в тёмном пространстве курса',items:['собственный вес и доступное сопротивление','техника и работа на всё тело','варианты амплитуды и темпа']},
-      strength:{tab:'route-strength',title:'Больше сопротивления и прогрессии',text:'Для тех, кто уже регулярно тренируется и ищет полноценную системную нагрузку с гантелями и более выраженным сопротивлением.',image:'assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp',srcset:'assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_640.webp 640w, assets/glp1-landing/2026-08-20_glp1_dark_cover_movement_strength_v1_1200.webp 1200w',alt:'Силовая тренировка с гантелями в тёмном пространстве курса',items:['гантели и другое доступное сопротивление','управление подходами, темпом и весом','сильная работа без тренировки до отказа']}
+      care:{tab:'route-care',title:'Доступная силовая работа',text:'Для тех, кто только начинает, возвращается после паузы или хочет спокойнее входить в сопротивление.',image:'assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_kneeling_profile_dark_review_v1.png',mobileImage:'assets/glp1-landing/design_system/olya/glp_dark_backgrounds/2026-08-21_glp1_olya_kneeling_profile_dark_review_v1.png',alt:'Доступная силовая работа',crop:{desktop:{x:'50%',y:'90%',zoom:'1',fit:'cover'},mobile:{x:'61%',y:'91%',zoom:'1',fit:'cover'}},items:['собственный вес и доступное сопротивление','техника и работа на всё тело','варианты амплитуды и темпа']},
+      strength:{tab:'route-strength',title:'Больше сопротивления и прогрессии',text:'Для тех, кто уже регулярно тренируется и ищет полноценную системную нагрузку с гантелями и более выраженным сопротивлением.',image:'assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_background_equipment_v1.png',mobileImage:'assets/glp1-landing/design_system/production/2026-08-20_glp1_dark_cover_background_equipment_v1.png',alt:'Оборудование для системной силовой работы и прогрессии',crop:{desktop:{x:'100%',y:'50%',zoom:'1',fit:'cover'},mobile:{x:'100%',y:'50%',zoom:'1',fit:'cover'}},items:['гантели и другое доступное сопротивление','управление подходами, темпом и весом','сильная работа без тренировки до отказа']}
     };
     const routeTabs=[...document.querySelectorAll('.route-tab')];
     function selectRoute(tab,{focus=false}={}){
       const data=routeData[tab.dataset.route];
       routeTabs.forEach(item=>{const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;});
       const panel=document.getElementById('routePanel');panel.setAttribute('aria-labelledby',data.tab);
-      const image=document.getElementById('routeImage');image.src=data.image;image.srcset=data.srcset;image.alt=data.alt;
+      const image=document.getElementById('routeImage');image.src=data.image;image.removeAttribute('srcset');image.alt=data.alt;
+      document.getElementById('routeImageMobile').srcset=data.mobileImage;
+      image.style.setProperty('--x-d',data.crop.desktop.x);image.style.setProperty('--y-d',data.crop.desktop.y);image.style.setProperty('--z-d',data.crop.desktop.zoom);image.style.setProperty('--fit-d',data.crop.desktop.fit);
+      image.style.setProperty('--x-m',data.crop.mobile.x);image.style.setProperty('--y-m',data.crop.mobile.y);image.style.setProperty('--z-m',data.crop.mobile.zoom);image.style.setProperty('--fit-m',data.crop.mobile.fit);
       document.getElementById('routeTitle').textContent=data.title;document.getElementById('routeText').textContent=data.text;
       const list=document.getElementById('routeList');list.replaceChildren(...data.items.map(item=>{const li=document.createElement('li');li.textContent=item;return li;}));
       if(focus)tab.focus();
